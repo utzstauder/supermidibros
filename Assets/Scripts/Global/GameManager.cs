@@ -3,12 +3,21 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour {
 
+	public static GameManager instance;
+
 	public bool m_debug = false;
 
 	private AudioManager m_audioManager;
 	private float m_horizontalSliderValue = 0.0f;
 
 	void Awake(){
+		if (!instance){
+			instance = this;
+			DontDestroyOnLoad(this.gameObject);
+		} else {
+			Destroy(this.gameObject);
+		}
+
 		m_audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
 		if (m_audioManager == null){
 			Debug.LogError("no AudioManager was found in this scene");
@@ -17,7 +26,7 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		
 	}
 
 	// look up new references
@@ -29,21 +38,23 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (m_debug){
-			if (Input.GetKeyDown(KeyCode.UpArrow)){
+			if (Input.GetKeyDown(KeyCode.UpArrow) || MIDIInputManager.instance.GetForwardButtonDown()){
 				m_audioManager.GoToNextBar();
-			} else if (Input.GetKeyDown(KeyCode.DownArrow)){
+			} else if (Input.GetKeyDown(KeyCode.DownArrow) || MIDIInputManager.instance.GetRewindButtonDown()){
 				m_audioManager.GoToPrevBar();
 			} else if (Input.GetKeyDown(KeyCode.RightArrow)){
 				m_audioManager.GoToNextBeat();
 			} else if (Input.GetKeyDown(KeyCode.LeftArrow)){
 				m_audioManager.GoToPrevBeat();
 			}
-			if (Input.GetKeyDown(KeyCode.Space)){
+			if (Input.GetKeyDown(KeyCode.Space) || MIDIInputManager.instance.GetPlayButtonDown()){
 				if (!m_audioManager.isPlaying()){
 					m_audioManager.Play();
 				} else {
 					m_audioManager.Pause();
 				}
+			} else if(Input.GetKeyDown(KeyCode.Backspace) || MIDIInputManager.instance.GetStopButtonDown()){
+				m_audioManager.Stop();
 			}
 		}
 

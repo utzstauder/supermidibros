@@ -11,6 +11,8 @@ public class AudioManager : MonoBehaviour {
 	[Range(1,8)]
 	public int 			m_timeSignatureLower	= 4;
 	public int 			m_timeSampleOffset 		= 0;
+	[Range(1,32)]
+	public int 			m_unitsPerBeat			= 4;
 	public float 		m_timeScale 			= 1.0f;
 
 	public delegate void BeatDelegate(int num);
@@ -43,7 +45,7 @@ public class AudioManager : MonoBehaviour {
 	}
 
 	void Start(){
-		Play();
+		//Play();
 	}
 	
 	// Update is called once per frame
@@ -57,7 +59,6 @@ public class AudioManager : MonoBehaviour {
 
 		m_prevBeatTimer = m_beatTimer;
 
-		// TODO: do we need to do this every frame?
 		//SyncToAudioSource(m_audioSource, m_audioSources);
 	}
 
@@ -241,7 +242,12 @@ public class AudioManager : MonoBehaviour {
 	}
 
 	public float GetClipLength(){
+		return m_masterAudioClip.length;
 		return m_audioSource.clip.length;
+	}
+
+	public int GetUnitsPerBeat(){
+		return m_unitsPerBeat;
 	}
 
 	#endregion

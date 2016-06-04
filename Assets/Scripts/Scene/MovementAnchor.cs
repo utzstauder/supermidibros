@@ -4,8 +4,6 @@ using System.Collections;
 public class MovementAnchor : MonoBehaviour {
 
 	public Vector3 m_pointOfOrigin;
-	[Range(1,16)]
-	public int m_unitsPerBeat;
 
 	private Vector3 m_direction = new Vector3(1.0f, 0, 0);
 
@@ -21,6 +19,6 @@ public class MovementAnchor : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transform.position = m_pointOfOrigin + m_direction * m_unitsPerBeat * m_audioManager.GetCurrentBeatTime();
+		transform.position = m_pointOfOrigin + m_direction * m_audioManager.GetUnitsPerBeat() * m_audioManager.GetCurrentBeatTime();
 	}
 }

@@ -4,8 +4,7 @@ using System.Collections;
 public class Grid : MonoBehaviour {
 
 	[Header("References")]
-	public AudioManager m_audioManager;
-	public MovementAnchor m_movementAnchor;
+	public AudioManager m_audioManager;			// will override time signature settings, if set
 
 	[Header("Grid Settings")]
 	[Range(1,8)]
@@ -25,12 +24,11 @@ public class Grid : MonoBehaviour {
 	public Color m_colorBeats			= Color.green;
 
 	void OnDrawGizmos(){
-		if (m_movementAnchor){
-			m_unitsPerBeat = m_movementAnchor.m_unitsPerBeat;
-		}
 		if (m_audioManager){
 			m_timeSignatureUpper = m_audioManager.GetTimeSignatureUpper();
 			m_timeSignatureLower = m_audioManager.GetTimeSignatureLower();
+			m_unitsPerBeat = m_audioManager.GetUnitsPerBeat();
+			m_drawRange = (int)(m_audioManager.GetClipLength() / 60.0f * (float)m_audioManager.m_bpm * (float)m_unitsPerBeat);
 		}
 
 		// draw beats and bars
