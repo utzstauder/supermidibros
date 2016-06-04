@@ -32,10 +32,9 @@ public class Grid : MonoBehaviour {
 		}
 
 		// draw beats and bars
-		int units = m_unitsPerBeat * m_timeSignatureUpper/m_timeSignatureLower;
-		for (int x = 0; x < m_drawRange; x += units){
+		for (int x = 0; x < m_drawRange; x += m_unitsPerBeat){
 			Gizmos.color = m_colorBeats;
-			if ((x/units)%m_timeSignatureUpper == 0){
+			if ((x)%(m_unitsPerBeat * m_timeSignatureUpper) == 0){
 				Gizmos.color = m_colorBars;
 			}
 			Gizmos.DrawLine(new Vector3(x, 0, -m_lineWidth/2), new Vector3(x, 0, m_lineWidth/2));

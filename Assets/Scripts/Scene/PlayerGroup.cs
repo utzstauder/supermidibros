@@ -31,7 +31,7 @@ public class PlayerGroup : MonoBehaviour {
 
 	void Start(){
 		for (int i = 0; i < m_playerGroup.Length; i++){
-			SetPositionOfPlayer(i, m_faderGroup.GetPositionOfFader(i));
+			SetPositionOfPlayer(i, m_faderGroup.GetLocalPositionOfFader(i));
 		}
 	}
 
@@ -48,12 +48,12 @@ public class PlayerGroup : MonoBehaviour {
 	}
 
 	void UpdateTargetPositionOfPlayer(int _playerId){
-		m_targetPosition = m_faderGroup.GetPositionOfFader(_playerId);
-		m_playerGroup[_playerId].position = Vector3.Lerp(m_playerGroup[_playerId].position, m_targetPosition, Time.deltaTime * m_lerpSpeed);
+		m_targetPosition = m_faderGroup.GetLocalPositionOfFader(_playerId);
+		m_playerGroup[_playerId].localPosition = Vector3.Lerp(m_playerGroup[_playerId].localPosition, m_targetPosition, Time.deltaTime * m_lerpSpeed);
 	}
 
 	void SetPositionOfPlayer(int _playerId, Vector3 _position){
-		m_playerGroup[_playerId].position = _position;
+		m_playerGroup[_playerId].localPosition = _position;
 	}
 
 	#endregion

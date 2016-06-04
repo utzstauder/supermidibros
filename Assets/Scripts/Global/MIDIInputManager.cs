@@ -2,6 +2,7 @@
 using System.Collections;
 using MidiJack;
 
+[ExecuteInEditMode]
 public class MIDIInputManager : MonoBehaviour {
 
 	public static MIDIInputManager instance;

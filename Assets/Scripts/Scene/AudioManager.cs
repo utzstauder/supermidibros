@@ -16,14 +16,22 @@ public class AudioManager : MonoBehaviour {
 	public float 		m_timeScale 			= 1.0f;
 
 	public delegate void BeatDelegate(int num);
+	public event BeatDelegate OnSubBeat;
 	public event BeatDelegate OnBeat;
 	public event BeatDelegate OnBar;
+
+	// these are for internal calculations only
+	private int m_currentSubBeat	= 1;
+	private int m_currentBeat		= 1;
+	private int m_currentBar		= 1;
 
 	private AudioSource m_audioSource;		// masterAudioClip
 	private AudioSource[] m_audioSources;	// every audio layer of the current track
 	private float		m_audioSourceFrequency;
-	private float 		m_beatTimer 	= 0;
-	private float 		m_prevBeatTimer = 1.0f;
+	private float 		m_beatTimer 		= 0;
+	private float 		m_prevBeatTimer 	= 1.0f;
+	private float		m_subBeatTimer		= 0;
+	private float		m_prevSubBeatTimer	= 1.0f;
 
 	// Use this for initialization
 	void Awake () {
@@ -50,16 +58,24 @@ public class AudioManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		// beat calculation
-		m_beatTimer = (((m_audioSource.timeSamples + m_timeSampleOffset) * (m_bpm * m_timeSignatureLower / 240.0f)) % (float)m_audioSourceFrequency) / 100000;
+		if (isPlaying()){
+			// beat calculation
+			//m_beatTimer = (((m_audioSource.timeSamples + m_timeSampleOffset) * (m_bpm * m_timeSignatureLower / 240.0f)) % (float)m_audioSourceFrequency) / 100000;
 
-		if (m_beatTimer < m_prevBeatTimer){
-			Beat();
+			m_subBeatTimer = (((m_audioSource.timeSamples + m_timeSampleOffset) * (m_bpm * m_timeSignatureLower / 240.0f * m_timeSignatureUpper)) % (float)m_audioSourceFrequency) / 100000;
+			if (m_subBeatTimer < m_prevSubBeatTimer){
+				SubBeat();
+			}
+
+//			if (m_beatTimer < m_prevBeatTimer){
+//				Beat();
+//			}
+//			m_prevBeatTimer = m_beatTimer;
+
+			m_prevSubBeatTimer = m_subBeatTimer;
+
+			//SyncToAudioSource(m_audioSource, m_audioSources);
 		}
-
-		m_prevBeatTimer = m_beatTimer;
-
-		//SyncToAudioSource(m_audioSource, m_audioSources);
 	}
 
 	#region private functions
@@ -72,11 +88,24 @@ public class AudioManager : MonoBehaviour {
 		}
 	}
 
+	// gets called on every subbeat / movement unit
+	void SubBeat(){
+		m_currentSubBeat = GetCurrentSubBeat();
+
+		if (OnSubBeat != null) OnSubBeat(m_currentSubBeat);
+
+		if (m_currentSubBeat == m_unitsPerBeat){
+			Beat();
+		}
+	}
+
 	// gets called on every beat
 	void Beat(){
-		if (OnBeat != null) OnBeat(GetCurrentBeat());
+		m_currentBeat = GetCurrentBeat();
 
-		if (GetCurrentBeat() == 1){
+		if (OnBeat != null) OnBeat(m_currentBeat);
+
+		if (m_currentBeat == 1){
 			Bar();
 		}
 
@@ -87,7 +116,9 @@ public class AudioManager : MonoBehaviour {
 
 	// gets called on every full bar
 	void Bar(){
-		if (OnBar != null) OnBar(GetCurrentBar());
+		m_currentBar = GetCurrentBar();
+
+		if (OnBar != null) OnBar(m_currentBar);
 
 		SyncToAudioSource(m_audioSource, m_audioSources);
 
@@ -221,6 +252,10 @@ public class AudioManager : MonoBehaviour {
 		return GetCurrentBarTime() * m_timeSignatureUpper;
 	}
 
+	public int GetCurrentSubBeat(){
+		return (int)(((m_audioSource.timeSamples + m_timeSampleOffset) * (m_bpm * m_timeSignatureLower / 240.0f * m_timeSignatureUpper)) / (float)m_audioSourceFrequency) % m_unitsPerBeat + 1;
+	}
+
 	public float GetCurrentTime(){
 		return m_audioSource.time;
 	}
@@ -243,11 +278,15 @@ public class AudioManager : MonoBehaviour {
 
 	public float GetClipLength(){
 		return m_masterAudioClip.length;
-		return m_audioSource.clip.length;
+		//return m_audioSource.clip.length;
 	}
 
 	public int GetUnitsPerBeat(){
 		return m_unitsPerBeat;
+	}
+
+	public int GetTotalBars(){
+		return (int)(GetClipLength() / 60.0f * (float)m_bpm / (float)m_timeSignatureUpper);
 	}
 
 	#endregion

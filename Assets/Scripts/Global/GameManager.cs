@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour {
 			}
 
 			GUI.Label(new Rect(10, 50, 100, 20), m_audioManager.GetCurrentTimeAsString());
-			GUI.Label(new Rect(70, 50, 100, 20), m_audioManager.GetCurrentBar() + " | " + m_audioManager.GetCurrentBeat());
+			GUI.Label(new Rect(70, 50, 100, 20), m_audioManager.GetCurrentBar() + " | " + m_audioManager.GetCurrentBeat() + " | " + m_audioManager.GetCurrentSubBeat());
 			//GUI.Label(new Rect(10, 70, 200, 20), ""+m_audioManager.GetCurrentBarTime());
 		}
 	}
