@@ -6,12 +6,15 @@ public class PlayerGroup : MonoBehaviour {
 	[Range(0.01f, 100.0f)]
 	public float m_lerpSpeed = 10.0f;
 
-	private float[] m_playerZOffset = {0, 0, 0, 0, 0, 0, 0, 0};
+	public Vector3 m_lookAtOffset = Vector3.zero;
+
 	private Vector3 m_targetPosition;
 
 	[SerializeField]
 	private FaderGroup m_faderGroup;
 	private Transform[] m_playerGroup;
+
+	private Color m_gizmosColor = Color.cyan;
 
 	void Awake () {
 		if (!m_faderGroup){
@@ -21,6 +24,8 @@ public class PlayerGroup : MonoBehaviour {
 				Destroy(this);
 			}
 		}
+
+		// TODO: instantiate player prefabs for modularity!
 
 		m_playerGroup = new Transform[transform.childCount];
 		for (int i = 0; i < transform.childCount; i++){
@@ -37,6 +42,9 @@ public class PlayerGroup : MonoBehaviour {
 
 	void Update(){
 		UpdateTargetPositionOfAllPlayers();
+		if (m_lookAtOffset.magnitude > 0){
+			UpdateLookAtOfAllPlayers();
+		}
 	}
 
 	#region private functions
@@ -44,6 +52,12 @@ public class PlayerGroup : MonoBehaviour {
 	void UpdateTargetPositionOfAllPlayers(){
 		for (int i = 0; i < m_playerGroup.Length; i++){
 			UpdateTargetPositionOfPlayer(i);
+		}
+	}
+
+	void UpdateLookAtOfAllPlayers(){
+		for (int i = 0; i < m_playerGroup.Length; i++){
+			UpdateLookAtOfPlayer(i);
 		}
 	}
 
@@ -56,6 +70,19 @@ public class PlayerGroup : MonoBehaviour {
 		m_playerGroup[_playerId].localPosition = _position;
 	}
 
+	void UpdateLookAtOfPlayer(int _playerId){
+		m_playerGroup[_playerId].LookAt(Vector3.forward * m_playerGroup[_playerId].position.z +
+										Vector3.right * m_playerGroup[_playerId].position.x + m_lookAtOffset +
+										(Vector3.up * m_faderGroup.GetRelativePositionOfFader(_playerId) * m_faderGroup.m_faderHeight) +
+										Vector3.up * m_faderGroup.m_faderOffset);
+	}
+
 	#endregion
+
+	void OnDrawGizmos(){
+//		for (int i = 0; i < m_playerGroup.Length; i++){
+//			Gizmos.DrawLine(m_playerGroup[i].position, m_playerGroup[i].position + m_lookAtOffset);
+//		}
+	}
 
 }

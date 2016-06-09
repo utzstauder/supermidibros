@@ -4,6 +4,7 @@ using System.Collections;
 [ExecuteInEditMode]
 public class FaderGroup : MonoBehaviour {
 
+	[Header("Fader Array")]
 	[Range(1,32)]
 	public int m_faderHeight = 16;
 	[Range(0,4)]
@@ -11,11 +12,19 @@ public class FaderGroup : MonoBehaviour {
 	[Range(1,4)]
 	public int m_faderPadding = 2;
 
+
+	[Header("Collision Detection")]
+	[Range(0.01f, 0.5f)]
+	public float m_detectionRange = .5f;
+	private Collider[] m_collider;
+
+
 	[Header("Gizmos")]
 	public Color m_faderColor = Color.blue;
 
-	private Transform[] m_faderGroup = new Transform[Constants.NUMBER_OF_PLAYERS];
 
+	private Transform[] m_faderGroup = new Transform[Constants.NUMBER_OF_PLAYERS];
+	private AudioManager m_audioManager;
 	private bool m_inEditMode = true;
 
 	// Use this for initialization
@@ -31,6 +40,15 @@ public class FaderGroup : MonoBehaviour {
 			m_faderGroup[i] = transform.GetChild(i);
 			m_faderGroup[i].gameObject.name = "Fader_" + i;
 		}
+
+		m_audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+		if (m_audioManager == null){
+			Debug.LogError("No AudioManager found in scene!");
+		} else {
+			m_audioManager.OnSubBeat += CheckForCollision;
+		}
+
+
 	}
 	
 	// Update is called once per frame
@@ -43,13 +61,41 @@ public class FaderGroup : MonoBehaviour {
 					+ Vector3.up * m_faderOffset
 					+ Vector3.back * ((i - Constants.NUMBER_OF_PLAYERS/2) * m_faderPadding + (float)m_faderPadding/2);
 			}
+		} else {
+			for (int i = 0; i < m_faderGroup.Length; i++){
+				m_faderGroup[i].localPosition = Vector3.zero
+					+ Vector3.up * m_faderOffset
+					+ Vector3.back * ((i - Constants.NUMBER_OF_PLAYERS/2) * m_faderPadding + (float)m_faderPadding/2);
+			}
 		}
 	}
+
+	#region private functions
+
+	/**
+	 * This function will check for collision and is called on every subbeat
+	 */
+	void CheckForCollision(int _subBeat){
+		for (int i = 0; i < m_faderGroup.Length; i++){
+			m_collider = Physics.OverlapSphere(m_faderGroup[i].position, m_detectionRange);
+			for (int c = 0; c < m_collider.Length; c++){
+				if (m_collider[c].GetComponent<Trigger>()){
+					m_collider[c].GetComponent<Trigger>().OnCollision(i);
+				}
+			}
+		}
+	}
+
+	#endregion
 
 	#region public getter
 
 	public Vector3 GetLocalPositionOfFader(int _faderId){
 		return m_faderGroup[_faderId].localPosition;
+	}
+
+	public float GetRelativePositionOfFader(int _faderId){
+		return MIDIInputManager.instance.GetInputOfPlayer(_faderId);
 	}
 
 	#endregion
@@ -65,6 +111,8 @@ public class FaderGroup : MonoBehaviour {
 			Vector3 max = min + Vector3.up * m_faderHeight;
 
 			Gizmos.DrawLine(min, max);
+
+			Gizmos.DrawWireSphere(m_faderGroup[i].position, m_detectionRange);
 		}
 	}
 }

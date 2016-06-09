@@ -41,10 +41,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_audioManager: {fileID: 0}
-  m_movementAnchor: {fileID: 0}
   m_unitsPerBeat: 4
-  m_lineWidth: 8
-  m_drawRange: 512
+  m_lineWidth: 32
+  m_drawRange: 1408
   m_timeSignatureUpper: 4
   m_timeSignatureLower: 4
   m_colorBars: {r: 1, g: 0, b: 0, a: 1}

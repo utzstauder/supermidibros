@@ -19,6 +19,6 @@ public class MovementAnchor : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transform.position = m_pointOfOrigin + m_direction * m_audioManager.GetUnitsPerBeat() * m_audioManager.GetCurrentBeatTime();
+		transform.position = m_pointOfOrigin + m_direction * m_audioManager.GetUnitsPerBeat() * m_audioManager.GetCurrentBarTime() * m_audioManager.GetTimeSignatureUpper();
 	}
 }

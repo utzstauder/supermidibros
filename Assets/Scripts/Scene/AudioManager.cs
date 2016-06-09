@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(AudioSource))]
+[ExecuteInEditMode, RequireComponent(typeof(AudioSource))]
 public class AudioManager : MonoBehaviour {
 
 	public AudioClip 	m_masterAudioClip;
 	public int 			m_bpm 					= 120;
-	[Range(1,8)]
+	[Range(1,16)]
 	public int			m_timeSignatureUpper	= 4;
-	[Range(1,8)]
+	[Range(2,16)]
 	public int 			m_timeSignatureLower	= 4;
 	public int 			m_timeSampleOffset 		= 0;
 	[Range(1,32)]
@@ -19,6 +19,10 @@ public class AudioManager : MonoBehaviour {
 	public event BeatDelegate OnSubBeat;
 	public event BeatDelegate OnBeat;
 	public event BeatDelegate OnBar;
+
+	public delegate void ControlDelegate();
+	public event ControlDelegate OnPlay;
+	public event ControlDelegate OnStop;
 
 	// these are for internal calculations only
 	private int m_currentSubBeat	= 1;
@@ -44,12 +48,18 @@ public class AudioManager : MonoBehaviour {
 			m_audioSource.clip = m_masterAudioClip;
 			m_audioSourceFrequency = (float)m_audioSource.clip.frequency;
 
-			Debug.Log("time signature is " + m_timeSignatureUpper + "/" + m_timeSignatureLower);
+//			Debug.Log("time signature is " + m_timeSignatureUpper + "/" + m_timeSignatureLower);
 
 			// get references to every audioSource attached to this gameobject
 			m_audioSources = GetComponentsInChildren<AudioSource>();
-			Debug.Log(m_audioSources.Length + " audioSource(s) found in hierarchy of AudioManager");
+//			Debug.Log(m_audioSources.Length + " audioSource(s) found in hierarchy of AudioManager");
 		}
+	}
+
+	void OnDestroy(){
+		OnSubBeat	= null;
+		OnBeat		= null;
+		OnBar		= null;
 	}
 
 	void Start(){
@@ -75,6 +85,12 @@ public class AudioManager : MonoBehaviour {
 			m_prevSubBeatTimer = m_subBeatTimer;
 
 			//SyncToAudioSource(m_audioSource, m_audioSources);
+		} else {
+			// clamp lower time signatur
+			m_timeSignatureLower = Mathf.ClosestPowerOfTwo(m_timeSignatureLower);
+
+			// calculate new units per beat
+			m_unitsPerBeat = (int)Mathf.Pow(Constants.UNITS_PER_BEAT, 2.0f) / m_timeSignatureLower;
 		}
 	}
 
@@ -94,9 +110,11 @@ public class AudioManager : MonoBehaviour {
 
 		if (OnSubBeat != null) OnSubBeat(m_currentSubBeat);
 
-		if (m_currentSubBeat == m_unitsPerBeat){
+		if (m_currentSubBeat == 1){
 			Beat();
 		}
+
+//		Debug.Log(m_audioSource.time + " | SubBeat " + GetCurrentSubBeat());
 	}
 
 	// gets called on every beat
@@ -111,7 +129,7 @@ public class AudioManager : MonoBehaviour {
 
 		//SyncToAudioSource(m_audioSource, m_audioSources);
 
-		//Debug.Log("Beat " + GetCurrentBeat());
+//		Debug.Log(m_audioSource.time + " | Beat " + GetCurrentBeat());
 	}
 
 	// gets called on every full bar
@@ -167,6 +185,10 @@ public class AudioManager : MonoBehaviour {
 		foreach(AudioSource source in m_audioSources){
 			source.Play();
 		}
+
+		if (OnPlay != null){
+			OnPlay();
+		}
 	}
 
 	// pauses playback of all audiosources
@@ -174,17 +196,6 @@ public class AudioManager : MonoBehaviour {
 		m_audioSource.Pause();
 		foreach(AudioSource source in m_audioSources){
 			source.Pause();
-		}
-	}
-
-	// resumes playback of all audiosources
-	// TODO: currently unused
-	public void UnPause(){
-		SyncToAudioSource(m_audioSource, m_audioSources);
-
-		m_audioSource.UnPause();
-		foreach(AudioSource source in m_audioSources){
-			source.UnPause();
 		}
 	}
 
@@ -196,6 +207,10 @@ public class AudioManager : MonoBehaviour {
 		}
 
 		SetCurrentTime(0.0f);
+
+		if (OnStop != null){
+			OnStop();
+		}
 	}
 
 	public void GoToNextBar(){
@@ -249,11 +264,15 @@ public class AudioManager : MonoBehaviour {
 	}
 
 	public float GetCurrentBeatTime(){
-		return GetCurrentBarTime() * m_timeSignatureUpper;
+		return (((m_audioSource.timeSamples + m_timeSampleOffset) * (m_bpm * m_timeSignatureLower / 240.0f)) / (float)m_audioSourceFrequency) % m_timeSignatureUpper;
 	}
 
 	public int GetCurrentSubBeat(){
 		return (int)(((m_audioSource.timeSamples + m_timeSampleOffset) * (m_bpm * m_timeSignatureLower / 240.0f * m_timeSignatureUpper)) / (float)m_audioSourceFrequency) % m_unitsPerBeat + 1;
+	}
+
+	public float GetCurrentSubBeatTime(){
+		return (((m_audioSource.timeSamples + m_timeSampleOffset) * (m_bpm * m_timeSignatureLower / 240.0f * m_timeSignatureUpper)) / (float)m_audioSourceFrequency) % m_unitsPerBeat;
 	}
 
 	public float GetCurrentTime(){
