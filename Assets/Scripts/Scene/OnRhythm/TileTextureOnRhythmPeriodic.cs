@@ -2,7 +2,7 @@
 using System.Collections;
 
 [RequireComponent(typeof(MeshRenderer))]
-public class TileTextureOnRhythm : OnRhythmContinuous {
+public class TileTextureOnRhythmPeriodic : OnRhythmPeriodic {
 
 	private MeshRenderer m_meshRenderer;
 

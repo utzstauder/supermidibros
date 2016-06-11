@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class OnRhythmContinuous : MonoBehaviour {
+public class OnRhythmPeriodic : MonoBehaviour {
 
 	public Enums.SyncType m_syncType	= Enums.SyncType.Bar;
 

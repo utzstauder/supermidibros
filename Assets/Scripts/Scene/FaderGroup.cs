@@ -91,7 +91,12 @@ public class FaderGroup : MonoBehaviour {
 	#region public getter
 
 	public Vector3 GetLocalPositionOfFader(int _faderId){
-		return m_faderGroup[_faderId].localPosition;
+		if (m_faderGroup.Length > 0){
+			if (m_faderGroup[_faderId] != null){
+				return m_faderGroup[_faderId].localPosition;
+			}
+		}
+		return Vector3.zero;
 	}
 
 	public float GetRelativePositionOfFader(int _faderId){

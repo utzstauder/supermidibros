@@ -8,11 +8,12 @@ public class PlayerGroup : MonoBehaviour {
 
 	public Vector3 m_lookAtOffset = Vector3.zero;
 
-	private Vector3 m_targetPosition;
+	public GameObject	m_playerPrefab;
+	public GameObject[] m_playerCharacterPrefabs;
 
-	[SerializeField]
+	private Vector3 m_targetPosition;
 	private FaderGroup m_faderGroup;
-	private Transform[] m_playerGroup;
+	private GameObject[] m_playerGroup;
 
 	private Color m_gizmosColor = Color.cyan;
 
@@ -25,13 +26,11 @@ public class PlayerGroup : MonoBehaviour {
 			}
 		}
 
-		// TODO: instantiate player prefabs for modularity!
-
-		m_playerGroup = new Transform[transform.childCount];
-		for (int i = 0; i < transform.childCount; i++){
-			m_playerGroup[i] = transform.GetChild(i);
-			m_playerGroup[i].gameObject.name = "Player_" + i;
+		m_playerGroup = new GameObject[Constants.NUMBER_OF_PLAYERS];
+		for (int i = 0; i < m_playerGroup.Length; i++){
+			m_playerGroup[i] = InstantiatePlayer(i);
 		}
+
 	}
 
 	void Start(){
@@ -49,6 +48,17 @@ public class PlayerGroup : MonoBehaviour {
 
 	#region private functions
 
+	GameObject InstantiatePlayer(int _playerId){
+		GameObject _player = Instantiate(m_playerPrefab, m_faderGroup.GetLocalPositionOfFader(_playerId), Quaternion.identity) as GameObject;
+		_player.name = "Player_" + _playerId;
+		_player.transform.parent = this.transform;
+
+		GameObject _playerCharacter = Instantiate(m_playerCharacterPrefabs[_playerId], Vector3.zero, Quaternion.identity) as GameObject;
+		_playerCharacter.transform.parent = _player.transform;
+
+		return _player;
+	}
+
 	void UpdateTargetPositionOfAllPlayers(){
 		for (int i = 0; i < m_playerGroup.Length; i++){
 			UpdateTargetPositionOfPlayer(i);
@@ -63,18 +73,18 @@ public class PlayerGroup : MonoBehaviour {
 
 	void UpdateTargetPositionOfPlayer(int _playerId){
 		m_targetPosition = m_faderGroup.GetLocalPositionOfFader(_playerId);
-		m_playerGroup[_playerId].localPosition = Vector3.Lerp(m_playerGroup[_playerId].localPosition, m_targetPosition, Time.deltaTime * m_lerpSpeed);
+		m_playerGroup[_playerId].transform.localPosition = Vector3.Lerp(m_playerGroup[_playerId].transform.localPosition, m_targetPosition, Time.deltaTime * m_lerpSpeed);
 	}
 
 	void SetPositionOfPlayer(int _playerId, Vector3 _position){
-		m_playerGroup[_playerId].localPosition = _position;
+		m_playerGroup[_playerId].transform.localPosition = _position;
 	}
 
 	void UpdateLookAtOfPlayer(int _playerId){
-		m_playerGroup[_playerId].LookAt(Vector3.forward * m_playerGroup[_playerId].position.z +
-										Vector3.right * m_playerGroup[_playerId].position.x + m_lookAtOffset +
-										(Vector3.up * m_faderGroup.GetRelativePositionOfFader(_playerId) * m_faderGroup.m_faderHeight) +
-										Vector3.up * m_faderGroup.m_faderOffset);
+		m_playerGroup[_playerId].transform.LookAt(	Vector3.forward * m_playerGroup[_playerId].transform.position.z +
+													Vector3.right * m_playerGroup[_playerId].transform.position.x + m_lookAtOffset +
+													(Vector3.up * m_faderGroup.GetRelativePositionOfFader(_playerId) * m_faderGroup.m_faderHeight) +
+													Vector3.up * m_faderGroup.m_faderOffset);
 	}
 
 	#endregion
