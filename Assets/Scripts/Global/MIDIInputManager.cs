@@ -18,6 +18,9 @@ public class MIDIInputManager : MonoBehaviour {
 	private bool m_rewindButtonDown		= false;
 	private bool m_forwardButtonDown	= false;
 
+	private float[] m_faderPosition		= new float[Constants.NUMBER_OF_PLAYERS];	// internal position of the faders
+	private float[] m_faderPositionMidi	= new float[Constants.NUMBER_OF_PLAYERS];	// current position of the midi hardware faders
+
 	// TODO: implement calibration
 	private bool m_isCalibrating		= false;
 
@@ -33,6 +36,7 @@ public class MIDIInputManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		CheckButtonDownStatus();
+		UpdatePlayerInput();
 	}
 
 	#region private functions
@@ -60,12 +64,27 @@ public class MIDIInputManager : MonoBehaviour {
 		}
 	}
 
+	void UpdatePlayerInput(){
+		for (int i = 0; i < m_faderPosition.Length; i++){
+			if (m_faderPositionMidi[i] == MidiMaster.GetKnob(m_playerKnobNumbers[i])){
+				// fader didn't move, use debug input
+				m_faderPosition[i] = Mathf.Clamp(m_faderPosition[i] + (Input.GetAxis("Fader " + i) / 2), 0.0f, 1.0f);
+			} else {
+				// midi fader movement overrides current position
+				m_faderPosition[i]		= MidiMaster.GetKnob(m_playerKnobNumbers[i]);
+				m_faderPositionMidi[i]	= MidiMaster.GetKnob(m_playerKnobNumbers[i]); 
+			}
+
+		}
+	}
+
 	#endregion
 
 	#region public input
 
 	public float GetInputOfPlayer(int _playerId){
-		return MidiMaster.GetKnob(m_playerKnobNumbers[_playerId]);
+		return m_faderPosition[_playerId];
+//		return MidiMaster.GetKnob(m_playerKnobNumbers[_playerId]);
 	}
 
 	public bool GetPlayButtonDown(){

@@ -1,8 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
+using UnityEngine.Audio;
 
 [ExecuteInEditMode, RequireComponent(typeof(AudioSource))]
 public class AudioManager : MonoBehaviour {
+
+	public AudioMixer	m_audioMixer;
 
 	public AudioClip 	m_masterAudioClip;
 	public int 			m_bpm 					= 120;
@@ -44,15 +48,16 @@ public class AudioManager : MonoBehaviour {
 			Debug.LogError("Set MasterAudioClip in AudioManager object!");
 			Destroy(this);
 		} else {
+			if (m_audioMixer == null){
+				Debug.LogError("No AudioMixer attached");
+			}
+
 			m_audioSource = GetComponent<AudioSource>();
 			m_audioSource.clip = m_masterAudioClip;
 			m_audioSourceFrequency = (float)m_audioSource.clip.frequency;
 
-//			Debug.Log("time signature is " + m_timeSignatureUpper + "/" + m_timeSignatureLower);
-
 			// get references to every audioSource attached to this gameobject
 			m_audioSources = GetComponentsInChildren<AudioSource>();
-//			Debug.Log(m_audioSources.Length + " audioSource(s) found in hierarchy of AudioManager");
 		}
 	}
 
@@ -84,7 +89,9 @@ public class AudioManager : MonoBehaviour {
 
 			m_prevSubBeatTimer = m_subBeatTimer;
 
-			//SyncToAudioSource(m_audioSource, m_audioSources);
+			SyncToAudioSource(m_audioSource, m_audioSources);
+
+//			Debug.Log("timeSamples: " + m_audioSource.timeSamples);
 		} else {
 			// clamp lower time signatur
 			m_timeSignatureLower = Mathf.ClosestPowerOfTwo(m_timeSignatureLower);
@@ -96,7 +103,9 @@ public class AudioManager : MonoBehaviour {
 
 	#region private functions
 
-	// syncronises playback for every slave audiosource to the master audiosource
+	/**
+	 * syncronises playback for every slave audiosource to the master audiosource
+	 */
 	// TODO: check if this needs to be applied every frame or rather on every beat (or bar) to reduce strain on performance
 	void SyncToAudioSource(AudioSource master, AudioSource[] slaves){
 		foreach (AudioSource slave in slaves){
@@ -138,7 +147,7 @@ public class AudioManager : MonoBehaviour {
 
 		if (OnBar != null) OnBar(m_currentBar);
 
-		SyncToAudioSource(m_audioSource, m_audioSources);
+		//SyncToAudioSource(m_audioSource, m_audioSources);
 
 		//Debug.Log("Bar");
 	}
@@ -171,6 +180,12 @@ public class AudioManager : MonoBehaviour {
 		}
 
 		SetCurrentTime(targetTime);
+	}
+
+	void SetVolumeOfAllMixerGroups(float _volume){
+		foreach(Enums.AudioMixerExposedParams mixerGroupParam in Enum.GetValues(typeof(Enums.AudioMixerExposedParams))){
+			m_audioMixer.SetFloat(mixerGroupParam.ToString(), _volume);
+		}
 	}
 
 	#endregion
@@ -207,6 +222,8 @@ public class AudioManager : MonoBehaviour {
 		}
 
 		SetCurrentTime(0.0f);
+
+		SetVolumeOfAllMixerGroups(-80.0f);
 
 		if (OnStop != null){
 			OnStop();
@@ -306,6 +323,10 @@ public class AudioManager : MonoBehaviour {
 
 	public int GetTotalBars(){
 		return (int)(GetClipLength() / 60.0f * (float)m_bpm / (float)m_timeSignatureUpper);
+	}
+
+	public AudioMixer GetAudioMixer(){
+		return m_audioMixer;
 	}
 
 	#endregion

@@ -1,4 +1,6 @@
 ﻿#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 using UnityEngine;
 using System.Collections;
@@ -22,7 +24,8 @@ public class SnapToGrid : MonoBehaviour {
 	public int m_playerLane = 0;
 	private float m_prevZ;
 
-	[Header("Options")]
+	[Header("Check LockPosition everytime! Bugs, bugs, bugs...")]
+	// TODO: lock position on deselect
 	public bool m_lockPosition		= false;
 	public bool	m_snapInPlayMode	= false;
 
@@ -34,13 +37,27 @@ public class SnapToGrid : MonoBehaviour {
 	private float targetY = 0;
 	private float targetZ = 0;
 
-	private Color m_gizmoColor = Color.white;
+	private Color m_gizmoColor = Color.white * 0.5f;
 
 
 	// Use this for initialization
 	void Awake () {
+		if (!m_audioManager){
+			m_audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+			if (!m_audioManager){
+				Debug.LogError("No AudioManager found in this scene!");
+			}
+		}
+		if (!m_faderGroup){
+			m_faderGroup = GameObject.Find("FaderGroup").GetComponent<FaderGroup>();
+			if (!m_faderGroup){
+				Debug.LogError("No FaderGroup found in this scene!");
+			}
+		}
+
 		if (Application.isPlaying){
 			m_inEditMode = false;
+			m_lockPosition = true;
 		} else {
 			m_inEditMode = true;
 		}
@@ -119,12 +136,12 @@ public class SnapToGrid : MonoBehaviour {
 				// set position
 				transform.position = new Vector3(targetX, targetY, targetZ);
 
-
 				// update helpers
 				m_prevX = transform.position.x;
 				m_prevY = transform.position.y;
 				m_prevZ = transform.position.z;
 			}
+
 		}
 	}
 
@@ -155,8 +172,11 @@ public class SnapToGrid : MonoBehaviour {
 
 				Gizmos.DrawLine(min, max);
 			}
+
+			#if UNITY_EDITOR
+			// label
+			Handles.Label(transform.position + Vector3.one, m_playerLane + ", " + m_verticalPosition);
+			#endif
 		}
 	}
 }
-
-#endif

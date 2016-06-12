@@ -2,6 +2,7 @@
 using System.Collections;
 
 [ExecuteInEditMode]
+[RequireComponent(typeof(LineRenderer))]
 public class Trigger : MonoBehaviour {
 
 	private bool m_inEditMode = true;
@@ -21,6 +22,9 @@ public class Trigger : MonoBehaviour {
 
 	private Color m_gizmosColor = Color.yellow;
 
+	private LineRenderer m_lineRenderer;
+	private Vector3[] m_childPositions;
+
 	// Use this for initialization
 	void Awake () {
 		if (Application.isPlaying){
@@ -35,28 +39,36 @@ public class Trigger : MonoBehaviour {
 		} else {
 			m_audioManager.OnStop += Reset;
 		}
+			
+		m_lineRenderer = GetComponent<LineRenderer>();
 
 		m_triggerChildren = transform.GetComponentsInChildren<Trigger>();	// will also 'get' every trigger component on the parent object!
 		m_childCount = m_triggerChildren.Length;
 
 		// if there are children attached, this object will serve as a triggergroup
 		if (m_childCount > 1){
-//			Debug.Log("Found " + m_childCount + " Trigger in children");
-
 			m_childrenTriggered = 0;
 
 			foreach (Trigger child in m_triggerChildren){
 				if (child != this){
 					child.OnTrigger += OnReceiveTrigger;
 				} else {
-//					Debug.Log("found (and skipped) self reference");
+
 				}
 			}
+
+			// line renderer
+			m_childPositions = new Vector3[m_triggerChildren.Length - 1];
+			for (int i = 1; i < m_triggerChildren.Length; i++){
+				m_childPositions[i - 1] = m_triggerChildren[i].transform.position;
+			}
+			m_lineRenderer.SetVertexCount(m_triggerChildren.Length - 1);
+			m_lineRenderer.SetPositions(m_childPositions);
+
 		} else {
 			// otherwise this is a solo trigger
 //			Debug.Log("Solo trigger");
-
-
+			m_lineRenderer.enabled = false;
 		}
 	}
 
@@ -65,17 +77,21 @@ public class Trigger : MonoBehaviour {
 			m_triggerChildren = transform.GetComponentsInChildren<Trigger>();
 			m_childCount = m_triggerChildren.Length;
 
+			if (m_lineRenderer == null){
+				m_lineRenderer = GetComponent<LineRenderer>();
+			}
+
 			if (m_childCount > 1){
-				// update position of parent
-				// TODO: this causes unwanted behaviour, fix or delete this part
+				m_lineRenderer.enabled = true;
 
-//				m_targetX = 0;
-//				for (int i = 1; i < m_childCount; i++){
-//					m_targetX += m_triggerChildren[i].transform.position.x;
-//				}
-//				m_targetX /= m_childCount;
-
-				//transform.position = new Vector3(m_targetX, m_targetY, m_targetZ);
+				m_childPositions = new Vector3[m_triggerChildren.Length - 1];
+				for (int i = 1; i < m_triggerChildren.Length; i++){
+					m_childPositions[i - 1] = m_triggerChildren[i].transform.position;
+				}
+				m_lineRenderer.SetVertexCount(m_triggerChildren.Length - 1);
+				m_lineRenderer.SetPositions(m_childPositions);
+			} else {
+				m_lineRenderer.enabled = false;
 			}
 		}
 	}

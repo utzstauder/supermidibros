@@ -1,4 +1,8 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
+using UnityEngine;
 using System.Collections;
 
 public class Grid : MonoBehaviour {
@@ -23,6 +27,8 @@ public class Grid : MonoBehaviour {
 	public Color m_colorBars 			= Color.red;
 	public Color m_colorBeats			= Color.green;
 
+	private Vector3 m_gridVector		= new Vector3(1, 0, 1);
+
 	void OnDrawGizmos(){
 		if (m_audioManager){
 			m_timeSignatureUpper = m_audioManager.GetTimeSignatureUpper();
@@ -36,6 +42,10 @@ public class Grid : MonoBehaviour {
 			Gizmos.color = m_colorBeats;
 			if ((x)%(m_unitsPerBeat * m_timeSignatureUpper) == 0){
 				Gizmos.color = m_colorBars;
+
+				#if UNITY_EDITOR
+				Handles.Label(new Vector3(x, 0, -m_lineWidth/2), "" + ((x / m_unitsPerBeat / m_timeSignatureUpper) + 1) );
+				#endif
 			}
 			Gizmos.DrawLine(new Vector3(x, 0, -m_lineWidth/2), new Vector3(x, 0, m_lineWidth/2));
 		}
