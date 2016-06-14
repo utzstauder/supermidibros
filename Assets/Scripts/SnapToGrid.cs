@@ -24,10 +24,12 @@ public class SnapToGrid : MonoBehaviour {
 	public int m_playerLane = 0;
 	private float m_prevZ;
 
+	[Header("Options")]
 	[Header("Check LockPosition everytime! Bugs, bugs, bugs...")]
 	// TODO: lock position on deselect
 	public bool m_lockPosition		= false;
 	public bool	m_snapInPlayMode	= false;
+	public bool m_moveInEditMode	= false;
 
 	private AudioManager 	m_audioManager;
 	private FaderGroup		m_faderGroup;
@@ -92,7 +94,7 @@ public class SnapToGrid : MonoBehaviour {
 				// calculate new x coordinate
 
 				// snap x position on manual change in scene view
-				if (transform.position.x != m_prevX){
+				if (transform.position.x != m_prevX && m_moveInEditMode){
 					targetX = Mathf.Round(transform.position.x);
 
 					m_bar		= (int)targetX / (m_audioManager.GetUnitsPerBeat() * m_audioManager.GetTimeSignatureUpper()) + 1;
@@ -113,7 +115,7 @@ public class SnapToGrid : MonoBehaviour {
 				// calculate new y coordinate
 
 				// snap vertical position on manual change in scene view
-				if (transform.position.y != m_prevY){
+				if (transform.position.y != m_prevY && m_moveInEditMode){
 					m_verticalPosition = Mathf.RoundToInt((7 * (transform.position.y /*- ((float)m_faderGroup.m_faderHeight / 16.0f)*/ + (float)m_faderGroup.m_faderOffset) /
 						(float)m_faderGroup.m_faderHeight));
 					m_verticalPosition = Mathf.Clamp(m_verticalPosition, 0, 7);
@@ -125,7 +127,7 @@ public class SnapToGrid : MonoBehaviour {
 				// calculate new z coordinate
 
 				// snap horizontal position on manual change in scene view
-				if (transform.position.z != m_prevZ){
+				if (transform.position.z != m_prevZ && m_moveInEditMode){
 					m_playerLane = (int)(((Constants.NUMBER_OF_PLAYERS/2) - (transform.position.z + (float)m_faderGroup.m_faderPadding/2.0f)) / m_faderGroup.m_faderPadding);
 					m_playerLane = Mathf.Clamp(m_playerLane, 0, 7);
 				}
