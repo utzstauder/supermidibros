@@ -160,9 +160,6 @@ MonoBehaviour:
   m_subBeat: 1
   m_verticalPosition: 7
   m_playerLane: 0
-  m_lockPosition: 0
-  m_snapInPlayMode: 0
-  m_moveInEditMode: 0
 --- !u!114 &2391837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -689,9 +686,6 @@ MonoBehaviour:
   m_subBeat: 1
   m_verticalPosition: 0
   m_playerLane: 3
-  m_lockPosition: 0
-  m_snapInPlayMode: 0
-  m_moveInEditMode: 0
 --- !u!114 &107664695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -876,11 +870,10 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 2108636518}
-  - {fileID: 1479668488}
   - {fileID: 1996221049}
   - {fileID: 761374598}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
 --- !u!1001 &332407124
 Prefab:
   m_ObjectHideFlags: 0
@@ -1313,7 +1306,7 @@ Transform:
   m_Children:
   - {fileID: 427565431}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 1
 --- !u!1 &660583876
 GameObject:
   m_ObjectHideFlags: 0
@@ -1389,9 +1382,6 @@ MonoBehaviour:
   m_subBeat: 1
   m_verticalPosition: 7
   m_playerLane: 4
-  m_lockPosition: 0
-  m_snapInPlayMode: 0
-  m_moveInEditMode: 0
 --- !u!114 &660583881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1478,7 +1468,7 @@ Transform:
   - {fileID: 2037703679}
   - {fileID: 1750347716}
   m_Father: {fileID: 227365433}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!1 &843620904
 GameObject:
   m_ObjectHideFlags: 0
@@ -1554,9 +1544,6 @@ MonoBehaviour:
   m_subBeat: 1
   m_verticalPosition: 0
   m_playerLane: 4
-  m_lockPosition: 0
-  m_snapInPlayMode: 0
-  m_moveInEditMode: 0
 --- !u!114 &843620909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1694,8 +1681,9 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1138497292}
+  - {fileID: 1479668488}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 3
 --- !u!1 &939044027
 GameObject:
   m_ObjectHideFlags: 0
@@ -2510,7 +2498,7 @@ Transform:
   - {fileID: 1945723259}
   - {fileID: 115530431}
   - {fileID: 1442432263}
-  m_Father: {fileID: 227365433}
+  m_Father: {fileID: 918869213}
   m_RootOrder: 1
 --- !u!114 &1479668489
 MonoBehaviour:
@@ -2571,7 +2559,7 @@ Transform:
   m_Children:
   - {fileID: 1162088941}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
 --- !u!1 &1541137250
 GameObject:
   m_ObjectHideFlags: 0
@@ -2725,7 +2713,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!1001 &1617355176
 Prefab:
   m_ObjectHideFlags: 0
@@ -3162,9 +3150,6 @@ MonoBehaviour:
   m_subBeat: 1
   m_verticalPosition: 0
   m_playerLane: 3
-  m_lockPosition: 0
-  m_snapInPlayMode: 0
-  m_moveInEditMode: 0
 --- !u!114 &1890504156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3208,7 +3193,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 227365433}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!114 &1996221050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3299,9 +3284,6 @@ MonoBehaviour:
   m_subBeat: 1
   m_verticalPosition: 7
   m_playerLane: 7
-  m_lockPosition: 0
-  m_snapInPlayMode: 0
-  m_moveInEditMode: 0
 --- !u!114 &2014559380
 MonoBehaviour:
   m_ObjectHideFlags: 0

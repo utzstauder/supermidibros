@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 [ExecuteInEditMode]
 public class PrefabGroup : MonoBehaviour {
@@ -17,12 +20,14 @@ public class PrefabGroup : MonoBehaviour {
 		if (m_prefab == null){
 			Debug.LogError("No prefab defined");
 		} else {
+			#if UNITY_EDITOR
 			for (int i = 0; i < m_instances; i++){
-				GameObject instance = Instantiate(m_prefab,
-					transform.position + (m_offsetPosition * i),
-					Quaternion.identity * Quaternion.Euler(m_offsetRotation * i)) as GameObject;
+				GameObject instance = PrefabUtility.InstantiatePrefab(m_prefab) as GameObject;
+				instance.transform.position = transform.position + (m_offsetPosition * i);
+				instance.transform.rotation = Quaternion.identity * Quaternion.Euler(m_offsetRotation * i);
 				instance.transform.parent = this.transform;
 			}
+			#endif
 		}
 	}
 

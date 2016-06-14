@@ -4,7 +4,9 @@ using System.Collections;
 [RequireComponent(typeof(LineRenderer))]
 public class TriggerGroup : Trigger {
 
-	public Trigger[] m_triggers;
+	public TriggerSingle[] m_triggers;
+	public bool m_lookForTriggersInChildren = true;
+	public bool m_moveChildrenAlongXAxis	= false;
 	private int m_childrenTriggered;
 
 	private LineRenderer m_lineRenderer;
@@ -24,6 +26,12 @@ public class TriggerGroup : Trigger {
 		base.Update();
 
 		if (m_inEditMode){
+			if (m_lookForTriggersInChildren){
+				UpdateTriggers();
+			}
+			if (m_moveChildrenAlongXAxis){
+				MoveChildren();
+			}
 			DrawLinesBetweenTriggers();
 		}
 	}
@@ -62,6 +70,16 @@ public class TriggerGroup : Trigger {
 	#endregion
 
 	#region private functions
+
+	void UpdateTriggers(){
+		m_triggers = GetComponentsInChildren<TriggerSingle>();
+	}
+
+	void MoveChildren(){
+		foreach(SnapToGrid snapToGrid in transform.GetComponentsInChildren<SnapToGrid>()){
+			snapToGrid.CalculateFromWorldX(Mathf.Round(transform.position.x));
+		}
+	}
 
 	void DrawLinesBetweenTriggers(){
 		if (m_lineRenderer == null){

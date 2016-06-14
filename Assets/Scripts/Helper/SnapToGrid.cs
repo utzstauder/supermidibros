@@ -24,12 +24,9 @@ public class SnapToGrid : MonoBehaviour {
 	public int m_playerLane = 0;
 	private float m_prevZ;
 
-	[Header("Options")]
-	[Header("Check LockPosition everytime! Bugs, bugs, bugs...")]
-	// TODO: lock position on deselect
-	public bool m_lockPosition		= false;
-	public bool	m_snapInPlayMode	= false;
-	public bool m_moveInEditMode	= false;
+	private bool m_lockPosition		= false;
+	private bool	m_snapInPlayMode	= false;
+	private bool m_moveInEditMode	= false;
 
 	private AudioManager 	m_audioManager;
 	private FaderGroup		m_faderGroup;
@@ -65,7 +62,7 @@ public class SnapToGrid : MonoBehaviour {
 		}
 
 		// stay on awake x coordinate
-		CalculateFromWorldX();
+		CalculateFromWorldX(transform.position.x);
 
 
 		m_prevX = transform.position.x;
@@ -99,7 +96,7 @@ public class SnapToGrid : MonoBehaviour {
 
 				// snap x position on manual change in scene view
 				if (transform.position.x != m_prevX && m_moveInEditMode){
-					CalculateFromWorldX();
+					CalculateFromWorldX(transform.position.x);
 				}
 
 				// clamp input boundaries
@@ -116,7 +113,7 @@ public class SnapToGrid : MonoBehaviour {
 
 				// snap vertical position on manual change in scene view
 				if (transform.position.y != m_prevY && m_moveInEditMode){
-					CalculateFromWorldY();
+					CalculateFromWorldY(transform.position.y);
 				}
 
 				targetY = ((float)m_faderGroup.m_faderHeight / 7.0f * (float)m_verticalPosition) /* + ((float)m_faderGroup.m_faderHeight / 16.0f) */ + m_faderGroup.m_faderOffset;
@@ -126,7 +123,7 @@ public class SnapToGrid : MonoBehaviour {
 
 				// snap horizontal position on manual change in scene view
 				if (transform.position.z != m_prevZ && m_moveInEditMode){
-					CalculateFromWorldZ();
+					CalculateFromWorldZ(transform.position.z);
 				}
 
 				targetZ = (((Constants.NUMBER_OF_PLAYERS/2) - m_playerLane) * m_faderGroup.m_faderPadding - (float)m_faderGroup.m_faderPadding/2.0f);
@@ -146,22 +143,22 @@ public class SnapToGrid : MonoBehaviour {
 
 	#region calculate from world
 
-	void CalculateFromWorldX(){
-		targetX = Mathf.Round(transform.position.x);
+	public void CalculateFromWorldX(float _x){
+		targetX = Mathf.Round(_x);
 
-		m_bar		= (int)targetX / (m_audioManager.GetUnitsPerBeat() * m_audioManager.GetTimeSignatureUpper()) + 1;
-		m_beat		= ((int)targetX / m_audioManager.GetUnitsPerBeat()) % m_audioManager.GetTimeSignatureUpper() + 1;
-		m_subBeat	= (int)targetX % m_audioManager.GetUnitsPerBeat() + 1;
+		m_bar		= (int)_x / (m_audioManager.GetUnitsPerBeat() * m_audioManager.GetTimeSignatureUpper()) + 1;
+		m_beat		= ((int)_x / m_audioManager.GetUnitsPerBeat()) % m_audioManager.GetTimeSignatureUpper() + 1;
+		m_subBeat	= (int)_x % m_audioManager.GetUnitsPerBeat() + 1;
 	}
 
-	void CalculateFromWorldY(){
-		m_verticalPosition = Mathf.RoundToInt((7 * (transform.position.y /*- ((float)m_faderGroup.m_faderHeight / 16.0f)*/ + (float)m_faderGroup.m_faderOffset) /
+	public void CalculateFromWorldY(float _y){
+		m_verticalPosition = Mathf.RoundToInt((7 * (_y /*- ((float)m_faderGroup.m_faderHeight / 16.0f)*/ + (float)m_faderGroup.m_faderOffset) /
 			(float)m_faderGroup.m_faderHeight));
 		m_verticalPosition = Mathf.Clamp(m_verticalPosition, 0, 7);
 	}
 
-	void CalculateFromWorldZ(){
-		m_playerLane = (int)(((Constants.NUMBER_OF_PLAYERS/2) - (transform.position.z + (float)m_faderGroup.m_faderPadding/2.0f)) / m_faderGroup.m_faderPadding);
+	public void CalculateFromWorldZ(float _z){
+		m_playerLane = (int)(((Constants.NUMBER_OF_PLAYERS/2) - (_z + (float)m_faderGroup.m_faderPadding/2.0f)) / m_faderGroup.m_faderPadding);
 		m_playerLane = Mathf.Clamp(m_playerLane, 0, 7);
 	}
 
