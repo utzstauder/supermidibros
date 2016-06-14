@@ -2,7 +2,7 @@
 using System.Collections;
 
 [RequireComponent(typeof(AudioSource))]
-public class TriggerPlayAudioClip : TriggerDoAction {
+public class TriggerPlayAudioClip : TriggerTarget {
 
 	public AudioClip m_audioClip;
 	public bool m_loop;
@@ -18,8 +18,8 @@ public class TriggerPlayAudioClip : TriggerDoAction {
 		m_audioSource.clip = m_audioClip;
 	}
 
-	protected override void Action(){
-		base.Action();
+	protected override void Action(Trigger _reference){
+		base.Action(_reference);
 
 		if (m_loop){
 			m_audioSource.loop = true;

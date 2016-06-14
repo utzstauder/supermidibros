@@ -64,6 +64,10 @@ public class SnapToGrid : MonoBehaviour {
 			m_inEditMode = true;
 		}
 
+		// stay on awake x coordinate
+		CalculateFromWorldX();
+
+
 		m_prevX = transform.position.x;
 		m_prevY = transform.position.y;
 		m_prevZ = transform.position.z;
@@ -95,11 +99,7 @@ public class SnapToGrid : MonoBehaviour {
 
 				// snap x position on manual change in scene view
 				if (transform.position.x != m_prevX && m_moveInEditMode){
-					targetX = Mathf.Round(transform.position.x);
-
-					m_bar		= (int)targetX / (m_audioManager.GetUnitsPerBeat() * m_audioManager.GetTimeSignatureUpper()) + 1;
-					m_beat		= ((int)targetX / m_audioManager.GetUnitsPerBeat()) % m_audioManager.GetTimeSignatureUpper() + 1;
-					m_subBeat	= (int)targetX % m_audioManager.GetUnitsPerBeat() + 1;
+					CalculateFromWorldX();
 				}
 
 				// clamp input boundaries
@@ -116,9 +116,7 @@ public class SnapToGrid : MonoBehaviour {
 
 				// snap vertical position on manual change in scene view
 				if (transform.position.y != m_prevY && m_moveInEditMode){
-					m_verticalPosition = Mathf.RoundToInt((7 * (transform.position.y /*- ((float)m_faderGroup.m_faderHeight / 16.0f)*/ + (float)m_faderGroup.m_faderOffset) /
-						(float)m_faderGroup.m_faderHeight));
-					m_verticalPosition = Mathf.Clamp(m_verticalPosition, 0, 7);
+					CalculateFromWorldY();
 				}
 
 				targetY = ((float)m_faderGroup.m_faderHeight / 7.0f * (float)m_verticalPosition) /* + ((float)m_faderGroup.m_faderHeight / 16.0f) */ + m_faderGroup.m_faderOffset;
@@ -128,8 +126,7 @@ public class SnapToGrid : MonoBehaviour {
 
 				// snap horizontal position on manual change in scene view
 				if (transform.position.z != m_prevZ && m_moveInEditMode){
-					m_playerLane = (int)(((Constants.NUMBER_OF_PLAYERS/2) - (transform.position.z + (float)m_faderGroup.m_faderPadding/2.0f)) / m_faderGroup.m_faderPadding);
-					m_playerLane = Mathf.Clamp(m_playerLane, 0, 7);
+					CalculateFromWorldZ();
 				}
 
 				targetZ = (((Constants.NUMBER_OF_PLAYERS/2) - m_playerLane) * m_faderGroup.m_faderPadding - (float)m_faderGroup.m_faderPadding/2.0f);
@@ -146,6 +143,29 @@ public class SnapToGrid : MonoBehaviour {
 
 		}
 	}
+
+	#region calculate from world
+
+	void CalculateFromWorldX(){
+		targetX = Mathf.Round(transform.position.x);
+
+		m_bar		= (int)targetX / (m_audioManager.GetUnitsPerBeat() * m_audioManager.GetTimeSignatureUpper()) + 1;
+		m_beat		= ((int)targetX / m_audioManager.GetUnitsPerBeat()) % m_audioManager.GetTimeSignatureUpper() + 1;
+		m_subBeat	= (int)targetX % m_audioManager.GetUnitsPerBeat() + 1;
+	}
+
+	void CalculateFromWorldY(){
+		m_verticalPosition = Mathf.RoundToInt((7 * (transform.position.y /*- ((float)m_faderGroup.m_faderHeight / 16.0f)*/ + (float)m_faderGroup.m_faderOffset) /
+			(float)m_faderGroup.m_faderHeight));
+		m_verticalPosition = Mathf.Clamp(m_verticalPosition, 0, 7);
+	}
+
+	void CalculateFromWorldZ(){
+		m_playerLane = (int)(((Constants.NUMBER_OF_PLAYERS/2) - (transform.position.z + (float)m_faderGroup.m_faderPadding/2.0f)) / m_faderGroup.m_faderPadding);
+		m_playerLane = Mathf.Clamp(m_playerLane, 0, 7);
+	}
+
+	#endregion
 
 	void OnDrawGizmosSelected(){
 		if (m_inEditMode || m_snapInPlayMode){

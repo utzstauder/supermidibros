@@ -7,7 +7,6 @@ using System.Collections;
  */
 public class OnRhythmPeriodicAffector : MonoBehaviour {
 
-	public bool m_isAffecting							= true;
 	public Enums.AudioMixerExposedParams m_affectedBy;
 	public Vector2 m_volumeRange						= new Vector2 (-80.0f, 0.0f);
 
@@ -35,12 +34,5 @@ public class OnRhythmPeriodicAffector : MonoBehaviour {
 			return Mathf.InverseLerp(m_volumeRange.x, m_volumeRange.y, m_volume);
 		}
 		return 1.0f;
-	}
-
-	/**
-	 * Return true if the script is curently affecting anything.
-	 */
-	public bool IsAffecting(){
-		return m_isAffecting;
 	}
 }

@@ -3,49 +3,44 @@ using System.Collections;
 
 public class TriggerTarget : MonoBehaviour {
 
-	public Trigger[] m_trigger;
-
-	public delegate void TriggerTargetDelegate();
-	public event TriggerTargetDelegate OnReceiveTrigger;
+	[SerializeField]
+	protected Trigger[] m_triggers;
 
 	private Color m_gizmosColor = Color.yellow;
 
-	void Awake () {
-		if (m_trigger.Length <= 0){
-			m_trigger = new Trigger[1];
-			if ((m_trigger[0] = GetComponent<Trigger>()) == null){
+	protected virtual void Awake () {
+		if (m_triggers.Length <= 0){
+			m_triggers = new Trigger[1];
+			if ((m_triggers[0] = GetComponent<Trigger>()) == null){
 				Debug.LogError("No Trigger attached to this TriggerTarget");
 				Destroy(this);
+			} else {
+				m_triggers[0].OnTrigger += Action;
+			}
+		} else {
+			foreach (Trigger trigger in m_triggers){
+				trigger.OnTrigger += Action;
 			}
 		}
-
-		foreach (Trigger trigger in m_trigger){
-			trigger.OnTrigger += OnTriggerEvent;
-		}
-	}
-	
-	// Update is called once per frame
-	void OnDestroy () {
-		OnReceiveTrigger = null;
 	}
 
-	void OnTriggerEvent(Trigger _reference){
-		// do stuff here
-//		Debug.Log("Triggered by " + _reference.gameObject.name + "!");
-
-		if (OnReceiveTrigger != null){
-			OnReceiveTrigger();
-		}
-
-		//Destroy(this); // once we are done
+	/**
+	 * Is called every time a trigger in m_triggers is triggered.
+	 */
+	protected virtual void Action(Trigger _reference){
+		
 	}
 
-	void OnDrawGizmos(){
+	protected virtual void OnDrawGizmos(){
 		Gizmos.color = m_gizmosColor;
-		if (m_trigger.Length > 0){
-			foreach(Trigger trigger in m_trigger){
-				Gizmos.DrawLine(transform.position, trigger.transform.position);
-			}
+
+//		if (m_triggers.Length > 0){
+//			foreach(Trigger trigger in m_triggers){
+//				Gizmos.DrawLine(transform.position, trigger.transform.position);
+//			}
+//		}
+		for (int i = 0; i < m_triggers.Length; i++){
+			Gizmos.DrawLine(transform.position, m_triggers[i].transform.position);
 		}
 	}
 }

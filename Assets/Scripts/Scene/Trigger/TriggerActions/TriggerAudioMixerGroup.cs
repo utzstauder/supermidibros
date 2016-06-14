@@ -7,7 +7,7 @@ using UnityEditor;
 #endif
 
 
-public class TriggerAudioMixerGroup : TriggerDoAction {
+public class TriggerAudioMixerGroup : TriggerTarget {
 
 	public Enums.AudioMixerExposedParams m_audioMixerGroup;
 
@@ -27,10 +27,9 @@ public class TriggerAudioMixerGroup : TriggerDoAction {
 			m_audioMixer = m_audioManager.GetAudioMixer();
 		}
 	}
-	
-	protected override void Action ()
-	{
-		base.Action ();
+		
+	protected override void Action (Trigger _reference){
+		base.Action (_reference);
 
 		m_audioMixer.SetFloat(m_audioMixerGroup.ToString(), m_targetVolume);
 

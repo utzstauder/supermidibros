@@ -8,7 +8,7 @@ public class OnRhythmPeriodic : MonoBehaviour {
 
 	private AudioManager				m_audioManager;
 	private OnRhythmPeriodicAffector	m_affector;
-	private bool						m_isAffected	= false;
+	public bool							m_isAffected	= true;
 	private float 						m_tmp;
 
 	// Use this for initialization
@@ -20,8 +20,8 @@ public class OnRhythmPeriodic : MonoBehaviour {
 
 		}
 
-		if ((m_affector = GetComponent<OnRhythmPeriodicAffector>()) == true){
-			m_isAffected = true;
+		if ((m_affector = GetComponent<OnRhythmPeriodicAffector>()) != true){
+			// no affector found
 		}
 	}
 	
@@ -35,7 +35,7 @@ public class OnRhythmPeriodic : MonoBehaviour {
 
 		m_tmp = m_tmp - (int)m_tmp;
 
-		if (m_isAffected){
+		if (m_isAffected && m_affector != null){
 			Action(m_curve.Evaluate(m_tmp) * m_affector.GetMultiplier());
 		} else {
 			Action(m_curve.Evaluate(m_tmp));

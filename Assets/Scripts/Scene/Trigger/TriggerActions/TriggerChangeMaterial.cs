@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TriggerChangeMaterial : TriggerDoAction {
+public class TriggerChangeMaterial : TriggerTarget {
 
 	public Renderer m_renderer;
 	public Material m_targetMaterial;
@@ -21,9 +21,8 @@ public class TriggerChangeMaterial : TriggerDoAction {
 		}
 	}
 	
-	protected override void Action ()
-	{
-		base.Action ();
+	protected override void Action(Trigger _reference){
+		base.Action (_reference);
 
 		m_renderer.material = m_targetMaterial;
 	}
