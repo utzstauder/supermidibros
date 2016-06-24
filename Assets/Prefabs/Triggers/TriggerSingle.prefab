@@ -74,7 +74,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 119790}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 64, y: 1, z: 10.5}
+  m_LocalPosition: {x: 0, y: 1, z: 10.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -254,14 +254,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4652f0fd7e18346d99aa5adbd9bda366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_snapX: 0
   m_bar: 1
   m_beat: 1
   m_subBeat: 1
+  m_snapY: 0
   m_verticalPosition: 0
+  m_snapZ: 0
   m_playerLane: 0
-  m_lockPosition: 0
-  m_snapInPlayMode: 0
-  m_moveInEditMode: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -83,8 +83,8 @@ public class PlayerGroup : MonoBehaviour {
 	void UpdateLookAtOfPlayer(int _playerId){
 		m_playerGroup[_playerId].transform.LookAt(	Vector3.forward * m_playerGroup[_playerId].transform.position.z +
 													Vector3.right * m_playerGroup[_playerId].transform.position.x + m_lookAtOffset +
-													(Vector3.up * m_faderGroup.GetRelativePositionOfFader(_playerId) * m_faderGroup.m_faderHeight) +
-													Vector3.up * m_faderGroup.m_faderOffset);
+			(Vector3.up * m_faderGroup.GetRelativePositionOfFader(_playerId) * Constants.FADER_HEIGHT) +
+			Vector3.up * Constants.FADER_OFFSET);
 	}
 
 	#endregion

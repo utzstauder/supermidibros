@@ -35,6 +35,7 @@ public class AudioManager : MonoBehaviour {
 
 	private AudioSource m_audioSource;		// masterAudioClip
 	private AudioSource[] m_audioSources;	// every audio layer of the current track
+	private AudioSourceSync[] m_audioSourcesSync;
 	private float		m_audioSourceFrequency;
 	private float 		m_beatTimer 		= 0;
 	private float 		m_prevBeatTimer 	= 1.0f;
@@ -58,6 +59,11 @@ public class AudioManager : MonoBehaviour {
 
 			// get references to every audioSource attached to this gameobject
 			m_audioSources = GetComponentsInChildren<AudioSource>();
+			m_audioSourcesSync = GetComponentsInChildren<AudioSourceSync>();
+
+//			Debug.Log(GetTimePerBar());
+//			Debug.Log(GetTimeAtBar(1));
+//			Debug.Log(GetSamplesPerBar());
 		}
 	}
 
@@ -89,7 +95,8 @@ public class AudioManager : MonoBehaviour {
 
 			m_prevSubBeatTimer = m_subBeatTimer;
 
-			SyncToAudioSource(m_audioSource, m_audioSources);
+			//SyncToAudioSource(m_audioSource, m_audioSources);
+			//SyncToAudioSource();
 
 //			Debug.Log("timeSamples: " + m_audioSource.timeSamples);
 		} else {
@@ -103,6 +110,27 @@ public class AudioManager : MonoBehaviour {
 
 	#region private functions
 
+	void PlayAll(){
+		m_audioSource.Play();
+		foreach(AudioSourceSync source in m_audioSourcesSync){
+			source.Play();
+		}
+	}
+
+	void PauseAll(){
+		m_audioSource.Pause();
+		foreach(AudioSourceSync source in m_audioSourcesSync){
+			source.Pause();
+		}
+	}
+
+	void StopAll(){
+		m_audioSource.Stop();
+		foreach(AudioSourceSync source in m_audioSourcesSync){
+			source.Stop();
+		}
+	}
+
 	/**
 	 * syncronises playback for every slave audiosource to the master audiosource
 	 */
@@ -113,8 +141,16 @@ public class AudioManager : MonoBehaviour {
 		}
 	}
 
+	void SyncToAudioSource(){
+		foreach(AudioSourceSync slave in m_audioSourcesSync){
+			slave.SyncToMaster(this);
+		}
+	}
+
 	// gets called on every subbeat / movement unit
 	void SubBeat(){
+		SyncToAudioSource();
+
 		m_currentSubBeat = GetCurrentSubBeat();
 
 		if (OnSubBeat != null) OnSubBeat(m_currentSubBeat);
@@ -137,6 +173,7 @@ public class AudioManager : MonoBehaviour {
 		}
 
 		//SyncToAudioSource(m_audioSource, m_audioSources);
+		//SyncToAudioSource();
 
 //		Debug.Log(m_audioSource.time + " | Beat " + GetCurrentBeat());
 	}
@@ -196,10 +233,7 @@ public class AudioManager : MonoBehaviour {
 	public void Play(){
 		SyncToAudioSource(m_audioSource, m_audioSources);
 
-		m_audioSource.Play();
-		foreach(AudioSource source in m_audioSources){
-			source.Play();
-		}
+		PlayAll();
 
 		if (OnPlay != null){
 			OnPlay();
@@ -208,18 +242,12 @@ public class AudioManager : MonoBehaviour {
 
 	// pauses playback of all audiosources
 	public void Pause(){
-		m_audioSource.Pause();
-		foreach(AudioSource source in m_audioSources){
-			source.Pause();
-		}
+		PauseAll();
 	}
 
 	// stops (and resets) playback of all audiosources
 	public void Stop(){
-		m_audioSource.Stop();
-		foreach(AudioSource source in m_audioSources){
-			source.Stop();
-		}
+		StopAll();
 
 		SetCurrentTime(0.0f);
 
@@ -259,6 +287,14 @@ public class AudioManager : MonoBehaviour {
 	#endregion
 
 	#region public getter
+
+	public int GetCurrentTimeSamples(){
+		return m_audioSource.timeSamples;
+	}
+
+	public int GetSamplesPerBar(){
+		return (int)(GetTimePerBar() * m_audioSourceFrequency);
+	}
 
 	public bool isPlaying(){
 		return m_audioSource.isPlaying;
@@ -327,6 +363,19 @@ public class AudioManager : MonoBehaviour {
 
 	public AudioMixer GetAudioMixer(){
 		return m_audioMixer;
+	}
+
+	public float GetTimePerBar(){
+		return GetTimeAtBar(1);
+		return m_bpm/60.0f;
+	}
+
+	public float GetTimePerBeat(){
+		return GetTimePerBar() / m_timeSignatureUpper;
+	}
+
+	public float GetTimePerSubBeat(){
+		return GetTimePerBeat() / m_unitsPerBeat;
 	}
 
 	#endregion

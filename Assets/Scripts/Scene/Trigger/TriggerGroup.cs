@@ -17,8 +17,10 @@ public class TriggerGroup : Trigger {
 		m_lineRenderer = GetComponent<LineRenderer>();
 
 		// subscribe to trigger events
-		foreach (Trigger trigger in m_triggers){
-			trigger.OnTrigger += OnReceiveTrigger;
+		if (Application.isPlaying){
+			foreach (Trigger trigger in m_triggers){
+				trigger.OnTrigger += OnReceiveTrigger;
+			}
 		}
 	}
 

@@ -26,10 +26,12 @@ public class MIDIInputManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-		if (!instance){
-			instance = this;
-		} else {
-			Destroy(this);
+		if (Application.isPlaying){
+			if (!instance){
+				instance = this;
+			} else {
+				Destroy(this);
+			}
 		}
 	}
 	

@@ -4,13 +4,13 @@ using System.Collections;
 [ExecuteInEditMode]
 public class FaderGroup : MonoBehaviour {
 
-	[Header("Fader Array")]
-	[Range(1,32)]
-	public int m_faderHeight = 16;
-	[Range(0,4)]
-	public int m_faderOffset = 0;
-	[Range(1,4)]
-	public int m_faderPadding = 2;
+	//[Header("Fader Array")]
+	//[Range(1,32)]
+	private int m_faderHeight;
+	//[Range(0,4)]
+	private int m_faderOffset;
+	//[Range(1,4)]
+	private int m_faderPadding;
 
 
 	[Header("Collision Detection")]
@@ -34,6 +34,10 @@ public class FaderGroup : MonoBehaviour {
 		} else {
 			m_inEditMode = true;
 		}
+
+		m_faderHeight = Constants.FADER_HEIGHT;
+		m_faderOffset = Constants.FADER_OFFSET;
+		m_faderPadding = Constants.FADER_PADDING;
 
 		m_faderGroup = new Transform[transform.childCount];
 		for (int i = 0; i < transform.childCount; i++){
