@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da86896963196479e85326b2fc70af49, type: 3}
+  m_Name: SoundSet_A
+  m_EditorClassIdentifier: 
+  m_audioCategories:
+  - m_name: Rhythm
+    m_audioChannelGroups:
+    - m_name: Kick
+      m_stack: 0
+      m_audioChannels:
+      - m_name: Variation_1
+        m_audioClip: {fileID: 8300000, guid: 6f8a4937d3c034d27b6258e4bb20dea0, type: 3}
+      - m_name: Variation_2
+        m_audioClip: {fileID: 8300000, guid: 0e0b88bdf79d249c5b3ea69be124de08, type: 3}
+      - m_name: Variation_3
+        m_audioClip: {fileID: 8300000, guid: a6677ddbf4e4b4ad8a5a0072ee4aceba, type: 3}
+    - m_name: Snare
+      m_stack: 0
+      m_audioChannels:
+      - m_name: Variation_1
+        m_audioClip: {fileID: 8300000, guid: e1a09df9ff38c46238016ad6131d7dc0, type: 3}
+      - m_name: Variation_2
+        m_audioClip: {fileID: 8300000, guid: f003beb4f2ce24c3ab8b96dbca8598da, type: 3}
+      - m_name: Variation_3
+        m_audioClip: {fileID: 8300000, guid: d6b624839d6b24e0394a03b4d2da87d9, type: 3}
+      - m_name: Variation_4
+        m_audioClip: {fileID: 8300000, guid: 2c2ae4515c5ee4d7aba86db7b6807437, type: 3}
+    - m_name: Hi-Hat
+      m_stack: 1
+      m_audioChannels:
+      - m_name: Variation_1
+        m_audioClip: {fileID: 8300000, guid: 8a7bf39837de74321a1b4d9fc43b6733, type: 3}
+      - m_name: Variation_2
+        m_audioClip: {fileID: 8300000, guid: aa0b4fecf754b462b837e331428bbf4b, type: 3}
+      - m_name: Variation_3
+        m_audioClip: {fileID: 8300000, guid: 9676320bf14de433898819c54d8930e0, type: 3}
+      - m_name: Variation_4
+        m_audioClip: {fileID: 8300000, guid: 364b74ca907db4cf9bc1d23951d8b01e, type: 3}
+    - m_name: Percussion
+      m_stack: 1
+      m_audioChannels:
+      - m_name: Variation_1
+        m_audioClip: {fileID: 8300000, guid: c3fc7cda40bc94d92b103587e4b79831, type: 3}
+      - m_name: Variation_2
+        m_audioClip: {fileID: 8300000, guid: ff8fb49e0d38245948ac371765dc5a9d, type: 3}
+      - m_name: Variation_3
+        m_audioClip: {fileID: 8300000, guid: c712207edc6534e69968d292a2901121, type: 3}
+      - m_name: Variation_4
+        m_audioClip: {fileID: 8300000, guid: 5f1d69ed71ec84447965647578fdd541, type: 3}
+  - m_name: Harmony
+    m_audioChannelGroups: []
+  - m_name: Melody
+    m_audioChannelGroups: []

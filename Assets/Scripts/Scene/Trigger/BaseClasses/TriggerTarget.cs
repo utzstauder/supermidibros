@@ -28,7 +28,7 @@ public class TriggerTarget : MonoBehaviour {
 	 * Is called every time a trigger in m_triggers is triggered.
 	 */
 	protected virtual void Action(Trigger _reference){
-		
+		//Debug.Log("Triggered!");
 	}
 
 	protected virtual void OnDrawGizmos(){

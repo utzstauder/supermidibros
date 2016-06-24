@@ -42,22 +42,24 @@ public class AudioSourceSync : MonoBehaviour {
 	}
 
 	public void SyncToMaster(AudioManager _reference){
-		if (m_isLoop){
-			
-			if (m_manualLoopArea){
-				// manual loop area
-				SetTimeSamples((_reference.GetCurrentTimeSamples() % (m_loopLength * _reference.GetSamplesPerBar())) +
-								m_loopOffset * _reference.GetSamplesPerBar());
+		if (m_audioSource.clip != null){
+			if (m_isLoop){
+				
+				if (m_manualLoopArea){
+					// manual loop area
+					SetTimeSamples((_reference.GetCurrentTimeSamples() % (m_loopLength * _reference.GetSamplesPerBar())) +
+									m_loopOffset * _reference.GetSamplesPerBar());
+				} else {
+					// automatically loop through entire track
+					SetTimeSamples(Mathf.Clamp((_reference.GetCurrentTimeSamples() % m_audioSource.clip.samples), 0, m_audioSource.clip.samples));
+				}
+
 			} else {
-				// automatically loop through entire track
-				SetTimeSamples(_reference.GetCurrentTimeSamples() % m_audioSource.clip.samples);
+				
+				// simple sync
+				SetTimeSamples(_reference.GetCurrentTimeSamples());
+
 			}
-
-		} else {
-			
-			// simple sync
-			SetTimeSamples(_reference.GetCurrentTimeSamples());
-
 		}
 	}
 
