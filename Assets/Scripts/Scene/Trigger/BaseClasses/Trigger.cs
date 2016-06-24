@@ -59,6 +59,7 @@ public class Trigger : MonoBehaviour {
 	 * This will send a trigger event to every target this trigger is attached to
 	 */
 	protected virtual void BroadcastTrigger(){
+		//Debug.Log("Trigger");
 		if (OnTrigger != null) {
 			OnTrigger(this);
 		}

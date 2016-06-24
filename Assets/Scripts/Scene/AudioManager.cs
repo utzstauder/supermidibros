@@ -8,6 +8,8 @@ public class AudioManager : MonoBehaviour {
 
 	public AudioMixer	m_audioMixer;
 
+	public SoundSet		m_soundSet;
+
 	public AudioClip 	m_masterAudioClip;
 	public int 			m_bpm 					= 120;
 	[Range(1,16)]
@@ -42,12 +44,14 @@ public class AudioManager : MonoBehaviour {
 	private float		m_subBeatTimer		= 0;
 	private float		m_prevSubBeatTimer	= 1.0f;
 
+	private float 		m_masterTimer		= 0;
+
 	// Use this for initialization
 	void Awake () {
 		// log error if there is no masteraudioclip
 		if (m_masterAudioClip == null){
 			Debug.LogError("Set MasterAudioClip in AudioManager object!");
-			Destroy(this);
+			//Destroy(this);
 		} else {
 			if (m_audioMixer == null){
 				Debug.LogError("No AudioMixer attached");
@@ -64,6 +68,8 @@ public class AudioManager : MonoBehaviour {
 //			Debug.Log(GetTimePerBar());
 //			Debug.Log(GetTimeAtBar(1));
 //			Debug.Log(GetSamplesPerBar());
+
+			Init();
 		}
 	}
 
@@ -96,7 +102,7 @@ public class AudioManager : MonoBehaviour {
 			m_prevSubBeatTimer = m_subBeatTimer;
 
 			//SyncToAudioSource(m_audioSource, m_audioSources);
-			//SyncToAudioSource();
+			SyncToAudioSource();
 
 //			Debug.Log("timeSamples: " + m_audioSource.timeSamples);
 		} else {
@@ -107,6 +113,45 @@ public class AudioManager : MonoBehaviour {
 			m_unitsPerBeat = (int)Mathf.Pow(Constants.UNITS_PER_BEAT, 2.0f) / m_timeSignatureLower;
 		}
 	}
+
+
+	#region init
+
+	private void Init(){
+		if (m_soundSet == null){
+			Debug.LogError("no soundset selected");
+		} else {
+			// load audio clips from soundset
+			//Debug.Log(transform.childCount + " == " + m_soundSet.m_audioCategories.Length + " ?");
+			//if (transform.childCount == m_soundSet.m_audioCategories.Length){
+			for (int i = 0; i < m_soundSet.m_audioCategories.Length; i++){
+				SoundSet.AudioCategory category = m_soundSet.m_audioCategories[i];
+
+				GameObject gameObjectCategory = transform.GetChild(i).gameObject;
+
+				//if (gameObjectCategory.transform.childCount == category.m_audioChannelGroups.Length){
+					for (int j = 0; j < category.m_audioChannelGroups.Length; j++){
+						SoundSet.AudioChannelGroup channelGroup = category.m_audioChannelGroups[j];
+
+						GameObject gameObjectChannelGroup = gameObjectCategory.transform.GetChild(j).gameObject;
+
+						//if (gameObjectChannelGroup.transform.childCount == channelGroup.m_audioChannels.Length){
+							for (int k = 0; k < channelGroup.m_audioChannels.Length; k++){
+								SoundSet.AudioChannel channel = channelGroup.m_audioChannels[k];
+
+								GameObject gameObjectChannel = gameObjectChannelGroup.transform.GetChild(k).gameObject;
+
+								gameObjectChannel.GetComponent<AudioSource>().clip = channel.m_audioClip;
+							}
+
+					}
+
+			}
+		} 
+	}
+
+	#endregion
+
 
 	#region private functions
 
@@ -149,7 +194,7 @@ public class AudioManager : MonoBehaviour {
 
 	// gets called on every subbeat / movement unit
 	void SubBeat(){
-		SyncToAudioSource();
+		//SyncToAudioSource();
 
 		m_currentSubBeat = GetCurrentSubBeat();
 
