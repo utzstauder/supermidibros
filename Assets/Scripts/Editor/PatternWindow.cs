@@ -125,7 +125,7 @@ public class PatternWindow : EditorWindow {
 		if (gameObject.transform.childCount <= 0){
 			DestroyImmediate(gameObject);
 			Debug.LogError("Can not create an empty TriggerGroup you cunt!");
-			break;
+			return;
 		}
 
 		// attach scripts to object
