@@ -4,8 +4,8 @@ using System.Collections;
 
 public class PatternWindow : EditorWindow {
 
-	bool[,]	grid = new bool[Constants.NUMBER_OF_PLAYERS, Constants.VERTICAL_POSITIONS];
-	int[]	selected = new int[Constants.NUMBER_OF_PLAYERS];
+	bool[,]	grid = new bool[Constants.NUMBER_OF_PLAYERS, Constants.VERTICAL_POSITIONS + 1];
+	int[]	selected = new int[Constants.VERTICAL_POSITIONS + 1];
 
 	const string prefabPrefix		= "Pattern_";
 	const string prefabParentFolder = "Assets/Prefabs";
@@ -35,12 +35,16 @@ public class PatternWindow : EditorWindow {
 
 		for (int x = 0; x < grid.GetLength(0); x++){
 			
-			string[] selectionGridStrings = new string[Constants.VERTICAL_POSITIONS];
-			for (int y = 0; y < grid.GetLength(1); y++){
-				selectionGridStrings[grid.GetLength(1) - 1 - y] = x + ", " + y;
+			string[] selectionGridStrings = new string[Constants.VERTICAL_POSITIONS + 1];
+			for (int y = 0; y < selectionGridStrings.Length; y++){
+				if (y == 0){
+					selectionGridStrings[selectionGridStrings.Length - 1 - y] = "none";
+				} else {
+					selectionGridStrings[selectionGridStrings.Length - 1 - y] = x + ", " + (y - 1);
+				}
 			}
 
-			selected[x] = Constants.VERTICAL_POSITIONS - 1 -
+			selected[x] = Constants.VERTICAL_POSITIONS -
 				GUILayout.SelectionGrid(
 				//new Rect((cellSize + cellPadding) * x, 0, cellSize, (cellSize + cellPadding) * Constants.VERTICAL_POSITIONS),
 				selected[x],
@@ -82,7 +86,8 @@ public class PatternWindow : EditorWindow {
 	#region functions
 
 	void SetActiveCell(int x, int y){
-		for (int i = 0; i < Constants.VERTICAL_POSITIONS; i++){
+		//Debug.Log("SetActiveCell(" + x + ", " + y + ")");
+		for (int i = 0; i < Constants.VERTICAL_POSITIONS + 1; i++){
 			grid[x, grid.GetLength(1) - 1 - y] = (i == y);
 		}
 	}
@@ -91,7 +96,7 @@ public class PatternWindow : EditorWindow {
 		string name = prefabPrefix;
 
 		for (int x = 0; x < Constants.NUMBER_OF_PLAYERS; x++){
-			name += selected[x].ToString();
+			name += (selected[x] > 0) ? (selected[x] - 1).ToString() : "x";
 		}
 
 		return name;
@@ -108,10 +113,19 @@ public class PatternWindow : EditorWindow {
 
 		// create children
 		for (int x = 0; x < Constants.NUMBER_OF_PLAYERS; x++){
-			GameObject child = PrefabUtility.InstantiatePrefab(childPrefab) as GameObject;
-			child.GetComponent<SnapToGrid>().SetPosition(x, selected[x]);
-			child.GetComponent<SnapToGrid>().m_lockX = true;
-			child.transform.parent = gameObject.transform;
+			if (selected[x] > 0){
+				GameObject child = PrefabUtility.InstantiatePrefab(childPrefab) as GameObject;
+				child.GetComponent<SnapToGrid>().SetPosition(x, selected[x] - 1);
+				child.GetComponent<SnapToGrid>().m_lockX = true;
+				child.transform.parent = gameObject.transform;
+			}
+		}
+
+		// check if there are any children at all
+		if (gameObject.transform.childCount <= 0){
+			DestroyImmediate(gameObject);
+			Debug.LogError("Can not create an empty TriggerGroup you cunt!");
+			break;
 		}
 
 		// attach scripts to object

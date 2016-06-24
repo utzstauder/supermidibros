@@ -1,15 +1,33 @@
 ﻿using UnityEngine;
+using UnityEngine.Audio;
 using System.Collections;
 
-public class SoundSet : MonoBehaviour {
+[CreateAssetMenu (menuName = "Data/SoundSet", fileName = "SoundSet", order = 100)]
+public class SoundSet : ScriptableObject {
 
-	// Use this for initialization
-	void Start () {
-	
+	public AudioChannelGroup[] m_audioChannelGroups;
+
+	public class AudioChannelGroup{
+		public string m_name;
+
+		public AudioChannel[] m_audioChannels;
+
+		public AudioChannelGroup(){
+			
+		}
+
+		public AudioChannelGroup(string name){
+			m_name = name;
+		}
+
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+	public struct AudioChannel{
+		public string m_name;
+
+		public AudioChannel(string name){
+			m_name = name;
+		}
 	}
+
 }

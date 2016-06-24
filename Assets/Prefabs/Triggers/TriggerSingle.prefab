@@ -255,12 +255,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_snapX: 0
+  m_lockX: 0
   m_bar: 1
   m_beat: 1
   m_subBeat: 1
-  m_snapY: 0
+  m_snapY: 1
+  m_lockY: 0
   m_verticalPosition: 0
-  m_snapZ: 0
+  m_snapZ: 1
+  m_lockZ: 0
   m_playerLane: 0
 --- !u!1001 &100100000
 Prefab:
