@@ -13,7 +13,7 @@ GameObject:
   - 65: {fileID: 6587616}
   - 114: {fileID: 11435286}
   m_Layer: 8
-  m_Name: TriggerSingle
+  m_Name: _BACKUP_TriggerSingle
   m_TagString: Pickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
