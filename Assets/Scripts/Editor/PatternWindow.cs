@@ -20,6 +20,10 @@ public class PatternWindow : EditorWindow {
 	const string prefabFolder		= "Patterns";
 
 	const string triggerSinglePrefabPath = "Assets/Prefabs/Triggers/TriggerSingle.prefab";
+	const string lineRendererDefaultMaterial = "Assets/Resources/Materials/Patterns/LineRenderer_default.mat";
+	const string lineRendererSuccessMaterial = "Assets/Resources/Materials/Patterns/LineRenderer_success.mat";
+	const string lineRendererFailureMaterial = "Assets/Resources/Materials/Patterns/LineRenderer_failure.mat";
+
 
 	GameObject childPrefab;
 
@@ -222,6 +226,18 @@ public class PatternWindow : EditorWindow {
 		TriggerGroup triggerGroup = gameObject.AddComponent<TriggerGroup>();
 		triggerGroup.m_moveChildrenAlongXAxis = true;
 		triggerGroup.m_lookForTriggersInChildren = true;
+
+		LineRenderer lineRenderer;
+		if (lineRenderer = gameObject.GetComponent<LineRenderer>()){
+			lineRenderer.material = (Material)AssetDatabase.LoadAssetAtPath(lineRendererDefaultMaterial, typeof(Material));
+			lineRenderer.SetWidth(0.2f, 0.2f);
+		}
+
+		TriggerChangeMaterial changeMaterialScript = gameObject.AddComponent<TriggerChangeMaterial>();
+		changeMaterialScript.lookForTriggersOnParent = false;
+		changeMaterialScript.m_renderer = lineRenderer;
+		changeMaterialScript.m_targetMaterialSuccess = (Material)AssetDatabase.LoadAssetAtPath(lineRendererSuccessMaterial, typeof(Material));
+		changeMaterialScript.m_targetMaterialFailure = (Material)AssetDatabase.LoadAssetAtPath(lineRendererFailureMaterial, typeof(Material));
 
 		// create folder
 		if (!AssetDatabase.IsValidFolder(prefabParentFolder + "/" + prefabFolder)){

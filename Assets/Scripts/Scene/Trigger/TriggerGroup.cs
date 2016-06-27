@@ -10,7 +10,8 @@ public class TriggerGroup : Trigger {
 	public bool m_lookForTriggersInChildren = true;
 	public bool m_moveChildrenAlongXAxis	= false;
 
-	private LineRenderer m_lineRenderer;
+	[HideInInspector]
+	public LineRenderer m_lineRenderer;
 
 	protected override void Awake () {
 		base.Awake();

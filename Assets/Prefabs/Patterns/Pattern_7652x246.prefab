@@ -1160,8 +1160,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_triggers: []
+  lookForTriggersOnParent: 1
   m_renderer: {fileID: 2305066}
-  m_targetMaterial: {fileID: 2100000, guid: c0806ead5bd0148d1a3f733d996079d4, type: 2}
+  m_targetMaterialSuccess: {fileID: 0}
+  m_targetMaterialFailure: {fileID: 0}
 --- !u!114 &11406740
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1229,8 +1231,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_triggers: []
+  lookForTriggersOnParent: 1
   m_renderer: {fileID: 2361420}
-  m_targetMaterial: {fileID: 2100000, guid: c0806ead5bd0148d1a3f733d996079d4, type: 2}
+  m_targetMaterialSuccess: {fileID: 0}
+  m_targetMaterialFailure: {fileID: 0}
 --- !u!114 &11417572
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1689,8 +1693,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_triggers: []
+  lookForTriggersOnParent: 1
   m_renderer: {fileID: 2338676}
-  m_targetMaterial: {fileID: 2100000, guid: c0806ead5bd0148d1a3f733d996079d4, type: 2}
+  m_targetMaterialSuccess: {fileID: 0}
+  m_targetMaterialFailure: {fileID: 0}
 --- !u!114 &11469310
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1714,8 +1720,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_triggers: []
+  lookForTriggersOnParent: 1
   m_renderer: {fileID: 2324096}
-  m_targetMaterial: {fileID: 2100000, guid: c0806ead5bd0148d1a3f733d996079d4, type: 2}
+  m_targetMaterialSuccess: {fileID: 0}
+  m_targetMaterialFailure: {fileID: 0}
 --- !u!114 &11472154
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1874,6 +1882,7 @@ MonoBehaviour:
   m_triggers: []
   m_lookForTriggersInChildren: 1
   m_moveChildrenAlongXAxis: 1
+  m_lineRenderer: {fileID: 0}
 --- !u!114 &11493124
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1886,8 +1895,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_triggers: []
+  lookForTriggersOnParent: 1
   m_renderer: {fileID: 2315156}
-  m_targetMaterial: {fileID: 2100000, guid: c0806ead5bd0148d1a3f733d996079d4, type: 2}
+  m_targetMaterialSuccess: {fileID: 0}
+  m_targetMaterialFailure: {fileID: 0}
 --- !u!114 &11496388
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1913,8 +1924,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_triggers: []
+  lookForTriggersOnParent: 1
   m_renderer: {fileID: 2362738}
-  m_targetMaterial: {fileID: 2100000, guid: c0806ead5bd0148d1a3f733d996079d4, type: 2}
+  m_targetMaterialSuccess: {fileID: 0}
+  m_targetMaterialFailure: {fileID: 0}
 --- !u!114 &11499536
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1927,8 +1940,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_triggers: []
+  lookForTriggersOnParent: 1
   m_renderer: {fileID: 2339568}
-  m_targetMaterial: {fileID: 2100000, guid: c0806ead5bd0148d1a3f733d996079d4, type: 2}
+  m_targetMaterialSuccess: {fileID: 0}
+  m_targetMaterialFailure: {fileID: 0}
 --- !u!120 &12096402
 LineRenderer:
   m_ObjectHideFlags: 1
