@@ -15,7 +15,9 @@ public class TriggerAudioMixerGroup : TriggerTarget {
 	private AudioMixer m_audioMixer;
 
 	[Range(-80.0f, 20.0f)]
-	public float m_targetVolume = 0.0f;
+	public float m_targetVolumeSuccess = 0.0f;
+	[Range(-80.0f, 20.0f)]
+	public float m_targetVolumeFailure = -80.0f;
 
 	protected override void Awake () {
 		base.Awake();
@@ -28,10 +30,18 @@ public class TriggerAudioMixerGroup : TriggerTarget {
 		}
 	}
 		
-	protected override void Action (Trigger _reference){
-		base.Action (_reference);
+	protected override void ActionSuccess (Trigger _reference){
+		base.ActionSuccess (_reference);
 
-		m_audioMixer.SetFloat(m_audioMixerGroup.ToString(), m_targetVolume);
+		m_audioMixer.SetFloat(m_audioMixerGroup.ToString(), m_targetVolumeSuccess);
+
+		//gameObject.SetActive(false);
+	}
+
+	protected override void ActionFailure (Trigger _reference){
+		base.ActionFailure (_reference);
+
+		m_audioMixer.SetFloat(m_audioMixerGroup.ToString(), m_targetVolumeFailure);
 
 		//gameObject.SetActive(false);
 	}

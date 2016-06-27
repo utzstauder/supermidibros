@@ -17,6 +17,8 @@ public class FaderGroup : MonoBehaviour {
 	[Range(0.01f, 0.5f)]
 	public float m_detectionRange = .5f;
 	private Collider[] m_collider;
+	private Vector3[,] m_gridAsWorldCoords;
+	private int[] m_faderPositionsOnGrid;
 
 
 	[Header("Gizmos")]
@@ -27,7 +29,7 @@ public class FaderGroup : MonoBehaviour {
 	private AudioManager m_audioManager;
 	private bool m_inEditMode = true;
 
-	// Use this for initialization
+
 	void Awake () {
 		if (Application.isPlaying){
 			m_inEditMode = false;
@@ -50,12 +52,15 @@ public class FaderGroup : MonoBehaviour {
 			Debug.LogError("No AudioManager found in scene!");
 		} else {
 			m_audioManager.OnSubBeat += CheckForCollision;
+			//m_audioManager.OnBeat += PrintPositions;
 		}
 
+		m_gridAsWorldCoords = SnapToGrid.GridAsWorldCoords();
+		m_faderPositionsOnGrid = GetFaderPositionsOnGrid();
 
 	}
-	
-	// Update is called once per frame
+
+
 	void Update () {
 		if (!m_inEditMode){
 			// TODO: this can be optimized, listen for *changes* in player input
@@ -74,23 +79,73 @@ public class FaderGroup : MonoBehaviour {
 		}
 	}
 
+
 	#region private functions
 
 	/**
 	 * This function will check for collision and is called on every subbeat
 	 */
 	void CheckForCollision(int _subBeat){
-		for (int i = 0; i < m_faderGroup.Length; i++){
-			m_collider = Physics.OverlapSphere(m_faderGroup[i].position, m_detectionRange);
-			for (int c = 0; c < m_collider.Length; c++){
-				if (m_collider[c].GetComponent<Trigger>()){
-					m_collider[c].GetComponent<Trigger>().OnCollision(i);
+//		for (int i = 0; i < m_faderGroup.Length; i++){
+//			m_collider = Physics.OverlapSphere(m_faderGroup[i].position, m_detectionRange);
+//			for (int c = 0; c < m_collider.Length; c++){
+//				if (m_collider[c].GetComponent<Trigger>()){
+//					m_collider[c].GetComponent<Trigger>().OnCollision(i);
+//				}
+//			}
+//		}
+
+		// update positions
+		m_faderPositionsOnGrid = GetFaderPositionsOnGrid();
+
+		for (int x = 0; x < Constants.NUMBER_OF_PLAYERS; x++){
+			for (int y = 0; y < Constants.VERTICAL_POSITIONS; y++){
+				Vector3 position = m_gridAsWorldCoords[x, y] + Vector3.right * transform.position.x;
+
+				m_collider = Physics.OverlapSphere(position, m_detectionRange);
+				for (int c = 0; c < m_collider.Length; c++){
+					Trigger trigger;
+
+					if (trigger = m_collider[c].GetComponent<Trigger>()){
+						if (y == m_faderPositionsOnGrid[x]){
+							trigger.OnCollision(x);
+						} else {
+							trigger.OnMiss(x);
+						}
+					}
 				}
 			}
 		}
+
+	}
+
+	/**
+	 * Returns the closest position on the grid of the player
+	 */
+	int GetClosestVerticalPosition(int playerId){
+		int closestY = 0;
+
+		for (int y = 0; y < m_gridAsWorldCoords.GetLength(1); y++){
+			Vector3 playerPositionsWithoutX = new Vector3(0, m_faderGroup[playerId].position.y, m_faderGroup[playerId].position.z);
+			if (Vector3.Distance(playerPositionsWithoutX, m_gridAsWorldCoords[playerId, y]) < Vector3.Distance(playerPositionsWithoutX, m_gridAsWorldCoords[playerId, closestY])){
+				closestY = y;
+			}
+		}
+
+		return closestY;
+	}
+
+	int[] GetFaderPositionsOnGrid(){
+		int[] positions = new int[Constants.NUMBER_OF_PLAYERS];
+		for (int i = 0; i < positions.Length; i++){
+			positions[i] = GetClosestVerticalPosition(i);
+		}
+
+		return positions;
 	}
 
 	#endregion
+
 
 	#region public getter
 
@@ -108,6 +163,14 @@ public class FaderGroup : MonoBehaviour {
 	}
 
 	#endregion
+
+	void PrintPositions(int beat){
+		string positions = "";
+		for (int i = 0; i < m_faderGroup.Length; i++){
+			positions += GetClosestVerticalPosition(i) + ", ";
+		}
+		print(positions);
+	}
 
 	void OnDrawGizmos(){
 		Gizmos.color = m_faderColor;

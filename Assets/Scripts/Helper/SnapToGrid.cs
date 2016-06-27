@@ -208,6 +208,31 @@ public class SnapToGrid : MonoBehaviour {
 
 	#endregion
 
+
+	#region static functions
+
+	/**
+	 * Returns a position in the pattern grid as world coordinates
+	 * 
+	 */
+	public static Vector3 GridToWorldCoord(float xWorld, int y, int z){
+		float newY = (float)Constants.FADER_HEIGHT / (float)(Constants.VERTICAL_POSITIONS - 1) * (float)y + Constants.FADER_OFFSET;
+		float newZ = ((Constants.NUMBER_OF_PLAYERS/2) - z) * Constants.FADER_PADDING - (float)Constants.FADER_PADDING/2.0f;
+		return new Vector3(xWorld, newY, newZ);
+	}
+	public static Vector3[,] GridAsWorldCoords(){
+		Vector3[,] grid = new Vector3[Constants.NUMBER_OF_PLAYERS, Constants.VERTICAL_POSITIONS];
+		for (int x = 0; x < grid.GetLength(0); x++){
+			for (int y = 0; y < grid.GetLength(1); y++){
+				grid[x,y] = GridToWorldCoord(0, y, x);
+			}
+		}
+		return grid;
+	}
+
+	#endregion
+
+
 	void OnDrawGizmosSelected(){
 		if (m_inEditMode || m_snapInPlayMode){
 			Gizmos.color = m_gizmoColor;

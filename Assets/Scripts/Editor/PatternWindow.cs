@@ -1,8 +1,16 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using System.Collections;
+using CustomDataTypes;
 
 public class PatternWindow : EditorWindow {
+
+	Pattern pattern;
+
+	bool randomOptions = false;
+	bool symmetrical = false;
+
+	Vector2 scrollPosition = Vector2.zero;
 
 	bool[,]	grid = new bool[Constants.NUMBER_OF_PLAYERS, Constants.VERTICAL_POSITIONS + 1];
 	int[]	selected = new int[Constants.VERTICAL_POSITIONS + 1];
@@ -10,6 +18,8 @@ public class PatternWindow : EditorWindow {
 	const string prefabPrefix		= "Pattern_";
 	const string prefabParentFolder = "Assets/Prefabs";
 	const string prefabFolder		= "Patterns";
+
+	const string triggerSinglePrefabPath = "Assets/Prefabs/Triggers/TriggerSingle.prefab";
 
 	GameObject childPrefab;
 
@@ -20,9 +30,17 @@ public class PatternWindow : EditorWindow {
 	}
 
 	void OnGUI(){
+		scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition);
+
 		DrawTable();
 
+		DrawGenerateRandomPattern();
+
+		DrawPatternInfo();
+
 		DrawPrefabCreator();
+
+		EditorGUILayout.EndScrollView();
 	}
 
 
@@ -46,10 +64,9 @@ public class PatternWindow : EditorWindow {
 
 			selected[x] = Constants.VERTICAL_POSITIONS -
 				GUILayout.SelectionGrid(
-				//new Rect((cellSize + cellPadding) * x, 0, cellSize, (cellSize + cellPadding) * Constants.VERTICAL_POSITIONS),
-				selected[x],
-				selectionGridStrings,
-				1);
+					selected[x],
+					selectionGridStrings,
+					1);
 
 			SetActiveCell(x, selected[x]);
 
@@ -62,6 +79,57 @@ public class PatternWindow : EditorWindow {
 		}
 
 		EditorGUILayout.EndHorizontal();
+
+	}
+
+
+	void DrawGenerateRandomPattern(){
+		if (GUILayout.Button("Generate Random Pattern")){
+			GenerateRandomPattern(symmetrical);
+		}
+
+		DrawGenerateRandomPatternOptions();
+	}
+
+	void DrawGenerateRandomPatternOptions(){
+		randomOptions =  EditorGUILayout.Foldout(randomOptions, "Options");
+		if (randomOptions){
+			EditorGUILayout.BeginHorizontal();
+			EditorGUILayout.PrefixLabel("Symmetrical Pattern");
+			symmetrical = EditorGUILayout.Toggle(symmetrical);
+			EditorGUILayout.EndHorizontal();
+		}
+		//EditorGUILayout.EndToggleGroup();
+	}
+
+
+	void DrawPatternInfo(){
+		GUILayout.Label("Pattern Info", EditorStyles.boldLabel);
+
+		int[] coords = new int[Constants.NUMBER_OF_PLAYERS];
+
+		for (int i = 0; i < coords.Length; i++){
+			coords[i] = selected[i] - 1;
+		}
+
+		pattern = new Pattern(coords);
+
+		EditorGUILayout.BeginHorizontal();
+		EditorGUILayout.PrefixLabel("Formation:");
+		EditorGUILayout.LabelField(pattern.ToString());
+		EditorGUILayout.EndHorizontal();
+
+		EditorGUILayout.BeginHorizontal();
+		EditorGUILayout.PrefixLabel("Size:");
+		EditorGUILayout.LabelField("" + pattern.size);
+		EditorGUILayout.EndHorizontal();
+
+		EditorGUILayout.BeginHorizontal();
+		EditorGUILayout.PrefixLabel("Complexity:");
+		EditorGUILayout.LabelField("" + (int)(pattern.complexity * 100) + "%");
+		EditorGUILayout.EndHorizontal();
+
+
 	}
 
 
@@ -70,6 +138,7 @@ public class PatternWindow : EditorWindow {
 
 		EditorGUILayout.BeginHorizontal();
 		EditorGUILayout.PrefixLabel("Trigger Prefab:");
+		childPrefab = AssetDatabase.LoadAssetAtPath(triggerSinglePrefabPath, typeof(Object)) as GameObject;
 		childPrefab = (GameObject)EditorGUILayout.ObjectField(childPrefab, typeof(GameObject), false);
 		EditorGUILayout.EndHorizontal();
 
@@ -100,6 +169,20 @@ public class PatternWindow : EditorWindow {
 		}
 
 		return name;
+	}
+
+	void GenerateRandomPattern(bool symmetrical){
+		do {
+			for (int i = 0; i < Constants.NUMBER_OF_PLAYERS; i++){
+				selected[i] = Random.Range(0, Constants.VERTICAL_POSITIONS + 1);
+				if (symmetrical){
+					selected[Constants.NUMBER_OF_PLAYERS - 1 - i] = selected[i];
+					if (i >= (Constants.NUMBER_OF_PLAYERS / 2) - 1){
+						break;
+					}
+				}
+			}
+		} while (pattern.size < 2);
 	}
 
 	void CreatePrefab(){

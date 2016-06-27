@@ -5,7 +5,7 @@ using System.Collections;
 public class Trigger : MonoBehaviour {
 	protected bool m_inEditMode = true;
 
-	public delegate void TriggerDelegate(Trigger _reference);
+	public delegate void TriggerDelegate(Trigger scriptReference, bool success);
 	public event TriggerDelegate OnTrigger;
 
 	private AudioManager m_audioManager;
@@ -39,7 +39,7 @@ public class Trigger : MonoBehaviour {
 	/**
 	 * This will check if every child has been triggered
 	 */ 
-	protected virtual void OnReceiveTrigger(Trigger _reference){
+	protected virtual void OnReceiveTrigger(Trigger scriptReference, bool success){
 		
 	}
 
@@ -58,10 +58,16 @@ public class Trigger : MonoBehaviour {
 	/**
 	 * This will send a trigger event to every target this trigger is attached to
 	 */
-	protected virtual void BroadcastTrigger(){
+	protected virtual void BroadcastTriggerSuccess(){
 		//Debug.Log("Trigger");
 		if (OnTrigger != null) {
-			OnTrigger(this);
+			OnTrigger(this, true);
+		}
+	}
+
+	protected virtual void BroadcastTriggerFailure(){
+		if (OnTrigger != null) {
+			OnTrigger(this, false);
 		}
 	}
 
@@ -70,8 +76,13 @@ public class Trigger : MonoBehaviour {
 	 */
 	public virtual void OnCollision(int _playerId){
 //		Debug.Log("Collision with Player " + _playerId);
+		//Debug.Log("HIT");
+		BroadcastTriggerSuccess();
+	}
 
-		BroadcastTrigger();
+	public virtual void OnMiss (int _playerId){
+		//Debug.Log("MISS");
+		BroadcastTriggerFailure();
 	}
 
 	#endregion

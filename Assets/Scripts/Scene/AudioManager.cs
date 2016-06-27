@@ -412,7 +412,6 @@ public class AudioManager : MonoBehaviour {
 
 	public float GetTimePerBar(){
 		return GetTimeAtBar(1);
-		return m_bpm/60.0f;
 	}
 
 	public float GetTimePerBeat(){
@@ -421,6 +420,10 @@ public class AudioManager : MonoBehaviour {
 
 	public float GetTimePerSubBeat(){
 		return GetTimePerBeat() / m_unitsPerBeat;
+	}
+
+	public float GetPositionX(int bar, int beat, int subBeat){
+		return (float)( ((bar - 1) * m_unitsPerBeat * m_timeSignatureUpper) + ((beat - 1) * m_unitsPerBeat) + (subBeat - 1) );
 	}
 
 	#endregion

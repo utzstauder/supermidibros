@@ -18,8 +18,8 @@ public class TriggerPlayAudioClip : TriggerTarget {
 		m_audioSource.clip = m_audioClip;
 	}
 
-	protected override void Action(Trigger _reference){
-		base.Action(_reference);
+	protected override void ActionSuccess(Trigger _reference){
+		base.ActionSuccess(_reference);
 
 		if (m_loop){
 			m_audioSource.loop = true;

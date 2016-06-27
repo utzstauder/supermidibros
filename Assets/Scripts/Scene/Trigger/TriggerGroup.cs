@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(LineRenderer))]
 public class TriggerGroup : Trigger {
 
 	public TriggerSingle[] m_triggers;
+	private List<bool> m_triggerList;
 	public bool m_lookForTriggersInChildren = true;
 	public bool m_moveChildrenAlongXAxis	= false;
-	private int m_childrenTriggered;
 
 	private LineRenderer m_lineRenderer;
 
@@ -15,6 +16,8 @@ public class TriggerGroup : Trigger {
 		base.Awake();
 
 		m_lineRenderer = GetComponent<LineRenderer>();
+
+		m_triggerList = new List<bool>();
 
 		if (m_lookForTriggersInChildren){
 			UpdateTriggers();
@@ -44,12 +47,14 @@ public class TriggerGroup : Trigger {
 
 	#region override functions
 
-	protected override void OnReceiveTrigger (Trigger _reference)
+	protected override void OnReceiveTrigger (Trigger scriptReference, bool success)
 	{
-		base.OnReceiveTrigger (_reference);
-		m_childrenTriggered++;
-		if (m_childrenTriggered >= m_triggers.Length){
-			BroadcastTrigger();
+		base.OnReceiveTrigger (scriptReference, success);
+
+		m_triggerList.Add(success);
+
+		if (m_triggerList.Count == m_triggers.Length){
+			CheckTriggers();
 		}
 	}
 
@@ -57,7 +62,7 @@ public class TriggerGroup : Trigger {
 	{
 		base.OnStop ();
 
-		m_childrenTriggered = 0;
+		m_triggerList = new List<bool>();
 	}
 
 	protected override void OnDrawGizmos ()
@@ -74,6 +79,43 @@ public class TriggerGroup : Trigger {
 	}
 
 	#endregion
+
+
+	#region trigger functions
+
+	void CheckTriggers(){
+		int success = 0;
+		for (int i = 0; i < m_triggerList.Count; i++){
+			if (m_triggerList[i]){
+				success++;
+			}
+		}
+
+		//Debug.Log(success);
+
+		if (success > 0 && success < m_triggerList.Count){
+			TriggerFailure();
+		} else if (success == m_triggerList.Count) {
+			TriggerSuccess();
+		} else {
+			// nothing happens
+		}
+	}
+
+	void TriggerSuccess(){
+		//Debug.Log("Success!");
+		BroadcastTriggerSuccess();
+	}
+
+
+	// get's called when at least one child was triggered but not all of them
+	void TriggerFailure(){
+		//Debug.Log("Failure!");
+		BroadcastTriggerFailure();
+	}
+
+	#endregion
+
 
 	#region private functions
 

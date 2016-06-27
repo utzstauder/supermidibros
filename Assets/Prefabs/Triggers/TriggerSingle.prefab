@@ -74,7 +74,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 119790}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 10.5}
+  m_LocalPosition: {x: -10.634908, y: 1, z: 10.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -105,7 +105,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: bd70c25d821194207a9e9861d77c8933, type: 2}
+  - {fileID: 2100000, guid: 51a52c1c2d3d8471b97824f26fa26e3d, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -211,8 +211,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_triggers: []
+  lookForTriggersOnParent: 1
   m_renderer: {fileID: 2357322}
-  m_targetMaterial: {fileID: 2100000, guid: c0806ead5bd0148d1a3f733d996079d4, type: 2}
+  m_targetMaterialSuccess: {fileID: 2100000, guid: c0806ead5bd0148d1a3f733d996079d4,
+    type: 2}
+  m_targetMaterialFailure: {fileID: 2100000, guid: bd70c25d821194207a9e9861d77c8933,
+    type: 2}
 --- !u!114 &11474060
 MonoBehaviour:
   m_ObjectHideFlags: 1

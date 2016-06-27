@@ -4,7 +4,8 @@ using System.Collections;
 public class TriggerChangeMaterial : TriggerTarget {
 
 	public Renderer m_renderer;
-	public Material m_targetMaterial;
+	public Material m_targetMaterialSuccess;
+	public Material m_targetMaterialFailure;
 
 	// Use this for initialization
 	protected override void Awake () {
@@ -21,10 +22,16 @@ public class TriggerChangeMaterial : TriggerTarget {
 		}
 	}
 	
-	protected override void Action(Trigger _reference){
-		base.Action (_reference);
+	protected override void ActionSuccess(Trigger _reference){
+		base.ActionSuccess (_reference);
 
-		m_renderer.material = m_targetMaterial;
+		m_renderer.material = m_targetMaterialSuccess;
+	}
+
+	protected override void ActionFailure(Trigger _reference){
+		base.ActionFailure (_reference);
+
+		m_renderer.material = m_targetMaterialFailure;
 	}
 
 	/**
