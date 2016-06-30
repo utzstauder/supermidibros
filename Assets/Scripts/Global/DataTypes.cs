@@ -3,17 +3,22 @@ using System.Collections;
 
 namespace CustomDataTypes {
 
+	[System.Serializable]
 	public struct Pattern{
 		public int[] coords;
 		public int size;
 		public float complexity;
 
+		public int audioCategory;
+		public int instrumentGroup;
+		public int variation;
+
+		public static Pattern bottom	= new Pattern(0, 0, 0, 0, 0, 0, 0, 0);
+		public static Pattern top		= new Pattern(Constants.VERTICAL_POSITIONS, Constants.VERTICAL_POSITIONS, Constants.VERTICAL_POSITIONS, Constants.VERTICAL_POSITIONS, Constants.VERTICAL_POSITIONS, Constants.VERTICAL_POSITIONS, Constants.VERTICAL_POSITIONS, Constants.VERTICAL_POSITIONS);
+
 		public Pattern(params int[] _coords){
-			coords = new int[_coords.Length];
-//			for (int i = 0; i < _coords.Length; i++){
-//				coords[i] = (_coords[i] >= 0 && _coords[i] < Constants.VERTICAL_POSITIONS) ? _coords[i] : -1;
-//			}
 			coords = _coords;
+
 
 			// calulate difficulty
 			// 1. size
@@ -33,15 +38,6 @@ namespace CustomDataTypes {
 				if (coords[i] != coords[i + 1]){
 					differentNeighbours++;
 				}
-//				for (int j = i + 1; j < coords.Length; j++){
-//					if (coords[j] < 0){
-//						continue;
-//					}
-//					//differentNeighbours += Mathf.Abs(coords[i] - coords[j]);
-//					if (coords[i] != coords[j]){
-//						differentNeighbours++;
-//					}
-//				}
 			}
 
 			// 3. min-max modifier
@@ -54,12 +50,16 @@ namespace CustomDataTypes {
 				}
 			}
 
-
 			complexity = (float)(size + differentNeighbours + minMaxModifier) /
 						(float)(size + size - 1);
 			if (complexity < 0){
 				complexity = 0;
 			}
+
+
+			audioCategory	= -1;
+			instrumentGroup	= -1;
+			variation		= -1;
 		}
 
 		public override string ToString(){
@@ -75,5 +75,7 @@ namespace CustomDataTypes {
 			return name;
 		}
 	}
+
+
 
 }

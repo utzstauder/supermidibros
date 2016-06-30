@@ -12,4 +12,7 @@ public static class Constants {
 	// every 1/16 note equals 1 unity unit
 	public const int UNITS_PER_BEAT = 4;
 
+	public const int AUDIO_CATEGORIES	= 3;
+	public const int INSTRUMENT_GROUPS	= 4;
+	public const int VARIATIONS			= 4;
 }

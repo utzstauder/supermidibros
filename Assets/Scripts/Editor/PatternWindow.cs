@@ -7,13 +7,17 @@ public class PatternWindow : EditorWindow {
 
 	Pattern pattern;
 
-	bool randomOptions = false;
-	bool symmetrical = false;
+	bool randomOptions	= false;
+	bool symmetrical	= false;
+	int patternSize		= 8;
+	float minComplexity	= 0;
+	float maxComplexity	= 1.0f;
+
 
 	Vector2 scrollPosition = Vector2.zero;
 
-	bool[,]	grid = new bool[Constants.NUMBER_OF_PLAYERS, Constants.VERTICAL_POSITIONS + 1];
-	int[]	selected = new int[Constants.VERTICAL_POSITIONS + 1];
+//	bool[,]	grid = new bool[Constants.NUMBER_OF_PLAYERS, Constants.VERTICAL_POSITIONS + 1];
+	int[]	selected = new int[Constants.NUMBER_OF_PLAYERS];
 
 	const string prefabPrefix		= "Pattern_";
 	const string prefabParentFolder = "Assets/Prefabs";
@@ -55,7 +59,7 @@ public class PatternWindow : EditorWindow {
 
 		EditorGUILayout.BeginHorizontal();
 
-		for (int x = 0; x < grid.GetLength(0); x++){
+		for (int x = 0; x < selected.Length; x++){
 			
 			string[] selectionGridStrings = new string[Constants.VERTICAL_POSITIONS + 1];
 			for (int y = 0; y < selectionGridStrings.Length; y++){
@@ -72,7 +76,7 @@ public class PatternWindow : EditorWindow {
 					selectionGridStrings,
 					1);
 
-			SetActiveCell(x, selected[x]);
+			//SetActiveCell(x, selected[x]);
 
 //			for (int x = 0; x < grid.GetLength(0); x++){
 //				// TODO: cells
@@ -89,7 +93,7 @@ public class PatternWindow : EditorWindow {
 
 	void DrawGenerateRandomPattern(){
 		if (GUILayout.Button("Generate Random Pattern")){
-			GenerateRandomPattern(symmetrical);
+			GenerateRandomPattern();
 		}
 
 		DrawGenerateRandomPatternOptions();
@@ -101,6 +105,15 @@ public class PatternWindow : EditorWindow {
 			EditorGUILayout.BeginHorizontal();
 			EditorGUILayout.PrefixLabel("Symmetrical Pattern");
 			symmetrical = EditorGUILayout.Toggle(symmetrical);
+			EditorGUILayout.EndHorizontal();
+
+			EditorGUILayout.BeginHorizontal();
+			EditorGUILayout.PrefixLabel("Size");
+			patternSize = EditorGUILayout.IntField(patternSize);
+			patternSize = Mathf.Clamp(patternSize, 2, Constants.NUMBER_OF_PLAYERS);
+			if (patternSize % 2 != 0){
+				symmetrical = false;
+			}
 			EditorGUILayout.EndHorizontal();
 		}
 		//EditorGUILayout.EndToggleGroup();
@@ -158,35 +171,29 @@ public class PatternWindow : EditorWindow {
 
 	#region functions
 
-	void SetActiveCell(int x, int y){
-		//Debug.Log("SetActiveCell(" + x + ", " + y + ")");
-		for (int i = 0; i < Constants.VERTICAL_POSITIONS + 1; i++){
-			grid[x, grid.GetLength(1) - 1 - y] = (i == y);
-		}
-	}
+//	void SetActiveCell(int x, int y){
+//		//Debug.Log("SetActiveCell(" + x + ", " + y + ")");
+//		for (int i = 0; i < Constants.VERTICAL_POSITIONS + 1; i++){
+//			grid[x, grid.GetLength(1) - 1 - y] = (i == y);
+//		}
+//	}
 
 	string GetPrefabName(){
-		string name = prefabPrefix;
+//		string name = prefabPrefix;
+//
+//		for (int x = 0; x < Constants.NUMBER_OF_PLAYERS; x++){
+//			name += (selected[x] > 0) ? (selected[x] - 1).ToString() : "x";
+//		}
 
-		for (int x = 0; x < Constants.NUMBER_OF_PLAYERS; x++){
-			name += (selected[x] > 0) ? (selected[x] - 1).ToString() : "x";
-		}
-
-		return name;
+		return prefabPrefix+pattern.ToString();
 	}
 
-	void GenerateRandomPattern(bool symmetrical){
-		do {
-			for (int i = 0; i < Constants.NUMBER_OF_PLAYERS; i++){
-				selected[i] = Random.Range(0, Constants.VERTICAL_POSITIONS + 1);
-				if (symmetrical){
-					selected[Constants.NUMBER_OF_PLAYERS - 1 - i] = selected[i];
-					if (i >= (Constants.NUMBER_OF_PLAYERS / 2) - 1){
-						break;
-					}
-				}
-			}
-		} while (pattern.size < 2);
+	// TODO: crashes when generating 77777777 symmetrical pattern
+	void GenerateRandomPattern(){
+		pattern = PatternManager.GetRandomPattern(symmetrical, patternSize);
+		for (int i = 0; i < pattern.coords.Length; i++){
+			selected[i] = pattern.coords[i] + 1;
+		}
 	}
 
 	void CreatePrefab(){

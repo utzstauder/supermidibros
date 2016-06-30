@@ -113,7 +113,7 @@ public class SnapToGrid : MonoBehaviour {
 
 		// clamp input boundaries
 		if (m_audioManager != null){
-			m_bar = Mathf.Clamp(m_bar, 1, m_audioManager.GetTotalBars());
+			m_bar = Mathf.Clamp(m_bar, 1, m_bar);
 			m_beat = Mathf.Clamp(m_beat, 1, m_audioManager.GetTimeSignatureUpper());
 			m_subBeat = Mathf.Clamp(m_subBeat, 1, m_audioManager.GetUnitsPerBeat());
 		}

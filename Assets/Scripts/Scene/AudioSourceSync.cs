@@ -21,24 +21,25 @@ public class AudioSourceSync : MonoBehaviour {
 			m_audioSource.loop = true;
 		}
 	}
-		
-	void Update () {
-	
-	}
-
 
 	#region public functions
 
 	public void Play(){
-		m_audioSource.Play();
+		if (m_audioSource != null){
+			m_audioSource.Play();
+		}
 	}
 
 	public void Pause(){
-		m_audioSource.Pause();
+		if (m_audioSource != null){
+			m_audioSource.Pause();
+		}
 	}
 
 	public void Stop(){
-		m_audioSource.Stop();
+		if (m_audioSource != null){
+			m_audioSource.Stop();
+		}
 	}
 
 	public void SyncToMaster(AudioManager _reference){
@@ -47,28 +48,30 @@ public class AudioSourceSync : MonoBehaviour {
 				
 				if (m_manualLoopArea){
 					// manual loop area
-					SetTimeSamples((_reference.GetCurrentTimeSamples() % (m_loopLength * _reference.GetSamplesPerBar())) +
-									m_loopOffset * _reference.GetSamplesPerBar());
+					SetTimeSamples((int)(_reference.GetCurrentAudioTimeSamples() % (m_loopLength * _reference.GetSamplesPerBar())) +
+						m_loopOffset * _reference.GetSamplesPerBar());
 				} else {
 					// automatically loop through entire track
-					SetTimeSamples(Mathf.Clamp((_reference.GetCurrentTimeSamples() % m_audioSource.clip.samples), 0, m_audioSource.clip.samples));
+					SetTimeSamples((int)(_reference.GetCurrentAudioTimeSamples() % m_audioSource.clip.samples));
 				}
 
 			} else {
 				
 				// simple sync
-				SetTimeSamples(_reference.GetCurrentTimeSamples());
+				SetTimeSamples(_reference.GetCurrentAudioTimeSamples());
 
 			}
 		}
 	}
 
-	public void SyncToMaster(int _timeSamples, int _bpm ){
-		
+	public void SetTimeSamples(int _timeSamples){
+		_timeSamples = Mathf.Clamp(_timeSamples, 0, m_audioSource.clip.samples);
+		m_audioSource.timeSamples = _timeSamples;
 	}
 
-	public void SetTimeSamples(int _timeSamples){
-		m_audioSource.timeSamples = _timeSamples;
+	public void SetTime(float time){
+		time = Mathf.Clamp(time, 0, m_audioSource.clip.length);
+		m_audioSource.time = time;
 	}
 
 	#endregion
