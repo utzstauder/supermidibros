@@ -51,8 +51,7 @@ public class FaderGroup : MonoBehaviour {
 		if (m_audioManager == null){
 			Debug.LogError("No AudioManager found in scene!");
 		} else {
-			m_audioManager.OnSubBeat += CheckForCollision;
-			//m_audioManager.OnBeat += PrintPositions;
+			m_audioManager.OnBeat += CheckForCollision;
 		}
 
 		m_gridAsWorldCoords = SnapToGrid.GridAsWorldCoords();
@@ -85,7 +84,7 @@ public class FaderGroup : MonoBehaviour {
 	/**
 	 * This function will check for collision and is called on every subbeat
 	 */
-	void CheckForCollision(int _subBeat){
+	void CheckForCollision(int beat){
 //		for (int i = 0; i < m_faderGroup.Length; i++){
 //			m_collider = Physics.OverlapSphere(m_faderGroup[i].position, m_detectionRange);
 //			for (int c = 0; c < m_collider.Length; c++){
@@ -98,24 +97,33 @@ public class FaderGroup : MonoBehaviour {
 		// update positions
 		m_faderPositionsOnGrid = GetFaderPositionsOnGrid();
 
-		for (int x = 0; x < Constants.NUMBER_OF_PLAYERS; x++){
-			for (int y = 0; y < Constants.VERTICAL_POSITIONS; y++){
-				Vector3 position = m_gridAsWorldCoords[x, y] + Vector3.right * transform.position.x;
-
-				m_collider = Physics.OverlapSphere(position, m_detectionRange);
-				for (int c = 0; c < m_collider.Length; c++){
-					Trigger trigger;
-
-					if (trigger = m_collider[c].GetComponent<Trigger>()){
-						if (y == m_faderPositionsOnGrid[x]){
-							trigger.OnCollision(x);
-						} else {
-							trigger.OnMiss(x);
-						}
-					}
-				}
+		m_collider = Physics.OverlapSphere(transform.position, m_detectionRange);
+		for (int c = 0; c < m_collider.Length; c++){
+			PatternControll patternControll;
+			if(patternControll = m_collider[c].GetComponent<PatternControll>()){
+				patternControll.CollisionCheck(m_faderPositionsOnGrid);
 			}
 		}
+
+		// old stuff
+//		for (int x = 0; x < Constants.NUMBER_OF_PLAYERS; x++){
+//			for (int y = 0; y < Constants.VERTICAL_POSITIONS; y++){
+//				Vector3 position = m_gridAsWorldCoords[x, y] + Vector3.right * transform.position.x;
+//
+//				m_collider = Physics.OverlapSphere(position, m_detectionRange);
+//				for (int c = 0; c < m_collider.Length; c++){
+//					Trigger trigger;
+//
+//					if (trigger = m_collider[c].GetComponent<Trigger>()){
+//						if (y == m_faderPositionsOnGrid[x]){
+//							trigger.OnCollision(x);
+//						} else {
+//							trigger.OnMiss(x);
+//						}
+//					}
+//				}
+//			}
+//		}
 
 	}
 

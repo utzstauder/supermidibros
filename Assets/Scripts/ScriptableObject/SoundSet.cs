@@ -1,16 +1,19 @@
 ﻿using UnityEngine;
 using UnityEngine.Audio;
 using System.Collections;
+using CustomDataTypes;
 
 [CreateAssetMenu (menuName = "SoundSet", fileName = "SoundSet", order = 100)]
 public class SoundSet : ScriptableObject {
 
-	const int VARIATIONS = 4;
+	public int bpm;
+//	public int timeSignatureUpper = 4;
+//	public int timeSignatureLower = 4;
 
 	public AudioCategory[] m_audioCategories;
 
 	public SoundSet(){
-		m_audioCategories = new AudioCategory[3]{
+		m_audioCategories = new AudioCategory[Constants.AUDIO_CATEGORIES]{
 			new AudioCategory("Rhythm",
 				"Kick", "Snare", "Hi-Hat", "Percussion"),
 			new AudioCategory("Harmony"),
@@ -21,12 +24,8 @@ public class SoundSet : ScriptableObject {
 
 	#region public functions
 
-	public string GetChannelName(){
-		return "";
-	}
-
-	public string[] GetChannelNames(){
-		return new string[1]{""};
+	public int GetRandomIndex(){
+		return Random.Range(0, m_audioCategories.Length);
 	}
 
 	#endregion
@@ -45,13 +44,17 @@ public class SoundSet : ScriptableObject {
 
 			for (int i = 0; i < channelGroupNames.Length; i++){
 				
-				string[] channelNames = new string[VARIATIONS];
-				for (int n = 0; n < VARIATIONS; n++){
+				string[] channelNames = new string[Constants.VARIATIONS];
+				for (int n = 0; n < Constants.VARIATIONS; n++){
 					channelNames[n] = "Variation_" + (n+1);
 				}
 
 				m_audioChannelGroups[i] = new AudioChannelGroup(channelGroupNames[i], false, channelNames);
 			}
+		}
+
+		public int GetRandomIndex(){
+			return Random.Range(0, m_audioChannelGroups.Length);
 		}
 	}
 
@@ -75,6 +78,10 @@ public class SoundSet : ScriptableObject {
 			}
 		}
 
+		public int GetRandomIndex(){
+			return Random.Range(0, m_audioChannels.Length);
+		}
+
 	}
 
 	[System.Serializable]
@@ -83,9 +90,17 @@ public class SoundSet : ScriptableObject {
 
 		public AudioClip m_audioClip;
 
+		public int m_loopLength;
+
 		public AudioChannel(string name){
 			m_name = name;
 			m_audioClip = null;
+
+			m_loopLength = 1;
+		}
+
+		public int Length(){
+			return m_loopLength;
 		}
 	}
 

@@ -8,7 +8,7 @@ public class Trigger : MonoBehaviour {
 	public delegate void TriggerDelegate(Trigger scriptReference, bool success);
 	public event TriggerDelegate OnTrigger;
 
-	private AudioManager m_audioManager;
+	protected AudioManager m_audioManager;
 
 	private Color m_gizmosColor = Color.yellow;
 
@@ -59,13 +59,14 @@ public class Trigger : MonoBehaviour {
 	 * This will send a trigger event to every target this trigger is attached to
 	 */
 	protected virtual void BroadcastTriggerSuccess(){
-		//Debug.Log("Trigger");
+		Debug.Log("Trigger Success");
 		if (OnTrigger != null) {
 			OnTrigger(this, true);
 		}
 	}
 
 	protected virtual void BroadcastTriggerFailure(){
+		Debug.Log("Trigger Failure");
 		if (OnTrigger != null) {
 			OnTrigger(this, false);
 		}

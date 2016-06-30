@@ -38,17 +38,17 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (m_debug){
-			if (Input.GetKeyDown(KeyCode.UpArrow) || MIDIInputManager.instance.GetForwardButtonDown()){
-				m_audioManager.GoToNextBar();
-			} else if (Input.GetKeyDown(KeyCode.DownArrow) || MIDIInputManager.instance.GetRewindButtonDown()){
-				m_audioManager.GoToPrevBar();
-			} else if (Input.GetKeyDown(KeyCode.RightArrow)){
-				m_audioManager.GoToNextBeat();
-			} else if (Input.GetKeyDown(KeyCode.LeftArrow)){
-				m_audioManager.GoToPrevBeat();
-			}
+//			if (Input.GetKeyDown(KeyCode.UpArrow) || MIDIInputManager.instance.GetForwardButtonDown()){
+//				m_audioManager.GoToNextBar();
+//			} else if (Input.GetKeyDown(KeyCode.DownArrow) || MIDIInputManager.instance.GetRewindButtonDown()){
+//				m_audioManager.GoToPrevBar();
+//			} else if (Input.GetKeyDown(KeyCode.RightArrow)){
+//				m_audioManager.GoToNextBeat();
+//			} else if (Input.GetKeyDown(KeyCode.LeftArrow)){
+//				m_audioManager.GoToPrevBeat();
+//			}
 			if (Input.GetKeyDown(KeyCode.Space) || MIDIInputManager.instance.GetPlayButtonDown()){
-				if (!m_audioManager.isPlaying()){
+				if (!m_audioManager.IsPlaying()){
 					m_audioManager.Play();
 				} else {
 					m_audioManager.Pause();
@@ -66,13 +66,13 @@ public class GameManager : MonoBehaviour {
 
 	void OnGUI(){
 		if (m_debug){
-			m_horizontalSliderValue = GUI.HorizontalSlider(new Rect(10, 10, Screen.width - 20, 20), m_audioManager.GetCurrentTime(), 0.0f, m_audioManager.GetClipLength());
-			if (m_horizontalSliderValue < m_audioManager.GetCurrentTime() || m_horizontalSliderValue > m_audioManager.GetCurrentTime()){
-				m_audioManager.SetCurrentTime(m_horizontalSliderValue);
-				m_horizontalSliderValue = m_audioManager.GetCurrentTime();
-			}
+//			m_horizontalSliderValue = GUI.HorizontalSlider(new Rect(10, 10, Screen.width - 20, 20), m_audioManager.GetCurrentTime(), 0.0f, m_audioManager.GetClipLength());
+//			if (m_horizontalSliderValue < m_audioManager.GetCurrentTime() || m_horizontalSliderValue > m_audioManager.GetCurrentTime()){
+//				m_audioManager.SetCurrentTime(m_horizontalSliderValue);
+//				m_horizontalSliderValue = m_audioManager.GetCurrentTime();
+//			}
 
-			if (!m_audioManager.isPlaying()){
+			if (!m_audioManager.IsPlaying()){
 				if (GUI.Button(new Rect(10, 30, 60, 20), "PLAY")){
 					m_audioManager.Play();
 				}
@@ -85,9 +85,9 @@ public class GameManager : MonoBehaviour {
 				m_audioManager.Stop();
 			}
 
-			GUI.Label(new Rect(10, 50, 100, 20), m_audioManager.GetCurrentTimeAsString());
+			GUI.Label(new Rect(10, 50, 100, 20), m_audioManager.GetCurrentAudioTimeAsString());
 			GUI.Label(new Rect(70, 50, 100, 20), m_audioManager.GetCurrentBar() + " | " + m_audioManager.GetCurrentBeat() + " | " + m_audioManager.GetCurrentSubBeat());
-			//GUI.Label(new Rect(10, 70, 200, 20), ""+m_audioManager.GetCurrentBarTime());
+			GUI.Label(new Rect(10, 70, 200, 20), m_audioManager.GetCurrentMasterTimeAsString());
 		}
 	}
 }
