@@ -1,15 +1,27 @@
 fileFormatVersion: 2
-guid: 2a849e460723f664292b8f895f07dd9d
-timeCreated: 1467128125
+guid: 7d61933496a63d64ea526418efcebd41
+timeCreated: 1467289137
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: high_straight
+    100000: Box007
+    100002: Plane007
+    100004: Plane008
+    100006: //RootNode
+    400000: Box007
+    400002: Plane007
+    400004: Plane008
+    400006: //RootNode
+    2300000: Box007
+    2300002: Plane007
+    2300004: Plane008
+    3300000: Box007
+    3300002: Plane007
+    3300004: Plane008
+    4300000: Plane007
+    4300002: Plane008
+    4300004: Box007
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -35,7 +47,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.5
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
@@ -51,8 +63,8 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
-    normalSmoothAngle: 0
-    normalImportMode: 1
+    normalSmoothAngle: 60
+    normalImportMode: 0
     tangentImportMode: 3
   importAnimation: 1
   copyAvatar: 0
