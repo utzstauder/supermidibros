@@ -1,15 +1,27 @@
 fileFormatVersion: 2
-guid: 52b71095b4e63c742b0ddbb79332b231
-timeCreated: 1467142686
+guid: 9e56a1deefe52104485a98096332feec
+timeCreated: 1467377860
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Plane005
+    100000: Box006
+    100002: //RootNode
+    100004: Plane001
+    100006: Plane004
+    400000: Box006
+    400002: //RootNode
+    400004: Plane001
+    400006: Plane004
+    2300000: Box006
+    2300002: Plane001
+    2300004: Plane004
+    3300000: Box006
+    3300002: Plane001
+    3300004: Plane004
+    4300000: Plane001
+    4300002: Plane004
+    4300004: Box006
     9500000: //RootNode
   materials:
     importMaterials: 1
