@@ -1,24 +1,20 @@
 fileFormatVersion: 2
-guid: e16f96dc5242f47c6a98a8e71bd0df7c
-timeCreated: 1467389869
+guid: 1a85e9643ad8547f1a8c8d82523a05e0
+timeCreated: 1467396495
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: Box007
-    100002: Camera
-    100004: Cube
-    100006: Lamp
-    100008: Plane007
-    100010: Plane008
-    100012: //RootNode
+    100002: Cube
+    100004: Plane007
+    100006: Plane008
+    100008: //RootNode
     400000: Box007
-    400002: Camera
-    400004: Cube
-    400006: Lamp
-    400008: Plane007
-    400010: Plane008
-    400012: //RootNode
+    400002: Cube
+    400004: Plane007
+    400006: Plane008
+    400008: //RootNode
     2300000: Box007
     2300002: Cube
     2300004: Plane007
