@@ -177,11 +177,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11440534, guid: 9830946070aa04b649b2ca2eb13f425e, type: 2}
       propertyPath: on
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11440534, guid: 9830946070aa04b649b2ca2eb13f425e, type: 2}
       propertyPath: sceneViewFollowers.Array.data[0].positionOffset.x
-      value: -10.28
+      value: -6.45
       objectReference: {fileID: 0}
     - target: {fileID: 11428848, guid: 9830946070aa04b649b2ca2eb13f425e, type: 2}
       propertyPath: m_detectionRange
@@ -520,6 +520,14 @@ Prefab:
     - target: {fileID: 476830, guid: 0b4ab94d14abf48208701fe74c72c14b, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11493844, guid: 0b4ab94d14abf48208701fe74c72c14b, type: 2}
+      propertyPath: allZeroes
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11493844, guid: 0b4ab94d14abf48208701fe74c72c14b, type: 2}
+      propertyPath: spawnXBarsAhead
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b4ab94d14abf48208701fe74c72c14b, type: 2}

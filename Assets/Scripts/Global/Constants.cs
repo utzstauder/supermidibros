@@ -4,7 +4,7 @@ using System.Collections;
 public static class Constants {
 
 	public const int NUMBER_OF_PLAYERS		= 8;
-	public const int VERTICAL_POSITIONS	= 8;
+	public const int VERTICAL_POSITIONS		= 5;
 	public const int FADER_HEIGHT			= 12;
 	public const int FADER_OFFSET			= 1;
 	public const int FADER_PADDING			= 3;

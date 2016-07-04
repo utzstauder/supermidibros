@@ -8,6 +8,7 @@ public class PatternControll : Trigger {
 
 	public PatternChildControll childrenPrefab;
 
+	private bool isPrepared = false;
 
 	private Pattern pattern = Pattern.bottom;
 
@@ -51,6 +52,13 @@ public class PatternControll : Trigger {
 		snapToGrid.UpdatePosition();
 	}
 		
+	public bool IsPrepared(){
+		return isPrepared;
+	}
+
+	public void SetPrepared(bool value){
+		isPrepared = value;
+	}
 
 	#region player collision
 
@@ -68,10 +76,6 @@ public class PatternControll : Trigger {
 		} else if(hits > 0){
 			OnFailure();
 		}
-
-		//Debug.Log(hits);
-
-		Invoke("DisableThis", 1.0f);
 	}
 
 	void DisableThis(){
