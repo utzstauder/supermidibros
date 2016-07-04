@@ -3,7 +3,7 @@ using UnityEngine.Audio;
 using System.Collections;
 using CustomDataTypes;
 
-[CreateAssetMenu (menuName = "SoundSet", fileName = "SoundSet", order = 100)]
+[CreateAssetMenu (menuName = "Super MIDI Bros./SoundSet", fileName = "SoundSet", order = 100)]
 public class SoundSet : ScriptableObject {
 
 	public int bpm;

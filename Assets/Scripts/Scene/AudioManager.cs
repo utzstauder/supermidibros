@@ -35,7 +35,7 @@ public class AudioManager : MonoBehaviour {
 	// these are for internal calculations only
 	private int m_currentSubBeat	= 1;
 	private int m_currentBeat		= 1;
-	private int m_currentBar		= 1;
+	private int m_currentBar		= 0;
 
 	private AudioSource m_audioSource;		// masterAudioClip
 	private AudioSourceSync[] m_audioSourcesSync;
@@ -165,7 +165,8 @@ public class AudioManager : MonoBehaviour {
 
 	// gets called on every full bar
 	void Bar(){
-		m_currentBar = GetCurrentBar();
+//		m_currentBar = GetCurrentBar();
+		m_currentBar++;
 
 		if (OnBar != null) OnBar(m_currentBar);
 
@@ -343,6 +344,8 @@ public class AudioManager : MonoBehaviour {
 
 		SetVolumeOfAllMixerGroups(-80.0f);
 
+		m_currentBar = 0;
+
 		if (OnStop != null){
 			OnStop();
 		}
@@ -430,6 +433,7 @@ public class AudioManager : MonoBehaviour {
 	}
 
 	public float GetTimeAtBar(int _bar){
+		return m_currentBar;
 		return GetTimePerBar() * (_bar - 1);
 		return (m_timeSampleOffset / (float)m_audioSourceFrequency + m_timeSignatureUpper * _bar / (m_bpm * m_timeSignatureLower / 240.0f));
 	}

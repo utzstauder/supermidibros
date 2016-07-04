@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c716eca65d2f4271ad9c2db5bb83f8c, type: 3}
+  m_Name: HillZoneEnvironment
+  m_EditorClassIdentifier: 
+  environmentTiles:
+  - name: 0_flat
+    prefab: {fileID: 119120, guid: 56cd25887876a3b4dac17f23588c5d73, type: 2}
+    connectsTo: 000000000300000004000000
+    length: 1
+  - name: 1_flatBridge
+    prefab: {fileID: 141674, guid: 5063a6a303a2b4b40bd43b83dfbe57e7, type: 2}
+    connectsTo: 0100000002000000
+    length: 1
+  - name: 2_flatBridgeToFlat
+    prefab: {fileID: 155430, guid: 179dbb292dfbe474499767120799d723, type: 2}
+    connectsTo: 00000000
+    length: 1
+  - name: 3_flatToFlatBridge
+    prefab: {fileID: 155430, guid: 4f16488df0ccd1142b21ed55047ee4de, type: 2}
+    connectsTo: 01000000
+    length: 1
+  - name: 4_flatToLow
+    prefab: {fileID: 175066, guid: 1da64a75c1e56ce499626954eddf2680, type: 2}
+    connectsTo: 07000000
+    length: 2
+  - name: 5_highStraight
+    prefab: {fileID: 183328, guid: dc1e2fed31e1d9e42be1343b3495a4be, type: 2}
+    connectsTo: 0500000006000000
+    length: 1
+  - name: 6_highToLow
+    prefab: {fileID: 102728, guid: ce92cc1148cac2f40917a5bb1aa5f960, type: 2}
+    connectsTo: 07000000
+    length: 1
+  - name: 7_lowStraight
+    prefab: {fileID: 144888, guid: 5dc11e73d5d0b064a885bfb96cd3aee1, type: 2}
+    connectsTo: 070000000800000009000000
+    length: 1
+  - name: 8_lowToFlat
+    prefab: {fileID: 175066, guid: 0ad9035616ab741409dfdca3d4f83a29, type: 2}
+    connectsTo: 00000000
+    length: 1
+  - name: 9_lowToHigh
+    prefab: {fileID: 102728, guid: 5a59086608570194f8293cf61208c572, type: 2}
+    connectsTo: 05000000
+    length: 1
