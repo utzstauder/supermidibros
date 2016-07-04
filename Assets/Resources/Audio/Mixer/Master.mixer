@@ -125,7 +125,7 @@ AudioMixerController:
     - 38d08246be79041d49f97dc6b25b5c1b
     - e3b22f9b96cce40f0b0d40c2dc3dbec7
     name: View - Melody
-  m_CurrentViewIndex: 4
+  m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24568864}
 --- !u!243 &24300001
 AudioMixerGroupController:
@@ -2335,7 +2335,7 @@ AudioMixerSnapshotController:
     fad13e76a9c114cabbab4d385b8acec3: -0.002441872
     d88df7f622ead46a5a0253b4dcd648e4: 0
     ce16b907943274d53b2f8cd8b6521ec6: 0
-    56c611875882d4f9a8a403f3bec403ce: -80
+    56c611875882d4f9a8a403f3bec403ce: -0.102314055
     d8c5f2187a0824b3a8c7d3c64b8c48ca: 0
     dce981d8cd9774539a2d78f350584004: 0
     87c80399271b842a994d231b22868383: 0
