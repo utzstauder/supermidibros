@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: d4805136cadfc8f459ed4404e80625a0
-timeCreated: 1467631372
+guid: e87def3c1b63b4805b968513c02134aa
+timeCreated: 1467630999
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -31,13 +31,21 @@ ModelImporter:
     3300006: Object003
     3300008: Plane001
     3300010: Plane004
-    4300000: Plane001
-    4300002: Plane004
-    4300004: Box006
-    4300006: Object001
-    4300008: Object003
-    4300010: Box001
-    7400000: Take 001
+    4300000: Box001
+    4300002: Object003
+    4300004: Object001
+    4300006: Box006
+    4300008: Plane004
+    4300010: Plane001
+    7400000: Box001|Box001|Take 001|BaseLayer
+    7400002: Box001|Object001|Take 001|BaseLayer
+    7400004: Box001|Object003|Take 001|BaseLayer
+    7400006: Object003|Box001|Take 001|BaseLayer
+    7400008: Object003|Object001|Take 001|BaseLayer
+    7400010: Object003|Object003|Take 001|BaseLayer
+    7400012: Object001|Box001|Take 001|BaseLayer
+    7400014: Object001|Object001|Take 001|BaseLayer
+    7400016: Object001|Object003|Take 001|BaseLayer
     9500000: //RootNode
   materials:
     importMaterials: 1
