@@ -18,6 +18,8 @@ public class EnvironmentManager : MonoBehaviour {
 	private AudioManager audioManager;
 	private Transform dynamicObjects;
 
+	public int finalBar = 5;
+
 	void Awake () {
 		if (environmentSet == null){
 			Debug.LogError("No EnvironmentSet attached");
@@ -64,6 +66,17 @@ public class EnvironmentManager : MonoBehaviour {
 		}
 	}
 
+	public void Reset(){
+		environmentTileObjectsInScene.Clear();
+		environmentTilesInScene.Clear();
+
+		//TODO: spawn first X elements
+		for (int i = 0; i < spawnTilesInAdvance; i++){
+			PrepareEnvironmentTileAtBar((i * barsPerTile) + 1 + barsPerTile);
+			EnableEnvironmentTileInScene((i * barsPerTile) + 1 + barsPerTile);
+		}
+	}
+
 	void PoolTiles(){
 		for (int i = 0; i < environmentSet.environmentTiles.Length; i++){
 			int tilesToSpawn = environmentSet.ConnectsToSelf(environmentSet.environmentTiles[i]) ? spawnTilesInAdvance : 1;
@@ -79,6 +92,7 @@ public class EnvironmentManager : MonoBehaviour {
 	#region spawn functions
 
 	void OnBar(int bar){
+
 		if ((bar - 1) % barsPerTile == 0){
 			EnableEnvironmentTileInScene(bar + (spawnTilesInAdvance * barsPerTile));
 			PrepareEnvironmentTileAtBar(bar + (spawnTilesInAdvance * barsPerTile) + barsPerTile);
@@ -88,7 +102,6 @@ public class EnvironmentManager : MonoBehaviour {
 			environmentTileObjectsInScene[bar - barsPerTile].SetActive(false);
 			environmentTileObjectsInScene.Remove(bar - barsPerTile);
 		}
-
 
 	}
 
