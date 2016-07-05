@@ -124,12 +124,3 @@ MonoBehaviour:
       - m_name: 
         m_audioClip: {fileID: 8300000, guid: 0469f99c1146d42a58a73ff090133de1, type: 3}
         m_loopLength: 2
-    - m_name: Bells
-      m_stack: 0
-      m_audioChannels:
-      - m_name: 
-        m_audioClip: {fileID: 8300000, guid: 8a11e27c46dea42d58495f7ecc6ffd07, type: 3}
-        m_loopLength: 2
-      - m_name: 
-        m_audioClip: {fileID: 8300000, guid: 9a30837afde7846cdae6fb90a7a9c488, type: 3}
-        m_loopLength: 2
