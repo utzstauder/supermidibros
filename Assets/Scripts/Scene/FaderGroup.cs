@@ -20,6 +20,8 @@ public class FaderGroup : MonoBehaviour {
 	private Vector3[,] m_gridAsWorldCoords;
 	private int[] m_faderPositionsOnGrid;
 
+	private bool[] isAllignedWithPattern = new bool[Constants.NUMBER_OF_PLAYERS];
+	private int[] categoryOfAllignedPattern = new int[Constants.NUMBER_OF_PLAYERS];
 
 	[Header("Gizmos")]
 	public Color m_faderColor = Color.blue;
@@ -76,23 +78,51 @@ public class FaderGroup : MonoBehaviour {
 					+ Vector3.back * ((i - Constants.NUMBER_OF_PLAYERS/2) * m_faderPadding + (float)m_faderPadding/2);
 			}
 		}
+
+		if (Application.isPlaying){
+			//CheckForAllignment();
+		}
 	}
 
 
 	#region private functions
 
+	void CheckForAllignment(){
+		// reset
+		for (int i = 0; i < isAllignedWithPattern.Length; i++){
+			isAllignedWithPattern[i] = false;
+			categoryOfAllignedPattern[i] = -1;
+		}
+
+		int lookXBarsAhead = 1;
+		bool[] allignmentInfo = isAllignedWithPattern;
+
+		// update positions
+		m_faderPositionsOnGrid = GetFaderPositionsOnGrid();
+		Vector3 position = Vector3.zero + Vector3.right *
+			(m_audioManager.m_timeSignatureUpper * Constants.UNITS_PER_BEAT) *
+			(m_audioManager.GetCurrentBar() + lookXBarsAhead);
+
+		m_collider = Physics.OverlapSphere(position, m_detectionRange);
+
+		for (int c = 0; c < m_collider.Length; c++){
+			PatternControll patternControll;
+			if(patternControll = m_collider[c].GetComponent<PatternControll>()){
+				allignmentInfo = patternControll.GetCollisionCheckInfo(m_faderPositionsOnGrid);
+			}
+			for (int i = 0; i < isAllignedWithPattern.Length; i++){
+				if (allignmentInfo[i]){
+					isAllignedWithPattern[i] = true;
+					categoryOfAllignedPattern[i] = patternControll.pattern.audioCategory;
+				}
+			}
+		}
+	}
+
 	/**
 	 * This function will check for collision and is called on every subbeat
 	 */
 	void CheckForCollision(int beat){
-//		for (int i = 0; i < m_faderGroup.Length; i++){
-//			m_collider = Physics.OverlapSphere(m_faderGroup[i].position, m_detectionRange);
-//			for (int c = 0; c < m_collider.Length; c++){
-//				if (m_collider[c].GetComponent<Trigger>()){
-//					m_collider[c].GetComponent<Trigger>().OnCollision(i);
-//				}
-//			}
-//		}
 
 		// update positions
 		m_faderPositionsOnGrid = GetFaderPositionsOnGrid();
@@ -104,26 +134,6 @@ public class FaderGroup : MonoBehaviour {
 				patternControll.CollisionCheck(m_faderPositionsOnGrid);
 			}
 		}
-
-		// old stuff
-//		for (int x = 0; x < Constants.NUMBER_OF_PLAYERS; x++){
-//			for (int y = 0; y < Constants.VERTICAL_POSITIONS; y++){
-//				Vector3 position = m_gridAsWorldCoords[x, y] + Vector3.right * transform.position.x;
-//
-//				m_collider = Physics.OverlapSphere(position, m_detectionRange);
-//				for (int c = 0; c < m_collider.Length; c++){
-//					Trigger trigger;
-//
-//					if (trigger = m_collider[c].GetComponent<Trigger>()){
-//						if (y == m_faderPositionsOnGrid[x]){
-//							trigger.OnCollision(x);
-//						} else {
-//							trigger.OnMiss(x);
-//						}
-//					}
-//				}
-//			}
-//		}
 
 	}
 
@@ -156,6 +166,14 @@ public class FaderGroup : MonoBehaviour {
 
 
 	#region public getter
+
+	public bool[] GetAlignmentInfo(){
+		return isAllignedWithPattern;
+	}
+
+	public int[] GetAlignmentInfoCategory(){
+		return categoryOfAllignedPattern;
+	}
 
 	public Vector3 GetLocalPositionOfFader(int _faderId){
 		if (m_faderGroup.Length > 0){

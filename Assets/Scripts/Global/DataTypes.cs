@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace CustomDataTypes {
 
 	[System.Serializable]
-	public struct Pattern{
+	public class Pattern{
 		public int[] coords;
 		public int size;
 		public float complexity;
@@ -57,9 +58,9 @@ namespace CustomDataTypes {
 			}
 
 
-			audioCategory	= -1;
-			instrumentGroup	= -1;
-			variation		= -1;
+			audioCategory	= 0;
+			instrumentGroup	= 0;
+			variation		= 0;
 		}
 
 		public override string ToString(){
@@ -73,6 +74,41 @@ namespace CustomDataTypes {
 				}
 			}
 			return name;
+		}
+
+		public static bool Overlap(Pattern a, Pattern b){
+			for (int i = 0; i < Constants.NUMBER_OF_PLAYERS; i++){
+				if (a.coords[i] == b.coords[i]){
+					return true;
+				}
+			}
+			return false;
+		}
+
+		public static bool Overlap(params Pattern[] patterns){
+			if (patterns.Length > 1){
+				for (int i = 1; i < patterns.Length; i++){
+					for (int j = i; j < patterns.Length; j++){
+						if (Overlap(patterns[i], patterns[j])){
+							return true;
+						}
+					}
+				}
+			}
+			return false;
+		}
+
+		public static bool Overlap(List<Pattern> listOfPatterns){
+			if (listOfPatterns.Count > 1){
+				for (int i = 0; i < listOfPatterns.Count; i++){
+					for (int j = i+1; j < listOfPatterns.Count; j++){
+						if (Overlap(listOfPatterns[i], listOfPatterns[j])){
+							return true;
+						}
+					}
+				}
+			}
+			return false;
 		}
 	}
 

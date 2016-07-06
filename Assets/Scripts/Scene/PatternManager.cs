@@ -21,7 +21,10 @@ public class PatternManager : MonoBehaviour {
 	public bool symmetricalOnly = false;
 	public int firstPatternAt = 2;
 	public int spawnXBarsAhead = 2;
-	public int spawnEveryXBar = 1;
+
+	public int melodyEveryXBars = 8;
+	public int harmonyEveryXBars = 4;
+	public int rhythmEveryXBars = 1;
 
 	#endregion
 
@@ -37,9 +40,8 @@ public class PatternManager : MonoBehaviour {
 	List<Pattern> patternList;
 
 	// spawn preparation
-	PatternControll nextPattern;
-	Dictionary<int, PatternControll> patternsInSceneDict;
-	private int prepareXBarsAhead = 4;
+	Dictionary<int, List<PatternControll>> patternsInSceneDict;
+	private int prepareXBarsAhead = 8;
 
 	#endregion
 
@@ -54,6 +56,7 @@ public class PatternManager : MonoBehaviour {
 			// subscribe to events
 			audioManager.OnBar	+= OnBar;
 			audioManager.OnBeat += OnBeat;
+			audioManager.OnReset += OnReset;
 		}
 
 		dynamicObjects = GameObject.Find("DynamicObjects").transform;
@@ -62,7 +65,7 @@ public class PatternManager : MonoBehaviour {
 			dynamicObjects.gameObject.name = "DynamicObjects";
 		}
 
-		patternsInSceneDict = new Dictionary<int, PatternControll>();
+		patternsInSceneDict = new Dictionary<int, List<PatternControll>>();
 
 		Init();
 	}
@@ -83,28 +86,32 @@ public class PatternManager : MonoBehaviour {
 	void Init(){
 		// fill lists with patternControll objects
 		pooledPatterns = new List<PatternControll>();
+
 		for (int i = 0; i < patternsInSceneLength; i++){
 			PatternControll patternControll = Instantiate(patternObjectPrefab, transform.position, Quaternion.identity) as PatternControll;
 			patternControll.transform.parent = dynamicObjects;
 			patternControll.gameObject.SetActive(false);
+			patternControll.SetPrepared(false);
 			pooledPatterns.Add(patternControll);
 		}
 
 		// initially prepare the first pattern(s)
 
 		for (int i = firstPatternAt; i < prepareXBarsAhead; i++){
-			// get available object from pool
-			PatternControll patternControll = GetElementFromList();
-
-			// prepare object in scene
-			Pattern pattern = GetRandomPatternWithAudio();
-			patternControll.ChangePattern(pattern, patternColors[pattern.audioCategory]);
-			patternControll.MoveToPosition(i, 1, 1);
-
-			// add object to dict to "reserve" that bar
-			patternControll.SetPrepared(true);
-			patternsInSceneDict.Add(i, patternControll);
+			PreparePatternsForBar(i);
 		}
+	}
+
+	void OnReset(){
+		Reset();
+	}
+
+	void Reset(){
+		for (int i = 0; i < pooledPatterns.Count; i++){
+			pooledPatterns[i].SetPrepared(false);
+			pooledPatterns[i].gameObject.SetActive(false);
+		}
+		patternsInSceneDict.Clear();
 	}
 
 	#endregion
@@ -121,6 +128,23 @@ public class PatternManager : MonoBehaviour {
 		return null;
 	}
 
+	private List<PatternControll> GetElementsFromList(int count){
+		List<PatternControll> listOfPatternControll = new List<PatternControll>();
+
+		for (int i = 0; i < pooledPatterns.Count; i++){
+			if (!pooledPatterns[i].IsPrepared() && pooledPatterns[i].gameObject.activeSelf == false){
+				listOfPatternControll.Add(pooledPatterns[i]);
+				pooledPatterns.RemoveAt(i);
+
+				if (listOfPatternControll.Count >= count){
+					return listOfPatternControll;
+				}
+			}
+		}
+
+		return null;
+	}
+
 	#endregion
 
 
@@ -133,13 +157,20 @@ public class PatternManager : MonoBehaviour {
 //			PrepareNextPattern();
 //		}
 
-		if (patternsInSceneDict.ContainsKey(bar + spawnXBarsAhead)){
-			SpawnPatternAtBar(bar + spawnXBarsAhead);
-		}
+		//Debug.Log(bar);
+
+//		if (patternsInSceneDict.ContainsKey(bar + spawnXBarsAhead)){
+//			SpawnPatternAtBar(bar + spawnXBarsAhead);
+//		}
 	}
 
 	private void OnBeat(int beat){
-		
+		// spawn on offbeat
+		if (beat > 2){
+			if (patternsInSceneDict.ContainsKey(audioManager.GetCurrentBar() + spawnXBarsAhead)){
+				SpawnPatternAtBar(audioManager.GetCurrentBar() + spawnXBarsAhead);
+			}
+		}
 	}
 
 	#endregion
@@ -147,40 +178,10 @@ public class PatternManager : MonoBehaviour {
 
 	#region spawning functions
 
-	// DEPRECATED
-	// TODO: just for testing; needs rework
-	private void PrepareNextPattern(){
-		nextPattern = GetElementFromList();
-
-		if (nextPattern == null){
-			Debug.Log("There was no available object in the pool. Try extending it.");
-		} else {
-			int size = 8;
-			if (symmetricalOnly){
-				size = Random.Range(1, Constants.NUMBER_OF_PLAYERS/2 + 1) * 2;
-			} else {
-				size = Random.Range(2, Constants.NUMBER_OF_PLAYERS + 1);
-			}
-			Pattern pattern = GetRandomPattern(true, size);
-			if (allZeroes){
-				pattern = Pattern.bottom;
-			}
-			pattern.audioCategory = audioManager.m_soundSet.GetRandomIndex();
-			pattern.instrumentGroup = audioManager.m_soundSet.m_audioCategories[pattern.audioCategory].GetRandomIndex(); 
-			pattern.variation = audioManager.m_soundSet.m_audioCategories[pattern.audioCategory].m_audioChannelGroups[pattern.instrumentGroup].GetRandomIndex();
-			nextPattern.ChangePattern(pattern, patternColors[pattern.audioCategory]);
-		}
-	}
-
 	private void SpawnPatternAtBar(int bar){
-//		if (nextPattern == null){
-//			Debug.Log("No nextPattern available.");
-//		} else {
-//			nextPattern.MoveToPosition(bar, 1, 1);
-//			nextPattern.gameObject.SetActive(true);
-//		}
-		Debug.Log("Spawing pattern at " + bar);
-		patternsInSceneDict[bar].gameObject.SetActive(true);
+		for (int i = 0; i < patternsInSceneDict[bar].Count; i++){
+			patternsInSceneDict[bar][i].gameObject.SetActive(true);
+		}
 	}
 
 	#endregion
@@ -190,41 +191,15 @@ public class PatternManager : MonoBehaviour {
 
 	private IEnumerator PreparePatternsCoroutine(){
 		int currentBar, targetBar;
-		patternsInSceneDict = new Dictionary<int, PatternControll>();
 
 		while (true){
 			currentBar = audioManager.GetCurrentBar();
 			targetBar = currentBar + prepareXBarsAhead;
 
-			// prepare new patterns
-			if (!patternsInSceneDict.ContainsKey(targetBar)){
-				Debug.Log("Preparing new pattern for bar " + targetBar);
-				// there is no pattern at targetBar, prepare one
-
-				// get available object from pool
-				PatternControll patternControll = GetElementFromList();
-				while (patternControll == null){
-					yield return null;
-					patternControll = GetElementFromList();
-				}
-					
-				// prepare object in scene
-				Pattern pattern = GetRandomPatternWithAudio();
-				patternControll.ChangePattern(pattern, patternColors[pattern.audioCategory]);
-				patternControll.MoveToPosition(targetBar, 1, 1);
-
-				// add object to dict to "reserve" that bar
-				patternControll.SetPrepared(true);
-				patternsInSceneDict.Add(targetBar, patternControll);
-			}
+			PreparePatternsForBar(targetBar);
 
 			// delete old pattern(s)
-			if (patternsInSceneDict.ContainsKey(currentBar - 1)){
-				//Debug.Log("disabling pattern at bar " + (currentBar - 1));
-				patternsInSceneDict[currentBar - 1].SetPrepared(false);
-				patternsInSceneDict[currentBar - 1].gameObject.SetActive(false);
-				patternsInSceneDict.Remove(currentBar - 1);
-			}
+			DeleteAtBar(currentBar - 2);
 
 			yield return null;
 		}
@@ -233,25 +208,145 @@ public class PatternManager : MonoBehaviour {
 	#endregion
 
 
-	#region private helpers
+	#region pattern functions
 
-	Pattern GetRandomPatternWithAudio(){
+	void PreparePatternsForBar(int targetBar){
+		// prepare new patterns
+		if (!patternsInSceneDict.ContainsKey(targetBar)){
+			int count = 0;
+
+			if ((targetBar-1) % harmonyEveryXBars == 0){
+				count = (allZeroes) ? 1 : Random.Range(1, 4);
+			} else if ((targetBar-1) % melodyEveryXBars == 0){
+				count = (allZeroes) ? 1 : Random.Range(1, 3);
+			} else if ((targetBar-1) % rhythmEveryXBars == 0){
+				count = 1;
+			}
+
+			// get available objects from pool
+			List<PatternControll> patternControllList = GetElementsFromList(count);
+
+			if (patternControllList != null){
+				// prepare object in scene
+				List<Pattern> patternList = GetRandomPatterns(count);
+
+				if (allZeroes){
+					patternList[0] = Pattern.bottom;
+				} 
+
+				AssignAudioToPatterns(targetBar, patternList);
+
+				for (int i = 0; i < count; i++){
+					patternControllList[i].ChangePattern(patternList[i], patternColors[patternList[i].audioCategory]);
+					patternControllList[i].MoveToPosition(targetBar, 1, 1);
+
+					patternControllList[i].SetPrepared(true);
+				}
+
+				// add object to dict to "reserve" that bar
+				patternsInSceneDict.Add(targetBar, patternControllList);
+			}
+		}
+	}
+
+	Pattern GetRandomPatternWithAudio(int targetBar){
+		Pattern pattern = GetRandomPattern(symmetricalOnly, GetPatternSize());
+		if (allZeroes){
+			pattern = Pattern.bottom;
+		}
+
+		pattern.audioCategory = audioManager.m_soundSet.GetRandomIndex();
+		pattern.instrumentGroup = audioManager.m_soundSet.m_audioCategories[pattern.audioCategory].GetRandomIndex(); 
+		pattern.variation = audioManager.m_soundSet.m_audioCategories[pattern.audioCategory].m_audioChannelGroups[pattern.instrumentGroup].GetRandomIndex();
+
+
+		return pattern;
+	}
+
+
+	List<Pattern> GetRandomPatterns(int count){
+		count = Mathf.Clamp(count, 1, Constants.VERTICAL_POSITIONS);
+
+		List<Pattern> listOfPatterns = new List<Pattern>();
+
+		for (int i = 0; i < count; i++){
+			// prepare new pattern
+			Pattern pattern = GetRandomPattern(symmetricalOnly, GetPatternSize());
+
+			listOfPatterns.Add(pattern);
+
+			if (i > 0 && Pattern.Overlap(listOfPatterns)){
+				listOfPatterns.Remove(pattern);
+				i--;
+			}
+		}
+
+		return listOfPatterns;
+	}
+
+
+	void AssignAudioToPatterns(int targetBar, List<Pattern> patterns){
+		//Debug.Log(targetBar + " " + patterns.Count);
+
+		if (patterns == null){
+			return;
+		} else 
+			if (patterns.Count == 0){
+				return;
+			}
+
+		int numberOfCategoriesToAssign = Mathf.Clamp(3, 1, patterns.Count);
+		int startIndex = 0;
+
+		if ((targetBar-1) % harmonyEveryXBars == 0){
+			numberOfCategoriesToAssign = Mathf.Clamp(3, 1, patterns.Count);
+			startIndex = 2;
+		} else if ((targetBar-1) % melodyEveryXBars == 0){
+			numberOfCategoriesToAssign = Mathf.Clamp(2, 1, patterns.Count);
+			startIndex = 1;
+		} else {
+			numberOfCategoriesToAssign = 1;
+			startIndex = 0;
+		}
+			
+		//Debug.Log(numberOfCategoriesToAssign + " " + startIndex);
+
+		foreach(Pattern pattern in patterns){
+			pattern.audioCategory = (startIndex % numberOfCategoriesToAssign);
+			if (allZeroes) pattern.audioCategory = startIndex;
+			pattern.instrumentGroup = audioManager.GetRandomInstrument(pattern.audioCategory);
+			pattern.variation = audioManager.GetRandomVariation(pattern.audioCategory, pattern.instrumentGroup);
+
+			startIndex++;
+			//Debug.Log(pattern.audioCategory + " " + pattern.instrumentGroup + " " + pattern.variation);
+		}
+
+	}
+
+
+	int GetPatternSize(){
 		int size = 8;
 		if (symmetricalOnly){
 			size = Random.Range(1, Constants.NUMBER_OF_PLAYERS/2 + 1) * 2;
 		} else {
 			size = Random.Range(2, Constants.NUMBER_OF_PLAYERS + 1);
 		}
-		Pattern pattern = GetRandomPattern(true, size);
-		if (allZeroes){
-			pattern = Pattern.bottom;
-		}
-		pattern.audioCategory = audioManager.m_soundSet.GetRandomIndex();
-		pattern.instrumentGroup = audioManager.m_soundSet.m_audioCategories[pattern.audioCategory].GetRandomIndex(); 
-		pattern.variation = audioManager.m_soundSet.m_audioCategories[pattern.audioCategory].m_audioChannelGroups[pattern.instrumentGroup].GetRandomIndex();
-
-		return pattern;
+		return size;
 	}
+
+	void DeleteAtBar(int bar){
+		if (patternsInSceneDict.ContainsKey(bar)){
+			//Debug.Log("removing at " + bar);
+			foreach (PatternControll patternControll in patternsInSceneDict[bar]){
+				patternControll.SetPrepared(false);
+				patternControll.gameObject.SetActive(false);
+				pooledPatterns.Add(patternControll);
+			}
+			patternsInSceneDict[bar].Clear();
+			patternsInSceneDict.Remove(bar);
+		}
+	}
+
 
 	#endregion
 

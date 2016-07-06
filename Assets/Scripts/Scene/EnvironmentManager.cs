@@ -18,8 +18,6 @@ public class EnvironmentManager : MonoBehaviour {
 	private AudioManager audioManager;
 	private Transform dynamicObjects;
 
-	public int finalBar = 5;
-
 	void Awake () {
 		if (environmentSet == null){
 			Debug.LogError("No EnvironmentSet attached");
@@ -30,6 +28,9 @@ public class EnvironmentManager : MonoBehaviour {
 			Debug.LogError("No AudioManager found in scene!");
 		} else {
 			audioManager.OnBar += OnBar;
+			audioManager.OnBeat += OnBeat;
+			audioManager.OnStop += OnStop;
+			audioManager.OnReset += OnReset;
 		}
 
 		dynamicObjects = GameObject.Find("DynamicObjects").transform;
@@ -59,21 +60,29 @@ public class EnvironmentManager : MonoBehaviour {
 
 		PoolTiles();
 
-		//TODO: spawn first X elements
+		//spawn first X elements
 		for (int i = 0; i < spawnTilesInAdvance; i++){
-			PrepareEnvironmentTileAtBar((i * barsPerTile) + 1 + barsPerTile);
-			EnableEnvironmentTileInScene((i * barsPerTile) + 1 + barsPerTile);
+			PrepareEnvironmentTileAtBar((i * barsPerTile) + 1);
+			EnableEnvironmentTileInScene((i * barsPerTile) + 1);
 		}
+	}
+
+	void OnStop(){
+		Reset();
+	}
+
+	void OnReset(){
+		Reset();
 	}
 
 	public void Reset(){
 		environmentTileObjectsInScene.Clear();
 		environmentTilesInScene.Clear();
 
-		//TODO: spawn first X elements
+		//spawn first X elements
 		for (int i = 0; i < spawnTilesInAdvance; i++){
-			PrepareEnvironmentTileAtBar((i * barsPerTile) + 1 + barsPerTile);
-			EnableEnvironmentTileInScene((i * barsPerTile) + 1 + barsPerTile);
+			PrepareEnvironmentTileAtBar((i * barsPerTile) + 1);
+			EnableEnvironmentTileInScene((i * barsPerTile) + 1);
 		}
 	}
 
@@ -92,20 +101,34 @@ public class EnvironmentManager : MonoBehaviour {
 	#region spawn functions
 
 	void OnBar(int bar){
+		DeleteTileAtBar(bar);
+	}
 
+	void OnBeat(int beat){
+		SpawnTileAtBar(audioManager.GetCurrentBar());
+	}
+
+	void SpawnTileAtBar(int bar){
 		if ((bar - 1) % barsPerTile == 0){
 			EnableEnvironmentTileInScene(bar + (spawnTilesInAdvance * barsPerTile));
-			PrepareEnvironmentTileAtBar(bar + (spawnTilesInAdvance * barsPerTile) + barsPerTile);
+			PrepareEnvironmentTileAtBar(bar + ((spawnTilesInAdvance - 1) * barsPerTile) + barsPerTile);
 		}
+	}
 
+	void DeleteTileAtBar(int bar){
 		if (environmentTileObjectsInScene.ContainsKey(bar - barsPerTile)){
 			environmentTileObjectsInScene[bar - barsPerTile].SetActive(false);
 			environmentTileObjectsInScene.Remove(bar - barsPerTile);
 		}
-
 	}
 
 	void PrepareEnvironmentTileAtBar(int bar){
+		if (environmentTileObjectsInScene.ContainsKey(bar)){
+			return;
+		}
+
+		//Debug.Log("Preparing at " + bar);
+
 		EnvironmentSet.EnvironmentTile nextTile;
 		if (environmentTilesInScene.ContainsKey(bar - barsPerTile)){
 			int index = environmentTilesInScene[bar - barsPerTile].GetNextTileRandom();

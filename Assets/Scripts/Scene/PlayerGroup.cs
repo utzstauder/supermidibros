@@ -15,7 +15,6 @@ public class PlayerGroup : MonoBehaviour {
 	private FaderGroup m_faderGroup;
 	private GameObject[] m_playerGroup;
 
-	private Color m_gizmosColor = Color.cyan;
 
 	void Awake () {
 		if (!m_faderGroup){
