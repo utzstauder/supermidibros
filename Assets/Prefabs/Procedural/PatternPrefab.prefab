@@ -77,6 +77,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   childrenPrefab: {fileID: 11467456, guid: 3b9c53a290da44175bfd2493f0dad6f7, type: 2}
+  pattern:
+    coords: 0000000000000000000000000000000000000000000000000000000000000000
+    size: 8
+    complexity: 0
+    audioCategory: 0
+    instrumentGroup: 0
+    variation: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

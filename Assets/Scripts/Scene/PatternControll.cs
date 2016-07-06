@@ -10,7 +10,7 @@ public class PatternControll : Trigger {
 
 	private bool isPrepared = false;
 
-	private Pattern pattern = Pattern.bottom;
+	public Pattern pattern = Pattern.bottom;
 
 	private PatternChildControll[] children = new PatternChildControll[Constants.NUMBER_OF_PLAYERS];
 
@@ -76,6 +76,16 @@ public class PatternControll : Trigger {
 		} else if(hits > 0){
 			OnFailure();
 		}
+	}
+
+	public bool[] GetCollisionCheckInfo(int[] playerCoordinates){
+		bool[] returnValues = new bool[playerCoordinates.Length];
+
+		for (int i = 0; i < playerCoordinates.Length; i++){
+			returnValues[i] = (pattern.coords[i] == playerCoordinates[i]);
+		}
+
+		return returnValues;
 	}
 
 	void DisableThis(){

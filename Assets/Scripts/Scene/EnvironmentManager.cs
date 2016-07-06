@@ -60,10 +60,10 @@ public class EnvironmentManager : MonoBehaviour {
 
 		PoolTiles();
 
-		//TODO: spawn first X elements
+		//spawn first X elements
 		for (int i = 0; i < spawnTilesInAdvance; i++){
-			PrepareEnvironmentTileAtBar((i * barsPerTile) + 1 + barsPerTile);
-			EnableEnvironmentTileInScene((i * barsPerTile) + 1 + barsPerTile);
+			PrepareEnvironmentTileAtBar((i * barsPerTile) + 1);
+			EnableEnvironmentTileInScene((i * barsPerTile) + 1);
 		}
 	}
 
@@ -79,10 +79,10 @@ public class EnvironmentManager : MonoBehaviour {
 		environmentTileObjectsInScene.Clear();
 		environmentTilesInScene.Clear();
 
-		//TODO: spawn first X elements
+		//spawn first X elements
 		for (int i = 0; i < spawnTilesInAdvance; i++){
-			PrepareEnvironmentTileAtBar((i * barsPerTile) + 1 + barsPerTile);
-			EnableEnvironmentTileInScene((i * barsPerTile) + 1 + barsPerTile);
+			PrepareEnvironmentTileAtBar((i * barsPerTile) + 1);
+			EnableEnvironmentTileInScene((i * barsPerTile) + 1);
 		}
 	}
 
@@ -111,7 +111,7 @@ public class EnvironmentManager : MonoBehaviour {
 	void SpawnTileAtBar(int bar){
 		if ((bar - 1) % barsPerTile == 0){
 			EnableEnvironmentTileInScene(bar + (spawnTilesInAdvance * barsPerTile));
-			PrepareEnvironmentTileAtBar(bar + (spawnTilesInAdvance * barsPerTile) + barsPerTile);
+			PrepareEnvironmentTileAtBar(bar + ((spawnTilesInAdvance - 1) * barsPerTile) + barsPerTile);
 		}
 	}
 
@@ -126,6 +126,8 @@ public class EnvironmentManager : MonoBehaviour {
 		if (environmentTileObjectsInScene.ContainsKey(bar)){
 			return;
 		}
+
+		//Debug.Log("Preparing at " + bar);
 
 		EnvironmentSet.EnvironmentTile nextTile;
 		if (environmentTilesInScene.ContainsKey(bar - barsPerTile)){
