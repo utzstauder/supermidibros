@@ -175,22 +175,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 11440534, guid: 9830946070aa04b649b2ca2eb13f425e, type: 2}
-      propertyPath: on
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11440534, guid: 9830946070aa04b649b2ca2eb13f425e, type: 2}
-      propertyPath: sceneViewFollowers.Array.data[0].positionOffset.x
-      value: -6.45
-      objectReference: {fileID: 0}
-    - target: {fileID: 11428848, guid: 9830946070aa04b649b2ca2eb13f425e, type: 2}
-      propertyPath: m_detectionRange
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 11440534, guid: 9830946070aa04b649b2ca2eb13f425e, type: 2}
-      propertyPath: onlyInPlayMode
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9830946070aa04b649b2ca2eb13f425e, type: 2}
   m_IsPrefabParent: 0
@@ -529,14 +513,6 @@ Prefab:
       propertyPath: allZeroes
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 11493844, guid: 0b4ab94d14abf48208701fe74c72c14b, type: 2}
-      propertyPath: spawnXBarsAhead
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 191250, guid: 0b4ab94d14abf48208701fe74c72c14b, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b4ab94d14abf48208701fe74c72c14b, type: 2}
   m_IsPrefabParent: 0
@@ -792,10 +768,6 @@ Prefab:
     - target: {fileID: 436980, guid: 84b373dc5010b422bb8b45fba57f323d, type: 2}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8231124, guid: 84b373dc5010b422bb8b45fba57f323d, type: 2}
-      propertyPath: OutputAudioMixerGroup
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 84b373dc5010b422bb8b45fba57f323d, type: 2}

@@ -59,14 +59,14 @@ public class Trigger : MonoBehaviour {
 	 * This will send a trigger event to every target this trigger is attached to
 	 */
 	protected virtual void BroadcastTriggerSuccess(){
-		Debug.Log("Trigger Success");
+		//Debug.Log("Trigger Success");
 		if (OnTrigger != null) {
 			OnTrigger(this, true);
 		}
 	}
 
 	protected virtual void BroadcastTriggerFailure(){
-		Debug.Log("Trigger Failure");
+		//Debug.Log("Trigger Failure");
 		if (OnTrigger != null) {
 			OnTrigger(this, false);
 		}

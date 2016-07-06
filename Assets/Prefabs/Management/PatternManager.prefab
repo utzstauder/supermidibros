@@ -64,8 +64,11 @@ MonoBehaviour:
   - {r: 0.87870187, g: 0.32352942, b: 1, a: 0}
   allZeroes: 1
   symmetricalOnly: 1
-  spawnAheadOffset: 4
-  spawnEveryXBar: 2
+  firstPatternAt: 2
+  spawnXBarsAhead: 2
+  melodyEveryXBars: 8
+  harmonyEveryXBars: 4
+  rhythmEveryXBars: 2
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

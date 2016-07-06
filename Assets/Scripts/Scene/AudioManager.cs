@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System;
 using UnityEngine.Audio;
 
@@ -18,6 +19,7 @@ public class AudioManager : MonoBehaviour {
 	public int 			m_timeSignatureLower	= 4;
 	public int 			m_timeSampleOffset 		= 0;
 	[Range(1,32)]
+	[HideInInspector]
 	public int 			m_unitsPerBeat			= 4;
 
 	public delegate void BeatDelegate(int num);
@@ -28,6 +30,10 @@ public class AudioManager : MonoBehaviour {
 	public delegate void ControlDelegate();
 	public event ControlDelegate OnPlay;
 	public event ControlDelegate OnStop;
+	public event ControlDelegate OnReset;
+	public event ControlDelegate OnReady;
+
+	private bool resetQueued = false;
 
 	public delegate void AudioGroupDelegate();
 	public event AudioGroupDelegate OnAudioChannelChange;
@@ -52,6 +58,8 @@ public class AudioManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
+		m_audioSource = GetComponent<AudioSource>();
+
 		// log error if there is no masteraudioclip
 		if (m_masterAudioClip == null){
 			Debug.LogError("Set MasterAudioClip in AudioManager object!");
@@ -61,7 +69,6 @@ public class AudioManager : MonoBehaviour {
 				Debug.LogError("No AudioMixer attached");
 			}
 
-			m_audioSource = GetComponent<AudioSource>();
 			m_audioSource.clip = m_masterAudioClip;
 			m_audioSourceFrequency = (float)m_audioSource.clip.frequency;
 			m_audioSource.loop = true;
@@ -74,6 +81,12 @@ public class AudioManager : MonoBehaviour {
 //			Debug.Log(GetSamplesPerBar());
 
 			Init();
+
+//			float totalPossibleBars = (float.MaxValue / 2f) / (Constants.UNITS_PER_BEAT * m_timeSignatureUpper);
+//			Debug.Log("Total possible bars: " + totalPossibleBars);
+//			float timeUntilEndOfTheWorld = (float)totalPossibleBars * GetTimePerBar();
+//			Debug.Log("Time until end of world: " + timeUntilEndOfTheWorld/3600f);
+//			Debug.Log("Time to end of world: " + GetFloatAsTimeString(timeUntilEndOfTheWorld));
 		}
 	}
 
@@ -128,7 +141,8 @@ public class AudioManager : MonoBehaviour {
 			m_timeSignatureLower = Mathf.ClosestPowerOfTwo(m_timeSignatureLower);
 
 			// calculate new units per beat
-			m_unitsPerBeat = (int)Mathf.Pow(Constants.UNITS_PER_BEAT, 2.0f) / m_timeSignatureLower;
+			//m_unitsPerBeat = (int)Mathf.Pow(Constants.UNITS_PER_BEAT, 2.0f) / m_timeSignatureLower;
+			m_unitsPerBeat = Constants.UNITS_PER_BEAT;
 		}
 	}
 
@@ -165,12 +179,15 @@ public class AudioManager : MonoBehaviour {
 
 	// gets called on every full bar
 	void Bar(){
-//		m_currentBar = GetCurrentBar();
-		m_currentBar++;
+		if (resetQueued){
+			Reset();
+		}
+
+		m_currentBar = GetCurrentBar();
 
 		if (OnBar != null) OnBar(m_currentBar);
 
-		//Debug.Log("Bar " + m_currentBar);
+//		Debug.Log("Bar " + m_currentBar);
 	}
 
 
@@ -342,12 +359,27 @@ public class AudioManager : MonoBehaviour {
 
 		StopAll();
 
-		SetVolumeOfAllMixerGroups(-80.0f);
+		//SetVolumeOfAllMixerGroups(-80.0f);
+		SetAllChannelsActive(false);
 
 		m_currentBar = 0;
 
 		if (OnStop != null){
 			OnStop();
+		}
+	}
+
+	public void QueueReset(){
+		resetQueued = true;
+	}
+
+	void Reset(){
+		resetQueued = false;
+		SetAllChannelsActive(false);
+		SetCurrentTime(0);
+
+		if (OnReset != null){
+			OnReset();
 		}
 	}
 //
@@ -382,20 +414,119 @@ public class AudioManager : MonoBehaviour {
 
 	#region audio channel controll
 
+	public void OnAudioTrigger(bool success, int category, int instrument, int variation){
+		//Debug.Log(success + " " + category + " " + instrument + " " + variation);
+		if (m_audioSourcesInChildren[category, instrument, variation] == null){
+			return;
+		}
+		if (success){
+			// enable audio
+			if (!CanStack(category, instrument)){
+				for (int i = 0; i < m_audioSourcesInChildren.GetLength(2); i++){
+					if (m_audioSourcesInChildren[category, instrument, i] != null){
+						m_audioSourcesInChildren[category, instrument, i].mute = (variation == i) ? false : true;
+					}
+				}
+			} else {
+				m_audioSourcesInChildren[category, instrument, variation].mute = false;
+			}
+
+		} else {
+			
+			// disable audio
+			if (!m_audioSourcesInChildren[category, instrument, variation].mute){
+				m_audioSourcesInChildren[category, instrument, variation].mute = true;
+			} else {
+				
+				if (CanStack(category, instrument)){
+					// mute something else from that group
+					int[] indices = GetIndicesOfMutedVarations(false, category, instrument);
+					if (indices.Length > 0){
+						m_audioSourcesInChildren[category, instrument, UnityEngine.Random.Range(0, indices.Length)].mute = true;
+					}
+				}
+			}
+			
+		}
+	}
+		
+	int[] GetIndicesOfMutedVarations(bool muted, int category, int instrument){
+		List<int> intList = new List<int>();
+
+		//Debug.Log(muted + " " + category + " " + instrument);
+
+		for (int i = 0; i < m_audioSourcesInChildren.GetLength(2); i++){
+			if (m_audioSourcesInChildren[category, instrument, i] != null){
+				if(m_audioSourcesInChildren[category, instrument, i].mute == muted){
+					intList.Add(i);
+				}	
+			}
+		}
+
+		return intList.ToArray();
+	}
+
+	int[] GetNumberOfMutedVariationsInCategory(bool muted, int category){
+		int[] returnArray = new int[m_audioSourcesInChildren.GetLength(1)];
+
+		for (int i = 0; i < returnArray.Length; i++){
+			returnArray[i] = GetIndicesOfMutedVarations(muted, category, i).Length;
+		}
+
+		return returnArray;
+	}
+
+	/**
+	 * Returns the index of the instrument of category with the most muted variations
+	 */
+	public int GetRandomInstrument(int category){
+		return UnityEngine.Random.Range(0, m_audioSourcesInChildren.GetLength(1));
+
+		int[] mostMuted = GetNumberOfMutedVariationsInCategory(true, category);
+		int mostMutedIndex = 0;
+		int mostMutedValue = mostMuted[0];
+
+		if (mostMuted.Length < 2){
+			return 0;
+		}
+
+		for (int i = 1; i < mostMuted.Length; i++){
+			//Debug.Log(i + ": " + mostMuted[i-1]);
+			if (mostMuted[i] > mostMutedValue){
+				mostMutedIndex = i;
+				mostMutedValue = mostMuted[i];
+			}
+		}
+		//Debug.Log(mostMutedIndex);
+
+		return mostMutedIndex;
+	}
+
+	/**
+	 * returns a random variation of category, instrument that is muted
+	 */
+	public int GetRandomVariation(int category, int instrument){
+		int[] mutedVariations = GetIndicesOfMutedVarations(true, category, instrument);
+		if (mutedVariations.Length < 1) return 0;
+		return mutedVariations[UnityEngine.Random.Range(0, mutedVariations.Length)];
+	}
+
 	public void SetChannelActive(bool active, int category, int instrument, int variation){
 		if (category >= 0 && category < m_audioSourcesInChildren.GetLength(0) &&
 			instrument >= 0 && instrument < m_audioSourcesInChildren.GetLength(1) &&
 			variation >= 0 && variation < m_audioSourcesInChildren.GetLength(2)){
 			if (m_audioSourcesInChildren[category, instrument, variation] != null){
 				m_audioSourcesInChildren[category, instrument, variation].mute = !active;
-				Debug.Log("SetChannelActive: " + active + ", " + category + ", " + instrument + ", " + variation);
+				//Debug.Log("SetChannelActive: " + active + ", " + category + ", " + instrument + ", " + variation);
 			}
 		}
 	}
 
 	public void SetAllChannelsActive(bool active){
 		foreach (AudioSource source in m_audioSourcesInChildren){
-			source.mute = !active;
+			if (source != null){
+				source.mute = !active;
+			}
 		}
 	}
 
@@ -403,6 +534,19 @@ public class AudioManager : MonoBehaviour {
 		return m_audioSourcesInChildren[category, instrument, variation].mute;	
 	}
 
+
+	#endregion
+
+
+	#region soundset functions
+
+	public int GetMutedVariation(int category, int instrument){
+		return 0;
+	}
+
+	public bool CanStack(int category, int instrument){
+		return m_soundSet.m_audioCategories[category].m_audioChannelGroups[instrument].m_stack;
+	}
 
 	#endregion
 
@@ -423,7 +567,8 @@ public class AudioManager : MonoBehaviour {
 	}
 		
 	public int GetCurrentBar(){
-		return (int)(GetCurrentMasterTime() * m_beatFactor) + 1;
+		//return m_currentBar;
+		return Mathf.FloorToInt(GetCurrentMasterTime() * m_beatFactor) + 1;
 		return (int)((GetCurrentAudioTimeSamples() * (m_bpm * m_timeSignatureLower / 240.0f)) / (float)m_audioSourceFrequency) / m_timeSignatureUpper + 1;
 	}
 
@@ -433,13 +578,12 @@ public class AudioManager : MonoBehaviour {
 	}
 
 	public float GetTimeAtBar(int _bar){
-		return m_currentBar;
 		return GetTimePerBar() * (_bar - 1);
 		return (m_timeSampleOffset / (float)m_audioSourceFrequency + m_timeSignatureUpper * _bar / (m_bpm * m_timeSignatureLower / 240.0f));
 	}
 
 	public int GetCurrentBeat(){
-		return (int)(GetCurrentMasterTime() * (m_bpm * m_timeSignatureLower / 240.0f)) % m_timeSignatureUpper + 1;
+		return Mathf.FloorToInt(GetCurrentMasterTime() * (m_bpm * m_timeSignatureLower / 240.0f)) % m_timeSignatureUpper + 1;
 		return (int)((GetCurrentAudioTimeSamples() * (m_bpm * m_timeSignatureLower / 240.0f)) / (float)m_audioSourceFrequency) % m_timeSignatureUpper + 1;
 	}
 
@@ -449,7 +593,7 @@ public class AudioManager : MonoBehaviour {
 	}
 
 	public int GetCurrentSubBeat(){
-		return (int)((GetCurrentMasterTime() * (m_bpm * m_timeSignatureLower / 240.0f * m_timeSignatureUpper))) % m_unitsPerBeat + 1;
+		return Mathf.FloorToInt((GetCurrentMasterTime() * (m_bpm * m_timeSignatureLower / 240.0f * m_timeSignatureUpper))) % m_unitsPerBeat + 1;
 		return (int)((GetCurrentAudioTimeSamples() * (m_bpm * m_timeSignatureLower / 240.0f * m_timeSignatureUpper)) / (float)m_audioSourceFrequency) % m_unitsPerBeat + 1;
 	}
 
@@ -472,6 +616,10 @@ public class AudioManager : MonoBehaviour {
 
 	public string GetCurrentAudioTimeAsString(){
 		return string.Format("{0:00}:{1:00}:{2:00}", (int)GetCurrentAudioTime()/60, (int)GetCurrentAudioTime()%60, (GetCurrentAudioTime() - (int)GetCurrentAudioTime()) * 100);
+	}
+
+	public static string GetFloatAsTimeString(float time){
+		return string.Format("{0:00}:{1:00}:{2:00}", (int)time/60, (int)time%60, (time - (int)time) * 100);
 	}
 
 	public int GetTimeSignatureUpper(){

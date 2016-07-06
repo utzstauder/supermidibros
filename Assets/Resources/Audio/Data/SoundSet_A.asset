@@ -24,6 +24,12 @@ MonoBehaviour:
       - m_name: Variation_2
         m_audioClip: {fileID: 8300000, guid: a6677ddbf4e4b4ad8a5a0072ee4aceba, type: 3}
         m_loopLength: 0
+      - m_name: Variation_3
+        m_audioClip: {fileID: 8300000, guid: a6677ddbf4e4b4ad8a5a0072ee4aceba, type: 3}
+        m_loopLength: 0
+      - m_name: Variation_4
+        m_audioClip: {fileID: 8300000, guid: a6677ddbf4e4b4ad8a5a0072ee4aceba, type: 3}
+        m_loopLength: 0
     - m_name: Snare
       m_stack: 0
       m_audioChannels:

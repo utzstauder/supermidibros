@@ -48,7 +48,11 @@ MonoBehaviour:
     prefab: {fileID: 175066, guid: 0ad9035616ab741409dfdca3d4f83a29, type: 2}
     connectsTo: 00000000
     length: 1
-  - name: 9_lowToHigh
-    prefab: {fileID: 102728, guid: 5a59086608570194f8293cf61208c572, type: 2}
+  - name: 9_lowToHighA
+    prefab: {fileID: 100956, guid: e88eb62a8e19fde449911850707184f1, type: 2}
+    connectsTo: 0a000000
+    length: 1
+  - name: 10_lowToHighB
+    prefab: {fileID: 194496, guid: d7fdf490c9498474fb4fd8c23e9315c1, type: 2}
     connectsTo: 05000000
     length: 1

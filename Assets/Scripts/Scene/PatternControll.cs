@@ -84,12 +84,12 @@ public class PatternControll : Trigger {
 
 	void OnSuccess(){
 		BroadcastTriggerSuccess();
-		m_audioManager.SetChannelActive(true, pattern.audioCategory, pattern.instrumentGroup, pattern.variation);
+		m_audioManager.OnAudioTrigger(true, pattern.audioCategory, pattern.instrumentGroup, pattern.variation);
 	}
 
 	void OnFailure(){
 		BroadcastTriggerFailure();
-		m_audioManager.SetChannelActive(false, pattern.audioCategory, pattern.instrumentGroup, pattern.variation);
+		m_audioManager.OnAudioTrigger(false, pattern.audioCategory, pattern.instrumentGroup, pattern.variation);
 	}
 
 	#endregion

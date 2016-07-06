@@ -38,15 +38,7 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (m_debug){
-//			if (Input.GetKeyDown(KeyCode.UpArrow) || MIDIInputManager.instance.GetForwardButtonDown()){
-//				m_audioManager.GoToNextBar();
-//			} else if (Input.GetKeyDown(KeyCode.DownArrow) || MIDIInputManager.instance.GetRewindButtonDown()){
-//				m_audioManager.GoToPrevBar();
-//			} else if (Input.GetKeyDown(KeyCode.RightArrow)){
-//				m_audioManager.GoToNextBeat();
-//			} else if (Input.GetKeyDown(KeyCode.LeftArrow)){
-//				m_audioManager.GoToPrevBeat();
-//			}
+
 			if (Input.GetKeyDown(KeyCode.Space) || MIDIInputManager.instance.GetPlayButtonDown()){
 				if (!m_audioManager.IsPlaying()){
 					m_audioManager.Play();
@@ -60,6 +52,10 @@ public class GameManager : MonoBehaviour {
 
 		if (Input.GetKeyDown(KeyCode.Escape)){
 			Application.Quit();
+		}
+
+		if (Input.GetKeyDown(KeyCode.Return)){
+			m_audioManager.QueueReset();
 		}
 
 	}
@@ -83,6 +79,9 @@ public class GameManager : MonoBehaviour {
 			}
 			if (GUI.Button(new Rect(70, 30, 60, 20), "STOP")){
 				m_audioManager.Stop();
+			}
+			if (GUI.Button(new Rect(130, 30, 60, 20), "RESET")){
+				m_audioManager.QueueReset();
 			}
 
 			GUI.Label(new Rect(10, 50, 100, 20), m_audioManager.GetCurrentAudioTimeAsString());
