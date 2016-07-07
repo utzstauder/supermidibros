@@ -12,6 +12,10 @@ public class RotateOnRhythmPeriodic : OnRhythmPeriodic {
 		m_initialRotation = transform.localRotation;
 	}
 
+	void OnDisable(){
+		transform.localRotation = m_initialRotation;
+	}
+
 	protected override void Action (float _timer)
 	{
 		base.Action (_timer);

@@ -12,6 +12,10 @@ public class ScaleOnRhythmPeriodic : OnRhythmPeriodic {
 		m_initialScale = transform.localScale;
 	}
 
+	void OnDisable(){
+		transform.localScale = m_initialScale;
+	}
+
 	protected override void Action (float _timer)
 	{
 		base.Action (_timer);

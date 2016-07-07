@@ -62,10 +62,10 @@ MonoBehaviour:
   - {r: 0, g: 0.83448267, b: 1, a: 0}
   - {r: 0.75431037, g: 0.9191176, b: 0, a: 0}
   - {r: 0.87870187, g: 0.32352942, b: 1, a: 0}
-  allZeroes: 1
+  allZeroes: 0
   symmetricalOnly: 1
   firstPatternAt: 2
-  spawnXBarsAhead: 2
+  spawnXBarsAhead: 3
   melodyEveryXBars: 8
   harmonyEveryXBars: 4
   rhythmEveryXBars: 2

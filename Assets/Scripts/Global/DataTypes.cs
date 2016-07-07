@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace CustomDataTypes {
 
 	[System.Serializable]
-	public class Pattern{
+	public struct Pattern{
 		public int[] coords;
 		public int size;
 		public float complexity;

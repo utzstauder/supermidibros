@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[ExecuteInEditMode]
 public class PatternChildControll : MonoBehaviour {
 
 	public GameObject[] audioCategoryObjects = new GameObject[Constants.AUDIO_CATEGORIES];
@@ -26,11 +27,26 @@ public class PatternChildControll : MonoBehaviour {
 
 	public void SetMeshColor(Color color){
 		for (int i = 0; i < rendererInChildren.Length; i++){
-			rendererInChildren[i].material.color = color;
+			if (Application.isPlaying){
+				rendererInChildren[i].material.color = color;
+			} else {
+				rendererInChildren[i].sharedMaterial.color = color;
+			}
 		}
 	}
 
 	public void EmitParticles(){
 		particleSystem.Emit(particlesToEmit);
+	}
+
+	public void EmitParticles(Color color){
+		particleSystem.startColor = color;
+		EmitParticles();
+	}
+
+	public void SetRendererActive(bool active){
+		for (int i = 0; i < audioCategoryObjects.Length; i++){
+			audioCategoryObjects[i].SetActive(active);
+		}
 	}
 }

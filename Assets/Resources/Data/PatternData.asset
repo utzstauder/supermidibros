@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c84d5b0d04e11478c9293e75f05d2c39, type: 3}
+  m_Name: PatternData
+  m_EditorClassIdentifier: 
+  rhythmPrefab: {fileID: 0}
+  harmonyPrefab: {fileID: 0}
+  melodyPrefab: {fileID: 0}
+  categoryColors:
+  - {r: 0.2640571, g: 0.47358012, b: 0.9705882, a: 0}
+  - {r: 1, g: 0.93103456, b: 0, a: 0}
+  - {r: 0.89579856, g: 0.4525303, b: 0.99264705, a: 0}
+  instrumentColors:
+  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
+  variationColors:
+  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
