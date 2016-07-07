@@ -12,6 +12,10 @@ public class TranslateOnRhythmPeriodic : OnRhythmPeriodic {
 		m_initialPosition = transform.localPosition;
 	}
 
+	void OnDisable(){
+		transform.localPosition = m_initialPosition;
+	}
+
 	protected override void Action (float _timer)
 	{
 		base.Action (_timer);

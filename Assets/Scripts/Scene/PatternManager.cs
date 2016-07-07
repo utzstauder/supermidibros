@@ -228,7 +228,7 @@ public class PatternManager : MonoBehaviour {
 
 			if (patternControllList != null){
 				// prepare object in scene
-				List<Pattern> patternList = GetRandomPatterns(count);
+				Pattern[] patternList = GetRandomPatterns(count);
 
 				if (allZeroes){
 					patternList[0] = Pattern.bottom;
@@ -237,9 +237,9 @@ public class PatternManager : MonoBehaviour {
 				AssignAudioToPatterns(targetBar, patternList);
 
 				for (int i = 0; i < count; i++){
-					patternControllList[i].ChangePattern(patternList[i], patternColors[patternList[i].audioCategory]);
-					patternControllList[i].MoveToPosition(targetBar, 1, 1);
 
+					patternControllList[i].MoveToPosition(targetBar, 1, 1);
+					patternControllList[i].ChangePattern(patternList[i]);
 					patternControllList[i].SetPrepared(true);
 				}
 
@@ -264,7 +264,7 @@ public class PatternManager : MonoBehaviour {
 	}
 
 
-	List<Pattern> GetRandomPatterns(int count){
+	Pattern[] GetRandomPatterns(int count){
 		count = Mathf.Clamp(count, 1, Constants.VERTICAL_POSITIONS);
 
 		List<Pattern> listOfPatterns = new List<Pattern>();
@@ -281,28 +281,29 @@ public class PatternManager : MonoBehaviour {
 			}
 		}
 
-		return listOfPatterns;
+		return listOfPatterns.ToArray();
 	}
 
 
-	void AssignAudioToPatterns(int targetBar, List<Pattern> patterns){
+	void AssignAudioToPatterns(int targetBar, Pattern[] patterns){
 		//Debug.Log(targetBar + " " + patterns.Count);
 
 		if (patterns == null){
 			return;
 		} else 
-			if (patterns.Count == 0){
+			if (patterns.Length == 0){
 				return;
 			}
 
-		int numberOfCategoriesToAssign = Mathf.Clamp(3, 1, patterns.Count);
+		int numberOfCategoriesToAssign = Mathf.Clamp(3, 1, patterns.Length);
 		int startIndex = 0;
 
 		if ((targetBar-1) % harmonyEveryXBars == 0){
-			numberOfCategoriesToAssign = Mathf.Clamp(3, 1, patterns.Count);
+			numberOfCategoriesToAssign = Mathf.Clamp(3, 1, patterns.Length);
 			startIndex = 2;
 		} else if ((targetBar-1) % melodyEveryXBars == 0){
-			numberOfCategoriesToAssign = Mathf.Clamp(2, 1, patterns.Count);
+			Debug.Log("Melody");
+			numberOfCategoriesToAssign = Mathf.Clamp(2, 1, patterns.Length);
 			startIndex = 1;
 		} else {
 			numberOfCategoriesToAssign = 1;
@@ -311,14 +312,21 @@ public class PatternManager : MonoBehaviour {
 			
 		//Debug.Log(numberOfCategoriesToAssign + " " + startIndex);
 
-		foreach(Pattern pattern in patterns){
-			pattern.audioCategory = (startIndex % numberOfCategoriesToAssign);
-			if (allZeroes) pattern.audioCategory = startIndex;
-			pattern.instrumentGroup = audioManager.GetRandomInstrument(pattern.audioCategory);
-			pattern.variation = audioManager.GetRandomVariation(pattern.audioCategory, pattern.instrumentGroup);
+//		foreach(Pattern pattern in patterns){
+//			pattern.audioCategory = (startIndex % numberOfCategoriesToAssign);
+//			if (allZeroes) pattern.audioCategory = startIndex;
+//			pattern.instrumentGroup = audioManager.GetRandomInstrument(pattern.audioCategory);
+//			pattern.variation = audioManager.GetRandomVariation(pattern.audioCategory, pattern.instrumentGroup);
+//
+//			startIndex++;
+//			//Debug.Log(pattern.audioCategory + " " + pattern.instrumentGroup + " " + pattern.variation);
+//		}
 
-			startIndex++;
-			//Debug.Log(pattern.audioCategory + " " + pattern.instrumentGroup + " " + pattern.variation);
+		for (int i = 0; i < patterns.Length; i++){
+			patterns[i].audioCategory = ((i + startIndex) % numberOfCategoriesToAssign);
+			if (allZeroes) patterns[i].audioCategory = startIndex;
+			patterns[i].instrumentGroup = audioManager.GetRandomInstrument(patterns[i].audioCategory);
+			patterns[i].variation = audioManager.GetRandomVariation(patterns[i].audioCategory, patterns[i].instrumentGroup);
 		}
 
 	}
