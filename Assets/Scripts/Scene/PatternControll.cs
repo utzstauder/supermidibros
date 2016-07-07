@@ -40,6 +40,7 @@ public class PatternControll : Trigger {
 		SetPositionOfChildren();
 		SetMeshOfChildren();
 		SetColorOfChildren(color);
+		SetAffectorsOfChildren(pattern.audioCategory, pattern.instrumentGroup, pattern.variation);
 
 	}
 
@@ -68,6 +69,7 @@ public class PatternControll : Trigger {
 		for (int i = 0; i < playerCoordinates.Length; i++){
 			if (pattern.coords[i] == playerCoordinates[i]){
 				hits++;
+				children[i].EmitParticles();
 			}	
 		}
 
@@ -128,6 +130,16 @@ public class PatternControll : Trigger {
 	private void SetColorOfChildren(Color color){
 		for (int i = 0; i < children.Length; i++){
 			children[i].SetMeshColor(color);
+		}
+	}
+
+	private void SetAffectorsOfChildren(int category, int instrument, int variation){
+		for (int i = 0; i < children.Length; i++){
+			OnRhythmPeriodicAffector affector = children[i].gameObject.GetComponentInChildren<OnRhythmPeriodicAffector>();
+
+			affector.category = category;
+			affector.instrument = instrument;
+			affector.variation = variation;
 		}
 	}
 

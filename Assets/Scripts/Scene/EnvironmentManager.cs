@@ -33,7 +33,7 @@ public class EnvironmentManager : MonoBehaviour {
 			audioManager.OnReset += OnReset;
 		}
 
-		dynamicObjects = GameObject.Find("DynamicObjects").transform;
+		dynamicObjects = GameObject.Find("DynamicObjects/Environment").transform;
 		if (dynamicObjects == null){
 			dynamicObjects = Instantiate(new GameObject(), Vector3.zero, Quaternion.identity) as Transform;
 			dynamicObjects.gameObject.name = "DynamicObjects";

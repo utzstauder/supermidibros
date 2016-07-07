@@ -5,9 +5,13 @@ public class PatternChildControll : MonoBehaviour {
 
 	public GameObject[] audioCategoryObjects = new GameObject[Constants.AUDIO_CATEGORIES];
 	private Renderer[] rendererInChildren;
+	private ParticleSystem particleSystem;
+
+	public int particlesToEmit = 100;
 
 	void Awake(){
 		rendererInChildren = GetComponentsInChildren<Renderer>();
+		particleSystem = GetComponentInChildren<ParticleSystem>();
 	}
 
 	public void SetLocalPositionInGrid(int horizontal, int vertical){
@@ -24,5 +28,9 @@ public class PatternChildControll : MonoBehaviour {
 		for (int i = 0; i < rendererInChildren.Length; i++){
 			rendererInChildren[i].material.color = color;
 		}
+	}
+
+	public void EmitParticles(){
+		particleSystem.Emit(particlesToEmit);
 	}
 }

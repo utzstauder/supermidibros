@@ -531,7 +531,10 @@ public class AudioManager : MonoBehaviour {
 	}
 
 	public bool IsChannelActive(int category, int instrument, int variation){
-		return m_audioSourcesInChildren[category, instrument, variation].mute;	
+		if (m_audioSourcesInChildren[category, instrument, variation] != null){
+			return !m_audioSourcesInChildren[category, instrument, variation].mute;
+		}
+		return false;	
 	}
 
 

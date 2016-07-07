@@ -7,21 +7,20 @@ using System.Collections;
  */
 public class OnRhythmPeriodicAffector : MonoBehaviour {
 
-	public Enums.AudioMixerExposedParams m_affectedBy;
-	public Vector2 m_volumeRange						= new Vector2 (-80.0f, 0.0f);
+	[Range(0, 2)]
+	public int category = 0;
+	[Range(0, 3)]
+	public int instrument = 0;
+	[Range(0, 3)]
+	public int variation = 0;
 
 	private AudioManager	m_audioManager;
-	private AudioMixer		m_audioMixer;
-
-	private float			m_volume;
 
 	void Awake () {
 		if (!m_audioManager){
 			m_audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
 			if (!m_audioManager){
 				Debug.LogError("No AudioManager found in this scene!");
-			} else {
-				m_audioMixer = m_audioManager.GetAudioMixer();
 			}
 		}
 	}
@@ -30,9 +29,6 @@ public class OnRhythmPeriodicAffector : MonoBehaviour {
 	 * Returns a value between 0.0f and 1.0f depending on the volume of the affecting AudioMixerGroup.
 	 */
 	public float GetMultiplier(){
-		if (m_audioMixer.GetFloat(m_affectedBy.ToString(), out m_volume)){
-			return Mathf.InverseLerp(m_volumeRange.x, m_volumeRange.y, m_volume);
-		}
-		return 1.0f;
+		return (m_audioManager.IsChannelActive(category, instrument, variation)) ? 1.0f : 0;
 	}
 }
