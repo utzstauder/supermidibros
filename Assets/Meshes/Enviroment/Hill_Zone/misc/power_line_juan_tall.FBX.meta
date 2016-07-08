@@ -1,15 +1,38 @@
 fileFormatVersion: 2
-guid: 3f48e012ea4a5984e91e32f65a19d7fe
-timeCreated: 1467475822
+guid: b809aed8d0e4d8044a7d0a083e0ad361
+timeCreated: 1467981307
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Object010
+    100000: Bottom Box
+    100002: Cables
+    100004: Pole
+    100006: //RootNode
+    100008: Upper Frame
+    100010: Voltage thing
+    400000: Bottom Box
+    400002: Cables
+    400004: Pole
+    400006: //RootNode
+    400008: Upper Frame
+    400010: Voltage thing
+    2300000: Bottom Box
+    2300002: Cables
+    2300004: Pole
+    2300006: Upper Frame
+    2300008: Voltage thing
+    3300000: Bottom Box
+    3300002: Cables
+    3300004: Pole
+    3300006: Upper Frame
+    3300008: Voltage thing
+    4300000: Pole
+    4300002: Bottom Box
+    4300004: Upper Frame
+    4300006: Voltage thing
+    4300008: Cables
+    7400000: Take 001
     9500000: //RootNode
   materials:
     importMaterials: 1
