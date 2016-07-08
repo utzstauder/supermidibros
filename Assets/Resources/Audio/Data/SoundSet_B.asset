@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da86896963196479e85326b2fc70af49, type: 3}
-  m_Name: SoundSet_A
+  m_Name: SoundSet_B
   m_EditorClassIdentifier: 
   bpm: 128
   m_audioCategories:

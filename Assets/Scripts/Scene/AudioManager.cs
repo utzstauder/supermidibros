@@ -8,7 +8,8 @@ using UnityEngine.Audio;
 public class AudioManager : MonoBehaviour {
 
 	public AudioMixer	m_audioMixer;
-	public SoundSet		m_soundSet;
+	public SoundSet		activeSoundSet;
+	public SoundSet[]	soundSets;
 	public AudioClip 	m_masterAudioClip;
 
 	[Header("Audio Settings")]
@@ -34,6 +35,7 @@ public class AudioManager : MonoBehaviour {
 	public event ControlDelegate OnReady;
 
 	private bool resetQueued = false;
+	private bool soundSetChangeQueue = false;
 
 	public delegate void AudioGroupDelegate();
 	public event AudioGroupDelegate OnAudioChannelChange;
@@ -43,9 +45,13 @@ public class AudioManager : MonoBehaviour {
 	private int m_currentBeat		= 1;
 	private int m_currentBar		= 0;
 
-	private AudioSource m_audioSource;		// masterAudioClip
+	private AudioSource metronomeAudioSource;		// masterAudioClip
 	private AudioSourceSync[] m_audioSourcesSync;
 	private AudioSource[,,] m_audioSourcesInChildren = new AudioSource[Constants.AUDIO_CATEGORIES, Constants.INSTRUMENT_GROUPS, Constants.VARIATIONS];
+	private Dictionary<SoundSet, GameObject> soundSetRootDict;
+	private Dictionary<SoundSet, AudioSource[,,]> audioSourceDict;
+	private Dictionary<SoundSet, AudioSourceSync[]> audioSourceSyncDict;
+
 	private float		m_audioSourceFrequency;
 	private float		m_subBeatTimer		= 0;
 	private float		m_prevSubBeatTimer	= 1.0f;
@@ -58,7 +64,7 @@ public class AudioManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-		m_audioSource = GetComponent<AudioSource>();
+		metronomeAudioSource = GetComponent<AudioSource>();
 
 		// log error if there is no masteraudioclip
 		if (m_masterAudioClip == null){
@@ -69,9 +75,9 @@ public class AudioManager : MonoBehaviour {
 				Debug.LogError("No AudioMixer attached");
 			}
 
-			m_audioSource.clip = m_masterAudioClip;
-			m_audioSourceFrequency = (float)m_audioSource.clip.frequency;
-			m_audioSource.loop = true;
+			metronomeAudioSource.clip = m_masterAudioClip;
+			m_audioSourceFrequency = (float)metronomeAudioSource.clip.frequency;
+			metronomeAudioSource.loop = true;
 
 			// get references to every audioSource attached to this gameobject
 			m_audioSourcesSync = GetComponentsInChildren<AudioSourceSync>();
@@ -80,7 +86,10 @@ public class AudioManager : MonoBehaviour {
 //			Debug.Log(GetTimeAtBar(1));
 //			Debug.Log(GetSamplesPerBar());
 
-			Init();
+			//Init();
+			if (Application.isPlaying){
+				InitNew();
+			}
 
 //			float totalPossibleBars = (float.MaxValue / 2f) / (Constants.UNITS_PER_BEAT * m_timeSignatureUpper);
 //			Debug.Log("Total possible bars: " + totalPossibleBars);
@@ -95,7 +104,7 @@ public class AudioManager : MonoBehaviour {
 	}
 
 	void OnDestroy(){
-		m_audioSource.Stop();
+		metronomeAudioSource.Stop();
 
 		OnSubBeat	= null;
 		OnBeat		= null;
@@ -117,22 +126,22 @@ public class AudioManager : MonoBehaviour {
 		//Debug.Log(m_masterTimer + " | " + m_currentSamples);
 		if (IsPlaying()){
 			// add audio delta to master timer
-			if (m_audioSource.time - m_prevAudioTime < 0){
-				m_masterTimer += (m_audioSource.clip.length - m_prevAudioTime) + m_audioSource.time;
+			if (metronomeAudioSource.time - m_prevAudioTime < 0){
+				m_masterTimer += (metronomeAudioSource.clip.length - m_prevAudioTime) + metronomeAudioSource.time;
 			} else {
-				m_masterTimer += (m_audioSource.time - m_prevAudioTime);
+				m_masterTimer += (metronomeAudioSource.time - m_prevAudioTime);
 			}
 
 
 			// beat calculation
-			m_subBeatTimer = (((m_audioSource.timeSamples + m_timeSampleOffset) * (m_bpm * m_timeSignatureLower / 240.0f * m_timeSignatureUpper)) % (float)m_audioSourceFrequency) / 100000;
+			m_subBeatTimer = (((metronomeAudioSource.timeSamples + m_timeSampleOffset) * (m_bpm * m_timeSignatureLower / 240.0f * m_timeSignatureUpper)) % (float)m_audioSourceFrequency) / 100000;
 			if (m_subBeatTimer < m_prevSubBeatTimer){
 				SubBeat();
 			}
 
 			// set memory variables
 			m_prevSubBeatTimer = m_subBeatTimer;
-			m_prevAudioTime = m_audioSource.time;
+			m_prevAudioTime = metronomeAudioSource.time;
 
 			// SYNC!
 			//SyncToAudioSource();
@@ -181,6 +190,9 @@ public class AudioManager : MonoBehaviour {
 	void Bar(){
 		if (resetQueued){
 			Reset();
+		} else if (soundSetChangeQueue){
+			NextSoundSet();
+			soundSetChangeQueue = false;
 		}
 
 		m_currentBar = GetCurrentBar();
@@ -197,14 +209,14 @@ public class AudioManager : MonoBehaviour {
 	#region init
 
 	private void Init(){
-		if (m_soundSet == null){
+		if (activeSoundSet == null){
 			Debug.LogError("no soundset selected");
 		} else {
-			UpdateBPM(m_soundSet.bpm);
+			UpdateBPM(activeSoundSet.bpm);
 
 			// reset all sources
 			foreach(AudioSource source in GetComponentsInChildren<AudioSource>()){
-				if (source != m_audioSource){
+				if (source != metronomeAudioSource){
 					source.clip = null;
 					source.mute = true;
 				}
@@ -212,8 +224,8 @@ public class AudioManager : MonoBehaviour {
 
 			// load audio clips from soundset
 			for (int i = 0; i < Constants.AUDIO_CATEGORIES; i++){
-				if (i < m_soundSet.m_audioCategories.Length){
-					SoundSet.AudioCategory category = m_soundSet.m_audioCategories[i];
+				if (i < activeSoundSet.m_audioCategories.Length){
+					SoundSet.AudioCategory category = activeSoundSet.m_audioCategories[i];
 					GameObject gameObjectCategory = transform.GetChild(i).gameObject;
 
 					for (int j = 0; j < Constants.INSTRUMENT_GROUPS; j++){
@@ -238,37 +250,189 @@ public class AudioManager : MonoBehaviour {
 		} 
 	}
 
+	void InitNew(){
+		if (soundSets == null || soundSets.Length < 1){
+			Debug.LogError("There are no soundsets");
+			return;
+		}
+			
+//		while (transform.childCount > 0){
+//			Destroy(transform.GetChild(0));
+//		}
+
+		soundSetRootDict = new Dictionary<SoundSet, GameObject>();
+		audioSourceDict = new Dictionary<SoundSet, AudioSource[,,]>();
+		audioSourceSyncDict = new Dictionary<SoundSet, AudioSourceSync[]>();
+		int audioSourceSyncIndex = 0;
+
+		// instantiate children and load soundset audio
+		for (int s = 0; s < soundSets.Length; s++){
+			GameObject root = new GameObject(soundSets[s].name);
+			root.transform.parent = this.transform;
+
+			AudioSource[,,] audioSources = new AudioSource[Constants.AUDIO_CATEGORIES, Constants.INSTRUMENT_GROUPS, Constants.VARIATIONS];
+			AudioSourceSync[] audioSourcesSync = new AudioSourceSync[Constants.AUDIO_CATEGORIES * Constants.INSTRUMENT_GROUPS * Constants.VARIATIONS];
+
+			for (int c = 0; c < Constants.AUDIO_CATEGORIES; c++){
+				Transform category = new GameObject(soundSets[s].m_audioCategories[c].m_name).transform;
+				category.parent = root.transform;
+
+				for (int i = 0; i < Constants.INSTRUMENT_GROUPS; i++){
+					Transform instrument = new GameObject(soundSets[s].m_audioCategories[c].m_audioChannelGroups[i].m_name).transform;
+					instrument.parent = category;
+
+					for (int v = 0; v < Constants.VARIATIONS; v++){
+						GameObject variation = new GameObject(soundSets[s].m_audioCategories[c].m_audioChannelGroups[i].m_audioChannels[v].m_name);
+						variation.transform.parent = instrument;
+
+						AudioSource audioSource = variation.AddComponent<AudioSource>();
+						audioSource.clip = soundSets[s].m_audioCategories[c].m_audioChannelGroups[i].m_audioChannels[v].m_audioClip;
+						audioSource.playOnAwake = false;
+						audioSource.mute = true;
+						AudioSourceSync audioSourceSync = variation.AddComponent<AudioSourceSync>();
+						audioSourceSync.m_isLoop = true;
+
+						audioSources[c,i,v] = audioSource;
+						audioSourcesSync[audioSourceSyncIndex] = audioSourceSync;
+						audioSourceSyncIndex++;
+					}
+				}
+			}
+
+			if (s > 0){
+				root.SetActive(false);
+			}
+
+			soundSetRootDict.Add(soundSets[s], root);
+			audioSourceDict.Add(soundSets[s], audioSources);
+			audioSourceSyncDict.Add(soundSets[s], audioSourcesSync);
+
+			audioSourceSyncIndex = 0;
+		}
+
+		// set active sound set;
+		activeSoundSet = soundSets[0];
+		UpdateBPM(activeSoundSet.bpm);
+
+	}
+
+	#endregion
+
+
+	#region sound set functions
+
+	public void QueueNextSoundSet(){
+		soundSetChangeQueue = true;
+	}
+
+	void NextSoundSet(){
+		int currentIndex = -1;
+		for (int i = 0; i < soundSets.Length; i++){
+			if (soundSets[i] == activeSoundSet){
+				currentIndex = i;
+			}
+		}
+
+		if (currentIndex < 0){
+			Debug.LogWarning("active soundset not found");
+			return;
+		}
+
+		int nextIndex = (currentIndex + 1) % soundSets.Length;
+		//Debug.Log(nextIndex);
+
+		ChangeSoundSet(nextIndex);
+	}
+
+	void ChangeSoundSet(int index){
+		if (index >= soundSets.Length){
+			return;
+		}
+
+		// stop old soundset
+		StopActiveSoundSet();
+
+		// mute old soundset
+		SetAllChannelsInActiveSoundSet(false);
+
+		// deactivate old gameobjects
+		DeactivateActiveSoundSetRoot();
+
+		// activate new gameobjects
+		ActivateSoundSetRoot(index);
+
+		// set new soundset as the active soundset
+		activeSoundSet = soundSets[index];
+
+		// play new soundset
+		PlayAllFromActiveSoundSet();
+
+	}
+
+	void StopActiveSoundSet(){
+		for (int i = 0; i < audioSourceSyncDict[activeSoundSet].Length; i++){
+			audioSourceSyncDict[activeSoundSet][i].Stop();
+		}
+	}
+
+	void DeactivateActiveSoundSetRoot(){
+		soundSetRootDict[activeSoundSet].SetActive(false);
+	}
+
+	void ActivateSoundSetRoot(int index){
+		soundSetRootDict[soundSets[index]].SetActive(true);
+	}
+
 	#endregion
 
 
 	#region private functions
 
 	void PlayAll(){
-		m_audioSource.Play();
-		foreach(AudioSourceSync source in m_audioSourcesSync){
-			source.Play();
+		metronomeAudioSource.Play();
+		PlayAllFromActiveSoundSet();
+	}
+
+	void PlayAllFromActiveSoundSet(){
+		
+//		foreach(AudioSourceSync source in m_audioSourcesSync){
+//			source.Play();
+//		}
+
+		for (int i = 0; i < audioSourceSyncDict[activeSoundSet].Length; i++){
+			audioSourceSyncDict[activeSoundSet][i].Play();
 		}
 	}
 
-	void PauseAll(){
-		m_audioSource.Pause();
-		foreach(AudioSourceSync source in m_audioSourcesSync){
-			source.Pause();
+	void PauseActiveSoundSet(){
+		metronomeAudioSource.Pause();
+//		foreach(AudioSourceSync source in m_audioSourcesSync){
+//			source.Pause();
+//		}
+
+		for (int i = 0; i < audioSourceSyncDict[activeSoundSet].Length; i++){
+			audioSourceSyncDict[activeSoundSet][i].Pause();
 		}
 	}
 
 	void StopAll(){
-		m_audioSource.Stop();
-		foreach(AudioSourceSync source in m_audioSourcesSync){
-			source.Stop();
+		metronomeAudioSource.Stop();
+//		foreach(AudioSourceSync source in m_audioSourcesSync){
+//			source.Stop();
+//		}
+
+		foreach (SoundSet soundSet in audioSourceSyncDict.Keys){
+			for (int i = 0; i < audioSourceSyncDict[activeSoundSet].Length; i++){
+				audioSourceSyncDict[soundSet][i].Stop();
+			}
 		}
 	}
 
 	void UpdateBPM(int newBpm){
 		m_bpm = newBpm;
 
-		if (m_audioSource != null){
-			m_samplesPerBar = Mathf.RoundToInt(GetTimePerBar() * m_audioSource.clip.frequency);
+		if (metronomeAudioSource != null){
+			m_samplesPerBar = Mathf.RoundToInt(GetTimePerBar() * metronomeAudioSource.clip.frequency);
 		}
 
 		m_beatFactor = (m_bpm * m_timeSignatureLower / 240.0f) / m_timeSignatureUpper;
@@ -284,7 +448,10 @@ public class AudioManager : MonoBehaviour {
 
 	void SyncToAudioSource(){
 		if (Application.isPlaying){
-			foreach(AudioSourceSync slave in m_audioSourcesSync){
+//			foreach(AudioSourceSync slave in m_audioSourcesSync){
+//				slave.SyncToMaster(this);
+//			}
+			foreach(AudioSourceSync slave in audioSourceSyncDict[activeSoundSet]){
 				slave.SyncToMaster(this);
 			}
 		}
@@ -350,7 +517,7 @@ public class AudioManager : MonoBehaviour {
 
 	// pauses playback of all audiosources
 	public void Pause(){
-		PauseAll();
+		PauseActiveSoundSet();
 	}
 
 	// stops (and resets) playback of all audiosources
@@ -360,7 +527,7 @@ public class AudioManager : MonoBehaviour {
 		StopAll();
 
 		//SetVolumeOfAllMixerGroups(-80.0f);
-		SetAllChannelsActive(false);
+		SetAllChannelsInActiveSoundSet(false);
 
 		m_currentBar = 0;
 
@@ -375,7 +542,7 @@ public class AudioManager : MonoBehaviour {
 
 	void Reset(){
 		resetQueued = false;
-		SetAllChannelsActive(false);
+		SetAllChannelsInActiveSoundSet(false);
 		SetCurrentTime(0);
 
 		if (OnReset != null){
@@ -416,37 +583,70 @@ public class AudioManager : MonoBehaviour {
 
 	public void OnAudioTrigger(bool success, int category, int instrument, int variation){
 		//Debug.Log(success + " " + category + " " + instrument + " " + variation);
-		if (m_audioSourcesInChildren[category, instrument, variation] == null){
+//		if (m_audioSourcesInChildren[category, instrument, variation] == null){
+//			return;
+//		}
+//		if (success){
+//			// enable audio
+//			if (!CanStack(category, instrument)){
+//				for (int i = 0; i < m_audioSourcesInChildren.GetLength(2); i++){
+//					if (m_audioSourcesInChildren[category, instrument, i] != null){
+//						m_audioSourcesInChildren[category, instrument, i].mute = (variation == i) ? false : true;
+//					}
+//				}
+//			} else {
+//				m_audioSourcesInChildren[category, instrument, variation].mute = false;
+//			}
+//
+//		} else {
+//			
+//			// disable audio
+//			if (!m_audioSourcesInChildren[category, instrument, variation].mute){
+//				m_audioSourcesInChildren[category, instrument, variation].mute = true;
+//			} else {
+//				
+//				if (CanStack(category, instrument)){
+//					// mute something else from that group
+//					int[] indices = GetIndicesOfMutedVarations(false, category, instrument);
+//					if (indices.Length > 0){
+//						m_audioSourcesInChildren[category, instrument, UnityEngine.Random.Range(0, indices.Length)].mute = true;
+//					}
+//				}
+//			}
+//			
+//		}
+
+		if (audioSourceDict[activeSoundSet][category, instrument, variation] == null){
 			return;
 		}
 		if (success){
 			// enable audio
 			if (!CanStack(category, instrument)){
-				for (int i = 0; i < m_audioSourcesInChildren.GetLength(2); i++){
-					if (m_audioSourcesInChildren[category, instrument, i] != null){
-						m_audioSourcesInChildren[category, instrument, i].mute = (variation == i) ? false : true;
+				for (int v = 0; v < audioSourceDict[activeSoundSet].GetLength(2); v++){
+					if (audioSourceDict[activeSoundSet][category, instrument, v] != null){
+						audioSourceDict[activeSoundSet][category, instrument, v].mute = (variation == v) ? false : true;
 					}
 				}
 			} else {
-				m_audioSourcesInChildren[category, instrument, variation].mute = false;
+				audioSourceDict[activeSoundSet][category, instrument, variation].mute = false;
 			}
 
 		} else {
-			
+
 			// disable audio
-			if (!m_audioSourcesInChildren[category, instrument, variation].mute){
-				m_audioSourcesInChildren[category, instrument, variation].mute = true;
+			if (!audioSourceDict[activeSoundSet][category, instrument, variation].mute){
+				audioSourceDict[activeSoundSet][category, instrument, variation].mute = true;
 			} else {
-				
+
 				if (CanStack(category, instrument)){
 					// mute something else from that group
 					int[] indices = GetIndicesOfMutedVarations(false, category, instrument);
 					if (indices.Length > 0){
-						m_audioSourcesInChildren[category, instrument, UnityEngine.Random.Range(0, indices.Length)].mute = true;
+						audioSourceDict[activeSoundSet][category, instrument, UnityEngine.Random.Range(0, indices.Length)].mute = true;
 					}
 				}
 			}
-			
+
 		}
 	}
 		
@@ -455,9 +655,17 @@ public class AudioManager : MonoBehaviour {
 
 		//Debug.Log(muted + " " + category + " " + instrument);
 
-		for (int i = 0; i < m_audioSourcesInChildren.GetLength(2); i++){
-			if (m_audioSourcesInChildren[category, instrument, i] != null){
-				if(m_audioSourcesInChildren[category, instrument, i].mute == muted){
+//		for (int i = 0; i < m_audioSourcesInChildren.GetLength(2); i++){
+//			if (m_audioSourcesInChildren[category, instrument, i] != null){
+//				if(m_audioSourcesInChildren[category, instrument, i].mute == muted){
+//					intList.Add(i);
+//				}	
+//			}
+//		}
+
+		for (int i = 0; i < audioSourceDict[activeSoundSet].GetLength(2); i++){
+			if (audioSourceDict[activeSoundSet][category, instrument, i] != null){
+				if(audioSourceDict[activeSoundSet][category, instrument, i].mute == muted){
 					intList.Add(i);
 				}	
 			}
@@ -467,7 +675,8 @@ public class AudioManager : MonoBehaviour {
 	}
 
 	int[] GetNumberOfMutedVariationsInCategory(bool muted, int category){
-		int[] returnArray = new int[m_audioSourcesInChildren.GetLength(1)];
+//		int[] returnArray = new int[m_audioSourcesInChildren.GetLength(1)];
+		int[] returnArray = new int[audioSourceDict[activeSoundSet].GetLength(1)];
 
 		for (int i = 0; i < returnArray.Length; i++){
 			returnArray[i] = GetIndicesOfMutedVarations(muted, category, i).Length;
@@ -480,7 +689,8 @@ public class AudioManager : MonoBehaviour {
 	 * Returns the index of the instrument of category with the most muted variations
 	 */
 	public int GetRandomInstrument(int category){
-		return UnityEngine.Random.Range(0, m_audioSourcesInChildren.GetLength(1));
+//		return UnityEngine.Random.Range(0, m_audioSourcesInChildren.GetLength(1));
+		return UnityEngine.Random.Range(0, audioSourceDict[activeSoundSet].GetLength(1));
 
 		int[] mostMuted = GetNumberOfMutedVariationsInCategory(true, category);
 		int mostMutedIndex = 0;
@@ -512,18 +722,31 @@ public class AudioManager : MonoBehaviour {
 	}
 
 	public void SetChannelActive(bool active, int category, int instrument, int variation){
-		if (category >= 0 && category < m_audioSourcesInChildren.GetLength(0) &&
-			instrument >= 0 && instrument < m_audioSourcesInChildren.GetLength(1) &&
-			variation >= 0 && variation < m_audioSourcesInChildren.GetLength(2)){
-			if (m_audioSourcesInChildren[category, instrument, variation] != null){
-				m_audioSourcesInChildren[category, instrument, variation].mute = !active;
+//		if (category >= 0 && category < m_audioSourcesInChildren.GetLength(0) &&
+//			instrument >= 0 && instrument < m_audioSourcesInChildren.GetLength(1) &&
+//			variation >= 0 && variation < m_audioSourcesInChildren.GetLength(2)){
+//			if (m_audioSourcesInChildren[category, instrument, variation] != null){
+//				m_audioSourcesInChildren[category, instrument, variation].mute = !active;
+//				//Debug.Log("SetChannelActive: " + active + ", " + category + ", " + instrument + ", " + variation);
+//			}
+//		}
+		if (category >= 0 && category < audioSourceDict[activeSoundSet].GetLength(0) &&
+			instrument >= 0 && instrument < audioSourceDict[activeSoundSet].GetLength(1) &&
+			variation >= 0 && variation < audioSourceDict[activeSoundSet].GetLength(2)){
+			if (audioSourceDict[activeSoundSet][category, instrument, variation] != null){
+				audioSourceDict[activeSoundSet][category, instrument, variation].mute = !active;
 				//Debug.Log("SetChannelActive: " + active + ", " + category + ", " + instrument + ", " + variation);
 			}
 		}
 	}
 
-	public void SetAllChannelsActive(bool active){
-		foreach (AudioSource source in m_audioSourcesInChildren){
+	public void SetAllChannelsInActiveSoundSet(bool active){
+//		foreach (AudioSource source in m_audioSourcesInChildren){
+//			if (source != null){
+//				source.mute = !active;
+//			}
+//		}
+		foreach (AudioSource source in audioSourceDict[activeSoundSet]){
 			if (source != null){
 				source.mute = !active;
 			}
@@ -531,8 +754,11 @@ public class AudioManager : MonoBehaviour {
 	}
 
 	public bool IsChannelActive(int category, int instrument, int variation){
-		if (m_audioSourcesInChildren[category, instrument, variation] != null){
-			return !m_audioSourcesInChildren[category, instrument, variation].mute;
+//		if (m_audioSourcesInChildren[category, instrument, variation] != null){
+//			return !m_audioSourcesInChildren[category, instrument, variation].mute;
+//		}
+		if (audioSourceDict[activeSoundSet][category, instrument, variation] != null){
+			return !audioSourceDict[activeSoundSet][category, instrument, variation].mute;
 		}
 		return false;	
 	}
@@ -548,7 +774,7 @@ public class AudioManager : MonoBehaviour {
 	}
 
 	public bool CanStack(int category, int instrument){
-		return m_soundSet.m_audioCategories[category].m_audioChannelGroups[instrument].m_stack;
+		return activeSoundSet.m_audioCategories[category].m_audioChannelGroups[instrument].m_stack;
 	}
 
 	#endregion
@@ -557,16 +783,16 @@ public class AudioManager : MonoBehaviour {
 	#region public audio getter
 		
 	public int GetCurrentAudioTimeSamples(){
-		return m_audioSource.timeSamples + m_timeSampleOffset;
+		return metronomeAudioSource.timeSamples + m_timeSampleOffset;
 	}
 
 	public int GetSamplesPerBar(){
 		return m_samplesPerBar;
-		return Mathf.RoundToInt(GetTimePerBar() * m_audioSource.clip.frequency);
+		return Mathf.RoundToInt(GetTimePerBar() * metronomeAudioSource.clip.frequency);
 	}
 
 	public bool IsPlaying(){
-		return m_audioSource.isPlaying;
+		return metronomeAudioSource.isPlaying;
 	}
 		
 	public int GetCurrentBar(){
@@ -610,7 +836,7 @@ public class AudioManager : MonoBehaviour {
 	}
 
 	public float GetCurrentAudioTime(){
-		return m_audioSource.time;
+		return metronomeAudioSource.time;
 	}
 
 	public string GetCurrentMasterTimeAsString(){
@@ -638,7 +864,7 @@ public class AudioManager : MonoBehaviour {
 	}
 		
 	public float GetClipLength(){
-		return m_audioSource.clip.length;
+		return metronomeAudioSource.clip.length;
 	}
 
 	public int GetUnitsPerBeat(){
@@ -676,7 +902,7 @@ public class AudioManager : MonoBehaviour {
 	#region public master getter
 
 	public int GetCurrentMasterTimeSamples(){
-		return (int)(m_masterTimer * m_audioSource.clip.frequency + m_timeSampleOffset);
+		return (int)(m_masterTimer * metronomeAudioSource.clip.frequency + m_timeSampleOffset);
 	}
 
 	#endregion
@@ -685,8 +911,8 @@ public class AudioManager : MonoBehaviour {
 
 	public void SetCurrentTime(float _time){
 		m_masterTimer = _time;
-		m_audioSource.time = _time % m_audioSource.clip.length;
-		m_prevAudioTime = m_audioSource.time;
+		metronomeAudioSource.time = _time % metronomeAudioSource.clip.length;
+		m_prevAudioTime = metronomeAudioSource.time;
 		SyncToAudioSource();
 	}
 

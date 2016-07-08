@@ -43,12 +43,16 @@ public class PatternManager : MonoBehaviour {
 	Dictionary<int, List<PatternControll>> patternsInSceneDict;
 	private int prepareXBarsAhead = 8;
 
+	private bool ready = false;
+
 	#endregion
 
 
 	#region monobehaviour functions
 
 	void Awake(){
+		ready = false;
+
 		audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
 		if (audioManager == null){
 			Debug.LogError("No AudioManager found in scene!");
@@ -67,7 +71,17 @@ public class PatternManager : MonoBehaviour {
 
 		patternsInSceneDict = new Dictionary<int, List<PatternControll>>();
 
-		Init();
+		Pool();
+	}
+
+	void Start(){
+		// initially prepare the first pattern(s)
+
+		for (int i = firstPatternAt; i < prepareXBarsAhead; i++){
+			PreparePatternsForBar(i);
+		}
+
+		ready = true;
 	}
 
 	void OnEnable(){
@@ -83,7 +97,7 @@ public class PatternManager : MonoBehaviour {
 
 	#region init functions
 
-	void Init(){
+	void Pool(){
 		// fill lists with patternControll objects
 		pooledPatterns = new List<PatternControll>();
 
@@ -93,12 +107,6 @@ public class PatternManager : MonoBehaviour {
 			patternControll.gameObject.SetActive(false);
 			patternControll.SetPrepared(false);
 			pooledPatterns.Add(patternControll);
-		}
-
-		// initially prepare the first pattern(s)
-
-		for (int i = firstPatternAt; i < prepareXBarsAhead; i++){
-			PreparePatternsForBar(i);
 		}
 	}
 
@@ -192,6 +200,10 @@ public class PatternManager : MonoBehaviour {
 	private IEnumerator PreparePatternsCoroutine(){
 		int currentBar, targetBar;
 
+		while (!ready){
+			yield return null;
+		}
+
 		while (true){
 			currentBar = audioManager.GetCurrentBar();
 			targetBar = currentBar + prepareXBarsAhead;
@@ -255,9 +267,9 @@ public class PatternManager : MonoBehaviour {
 			pattern = Pattern.bottom;
 		}
 
-		pattern.audioCategory = audioManager.m_soundSet.GetRandomIndex();
-		pattern.instrumentGroup = audioManager.m_soundSet.m_audioCategories[pattern.audioCategory].GetRandomIndex(); 
-		pattern.variation = audioManager.m_soundSet.m_audioCategories[pattern.audioCategory].m_audioChannelGroups[pattern.instrumentGroup].GetRandomIndex();
+		pattern.audioCategory = audioManager.activeSoundSet.GetRandomIndex();
+		pattern.instrumentGroup = audioManager.activeSoundSet.m_audioCategories[pattern.audioCategory].GetRandomIndex(); 
+		pattern.variation = audioManager.activeSoundSet.m_audioCategories[pattern.audioCategory].m_audioChannelGroups[pattern.instrumentGroup].GetRandomIndex();
 
 
 		return pattern;

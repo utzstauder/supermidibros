@@ -37,15 +37,15 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (Input.GetKeyDown(KeyCode.Space) || MIDIInputManager.instance.GetPlayButtonDown()){
+			if (!m_audioManager.IsPlaying()){
+				m_audioManager.Play();
+			} else {
+				m_audioManager.Pause();
+			}
+		} 
 		if (m_debug){
-
-			if (Input.GetKeyDown(KeyCode.Space) || MIDIInputManager.instance.GetPlayButtonDown()){
-				if (!m_audioManager.IsPlaying()){
-					m_audioManager.Play();
-				} else {
-					m_audioManager.Pause();
-				}
-			} else if(Input.GetKeyDown(KeyCode.Backspace) || MIDIInputManager.instance.GetStopButtonDown()){
+			if(Input.GetKeyDown(KeyCode.Backspace) || MIDIInputManager.instance.GetStopButtonDown()){
 				m_audioManager.Stop();
 			}
 		}
@@ -58,6 +58,9 @@ public class GameManager : MonoBehaviour {
 			m_audioManager.QueueReset();
 		}
 
+		if (Input.GetKeyDown(KeyCode.N)){
+			m_audioManager.QueueNextSoundSet();
+		}
 	}
 
 	void OnGUI(){
