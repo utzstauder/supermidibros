@@ -314,7 +314,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 418156, guid: f45f411a1e03745bb893d547c7c1db33, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 11459760, guid: f45f411a1e03745bb893d547c7c1db33, type: 2}
       propertyPath: m_debug
@@ -555,7 +555,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11493844, guid: 0b4ab94d14abf48208701fe74c72c14b, type: 2}
       propertyPath: allZeroes
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11493844, guid: 0b4ab94d14abf48208701fe74c72c14b, type: 2}
       propertyPath: spawnXBarsAhead

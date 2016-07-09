@@ -633,7 +633,7 @@ public class AudioManager : MonoBehaviour {
 
 		} else {
 
-			// disable audio
+			// disable audio of same variation if it is already active
 			if (!audioSourceDict[activeSoundSet][category, instrument, variation].mute){
 				audioSourceDict[activeSoundSet][category, instrument, variation].mute = true;
 			} else {
@@ -643,6 +643,9 @@ public class AudioManager : MonoBehaviour {
 					int[] indices = GetIndicesOfMutedVarations(false, category, instrument);
 					if (indices.Length > 0){
 						audioSourceDict[activeSoundSet][category, instrument, UnityEngine.Random.Range(0, indices.Length)].mute = true;
+					} else {
+						// look for something not muted in another instrument group
+
 					}
 				}
 			}
