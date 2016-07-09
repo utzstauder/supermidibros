@@ -290,7 +290,8 @@ public class AudioManager : MonoBehaviour {
 						audioSource.playOnAwake = false;
 						audioSource.mute = true;
 						AudioSourceSync audioSourceSync = variation.AddComponent<AudioSourceSync>();
-						audioSourceSync.m_isLoop = true;
+						audioSourceSync.SetLoop(true);
+
 
 						audioSources[c,i,v] = audioSource;
 						audioSourcesSync[audioSourceSyncIndex] = audioSourceSync;

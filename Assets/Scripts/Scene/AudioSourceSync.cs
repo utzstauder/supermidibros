@@ -42,6 +42,11 @@ public class AudioSourceSync : MonoBehaviour {
 		}
 	}
 
+	public void SetLoop(bool loop){
+		m_isLoop = loop;
+		m_audioSource.loop = m_isLoop;
+	}
+
 	public void SyncToMaster(AudioManager _reference){
 		if (m_audioSource.clip != null){
 			if (m_isLoop){
