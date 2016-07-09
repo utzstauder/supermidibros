@@ -9,6 +9,8 @@ public class EnvironmentManager : MonoBehaviour {
 	private Dictionary<EnvironmentSet.EnvironmentTile, List<GameObject>> pooledEnvironmentTiles;
 	private Dictionary<int, EnvironmentSet.EnvironmentTile> environmentTilesInScene;
 	private Dictionary<int, GameObject> environmentTileObjectsInScene;
+	private Dictionary<EnvironmentSet.EnvironmentTile, int> variationsLengthDict;
+	private Dictionary<EnvironmentSet.EnvironmentTile, int> variationsIndexDict;
 
 	private const int barsPerTile = 8;
 	private const int spawnTilesInAdvance = 4;
@@ -39,33 +41,57 @@ public class EnvironmentManager : MonoBehaviour {
 			dynamicObjects.gameObject.name = "DynamicObjects";
 		}
 
-		Init();
-	}
-
-	void Start(){
-		
-	}
-	
-	void Update () {
-	
-	}
-
-
-	#region init functions
-
-	void Init(){
 		pooledEnvironmentTiles = new Dictionary<EnvironmentSet.EnvironmentTile, List<GameObject>>();
 		environmentTileObjectsInScene = new Dictionary<int, GameObject>();
 		environmentTilesInScene = new Dictionary<int, EnvironmentSet.EnvironmentTile>();
+		variationsIndexDict = new Dictionary<EnvironmentSet.EnvironmentTile, int>();
+		variationsLengthDict = new Dictionary<EnvironmentSet.EnvironmentTile, int>();
 
 		PoolTiles();
 
+		SetVariationsIndices();
+
+		SpawnFirst();
+	}
+
+	#region init functions
+
+	void SpawnFirst(){
 		//spawn first X elements
 		for (int i = 0; i < spawnTilesInAdvance; i++){
 			PrepareEnvironmentTileAtBar((i * barsPerTile) + 1);
 			EnableEnvironmentTileInScene((i * barsPerTile) + 1);
 		}
 	}
+
+	void PoolTiles(){
+		for (int i = 0; i < environmentSet.environmentTiles.Length; i++){
+			int tilesToSpawn = environmentSet.ConnectsToSelf(environmentSet.environmentTiles[i]) ? spawnTilesInAdvance : 1;
+			for (int t = 0; t < tilesToSpawn; t++){
+				SpawnEnvironmentTile(environmentSet.environmentTiles[i]);
+			}
+		}
+	}
+
+	void SetVariationTransforms(){
+		
+	}
+
+	void SetVariationsIndices(){
+		for(int i = 0; i < environmentSet.environmentTiles.Length; i++){
+			Transform variationsParent = environmentSet.environmentTiles[i].prefab.transform.FindChild("Variations");
+			if (variationsParent == null){
+				Debug.Log(environmentSet.environmentTiles[i].name + ": no Variations transform found");
+				continue;
+			}
+			variationsLengthDict.Add(environmentSet.environmentTiles[i], variationsParent.childCount);
+			variationsIndexDict.Add(environmentSet.environmentTiles[i], 0);
+
+			//Debug.Log("added " + environmentSet.environmentTiles[i].name + " variation index");
+		}
+	}
+
+	#endregion
 
 	void OnStop(){
 		Reset();
@@ -85,17 +111,6 @@ public class EnvironmentManager : MonoBehaviour {
 			EnableEnvironmentTileInScene((i * barsPerTile) + 1);
 		}
 	}
-
-	void PoolTiles(){
-		for (int i = 0; i < environmentSet.environmentTiles.Length; i++){
-			int tilesToSpawn = environmentSet.ConnectsToSelf(environmentSet.environmentTiles[i]) ? spawnTilesInAdvance : 1;
-			for (int t = 0; t < tilesToSpawn; t++){
-				SpawnEnvironmentTile(environmentSet.environmentTiles[i]);
-			}
-		}
-	}
-
-	#endregion
 
 
 	#region spawn functions
@@ -138,6 +153,7 @@ public class EnvironmentManager : MonoBehaviour {
 		}
 
 		GameObject tileObject = GetTileFromList(nextTile);
+		Transform variationsTransform = tileObject.transform.FindChild("Variations");
 
 		SnapToGrid snapToGrid = tileObject.GetComponent<SnapToGrid>();
 		snapToGrid.m_snapX = true;
@@ -146,8 +162,28 @@ public class EnvironmentManager : MonoBehaviour {
 		snapToGrid.m_snapZ = false;
 		snapToGrid.UpdatePosition();
 
+
+		if (variationsTransform != null){
+			//Debug.Log(nextTile.name + ": Enabling child " + variationsIndexDict[nextTile]);
+			// enable variation game object
+			EnableChild(variationsTransform, variationsIndexDict[nextTile]);
+
+			// set new variations index
+			variationsIndexDict[nextTile] = (variationsIndexDict[nextTile] + 1) % variationsLengthDict[nextTile];
+			//Debug.Log(nextTile.name + ": Next index is " + variationsIndexDict[nextTile]);
+		} else {
+			Debug.Log(nextTile.name + ": no variations transform found");
+		}
+
+
 		environmentTileObjectsInScene.Add(bar, tileObject);
 		environmentTilesInScene.Add(bar, nextTile);
+	}
+
+	void EnableChild(Transform parent, int childIndex){
+		for (int i = 0; i < parent.childCount; i++){
+			parent.GetChild(i).gameObject.SetActive(i == childIndex);
+		}
 	}
 
 	void EnableEnvironmentTileInScene(int bar){
@@ -186,8 +222,4 @@ public class EnvironmentManager : MonoBehaviour {
 
 	#endregion
 
-
-	#region coroutines
-
-	#endregion
 }
