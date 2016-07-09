@@ -104,6 +104,7 @@ public class PatternControll : Trigger {
 
 	public void SetPrepared(bool value){
 		isPrepared = value;
+		collider.enabled = true;
 	}
 
 	void UpdateLineRenderer(){
@@ -144,6 +145,8 @@ public class PatternControll : Trigger {
 			EmitParticles(Color.red, hitPositions);
 			OnFailure();
 		}
+			
+		collider.enabled = false;
 	}
 
 	public bool[] GetCollisionCheckInfo(int[] playerCoordinates){

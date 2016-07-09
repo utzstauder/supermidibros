@@ -143,8 +143,7 @@ public class AudioManager : MonoBehaviour {
 			m_prevSubBeatTimer = m_subBeatTimer;
 			m_prevAudioTime = metronomeAudioSource.time;
 
-			// SYNC!
-			//SyncToAudioSource();
+
 		} else {
 			// clamp lower time signature
 			m_timeSignatureLower = Mathf.ClosestPowerOfTwo(m_timeSignatureLower);
@@ -199,7 +198,7 @@ public class AudioManager : MonoBehaviour {
 
 		if (OnBar != null) OnBar(m_currentBar);
 
-//		Debug.Log("Bar " + m_currentBar);
+		Debug.Log("Bar " + m_currentBar);
 	}
 
 

@@ -414,7 +414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8917aa31287e8479c8a830a17d3009d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_detectionRange: 0.3
+  m_detectionRange: 0.5
   m_faderColor: {r: 0, g: 0, b: 1, a: 1}
 --- !u!114 &11440534
 MonoBehaviour:

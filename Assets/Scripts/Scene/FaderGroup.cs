@@ -14,7 +14,7 @@ public class FaderGroup : MonoBehaviour {
 
 
 	[Header("Collision Detection")]
-	[Range(0.01f, 0.5f)]
+	[Range(0.01f, 1.0f)]
 	public float m_detectionRange = .5f;
 	private Collider[] m_collider;
 	private Vector3[,] m_gridAsWorldCoords;
@@ -53,7 +53,7 @@ public class FaderGroup : MonoBehaviour {
 		if (m_audioManager == null){
 			Debug.LogError("No AudioManager found in scene!");
 		} else {
-			m_audioManager.OnBeat += CheckForCollision;
+			m_audioManager.OnSubBeat += CheckForCollision;
 		}
 
 		m_gridAsWorldCoords = SnapToGrid.GridAsWorldCoords();
@@ -122,7 +122,7 @@ public class FaderGroup : MonoBehaviour {
 	/**
 	 * This function will check for collision and is called on every subbeat
 	 */
-	void CheckForCollision(int beat){
+	void CheckForCollision(int subBeat){
 
 		// update positions
 		m_faderPositionsOnGrid = GetFaderPositionsOnGrid();
