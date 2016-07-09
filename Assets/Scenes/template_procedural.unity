@@ -276,7 +276,7 @@ Transform:
   - {fileID: 509352225}
   - {fileID: 350207913}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!1001 &732088473
 Prefab:
   m_ObjectHideFlags: 0
@@ -790,6 +790,19 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11447318, guid: 84b373dc5010b422bb8b45fba57f323d, type: 2}
+      propertyPath: soundSets.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7398e6fd68a61446fb506b7fac245bfc,
+        type: 2}
+    - target: {fileID: 8231124, guid: 84b373dc5010b422bb8b45fba57f323d, type: 2}
+      propertyPath: spreadCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11447318, guid: 84b373dc5010b422bb8b45fba57f323d, type: 2}
+      propertyPath: m_masterAudioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 129325b7a469846a6bb11940ee91352c, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 84b373dc5010b422bb8b45fba57f323d, type: 2}
   m_IsPrefabParent: 0

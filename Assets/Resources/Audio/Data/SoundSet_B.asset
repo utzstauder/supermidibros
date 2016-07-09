@@ -15,187 +15,187 @@ MonoBehaviour:
   m_audioCategories:
   - m_name: Rhythm
     m_audioChannelGroups:
-    - m_name: Kick
+    - m_name: Kick+Snare
       m_stack: 0
       m_audioChannels:
       - m_name: Variation_1
-        m_audioClip: {fileID: 8300000, guid: 6f8a4937d3c034d27b6258e4bb20dea0, type: 3}
-        m_loopLength: 0
+        m_audioClip: {fileID: 8300000, guid: c41d10a9c37584cb1985c5d643d5aa8b, type: 3}
+        m_loopLength: 1
       - m_name: Variation_2
-        m_audioClip: {fileID: 8300000, guid: a6677ddbf4e4b4ad8a5a0072ee4aceba, type: 3}
-        m_loopLength: 0
+        m_audioClip: {fileID: 8300000, guid: d376c02c7bcff4abfa0a262b2346ce27, type: 3}
+        m_loopLength: 1
       - m_name: Variation_3
-        m_audioClip: {fileID: 8300000, guid: a6677ddbf4e4b4ad8a5a0072ee4aceba, type: 3}
-        m_loopLength: 0
+        m_audioClip: {fileID: 8300000, guid: 266db0fbc71084d218a83c0a78c010be, type: 3}
+        m_loopLength: 1
       - m_name: Variation_4
-        m_audioClip: {fileID: 8300000, guid: a6677ddbf4e4b4ad8a5a0072ee4aceba, type: 3}
-        m_loopLength: 0
-    - m_name: Snare
+        m_audioClip: {fileID: 8300000, guid: 9a13f01784e174ff497e4f76781aebf2, type: 3}
+        m_loopLength: 1
+    - m_name: Hi Hat
       m_stack: 0
       m_audioChannels:
       - m_name: Variation_1
-        m_audioClip: {fileID: 8300000, guid: e1a09df9ff38c46238016ad6131d7dc0, type: 3}
+        m_audioClip: {fileID: 8300000, guid: f78b95ce34ce14da0af557b1863c8236, type: 3}
         m_loopLength: 1
       - m_name: Variation_2
-        m_audioClip: {fileID: 8300000, guid: f003beb4f2ce24c3ab8b96dbca8598da, type: 3}
+        m_audioClip: {fileID: 8300000, guid: 4eaf54b7b5e5a465c84111efdc20e679, type: 3}
         m_loopLength: 1
       - m_name: Variation_3
-        m_audioClip: {fileID: 8300000, guid: d6b624839d6b24e0394a03b4d2da87d9, type: 3}
+        m_audioClip: {fileID: 8300000, guid: 606dd5a391f7448d3b7fbf45252ecc86, type: 3}
         m_loopLength: 1
       - m_name: Variation_4
-        m_audioClip: {fileID: 8300000, guid: 2c2ae4515c5ee4d7aba86db7b6807437, type: 3}
-        m_loopLength: 1
-    - m_name: Hi-Hat
-      m_stack: 1
-      m_audioChannels:
-      - m_name: Variation_1
-        m_audioClip: {fileID: 8300000, guid: 8a7bf39837de74321a1b4d9fc43b6733, type: 3}
-        m_loopLength: 1
-      - m_name: Variation_2
-        m_audioClip: {fileID: 8300000, guid: aa0b4fecf754b462b837e331428bbf4b, type: 3}
-        m_loopLength: 1
-      - m_name: Variation_3
-        m_audioClip: {fileID: 8300000, guid: 9676320bf14de433898819c54d8930e0, type: 3}
-        m_loopLength: 1
-      - m_name: Variation_4
-        m_audioClip: {fileID: 8300000, guid: 364b74ca907db4cf9bc1d23951d8b01e, type: 3}
+        m_audioClip: {fileID: 8300000, guid: 2882d2737f8c141cb824f9d1a2cf8ecb, type: 3}
         m_loopLength: 1
     - m_name: Percussion
-      m_stack: 1
+      m_stack: 0
       m_audioChannels:
       - m_name: Variation_1
-        m_audioClip: {fileID: 8300000, guid: c3fc7cda40bc94d92b103587e4b79831, type: 3}
+        m_audioClip: {fileID: 8300000, guid: ebc83e7d134e449cb9c1a4bbf814bec1, type: 3}
         m_loopLength: 1
       - m_name: Variation_2
-        m_audioClip: {fileID: 8300000, guid: ff8fb49e0d38245948ac371765dc5a9d, type: 3}
+        m_audioClip: {fileID: 8300000, guid: f679d8f4cebae4e2cbadf35603a4ecd0, type: 3}
         m_loopLength: 1
       - m_name: Variation_3
-        m_audioClip: {fileID: 8300000, guid: c712207edc6534e69968d292a2901121, type: 3}
+        m_audioClip: {fileID: 8300000, guid: 12f0f8de15a1244c2b87c9f02293ba3a, type: 3}
         m_loopLength: 1
       - m_name: Variation_4
-        m_audioClip: {fileID: 8300000, guid: 5f1d69ed71ec84447965647578fdd541, type: 3}
+        m_audioClip: {fileID: 8300000, guid: 5246b9da5530348929cb599238cc3afa, type: 3}
+        m_loopLength: 1
+    - m_name: Clap
+      m_stack: 0
+      m_audioChannels:
+      - m_name: Variation_1
+        m_audioClip: {fileID: 8300000, guid: cb288161aa3a54c0fa2e4514f86141d8, type: 3}
+        m_loopLength: 1
+      - m_name: Variation_2
+        m_audioClip: {fileID: 8300000, guid: 277c29fb87175417192464d969d2e674, type: 3}
+        m_loopLength: 1
+      - m_name: Variation_3
+        m_audioClip: {fileID: 8300000, guid: 80b2db99af81e43578295c28241d847d, type: 3}
+        m_loopLength: 1
+      - m_name: Variation_4
+        m_audioClip: {fileID: 8300000, guid: e6e127a71163648039c925d42453e9f0, type: 3}
         m_loopLength: 1
   - m_name: Harmony
     m_audioChannelGroups:
-    - m_name: Bass
+    - m_name: Pad
       m_stack: 0
       m_audioChannels:
-      - m_name: 
-        m_audioClip: {fileID: 8300000, guid: c9ebc6313910c4affb75b11ad377b547, type: 3}
-        m_loopLength: 2
-      - m_name: 
-        m_audioClip: {fileID: 8300000, guid: 8c6e3e5704aa9459a92e3269d05be754, type: 3}
-        m_loopLength: 4
-      - m_name: 
-        m_audioClip: {fileID: 8300000, guid: 8c6e3e5704aa9459a92e3269d05be754, type: 3}
-        m_loopLength: 4
-      - m_name: 
-        m_audioClip: {fileID: 8300000, guid: 8c6e3e5704aa9459a92e3269d05be754, type: 3}
-        m_loopLength: 4
-    - m_name: Keys
+      - m_name: Variation_1
+        m_audioClip: {fileID: 8300000, guid: 0565e9b7dae1b454494343beb49d0132, type: 3}
+        m_loopLength: 8
+      - m_name: Variation_2
+        m_audioClip: {fileID: 8300000, guid: 4cafeb2de6e7743fe88fdabca42c6411, type: 3}
+        m_loopLength: 8
+      - m_name: Variation_3
+        m_audioClip: {fileID: 8300000, guid: a19cb30ad35054462aad73f8bd872259, type: 3}
+        m_loopLength: 8
+      - m_name: Variation_4
+        m_audioClip: {fileID: 8300000, guid: ef7bdb56f1e75448e819eb8c642fd2dd, type: 3}
+        m_loopLength: 8
+    - m_name: Bass 1
       m_stack: 0
       m_audioChannels:
-      - m_name: 
-        m_audioClip: {fileID: 8300000, guid: 348afe308b3a444df8d7d235373229c0, type: 3}
-        m_loopLength: 4
-      - m_name: 
-        m_audioClip: {fileID: 8300000, guid: 8656af4486dc94680b4f7ad460518a9d, type: 3}
-        m_loopLength: 4
-      - m_name: 
-        m_audioClip: {fileID: 8300000, guid: 8656af4486dc94680b4f7ad460518a9d, type: 3}
-        m_loopLength: 4
-      - m_name: 
-        m_audioClip: {fileID: 8300000, guid: 8656af4486dc94680b4f7ad460518a9d, type: 3}
-        m_loopLength: 4
-    - m_name: Synth
-      m_stack: 1
-      m_audioChannels:
-      - m_name: 
-        m_audioClip: {fileID: 8300000, guid: faa9599af7c2948b781a5d32876bbcf2, type: 3}
-        m_loopLength: 4
-      - m_name: 
-        m_audioClip: {fileID: 8300000, guid: a841b62f2d99f41b08c57fe81bcfba64, type: 3}
-        m_loopLength: 4
-      - m_name: 
-        m_audioClip: {fileID: 8300000, guid: a841b62f2d99f41b08c57fe81bcfba64, type: 3}
-        m_loopLength: 4
-      - m_name: 
-        m_audioClip: {fileID: 8300000, guid: a841b62f2d99f41b08c57fe81bcfba64, type: 3}
-        m_loopLength: 4
-    - m_name: none
+      - m_name: Variation_1
+        m_audioClip: {fileID: 8300000, guid: d638ad40a10524e44bc94aa03a4d0daa, type: 3}
+        m_loopLength: 8
+      - m_name: Variation_2
+        m_audioClip: {fileID: 8300000, guid: e26f0af0c475940a9b4fefe8d4cc8f3b, type: 3}
+        m_loopLength: 8
+      - m_name: Variation_3
+        m_audioClip: {fileID: 8300000, guid: d4f4aadb85977495fb6beb7712f355fb, type: 3}
+        m_loopLength: 8
+      - m_name: Variation_4
+        m_audioClip: {fileID: 8300000, guid: 3b7630db2166b488cbbc502219b32233, type: 3}
+        m_loopLength: 8
+    - m_name: Bass 2
       m_stack: 0
       m_audioChannels:
-      - m_name: 
-        m_audioClip: {fileID: 0}
-        m_loopLength: 0
-      - m_name: 
-        m_audioClip: {fileID: 0}
-        m_loopLength: 0
-      - m_name: 
-        m_audioClip: {fileID: 0}
-        m_loopLength: 0
-      - m_name: 
-        m_audioClip: {fileID: 0}
-        m_loopLength: 0
+      - m_name: Variation_1
+        m_audioClip: {fileID: 8300000, guid: 39264ce14767f4abf9eed3cea758b06c, type: 3}
+        m_loopLength: 8
+      - m_name: Variation_2
+        m_audioClip: {fileID: 8300000, guid: 773d557f7f2c84d8f87ba13fd6793338, type: 3}
+        m_loopLength: 8
+      - m_name: Variation_3
+        m_audioClip: {fileID: 8300000, guid: 4138942d1acb84afba9d50a8f57c4539, type: 3}
+        m_loopLength: 8
+      - m_name: Variation_4
+        m_audioClip: {fileID: 8300000, guid: bb0f5cb37b55e4a4581f8631829d95fd, type: 3}
+        m_loopLength: 8
+    - m_name: Piano
+      m_stack: 0
+      m_audioChannels:
+      - m_name: Variation_1
+        m_audioClip: {fileID: 8300000, guid: ceae5c831adcc4e6ab1dfca26a82cfd5, type: 3}
+        m_loopLength: 8
+      - m_name: Variation_2
+        m_audioClip: {fileID: 8300000, guid: c60d88bf2d78b4d4b8a3c20605d16b30, type: 3}
+        m_loopLength: 8
+      - m_name: Variation_3
+        m_audioClip: {fileID: 8300000, guid: 54f3f1342461a41399d91e773765f43b, type: 3}
+        m_loopLength: 8
+      - m_name: Variation_4
+        m_audioClip: {fileID: 8300000, guid: d9b3ea54c0ee141b099437cdf687ee18, type: 3}
+        m_loopLength: 8
   - m_name: Melody
     m_audioChannelGroups:
-    - m_name: Guitar
+    - m_name: Synth 1
       m_stack: 0
       m_audioChannels:
-      - m_name: 
-        m_audioClip: {fileID: 8300000, guid: 94f72ad0592924d2d8664780b15c0303, type: 3}
-        m_loopLength: 4
-      - m_name: 
-        m_audioClip: {fileID: 8300000, guid: 5987ef0916b9c4d7d98c51448eda5b84, type: 3}
-        m_loopLength: 1
-      - m_name: 
-        m_audioClip: {fileID: 8300000, guid: 5987ef0916b9c4d7d98c51448eda5b84, type: 3}
-        m_loopLength: 1
-      - m_name: 
-        m_audioClip: {fileID: 8300000, guid: 5987ef0916b9c4d7d98c51448eda5b84, type: 3}
-        m_loopLength: 1
+      - m_name: Variation_1
+        m_audioClip: {fileID: 8300000, guid: c7cc07a8c71524726a1dc7d8e621c4ee, type: 3}
+        m_loopLength: 8
+      - m_name: Variation_2
+        m_audioClip: {fileID: 8300000, guid: c66319d11c8344a5a966d48172a8b188, type: 3}
+        m_loopLength: 8
+      - m_name: Variation_3
+        m_audioClip: {fileID: 8300000, guid: b20090d10e2874990aa6811951ca6ec9, type: 3}
+        m_loopLength: 8
+      - m_name: Variation_4
+        m_audioClip: {fileID: 8300000, guid: d86b4f755134741469232788980a9f7e, type: 3}
+        m_loopLength: 8
+    - m_name: Synth 2
+      m_stack: 0
+      m_audioChannels:
+      - m_name: Variation_1
+        m_audioClip: {fileID: 8300000, guid: bca6b2c14237d4affa8a1db6b040d4e9, type: 3}
+        m_loopLength: 8
+      - m_name: Variation_2
+        m_audioClip: {fileID: 8300000, guid: e6f0d81de2bb7418f955c01bc937cd24, type: 3}
+        m_loopLength: 8
+      - m_name: Variation_3
+        m_audioClip: {fileID: 8300000, guid: fef8de57575fb484e9ab71c985ba684f, type: 3}
+        m_loopLength: 8
+      - m_name: Variation_4
+        m_audioClip: {fileID: 8300000, guid: df1fbe061d6b64e31b62e522290a4455, type: 3}
+        m_loopLength: 8
+    - m_name: Bells
+      m_stack: 0
+      m_audioChannels:
+      - m_name: Variation_1
+        m_audioClip: {fileID: 8300000, guid: 949235c2071ec47e8a339d25321c80bb, type: 3}
+        m_loopLength: 8
+      - m_name: Variation_2
+        m_audioClip: {fileID: 8300000, guid: ba78ac1b483f1440a94e00370f646618, type: 3}
+        m_loopLength: 8
+      - m_name: Variation_3
+        m_audioClip: {fileID: 8300000, guid: 067ba458353604d7fa0c1905d3661fb1, type: 3}
+        m_loopLength: 8
+      - m_name: Variation_4
+        m_audioClip: {fileID: 8300000, guid: 387792272ffdd4147b47d9cb1999a531, type: 3}
+        m_loopLength: 8
     - m_name: Arpeggiator
       m_stack: 0
       m_audioChannels:
-      - m_name: 
-        m_audioClip: {fileID: 8300000, guid: b84a1ca29959e41d8a9148ae2102bbd6, type: 3}
-        m_loopLength: 2
-      - m_name: 
-        m_audioClip: {fileID: 8300000, guid: af1ee1e5777ca4dc79a72300075cecbd, type: 3}
-        m_loopLength: 4
-      - m_name: 
-        m_audioClip: {fileID: 8300000, guid: 0469f99c1146d42a58a73ff090133de1, type: 3}
-        m_loopLength: 2
-      - m_name: 
-        m_audioClip: {fileID: 8300000, guid: 0469f99c1146d42a58a73ff090133de1, type: 3}
-        m_loopLength: 2
-    - m_name: Arpeggiator
-      m_stack: 0
-      m_audioChannels:
-      - m_name: 
-        m_audioClip: {fileID: 8300000, guid: b84a1ca29959e41d8a9148ae2102bbd6, type: 3}
-        m_loopLength: 2
-      - m_name: 
-        m_audioClip: {fileID: 8300000, guid: af1ee1e5777ca4dc79a72300075cecbd, type: 3}
-        m_loopLength: 4
-      - m_name: 
-        m_audioClip: {fileID: 8300000, guid: 0469f99c1146d42a58a73ff090133de1, type: 3}
-        m_loopLength: 2
-      - m_name: 
-        m_audioClip: {fileID: 8300000, guid: 0469f99c1146d42a58a73ff090133de1, type: 3}
-        m_loopLength: 2
-    - m_name: Arpeggiator
-      m_stack: 0
-      m_audioChannels:
-      - m_name: 
-        m_audioClip: {fileID: 8300000, guid: b84a1ca29959e41d8a9148ae2102bbd6, type: 3}
-        m_loopLength: 2
-      - m_name: 
-        m_audioClip: {fileID: 8300000, guid: af1ee1e5777ca4dc79a72300075cecbd, type: 3}
-        m_loopLength: 4
-      - m_name: 
-        m_audioClip: {fileID: 8300000, guid: 0469f99c1146d42a58a73ff090133de1, type: 3}
-        m_loopLength: 2
-      - m_name: 
-        m_audioClip: {fileID: 8300000, guid: 0469f99c1146d42a58a73ff090133de1, type: 3}
-        m_loopLength: 2
+      - m_name: Variation_1
+        m_audioClip: {fileID: 8300000, guid: 81b45770c80b040e193bed4eb6df4e08, type: 3}
+        m_loopLength: 8
+      - m_name: Variation_2
+        m_audioClip: {fileID: 8300000, guid: 7d76921dfac424a5ca8d1952c97bdf6c, type: 3}
+        m_loopLength: 8
+      - m_name: Variation_3
+        m_audioClip: {fileID: 8300000, guid: 561198058db5540eb956e0c413dca08d, type: 3}
+        m_loopLength: 8
+      - m_name: Variation_4
+        m_audioClip: {fileID: 8300000, guid: 48ff8174bbff44c92832894ebe8dfbd3, type: 3}
+        m_loopLength: 8
