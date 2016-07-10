@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class EnvironmentManager : MonoBehaviour {
 
 	public EnvironmentSet environmentSet;
+	public bool randomVariations = false;
 
 	private Dictionary<EnvironmentSet.EnvironmentTile, List<GameObject>> pooledEnvironmentTiles;
 	private Dictionary<int, EnvironmentSet.EnvironmentTile> environmentTilesInScene;
@@ -169,7 +170,12 @@ public class EnvironmentManager : MonoBehaviour {
 			EnableChild(variationsTransform, variationsIndexDict[nextTile]);
 
 			// set new variations index
-			variationsIndexDict[nextTile] = (variationsIndexDict[nextTile] + 1) % variationsLengthDict[nextTile];
+			if (randomVariations){
+				variationsIndexDict[nextTile] = Random.Range(0, variationsLengthDict[nextTile]);
+			} else {
+				variationsIndexDict[nextTile] = (variationsIndexDict[nextTile] + 1) % variationsLengthDict[nextTile];
+			}
+
 			//Debug.Log(nextTile.name + ": Next index is " + variationsIndexDict[nextTile]);
 		} else {
 			Debug.Log(nextTile.name + ": no variations transform found");
