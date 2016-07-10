@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 0ad90b6bb451a4022b46b5f1e248c919
-timeCreated: 1468142947
+guid: f8f84ac8bb8b84650a394500a2eb49d7
+timeCreated: 1468143252
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Rhythm
+    4300000: Harmony
   materials:
     importMaterials: 1
     materialName: 0
