@@ -167,12 +167,14 @@ public class EnvironmentManager : MonoBehaviour {
 		if (variationsTransform != null){
 			//Debug.Log(nextTile.name + ": Enabling child " + variationsIndexDict[nextTile]);
 			// enable variation game object
-			EnableChild(variationsTransform, variationsIndexDict[nextTile]);
+			//EnableChild(variationsTransform, variationsIndexDict[nextTile]);
 
 			// set new variations index
 			if (randomVariations){
 				variationsIndexDict[nextTile] = Random.Range(0, variationsLengthDict[nextTile]);
+				EnableChild(variationsTransform, variationsIndexDict[nextTile]);
 			} else {
+				EnableChild(variationsTransform, variationsIndexDict[nextTile]);
 				variationsIndexDict[nextTile] = (variationsIndexDict[nextTile] + 1) % variationsLengthDict[nextTile];
 			}
 
