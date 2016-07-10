@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c7710948d90b4ee8a1cfd31523ac311, type: 3}
+  m_Name: AudioMixerData
+  m_EditorClassIdentifier: 
+  mainMixer: {fileID: 24100000, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+  standardSnapshot: {fileID: 24531440, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+  metronomeTrack: {fileID: 24341060, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+  categories:
+  - name: Rhythm
+    instruments:
+    - name: Instrument_0
+      variations:
+      - {fileID: 24346414, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+      - {fileID: 24367162, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+      - {fileID: 24386142, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+      - {fileID: 24305006, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+    - name: Instrument_1
+      variations:
+      - {fileID: 24363842, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+      - {fileID: 24331090, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+      - {fileID: 24345198, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+      - {fileID: 24397428, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+    - name: Instrument_2
+      variations:
+      - {fileID: 24339548, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+      - {fileID: 24302644, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+      - {fileID: 24322132, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+      - {fileID: 24331542, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+    - name: Instrument_3
+      variations:
+      - {fileID: 24322020, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+      - {fileID: 24378498, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+      - {fileID: 24335248, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+      - {fileID: 24323936, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+  - name: Harmony
+    instruments:
+    - name: Instrument_0
+      variations:
+      - {fileID: 24374642, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+      - {fileID: 24382852, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+      - {fileID: 24302756, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+      - {fileID: 24305340, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+    - name: Instrument_1
+      variations:
+      - {fileID: 24382776, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+      - {fileID: 24327292, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+      - {fileID: 24378046, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+      - {fileID: 24377686, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+    - name: Instrument_2
+      variations:
+      - {fileID: 24353670, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+      - {fileID: 24324202, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+      - {fileID: 24395924, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+      - {fileID: 24358048, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+    - name: Instrument_3
+      variations:
+      - {fileID: 24345456, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+      - {fileID: 24308038, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+      - {fileID: 24304884, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+      - {fileID: 24364840, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+  - name: Melody
+    instruments:
+    - name: Instrument_0
+      variations:
+      - {fileID: 24359794, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+      - {fileID: 24343142, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+      - {fileID: 24368204, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+      - {fileID: 24381830, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+    - name: Instrument_1
+      variations:
+      - {fileID: 24394062, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+      - {fileID: 24376708, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+      - {fileID: 24377372, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+      - {fileID: 24340892, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+    - name: Instrument_2
+      variations:
+      - {fileID: 24309228, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+      - {fileID: 24341490, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+      - {fileID: 24345578, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+      - {fileID: 24332092, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+    - name: Instrument_3
+      variations:
+      - {fileID: 24358704, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+      - {fileID: 24332812, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+      - {fileID: 24327824, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+      - {fileID: 24343412, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}

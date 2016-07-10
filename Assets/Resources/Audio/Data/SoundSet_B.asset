@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Name: SoundSet_B
   m_EditorClassIdentifier: 
   bpm: 128
+  audioMixerSnapshot: {fileID: 24565862, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
   m_audioCategories:
   - m_name: Rhythm
     m_audioChannelGroups:

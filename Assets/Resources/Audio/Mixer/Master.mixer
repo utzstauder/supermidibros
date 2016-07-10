@@ -9,9 +9,12 @@ AudioMixerController:
   m_OutputGroup: {fileID: 0}
   m_MasterGroup: {fileID: 24300001}
   m_Snapshots:
+  - {fileID: 24531440}
   - {fileID: 24568864}
-  - {fileID: 24531844}
-  m_StartSnapshot: {fileID: 24568864}
+  - {fileID: 24506330}
+  - {fileID: 24565862}
+  - {fileID: 24555926}
+  m_StartSnapshot: {fileID: 24531440}
   m_SuspendThreshold: -80
   m_EnableSuspend: 0
   m_ExposedParameters:
@@ -124,8 +127,8 @@ AudioMixerController:
     - 38d08246be79041d49f97dc6b25b5c1b
     - e3b22f9b96cce40f0b0d40c2dc3dbec7
     name: View - Melody
-  m_CurrentViewIndex: 0
-  m_TargetSnapshot: {fileID: 24568864}
+  m_CurrentViewIndex: 2
+  m_TargetSnapshot: {fileID: 24506330}
 --- !u!243 &24300001
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -149,7 +152,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Variation_2
+  m_Name: Variation_1
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: f22860a6948a14deb8e12865fba779f1
   m_Children: []
@@ -166,7 +169,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Variation_3 - Copy
+  m_Name: Variation_2
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 8c062965d8d014fecb26db97b8eb9bb7
   m_Children: []
@@ -225,7 +228,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Variation_3 - Copy
+  m_Name: Variation_2
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: f488b5ee1a80c4ff1a5d02e143312629
   m_Children: []
@@ -242,7 +245,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Variation_4
+  m_Name: Variation_3
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 1e12d2aaa94084838bb75d5b5ef21fa7
   m_Children: []
@@ -259,7 +262,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Variation_4 - Copy
+  m_Name: Variation_3
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: fede57ead191442209563ff2a761a608
   m_Children: []
@@ -297,7 +300,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Variation_2 - Copy
+  m_Name: Variation_1
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 0c54e82943cfa4b0aba925474c334e60
   m_Children: []
@@ -314,7 +317,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Variation_1 - Copy
+  m_Name: Variation_0
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 0edd686b2e9af466d9017d3e4dad633c
   m_Children: []
@@ -352,7 +355,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Snare
+  m_Name: Instrument_1
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: b282aa20559a1429f899906d1b46de88
   m_Children:
@@ -373,7 +376,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Variation_1
+  m_Name: Variation_0
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: ab38b2dfe08b240a0b1eab6c4b6b6a74
   m_Children: []
@@ -390,7 +393,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Variation_3
+  m_Name: Variation_2
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 0c5018a3fdbde457f8fb2fe195703c8c
   m_Children: []
@@ -428,7 +431,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Variation_4
+  m_Name: Variation_3
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 0b483a5e412134d73b0cd2236619194e
   m_Children: []
@@ -445,7 +448,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Variation_2 - Copy
+  m_Name: Variation_1
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 9165baa255720421bac5dade5c4ee574
   m_Children: []
@@ -483,7 +486,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Variation_2 - Copy
+  m_Name: Variation_1
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: c310829800f6b44c99f7ee588d804ee9
   m_Children: []
@@ -500,7 +503,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Variation_3 - Copy
+  m_Name: Variation_2
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 38d08246be79041d49f97dc6b25b5c1b
   m_Children: []
@@ -538,7 +541,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Variation_2
+  m_Name: Variation_1
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 039c33f37812d4c058bd155a780d235a
   m_Children: []
@@ -555,7 +558,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Variation_4
+  m_Name: Variation_3
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: aafb857a53af345eea8df4456182f612
   m_Children: []
@@ -572,7 +575,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Variation_4 - Copy
+  m_Name: Variation_3
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 970f0815b36a4468f8e93aab56eb2fcb
   m_Children: []
@@ -589,7 +592,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Variation_2 - Copy
+  m_Name: Variation_1
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: ed2aa46614d0e47c38f0588feffdce79
   m_Children: []
@@ -606,7 +609,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Kick
+  m_Name: Instrument_0
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: e323f0f9711334e07a170a2411189896
   m_Children:
@@ -627,7 +630,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Variation_3
+  m_Name: Variation_2
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 2332e0fe854c94e32b888e9cece6df56
   m_Children: []
@@ -644,7 +647,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Variation_1
+  m_Name: Variation_0
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: a2b847dfebaa84460b6674b16f865a13
   m_Children: []
@@ -661,7 +664,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Variation_4 - Copy
+  m_Name: Variation_3
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 9991f59a57c0a428c8c1b0bdbd97f9f1
   m_Children: []
@@ -678,7 +681,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Basic
+  m_Name: Metronome
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: f5b0d96e8e23d463789978020c3c24a7
   m_Children: []
@@ -695,7 +698,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Variation_2 - Copy
+  m_Name: Variation_1
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: e562297cccc1846b58d5305be30c4f7b
   m_Children: []
@@ -712,7 +715,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Variation_2 - Copy
+  m_Name: Variation_1
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 1f826a2eeaca24c658a84cd28e8ac89d
   m_Children: []
@@ -729,7 +732,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Variation_4 - Copy
+  m_Name: Variation_3
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: e3b22f9b96cce40f0b0d40c2dc3dbec7
   m_Children: []
@@ -746,7 +749,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Variation_3
+  m_Name: Variation_2
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: d904692cc21104b929c648f597938ef4
   m_Children: []
@@ -763,7 +766,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Variation_1 - Copy
+  m_Name: Variation_0
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: eedd4958605a945328c5ab53b312ffd0
   m_Children: []
@@ -780,7 +783,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Variation_3 - Copy
+  m_Name: Variation_2
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: d5a41505b6fd74da4b43e7ead07fb7f5
   m_Children: []
@@ -797,7 +800,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Variation_1
+  m_Name: Variation_0
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: bab3b4a09f4c84970a361faeb2838db4
   m_Children: []
@@ -814,7 +817,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Variation_1 - Copy
+  m_Name: Variation_0
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 2412bfece0dde44a1a3c968e2e75095f
   m_Children: []
@@ -831,7 +834,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Variation_4 - Copy
+  m_Name: Variation_3
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 01927061876904b60a4df634d55dc88b
   m_Children: []
@@ -848,7 +851,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Variation_1 - Copy
+  m_Name: Variation_0
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 584719bcd97994ac5914563a01210da8
   m_Children: []
@@ -886,7 +889,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Variation_1 - Copy
+  m_Name: Variation_0
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 171f969255df044e382a67ffcbff6a43
   m_Children: []
@@ -903,7 +906,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Percussion
+  m_Name: Instrument_3
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 80ade7a182f6148bdb1ba419750c61d7
   m_Children:
@@ -924,7 +927,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Variation_1
+  m_Name: Variation_0
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: c721b985016704ba6a35f90855f6d54a
   m_Children: []
@@ -941,7 +944,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Variation_4 - Copy
+  m_Name: Variation_3
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: f4d356c9fad8041d39021ccad249f0d1
   m_Children: []
@@ -958,7 +961,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Variation_2
+  m_Name: Variation_1
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 1a9fe8682835e4a0eb42a862377ba49c
   m_Children: []
@@ -975,7 +978,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Variation_3 - Copy
+  m_Name: Variation_2
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 06b210f8cfca2442882032ccb5d7442f
   m_Children: []
@@ -1013,7 +1016,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Variation_1 - Copy
+  m_Name: Variation_0
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: a34b88287c60e466dbe5bcafe15e1685
   m_Children: []
@@ -1030,7 +1033,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Variation_2 - Copy
+  m_Name: Variation_1
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 148550926f9a9432fae561a1449c90a7
   m_Children: []
@@ -1047,7 +1050,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Variation_3 - Copy
+  m_Name: Variation_2
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 670f3625e8f61456d90c832c6f99eac4
   m_Children: []
@@ -1064,7 +1067,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Variation_4 - Copy
+  m_Name: Variation_3
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 3f8f83c16f09440dfbd2711a01b6de22
   m_Children: []
@@ -1081,7 +1084,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Variation_3 - Copy
+  m_Name: Variation_2
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 666b346e7a2594c3da9beec0937d8c44
   m_Children: []
@@ -1098,7 +1101,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Variation_2
+  m_Name: Variation_1
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: d5ab022779a6445158374bc89c73f92c
   m_Children: []
@@ -1157,7 +1160,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Variation_4 - Copy
+  m_Name: Variation_3
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: e846aa9781a2f4dfdb6a11b8ec0c80de
   m_Children: []
@@ -1174,7 +1177,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Variation_1 - Copy
+  m_Name: Variation_0
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: b8d266ab3e2d5449580eb93595072b8d
   m_Children: []
@@ -1191,7 +1194,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Variation_2 - Copy
+  m_Name: Variation_1
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 2b376bd3fd4d143daa81f4dd7fcf340d
   m_Children: []
@@ -1229,7 +1232,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Variation_3
+  m_Name: Variation_2
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: f76f27ffa38254d27a660fcd2c8c2bfe
   m_Children: []
@@ -1246,7 +1249,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Variation_1 - Copy
+  m_Name: Variation_0
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 711cfb3fbb4804115a72fd85d27dfac2
   m_Children: []
@@ -1263,7 +1266,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Variation_3 - Copy
+  m_Name: Variation_2
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 98321930523684c67a05ee5cbd1f91f8
   m_Children: []
@@ -1280,7 +1283,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Hi-Hat
+  m_Name: Instrument_2
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 507fa931905ae427882aeb8ccbb91b7b
   m_Children:
@@ -1301,7 +1304,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Variation_4
+  m_Name: Variation_3
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 7f98eb904ccba44d2a9fab5a5beff1d1
   m_Children: []
@@ -2171,101 +2174,146 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
---- !u!245 &24531844
+--- !u!245 &24506330
 AudioMixerSnapshotController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: levelStart
+  m_Name: SoundSetA
   m_AudioMixer: {fileID: 24100000}
-  m_SnapshotID: 03d6b53abcdf943018be5d66cb24853e
+  m_SnapshotID: fa5b2153d78844e29a07a85d7dce73b1
   m_FloatValues:
-    27b13d301d8004deca7fc3991d018d34: -80
-    6e0ac18085af04484a33edf6a8a40313: -80
-    8f6090b0c753c417186cd75b389b4c63: -80
-    2c5046b0196d14a10a3d2824cffe5212: -80
-    f9f9c0c0a881b43adbd94b27eccd5d34: -80
-    e54b19e074a0b4ff7b4a8d0c1904c76f: 0
-    c00ecbf009c35465fadb5c9e52ff5c30: -80
-    546db3313579c4065a9fe9e2fafd0c3d: -80
-    608c65714e44e4070803d698a98e59eb: -80
-    aa2e66b1dc01c409b8625c0ae9bf7cc5: -80
-    edc8fbb15706c4fa0b507040c8ba3809: -80
-    43ef71c137fbf46b0a74b4675fa8136a: -80
+    6f0a01c017f1a43de9b4f3784edd689f: 10
+    e54b19e074a0b4ff7b4a8d0c1904c76f: -0.002441872
+    aa2e66b1dc01c409b8625c0ae9bf7cc5: 0
     5abbd7226acab4104bb6b12b99dde8c3: 0
-    bc5ea0624245142bbb3b901b90b418ba: -80
-    801f7072da6d8423a8338e4ae1620a6d: -80
-    3e6187d2120324bae88b308612a191da: -80
-    4b26df63c94a7492b8f5c638865feef9: -80
-    10a1cd83c0cf943538f7cb2709ca6cf3: -80
-    894c50a3717da4532914f78821cea26c: 0
-    9def01b3612444a9badbfba3db151201: -80
-    c7fa14c33dcf34f5ca1c0e9eb57cdc7d: -80
-    9a144824a1e424fc08ae8a986a044a63: -80
-    3704dd94b186e478e8313cb73d070193: -80
-    a1f397a4648194116a289e12cf43943b: -80
-    8e37da5568ace43e2aafc26988ef0f5f: -79.99756
-    1ab1e6955e07d4b5fa1a52683b21e344: -80
-    b7141bc5dc714458ca9c6fbca76c1b35: -80
-    ed528dc52f9d548ae89f9ec7eb28ad15: -80
-    9fc04636573bf4fa1b7ff03e369ef471: -80
-    fac40c66c186248cb98da8c899e7d843: -80
+    a1f397a4648194116a289e12cf43943b: 0
+    b7141bc5dc714458ca9c6fbca76c1b35: 0
     15d1ad76a4aeb4b23ab20fbe6dbc3dea: 0
-    fad13e76a9c114cabbab4d385b8acec3: -80
-    3bac8ac6ce7da42248c6645ed597873b: -80
-    007479d60902b47699d3f4f3cd9eca83: 0
-    d88df7f622ead46a5a0253b4dcd648e4: -80
+    fad13e76a9c114cabbab4d385b8acec3: -0.002441872
+    d88df7f622ead46a5a0253b4dcd648e4: 0
     ce16b907943274d53b2f8cd8b6521ec6: 0
-    55dcfa57a25494dc7b8a7a15745d243c: -80
-    223696b732a45467ca5fed010d69f651: -80
-    3303a5d72e7c843b3b94b0a0934ac8ee: -80
-    d8c5f2187a0824b3a8c7d3c64b8c48ca: -79.99756
-    1d16b518ff1a14898afe1dc13a6a8818: -80
-    81f6b1787b45e4e84a36f53cf9a10e1d: -80
-    27a8c6880fed340cbb8560299764b1d3: -80
-    ea13ff885a9294310a852ab372a69d96: 0
-    dce981d8cd9774539a2d78f350584004: -80
-    00d82719d76204852a24a145db92f553: -79.99756
-    9441c939148074728b6ec1421ba9e909: -80
-    9d3acf499b4f741d7b35be63e6dc1e44: -80
+    56c611875882d4f9a8a403f3bec403ce: 0
+    d8c5f2187a0824b3a8c7d3c64b8c48ca: 0
+    dce981d8cd9774539a2d78f350584004: 0
     87c80399271b842a994d231b22868383: 0
-    56df090ad66904c1793091662885b291: -80
-    c261cd2affa5946b687bb221303764ac: -80
     ba28125a19e8f44aabd0ad1a3f8d481d: 0
-    c818a36a6ac5d4eb5b3625f705617a5d: -80
-    13778f7a501dd4482a4c082e11d91911: -80
-    846368baf5d874e289dbc3a59e4eb969: -80
-    bb4198ba53aa34698b0f73190eb3daff: -80
-    8472fcca543e14dd494a83ee53f5573f: -80
-    0e7484ea11a3d4b0895fc74e6bc43ffd: -80
-    f936040b75c564f8dbac1ddebfbdccfb: -80
-    831b8b4b7f35f4096897427fd4f1e0c1: -80
-    46659b6b8c3e0408fa5eecf1ddadadfa: -80
-    014e0a8bacaeb4100bb1491fdec483f3: -80
-    bf33e5ab86a4b4dc08fb5f8ad323e532: -79.99756
     ef7df2cb03e6541119033a56c3380bc6: 0
-    4fc09acb2b09c472ca0c67e6e961e650: -79.99756
-    5c459fcb15cfd45538cc161e9b799ec1: -80
     d60a54fba8b774143a56aa3953fa7311: -0.002441872
-    de95021c1080b438eb726617adf8fd2e: -80
-    3dd360bc67b254b95975246c8db8b401: -80
-    978c53bceea944f7582aab88116d2ca8: -80
-    2cc736bcb57504afe83f876083a6830e: -80
-    31c0d0cceb2a44e18bb445e80383bda1: -80
     321467fca618648aea16997948257bfc: 0
-    0d5ed10dd994e4b84b8163cb42828245: -80
-    a1235f2d3e8d447cd8bde402fef4da45: -79.99756
-    224abd8d38a8744ee814d1b94dd226a9: -80
-    c49c4f9d9bdd54ba987914024ad52624: -80
-    ea4455ad60e8f4bae8e33b7f9da68e35: -80
+    68bcf50d9015042d3b29c91e78d32538: 1
+    2850fd5e2f88f4ff8a72bc2829cb900d: 1
     ce76238ecf279404ca836a304e49761a: 0
-    3a0cbe8e37d014623a3d67d1a772d257: -79.99756
     3c87739e2a67547478632abdd7778a64: 0
-    66716f0f2392944d194eea3d0624cabb: -80
+    2cea29aef93d64d66be29821deb2e630: 1
     22bd674fa317d41dba0c936585b9e8d4: 0
     bf7bc48f69e93489a8cf381495e49388: 0
-    163cacbfa6e384f38bd70818fc08890e: -80
-    17dfc2efec8494b7b838f64d70791da7: -80
+  m_TransitionOverrides: {}
+--- !u!245 &24531440
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: standardSnapshot
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: 56e2836af978d4df4abd57a0437fbf8e
+  m_FloatValues:
+    6f0a01c017f1a43de9b4f3784edd689f: 10
+    e54b19e074a0b4ff7b4a8d0c1904c76f: -0.002441872
+    aa2e66b1dc01c409b8625c0ae9bf7cc5: 0
+    5abbd7226acab4104bb6b12b99dde8c3: 0
+    a1f397a4648194116a289e12cf43943b: 0
+    b7141bc5dc714458ca9c6fbca76c1b35: 0
+    15d1ad76a4aeb4b23ab20fbe6dbc3dea: 0
+    fad13e76a9c114cabbab4d385b8acec3: -0.002441872
+    d88df7f622ead46a5a0253b4dcd648e4: 0
+    ce16b907943274d53b2f8cd8b6521ec6: 0
+    56c611875882d4f9a8a403f3bec403ce: 0
+    d8c5f2187a0824b3a8c7d3c64b8c48ca: 0
+    dce981d8cd9774539a2d78f350584004: 0
+    87c80399271b842a994d231b22868383: 0
+    ba28125a19e8f44aabd0ad1a3f8d481d: 0
+    ef7df2cb03e6541119033a56c3380bc6: 0
+    d60a54fba8b774143a56aa3953fa7311: -0.002441872
+    321467fca618648aea16997948257bfc: 0
+    68bcf50d9015042d3b29c91e78d32538: 1
+    2850fd5e2f88f4ff8a72bc2829cb900d: 1
+    ce76238ecf279404ca836a304e49761a: 0
+    3c87739e2a67547478632abdd7778a64: 0
+    2cea29aef93d64d66be29821deb2e630: 1
+    22bd674fa317d41dba0c936585b9e8d4: 0
+    bf7bc48f69e93489a8cf381495e49388: 0
+  m_TransitionOverrides: {}
+--- !u!245 &24555926
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: SoundSetC
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: f12b3c6f9f593424fab36128192933fd
+  m_FloatValues:
+    6f0a01c017f1a43de9b4f3784edd689f: 10
+    e54b19e074a0b4ff7b4a8d0c1904c76f: -0.002441872
+    aa2e66b1dc01c409b8625c0ae9bf7cc5: 0
+    5abbd7226acab4104bb6b12b99dde8c3: 0
+    a1f397a4648194116a289e12cf43943b: 0
+    b7141bc5dc714458ca9c6fbca76c1b35: 0
+    15d1ad76a4aeb4b23ab20fbe6dbc3dea: 0
+    fad13e76a9c114cabbab4d385b8acec3: -0.002441872
+    d88df7f622ead46a5a0253b4dcd648e4: 0
+    ce16b907943274d53b2f8cd8b6521ec6: 0
+    56c611875882d4f9a8a403f3bec403ce: 0
+    d8c5f2187a0824b3a8c7d3c64b8c48ca: 0
+    dce981d8cd9774539a2d78f350584004: 0
+    87c80399271b842a994d231b22868383: 0
+    ba28125a19e8f44aabd0ad1a3f8d481d: 0
+    ef7df2cb03e6541119033a56c3380bc6: 0
+    d60a54fba8b774143a56aa3953fa7311: -0.002441872
+    321467fca618648aea16997948257bfc: 0
+    68bcf50d9015042d3b29c91e78d32538: 1
+    2850fd5e2f88f4ff8a72bc2829cb900d: 1
+    ce76238ecf279404ca836a304e49761a: 0
+    3c87739e2a67547478632abdd7778a64: 0
+    2cea29aef93d64d66be29821deb2e630: 1
+    22bd674fa317d41dba0c936585b9e8d4: 0
+    bf7bc48f69e93489a8cf381495e49388: 0
+  m_TransitionOverrides: {}
+--- !u!245 &24565862
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: SoundSetB
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: 2143298f58f4d4f7bba42079c26840a3
+  m_FloatValues:
+    6f0a01c017f1a43de9b4f3784edd689f: 10
+    e54b19e074a0b4ff7b4a8d0c1904c76f: -0.002441872
+    aa2e66b1dc01c409b8625c0ae9bf7cc5: 0
+    5abbd7226acab4104bb6b12b99dde8c3: 0
+    1462f1e2ed0d446da8dfc05a689f8da2: 0
+    a1f397a4648194116a289e12cf43943b: 0
+    b7141bc5dc714458ca9c6fbca76c1b35: 0
+    15d1ad76a4aeb4b23ab20fbe6dbc3dea: 0
+    fad13e76a9c114cabbab4d385b8acec3: -0.002441872
+    d88df7f622ead46a5a0253b4dcd648e4: 0
+    ce16b907943274d53b2f8cd8b6521ec6: 0
+    56c611875882d4f9a8a403f3bec403ce: 0
+    d8c5f2187a0824b3a8c7d3c64b8c48ca: 0
+    dce981d8cd9774539a2d78f350584004: 0
+    87c80399271b842a994d231b22868383: 0
+    ba28125a19e8f44aabd0ad1a3f8d481d: 0
+    ef7df2cb03e6541119033a56c3380bc6: 0
+    d60a54fba8b774143a56aa3953fa7311: -0.002441872
+    321467fca618648aea16997948257bfc: 0
+    68bcf50d9015042d3b29c91e78d32538: 1
+    2850fd5e2f88f4ff8a72bc2829cb900d: 1
+    ce76238ecf279404ca836a304e49761a: 0
+    3c87739e2a67547478632abdd7778a64: 0
+    2cea29aef93d64d66be29821deb2e630: 1
+    22bd674fa317d41dba0c936585b9e8d4: 0
+    bf7bc48f69e93489a8cf381495e49388: 0
   m_TransitionOverrides: {}
 --- !u!245 &24568864
 AudioMixerSnapshotController:

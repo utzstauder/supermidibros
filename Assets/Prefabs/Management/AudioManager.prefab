@@ -116,12 +116,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71b72adf67b354847823d258cd238f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_audioMixer: {fileID: 24100000, guid: 890bfb1daf73b481d94a953d42a59112, type: 2}
+  audioMixerData: {fileID: 11400000, guid: fdcc21bfd00d1458d9b65298cbbb3660, type: 2}
   activeSoundSet: {fileID: 0}
   soundSets:
   - {fileID: 11400000, guid: ee2901aa01cae4ddeb2847ba9f0dc35a, type: 2}
-  - {fileID: 11400000, guid: cc9bce3edf17b4cdcb54d702e5010e52, type: 2}
-  m_masterAudioClip: {fileID: 8300000, guid: 0e0b88bdf79d249c5b3ea69be124de08, type: 3}
+  - {fileID: 11400000, guid: 7398e6fd68a61446fb506b7fac245bfc, type: 2}
+  - {fileID: 11400000, guid: ccc616bd0307742588836e4f5a04703a, type: 2}
+  m_masterAudioClip: {fileID: 8300000, guid: 129325b7a469846a6bb11940ee91352c, type: 3}
   m_bpm: 128
   m_timeSignatureUpper: 4
   m_timeSignatureLower: 4

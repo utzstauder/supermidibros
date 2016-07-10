@@ -10,6 +10,8 @@ public class SoundSet : ScriptableObject {
 //	public int timeSignatureUpper = 4;
 //	public int timeSignatureLower = 4;
 
+	public AudioMixerSnapshot audioMixerSnapshot;
+
 	public AudioCategory[] m_audioCategories;
 
 	public SoundSet(){

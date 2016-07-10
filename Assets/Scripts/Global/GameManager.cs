@@ -48,6 +48,12 @@ public class GameManager : MonoBehaviour {
 			if(Input.GetKeyDown(KeyCode.Backspace) || MIDIInputManager.instance.GetStopButtonDown()){
 				m_audioManager.Stop();
 			}
+
+			if (Input.GetKeyDown(KeyCode.C)){
+				m_audioManager.SetAllChannelsInActiveSoundSet(true);
+			} else if (Input.GetKeyDown(KeyCode.M)){
+				m_audioManager.SetAllChannelsInActiveSoundSet(false);
+			}
 		}
 
 		if (Input.GetKeyDown(KeyCode.Escape)){
