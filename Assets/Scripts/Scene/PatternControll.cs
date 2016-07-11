@@ -165,11 +165,13 @@ public class PatternControll : Trigger {
 
 	void OnSuccess(){
 		BroadcastTriggerSuccess();
+		GameManager.instance.IncreasePatternCombo(pattern.size);
 		m_audioManager.OnAudioTrigger(true, pattern.audioCategory, pattern.instrumentGroup, pattern.variation);
 	}
 
 	void OnFailure(){
 		BroadcastTriggerFailure();
+		GameManager.instance.DecreasePatternCombo(pattern.size);
 		m_audioManager.OnAudioTrigger(false, pattern.audioCategory, pattern.instrumentGroup, pattern.variation);
 	}
 
@@ -241,11 +243,11 @@ public class PatternControll : Trigger {
 
 	private void SetAffectorsOfChildren(int category, int instrument, int variation){
 		for (int i = 0; i < children.Length; i++){
-			OnRhythmPeriodicAffector affector = children[i].gameObject.GetComponentInChildren<OnRhythmPeriodicAffector>();
+			OnRhythmPeriodicAffectorAudioChannel affector = children[i].gameObject.GetComponentInChildren<OnRhythmPeriodicAffectorAudioChannel>();
 
 			affector.category = category;
 			affector.instrument = instrument;
-			affector.variation = variation;
+			affector.variation = -1;
 		}
 	}
 

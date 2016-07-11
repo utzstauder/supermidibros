@@ -20,7 +20,6 @@ public class AudioManager : MonoBehaviour {
 	[Range(2,16)]
 	public int 			m_timeSignatureLower	= 4;
 	public int 			m_timeSampleOffset 		= 0;
-	private float 		timeOffset				= 0;
 	[Range(1,32)]
 	[HideInInspector]
 	public int 			m_unitsPerBeat			= 4;
@@ -187,6 +186,8 @@ public class AudioManager : MonoBehaviour {
 		if (m_currentBeat == 1){
 			Bar();
 		}
+
+		GameManager.instance.DecreaseScore();
 	}
 
 	// gets called on every full bar
@@ -334,7 +335,7 @@ public class AudioManager : MonoBehaviour {
 		soundSetChangeQueue = true;
 	}
 
-	void NextSoundSet(){
+	public void NextSoundSet(bool keepPlaying = false){
 		int currentIndex = -1;
 		for (int i = 0; i < soundSets.Length; i++){
 			if (soundSets[i] == activeSoundSet){
@@ -350,10 +351,10 @@ public class AudioManager : MonoBehaviour {
 		int nextIndex = (currentIndex + 1) % soundSets.Length;
 		//Debug.Log(nextIndex);
 
-		ChangeSoundSet(nextIndex);
+		ChangeSoundSet(nextIndex, keepPlaying);
 	}
 
-	void ChangeSoundSet(int index){
+	void ChangeSoundSet(int index, bool keepPlaying = false){
 		if (index >= soundSets.Length){
 			return;
 		}
@@ -361,8 +362,18 @@ public class AudioManager : MonoBehaviour {
 		// stop old soundset
 		StopActiveSoundSet();
 
-		// mute old soundset
-		SetAllChannelsInActiveSoundSet(false);
+		if (keepPlaying){
+			for (int c = 0; c < audioSourceDict[activeSoundSet].GetLength(0); c++){
+				for (int i = 0; i < audioSourceDict[activeSoundSet].GetLength(1); i++){
+					for (int v = 0; v < audioSourceDict[activeSoundSet].GetLength(2); v++){
+						audioSourceDict[soundSets[index]][c, i, v].mute = audioSourceDict[activeSoundSet][c, i, v].mute;
+					}
+				}
+			}
+		} else {
+			// mute old soundset
+			SetAllChannelsInActiveSoundSet(false);
+		}
 
 		// deactivate old gameobjects
 		DeactivateActiveSoundSetRoot();
@@ -414,9 +425,6 @@ public class AudioManager : MonoBehaviour {
 
 	void PlayAll(){
 		metronomeAudioSource.Play();
-		metronomeAudioSource.time = GetCurrentMasterTime();
-		timeOffset = GetCurrentMasterTime();
-		Debug.Log("timeOffset: " + timeOffset);
 		PlayAllFromActiveSoundSet();
 	}
 
@@ -607,7 +615,7 @@ public class AudioManager : MonoBehaviour {
 	#region audio channel controll
 
 	public void OnAudioTrigger(bool success, int category, int instrument, int variation){
-		Debug.Log("OnAudioTrigger; Bar " + GetCurrentBar() + ", Beat " + GetCurrentBeat() + ", Time: " + GetCurrentMasterTimeAsString());
+//		Debug.Log("OnAudioTrigger; Bar " + GetCurrentBar() + ", Beat " + GetCurrentBeat() + ", Time: " + GetCurrentMasterTimeAsString());
 
 		if (audioSourceDict[activeSoundSet][category, instrument, variation] == null){
 			return;
@@ -628,37 +636,39 @@ public class AudioManager : MonoBehaviour {
 		} else {
 			int variationToMute = -1;
 
-			Debug.Log("disabling audio...");
+//			Debug.Log("disabling audio...");
 			// disable audio of same variation if it is already active
 			if (!audioSourceDict[activeSoundSet][category, instrument, variation].mute){
-				Debug.Log("channel was playing. disabling this motherfucker!");
+//				Debug.Log("channel was playing. disabling this motherfucker!");
 				audioSourceDict[activeSoundSet][category, instrument, variation].mute = true;
 			} else {
-				Debug.Log("channel was not playing.");
+//				Debug.Log("channel was not playing.");
 				if (CanStack(category, instrument)){
 					// mute something else from that group
-					Debug.Log("instrument can stack");
+//					Debug.Log("instrument can stack");
 					int[] indices = GetIndicesOfMutedVarations(false, category, instrument);
 					if (indices.Length > 0){
-						Debug.Log("there were other variations playing");
+//						Debug.Log("there were other variations playing");
 						variationToMute = indices[UnityEngine.Random.Range(0, indices.Length)];
 						audioSourceDict[activeSoundSet][category, instrument, variationToMute].mute = true;
-						Debug.Log("muted variation " + variationToMute);
+//						Debug.Log("muted variation " + variationToMute);
 						return;
 					}
 				}
-				Debug.Log("no other variation was is playing");
-				// there is no stack or other variation playing; look for other instruments in this category
-				int indexOfInstrumentToMute = GetInstrumentWithMostMuted(false, category);
-				Debug.Log("muting a variation of instrument " + indexOfInstrumentToMute);
-				int[] indicesOfVariations = GetIndicesOfMutedVarations(false, category, indexOfInstrumentToMute);
-				Debug.Log("currently " + indicesOfVariations.Length + " variations playing.");
-				if (indicesOfVariations.Length > 0){
-					variationToMute = indicesOfVariations[UnityEngine.Random.Range(0, indicesOfVariations.Length)];
-					audioSourceDict[activeSoundSet][category, indexOfInstrumentToMute, variationToMute].mute = true;
-					Debug.Log("muted variation " + variationToMute);
-					return;
-				} 
+//				Debug.Log("no other variation was is playing");
+				if (category != 0){
+					// there is no stack or other variation playing; look for other instruments in this category
+					int indexOfInstrumentToMute = GetInstrumentWithMostMuted(false, category);
+//					Debug.Log("muting a variation of instrument " + indexOfInstrumentToMute);
+					int[] indicesOfVariations = GetIndicesOfMutedVarations(false, category, indexOfInstrumentToMute);
+//					Debug.Log("currently " + indicesOfVariations.Length + " variations playing.");
+					if (indicesOfVariations.Length > 0){
+						variationToMute = indicesOfVariations[UnityEngine.Random.Range(0, indicesOfVariations.Length)];
+						audioSourceDict[activeSoundSet][category, indexOfInstrumentToMute, variationToMute].mute = true;
+//						Debug.Log("muted variation " + variationToMute);
+						return;
+					} 
+				}
 			}
 
 		}
@@ -766,13 +776,20 @@ public class AudioManager : MonoBehaviour {
 //		if (m_audioSourcesInChildren[category, instrument, variation] != null){
 //			return !m_audioSourcesInChildren[category, instrument, variation].mute;
 //		}
-		if (audioSourceDict[activeSoundSet][category, instrument, variation] != null){
-			if (audioSourceSyncDict[activeSoundSet][category, instrument, variation].m_isLoop){
-				return !audioSourceDict[activeSoundSet][category, instrument, variation].mute;
-			} else {
-				return audioSourceDict[activeSoundSet][category, instrument, variation].isPlaying;
+
+		if (variation < 0){
+			for (int v = 0; v < Constants.VARIATIONS; v++){
+				if (audioSourceDict[activeSoundSet][category, instrument, v].mute == false){
+					return true;
+				}
 			}
+			return false;
 		}
+
+		if (audioSourceDict[activeSoundSet][category, instrument, variation] != null){
+			return !audioSourceDict[activeSoundSet][category, instrument, variation].mute;
+		} 
+
 		return false;	
 	}
 

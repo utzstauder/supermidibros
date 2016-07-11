@@ -1,80 +1,97 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &196842
+--- !u!1 &187404
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 418156}
-  - 114: {fileID: 11459760}
-  - 114: {fileID: 11421752}
-  - 114: {fileID: 11499318}
+  - 4: {fileID: 436224}
+  - 114: {fileID: 11485172}
+  - 65: {fileID: 6597558}
+  - 114: {fileID: 11435298}
+  - 114: {fileID: 11487752}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: TriggerGameObjectInScene
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &418156
+--- !u!4 &436224
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 196842}
+  m_GameObject: {fileID: 187404}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 16, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11421752
+--- !u!65 &6597558
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 187404}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 16, z: 24}
+  m_Center: {x: 2, y: 7, z: 0}
+--- !u!114 &11435298
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 196842}
+  m_GameObject: {fileID: 187404}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cfc5916227f147269f64cfc62878140, type: 3}
+  m_Script: {fileID: 11500000, guid: 88125bde2a3254f67a5f865ef4cd7874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11459760
+--- !u!114 &11485172
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 196842}
+  m_GameObject: {fileID: 187404}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ae49433641234a5498de353a8a0ed08, type: 3}
+  m_Script: {fileID: 11500000, guid: 4652f0fd7e18346d99aa5adbd9bda366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_debug: 0
-  patternComboMultiplier: 1
-  scoreText: {fileID: 0}
-  highscoreText: {fileID: 0}
---- !u!114 &11499318
+  m_snapX: 1
+  m_lockX: 0
+  m_bar: 2
+  m_beat: 1
+  m_subBeat: 1
+  m_snapY: 0
+  m_lockY: 0
+  m_verticalPosition: 0
+  m_snapZ: 0
+  m_lockZ: 0
+  m_playerLane: 0
+--- !u!114 &11487752
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 196842}
+  m_GameObject: {fileID: 187404}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 225f55d233f454a2480895d730cd03cc, type: 3}
+  m_Script: {fileID: 11500000, guid: 271bbb23340354553b5323ff5829a3d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_captureVideoInPlaymode: 0
-  m_lockFrameRate: 0
-  m_frameLock: 30
-  m_videoframeSubfolder: capturedframes
-  m_screenshotsSubfolder: screenshots
-  m_screenShotPrefix: Screenshot
-  m_screenShotInput: 13
+  m_triggers: []
+  lookForTriggersOnParent: 0
+  targetObjectName: horizon
+  setActive: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -84,5 +101,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 196842}
+  m_RootGameObject: {fileID: 187404}
   m_IsPrefabParent: 1
