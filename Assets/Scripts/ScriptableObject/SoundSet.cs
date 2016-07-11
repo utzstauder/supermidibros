@@ -92,18 +92,14 @@ public class SoundSet : ScriptableObject {
 
 		public AudioClip m_audioClip;
 
-		public int m_loopLength;
+		public bool isLoop;
 
 		public AudioChannel(string name){
 			m_name = name;
 			m_audioClip = null;
-
-			m_loopLength = 1;
+			isLoop = true;
 		}
 
-		public int Length(){
-			return m_loopLength;
-		}
 	}
 
 	#endregion

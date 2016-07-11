@@ -77,21 +77,21 @@ public class GameManager : MonoBehaviour {
 //				m_horizontalSliderValue = m_audioManager.GetCurrentTime();
 //			}
 
-			if (!m_audioManager.IsPlaying()){
-				if (GUI.Button(new Rect(10, 30, 60, 20), "PLAY")){
-					m_audioManager.Play();
-				}
-			} else {
-				if (GUI.Button(new Rect(10, 30, 60, 20), "PAUSE")){
-					m_audioManager.Pause();
-				}
-			}
-			if (GUI.Button(new Rect(70, 30, 60, 20), "STOP")){
-				m_audioManager.Stop();
-			}
-			if (GUI.Button(new Rect(130, 30, 60, 20), "RESET")){
-				m_audioManager.QueueReset();
-			}
+//			if (!m_audioManager.IsPlaying()){
+//				if (GUI.Button(new Rect(10, 30, 60, 20), "PLAY")){
+//					m_audioManager.Play();
+//				}
+//			} else {
+//				if (GUI.Button(new Rect(10, 30, 60, 20), "PAUSE")){
+//					m_audioManager.Pause();
+//				}
+//			}
+//			if (GUI.Button(new Rect(70, 30, 60, 20), "STOP")){
+//				m_audioManager.Stop();
+//			}
+//			if (GUI.Button(new Rect(130, 30, 60, 20), "RESET")){
+//				m_audioManager.QueueReset();
+//			}
 
 			GUI.Label(new Rect(10, 50, 100, 20), m_audioManager.GetCurrentAudioTimeAsString());
 			GUI.Label(new Rect(70, 50, 100, 20), m_audioManager.GetCurrentBar() + " | " + m_audioManager.GetCurrentBeat() + " | " + m_audioManager.GetCurrentSubBeat());

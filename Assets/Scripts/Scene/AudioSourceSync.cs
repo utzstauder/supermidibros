@@ -57,7 +57,7 @@ public class AudioSourceSync : MonoBehaviour {
 						m_loopOffset * _reference.GetSamplesPerBar());
 				} else {
 					// automatically loop through entire track
-					SetTimeSamples((int)(_reference.GetCurrentAudioTimeSamples() % m_audioSource.clip.samples));
+					SetTimeSamples((_reference.GetCurrentAudioTimeSamples() % m_audioSource.clip.samples));
 				}
 
 			} else {
@@ -70,7 +70,7 @@ public class AudioSourceSync : MonoBehaviour {
 	}
 
 	public void SetTimeSamples(int _timeSamples){
-		_timeSamples = Mathf.Clamp(_timeSamples, 0, m_audioSource.clip.samples);
+		//_timeSamples = Mathf.Clamp(_timeSamples, 0, m_audioSource.clip.samples);
 		m_audioSource.timeSamples = _timeSamples;
 	}
 

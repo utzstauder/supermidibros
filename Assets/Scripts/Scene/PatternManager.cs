@@ -159,7 +159,6 @@ public class PatternManager : MonoBehaviour {
 	#region event handler
 
 	private void OnBar(int bar){
-		// TODO: just a test, spawn patterns every other bar
 //		if (bar % spawnEveryXBar == 0){
 //			SpawnPatternAtBar(bar + spawnAheadOffset);
 //			PrepareNextPattern();
@@ -310,11 +309,10 @@ public class PatternManager : MonoBehaviour {
 		int numberOfCategoriesToAssign = Mathf.Clamp(3, 1, patterns.Length);
 		int startIndex = 0;
 
-		if ((targetBar-1) % harmonyEveryXBars == 0){
+		if ((targetBar-1) % melodyEveryXBars == 0){
 			numberOfCategoriesToAssign = Mathf.Clamp(3, 1, patterns.Length);
 			startIndex = 2;
-		} else if ((targetBar-1) % melodyEveryXBars == 0){
-			Debug.Log("Melody");
+		} else if ((targetBar-1) % harmonyEveryXBars == 0){
 			numberOfCategoriesToAssign = Mathf.Clamp(2, 1, patterns.Length);
 			startIndex = 1;
 		} else {
