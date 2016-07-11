@@ -86,7 +86,7 @@ MonoBehaviour:
     complexity: 0
     audioCategory: 0
     instrumentGroup: 0
-    variation: 0
+    variation: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
