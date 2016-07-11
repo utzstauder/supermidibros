@@ -54,6 +54,7 @@ public class PlayerGroup : MonoBehaviour {
 
 		GameObject _playerCharacter = Instantiate(m_playerCharacterPrefabs[_playerId], Vector3.zero, Quaternion.identity) as GameObject;
 		_playerCharacter.transform.parent = _player.transform;
+		_playerCharacter.transform.localPosition = Vector3.zero;
 
 		OnRhythmPeriodicAffectorAlignment[] alignmentAffectors = _playerCharacter.GetComponentsInChildren<OnRhythmPeriodicAffectorAlignment>();
 		for (int i = 0; i < alignmentAffectors.Length; i++){
