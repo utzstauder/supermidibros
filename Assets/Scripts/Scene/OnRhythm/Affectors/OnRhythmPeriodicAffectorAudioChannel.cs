@@ -11,7 +11,7 @@ public class OnRhythmPeriodicAffectorAudioChannel : OnRhythmPeriodicAffector {
 	public int category = 0;
 	[Range(0, 3)]
 	public int instrument = 0;
-	[Range(0, 3)]
+	[Range(-1, 3)]
 	public int variation = 0;
 
 	private AudioManager	m_audioManager;
@@ -23,14 +23,14 @@ public class OnRhythmPeriodicAffectorAudioChannel : OnRhythmPeriodicAffector {
 			m_audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
 			if (!m_audioManager){
 				Debug.LogError("No AudioManager found in this scene!");
+			} else {
+				m_audioManager.OnSubBeat += UpdateActive;
 			}
 		}
 	}
 
-	protected override void Update ()
-	{
-		base.Update ();
-
+	void UpdateActive(int subbeat){
 		active = m_audioManager.IsChannelActive(category, instrument, variation);
 	}
+
 }

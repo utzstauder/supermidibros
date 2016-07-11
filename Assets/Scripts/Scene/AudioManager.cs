@@ -776,13 +776,20 @@ public class AudioManager : MonoBehaviour {
 //		if (m_audioSourcesInChildren[category, instrument, variation] != null){
 //			return !m_audioSourcesInChildren[category, instrument, variation].mute;
 //		}
-		if (audioSourceDict[activeSoundSet][category, instrument, variation] != null){
-			if (audioSourceSyncDict[activeSoundSet][category, instrument, variation].m_isLoop){
-				return !audioSourceDict[activeSoundSet][category, instrument, variation].mute;
-			} else {
-				return audioSourceDict[activeSoundSet][category, instrument, variation].isPlaying;
+
+		if (variation < 0){
+			for (int v = 0; v < Constants.VARIATIONS; v++){
+				if (audioSourceDict[activeSoundSet][category, instrument, v].mute == false){
+					return true;
+				}
 			}
+			return false;
 		}
+
+		if (audioSourceDict[activeSoundSet][category, instrument, variation] != null){
+			return !audioSourceDict[activeSoundSet][category, instrument, variation].mute;
+		} 
+
 		return false;	
 	}
 

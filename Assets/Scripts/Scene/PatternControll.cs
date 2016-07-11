@@ -247,7 +247,7 @@ public class PatternControll : Trigger {
 
 			affector.category = category;
 			affector.instrument = instrument;
-			affector.variation = variation;
+			affector.variation = -1;
 		}
 	}
 
