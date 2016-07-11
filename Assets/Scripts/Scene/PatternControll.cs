@@ -165,11 +165,13 @@ public class PatternControll : Trigger {
 
 	void OnSuccess(){
 		BroadcastTriggerSuccess();
+		GameManager.instance.IncreasePatternCombo(pattern.size);
 		m_audioManager.OnAudioTrigger(true, pattern.audioCategory, pattern.instrumentGroup, pattern.variation);
 	}
 
 	void OnFailure(){
 		BroadcastTriggerFailure();
+		GameManager.instance.DecreasePatternCombo(pattern.size);
 		m_audioManager.OnAudioTrigger(false, pattern.audioCategory, pattern.instrumentGroup, pattern.variation);
 	}
 

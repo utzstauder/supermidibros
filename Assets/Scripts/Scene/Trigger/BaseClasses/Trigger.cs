@@ -77,7 +77,7 @@ public class Trigger : MonoBehaviour {
 	 */
 	public virtual void OnCollision(int _playerId){
 //		Debug.Log("Collision with Player " + _playerId);
-		//Debug.Log("HIT");
+//		Debug.Log("HIT");
 		BroadcastTriggerSuccess();
 	}
 

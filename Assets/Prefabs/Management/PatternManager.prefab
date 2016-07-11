@@ -65,9 +65,9 @@ MonoBehaviour:
   allZeroes: 0
   symmetricalOnly: 1
   firstPatternAt: 2
-  spawnXBarsAhead: 3
-  melodyEveryXBars: 8
-  harmonyEveryXBars: 4
+  spawnXBarsAhead: 4
+  melodyEveryXBars: 4
+  harmonyEveryXBars: 8
   rhythmEveryXBars: 2
 --- !u!1001 &100100000
 Prefab:

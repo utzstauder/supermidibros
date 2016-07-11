@@ -44,8 +44,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_triggers: []
+  lookForTriggersOnParent: 1
   m_renderer: {fileID: 12032722}
-  m_targetMaterial: {fileID: 2100000, guid: c0806ead5bd0148d1a3f733d996079d4, type: 2}
+  m_targetMaterialSuccess: {fileID: 0}
+  m_targetMaterialFailure: {fileID: 0}
 --- !u!114 &11475086
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -60,6 +62,7 @@ MonoBehaviour:
   m_triggers: []
   m_lookForTriggersInChildren: 1
   m_moveChildrenAlongXAxis: 1
+  m_lineRenderer: {fileID: 0}
 --- !u!114 &11479274
 MonoBehaviour:
   m_ObjectHideFlags: 1

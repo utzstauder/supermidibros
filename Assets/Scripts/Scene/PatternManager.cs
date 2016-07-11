@@ -226,11 +226,25 @@ public class PatternManager : MonoBehaviour {
 		if (!patternsInSceneDict.ContainsKey(targetBar)){
 			int count = 0;
 
+//			if ((targetBar-1) % harmonyEveryXBars == 0){
+//				count = (allZeroes) ? 1 : Random.Range(1, 4);
+//			} else if ((targetBar-1) % melodyEveryXBars == 0){
+//				count = (allZeroes) ? 1 : Random.Range(1, 3);
+//			} else if ((targetBar-1) % rhythmEveryXBars == 0){
+//				count = 1;
+//			}
+
+			if ((targetBar-1) % rhythmEveryXBars == 0){
+				count++;
+			}
 			if ((targetBar-1) % harmonyEveryXBars == 0){
-				count = (allZeroes) ? 1 : Random.Range(1, 4);
-			} else if ((targetBar-1) % melodyEveryXBars == 0){
-				count = (allZeroes) ? 1 : Random.Range(1, 3);
-			} else if ((targetBar-1) % rhythmEveryXBars == 0){
+				count++;	
+			}
+			if ((targetBar-1) % melodyEveryXBars == 0){
+				count++;
+			}
+
+			if (allZeroes && count > 0){
 				count = 1;
 			}
 
@@ -306,18 +320,18 @@ public class PatternManager : MonoBehaviour {
 				return;
 			}
 
-		int numberOfCategoriesToAssign = Mathf.Clamp(3, 1, patterns.Length);
+//		int numberOfCategoriesToAssign = 1;
 		int startIndex = 0;
 
-		if ((targetBar-1) % melodyEveryXBars == 0){
-			numberOfCategoriesToAssign = Mathf.Clamp(3, 1, patterns.Length);
-			startIndex = 2;
-		} else if ((targetBar-1) % harmonyEveryXBars == 0){
-			numberOfCategoriesToAssign = Mathf.Clamp(2, 1, patterns.Length);
+		if ((targetBar-1) % harmonyEveryXBars == 0){
+//			numberOfCategoriesToAssign++;
 			startIndex = 1;
-		} else {
-			numberOfCategoriesToAssign = 1;
-			startIndex = 0;
+
+		}
+		if ((targetBar-1) % melodyEveryXBars == 0){
+//			numberOfCategoriesToAssign++;
+			startIndex = 2;
+
 		}
 			
 		//Debug.Log(numberOfCategoriesToAssign + " " + startIndex);
@@ -333,7 +347,7 @@ public class PatternManager : MonoBehaviour {
 //		}
 
 		for (int i = 0; i < patterns.Length; i++){
-			patterns[i].audioCategory = ((i + startIndex) % numberOfCategoriesToAssign);
+			patterns[i].audioCategory = ((i + startIndex) % Constants.AUDIO_CATEGORIES);
 			if (allZeroes) patterns[i].audioCategory = startIndex;
 			patterns[i].instrumentGroup = audioManager.GetRandomInstrument(patterns[i].audioCategory);
 			patterns[i].variation = audioManager.GetRandomVariation(patterns[i].audioCategory, patterns[i].instrumentGroup);

@@ -194,7 +194,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: f8f04cc30d6e029478299650e5c2f056, type: 2}
+  - {fileID: 2100000, guid: 92cdafd5aab13439ca9b23203ce00178, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -220,7 +220,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: f8f04cc30d6e029478299650e5c2f056, type: 2}
+  - {fileID: 2100000, guid: 92cdafd5aab13439ca9b23203ce00178, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -246,7 +246,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: f8f04cc30d6e029478299650e5c2f056, type: 2}
+  - {fileID: 2100000, guid: 92cdafd5aab13439ca9b23203ce00178, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -330,19 +330,24 @@ MonoBehaviour:
     m_Curve:
     - time: 0
       value: 1
-      inSlope: -1
-      outSlope: -1
-      tangentMode: 10
-    - time: 1
+      inSlope: 0
+      outSlope: -1.3333334
+      tangentMode: 21
+    - time: 0.75
       value: 0
-      inSlope: -1
-      outSlope: -1
-      tangentMode: 10
+      inSlope: -1.3333334
+      outSlope: 4
+      tangentMode: 21
+    - time: 1
+      value: 1
+      inSlope: 4
+      outSlope: 0
+      tangentMode: 21
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
   m_isAffected: 1
-  m_scale: {x: 1, y: 1, z: 1}
+  m_scale: {x: 0.5, y: 0.5, z: 0.5}
 --- !u!198 &19831740
 ParticleSystem:
   m_ObjectHideFlags: 1

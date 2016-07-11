@@ -133,6 +133,12 @@ public class FaderGroup : MonoBehaviour {
 			if(patternControll = m_collider[c].GetComponent<PatternControll>()){
 				patternControll.CollisionCheck(m_faderPositionsOnGrid);
 			}
+
+			TriggerSingle trigger;
+			if(trigger = m_collider[c].GetComponent<TriggerSingle>()){
+				trigger.OnCollision(0);
+				trigger.gameObject.SetActive(false);
+			}
 		}
 
 	}
