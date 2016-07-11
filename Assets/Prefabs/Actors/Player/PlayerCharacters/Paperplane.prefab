@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!1 &101850
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -19,7 +19,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &110620
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -34,6 +34,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &136638
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 436136}
+  - 114: {fileID: 11416696}
+  - 114: {fileID: 11492402}
+  m_Layer: 9
+  m_Name: Transform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &145342
 GameObject:
   m_ObjectHideFlags: 0
@@ -42,8 +59,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 436754}
-  - 114: {fileID: 11441308}
   - 114: {fileID: 11479006}
+  - 114: {fileID: 11425500}
   m_Layer: 9
   m_Name: Paperplane
   m_TagString: Player
@@ -53,7 +70,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &153046
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -76,9 +93,25 @@ Transform:
   m_GameObject: {fileID: 153046}
   m_LocalRotation: {x: -0.00000011520229, y: -0.70710695, z: -0.7071066, w: 0.00000011520235}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 111.89738, y: 111.8974, z: 3.9438846}
+  m_LocalScale: {x: 111.89738, y: 111.89741, z: 3.9438848}
   m_LocalEulerAnglesHint: {x: 270, y: 180, z: 0}
   m_Children: []
+  m_Father: {fileID: 436136}
+  m_RootOrder: 0
+--- !u!4 &436136
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136638}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children:
+  - {fileID: 424618}
+  - {fileID: 456824}
+  - {fileID: 498062}
   m_Father: {fileID: 436754}
   m_RootOrder: 0
 --- !u!4 &436754
@@ -92,9 +125,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 424618}
-  - {fileID: 456824}
-  - {fileID: 498062}
+  - {fileID: 436136}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &456824
@@ -108,7 +139,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 436754}
+  m_Father: {fileID: 436136}
   m_RootOrder: 1
 --- !u!4 &498062
 Transform:
@@ -121,7 +152,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 436754}
+  m_Father: {fileID: 436136}
   m_RootOrder: 2
 --- !u!23 &2337386
 MeshRenderer:
@@ -156,12 +187,12 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 153046}
   m_Mesh: {fileID: 4300000, guid: f0ba75fd1d0964c98a755bb0c3d5cc14, type: 3}
---- !u!114 &11441308
+--- !u!114 &11416696
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 145342}
+  m_GameObject: {fileID: 136638}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c0743f56dd903493987703798a8397b3, type: 3}
@@ -194,14 +225,57 @@ MonoBehaviour:
     m_PreInfinity: 1
     m_PostInfinity: 1
     m_RotationOrder: 0
-  m_isAffected: 1
+  m_isAffected: 0
   m_translation: {x: 0.2, y: 0, z: 0}
+--- !u!114 &11425500
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 145342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51b7248170d364eb1a9e0b51b72226fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lerpSpeed: 5
+  playerId: 0
 --- !u!114 &11479006
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 145342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79003cbe3a1a7475681caf77058886fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_syncType: 1
+  m_curve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
+    - time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  m_isAffected: 1
+  m_rotation: {x: 0, y: 0, z: 360}
+--- !u!114 &11492402
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136638}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 79003cbe3a1a7475681caf77058886fd, type: 3}
@@ -234,7 +308,7 @@ MonoBehaviour:
     m_PreInfinity: 1
     m_PostInfinity: 1
     m_RotationOrder: 0
-  m_isAffected: 1
+  m_isAffected: 0
   m_rotation: {x: 0, y: 0, z: 5}
 --- !u!198 &19874080
 ParticleSystem:
@@ -325,7 +399,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     startSpeed:
-      scalar: 0
+      scalar: 0.2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -660,7 +734,7 @@ ParticleSystem:
     time3: 0
     m_BurstCount: 0
   SizeModule:
-    enabled: 1
+    enabled: 0
     curve:
       scalar: 1
       maxCurve:
@@ -1052,7 +1126,7 @@ ParticleSystem:
       minMaxState: 0
     inWorldSpace: 0
   InheritVelocityModule:
-    enabled: 1
+    enabled: 0
     m_Mode: 1
     m_Curve:
       scalar: 0
@@ -1814,7 +1888,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     startSpeed:
-      scalar: 0
+      scalar: 0.2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -2149,7 +2223,7 @@ ParticleSystem:
     time3: 0
     m_BurstCount: 0
   SizeModule:
-    enabled: 1
+    enabled: 0
     curve:
       scalar: 1
       maxCurve:
@@ -2541,7 +2615,7 @@ ParticleSystem:
       minMaxState: 0
     inWorldSpace: 0
   InheritVelocityModule:
-    enabled: 1
+    enabled: 0
     m_Mode: 1
     m_Curve:
       scalar: 0

@@ -243,7 +243,7 @@ public class PatternControll : Trigger {
 
 	private void SetAffectorsOfChildren(int category, int instrument, int variation){
 		for (int i = 0; i < children.Length; i++){
-			OnRhythmPeriodicAffector affector = children[i].gameObject.GetComponentInChildren<OnRhythmPeriodicAffector>();
+			OnRhythmPeriodicAffectorAudioChannel affector = children[i].gameObject.GetComponentInChildren<OnRhythmPeriodicAffectorAudioChannel>();
 
 			affector.category = category;
 			affector.instrument = instrument;

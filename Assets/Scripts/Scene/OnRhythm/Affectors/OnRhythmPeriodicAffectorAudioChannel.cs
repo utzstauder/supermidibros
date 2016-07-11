@@ -5,7 +5,7 @@ using System.Collections;
 /**
  * Can affect any OnRhythmPeriodic classes. Put this on the same hierarchy level as any affectable class.
  */
-public class OnRhythmPeriodicAffector : MonoBehaviour {
+public class OnRhythmPeriodicAffectorAudioChannel : OnRhythmPeriodicAffector {
 
 	[Range(0, 2)]
 	public int category = 0;
@@ -16,7 +16,9 @@ public class OnRhythmPeriodicAffector : MonoBehaviour {
 
 	private AudioManager	m_audioManager;
 
-	void Awake () {
+	protected override void Awake () {
+		base.Awake();
+
 		if (!m_audioManager){
 			m_audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
 			if (!m_audioManager){
@@ -25,10 +27,10 @@ public class OnRhythmPeriodicAffector : MonoBehaviour {
 		}
 	}
 
-	/**
-	 * Returns a value between 0.0f and 1.0f depending on the volume of the affecting AudioMixerGroup.
-	 */
-	public float GetMultiplier(){
-		return (m_audioManager.IsChannelActive(category, instrument, variation)) ? 1.0f : 0;
+	protected override void Update ()
+	{
+		base.Update ();
+
+		active = m_audioManager.IsChannelActive(category, instrument, variation);
 	}
 }
