@@ -419,7 +419,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 19803950, guid: 9bbe806a4f189ce4ea867ecb8e2fa008, type: 2}
       propertyPath: InitialModule.startColor.maxColor.rgba
-      value: 4294655323
+      value: 4288748809
       objectReference: {fileID: 0}
     - target: {fileID: 19803950, guid: 9bbe806a4f189ce4ea867ecb8e2fa008, type: 2}
       propertyPath: InitialModule.startColor.minColor.rgba
@@ -440,6 +440,10 @@ Prefab:
     - target: {fileID: 19803950, guid: 9bbe806a4f189ce4ea867ecb8e2fa008, type: 2}
       propertyPath: UVModule.tilesY
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 19803950, guid: 9bbe806a4f189ce4ea867ecb8e2fa008, type: 2}
+      propertyPath: InitialModule.maxNumParticles
+      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9bbe806a4f189ce4ea867ecb8e2fa008, type: 2}
