@@ -3160,7 +3160,7 @@ GameObject:
   - 114: {fileID: 11403716}
   m_Layer: 0
   m_Name: TunnelEntrance
-  m_TagString: Untagged
+  m_TagString: EntranceExit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12202,7 +12202,7 @@ ParticleSystem:
         rgba: 4294967295
       minMaxState: 1
   UVModule:
-    enabled: 0
+    enabled: 1
     frameOverTime:
       scalar: 1
       maxCurve:
@@ -12239,8 +12239,8 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 1
     tilesX: 1
-    tilesY: 1
-    animationType: 0
+    tilesY: 6
+    animationType: 1
     rowIndex: 0
     cycles: 1
     randomRow: 1
@@ -13036,7 +13036,7 @@ ParticleSystemRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: b6e9353aaccc847278064ab55f1a4d6a, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1

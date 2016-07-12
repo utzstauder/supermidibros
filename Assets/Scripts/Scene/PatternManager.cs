@@ -34,6 +34,7 @@ public class PatternManager : MonoBehaviour {
 	// references
 	private AudioManager audioManager;
 	private Transform dynamicObjects;
+	private EnvironmentManager environmentManager;
 
 	// object pooling lists
 	List<PatternControll> pooledPatterns;
@@ -68,6 +69,8 @@ public class PatternManager : MonoBehaviour {
 			dynamicObjects = Instantiate(new GameObject(), Vector3.zero, Quaternion.identity) as Transform;
 			dynamicObjects.gameObject.name = "DynamicObjects";
 		}
+
+		environmentManager = GameObject.Find("EnvironmentManager").GetComponent<EnvironmentManager>();
 
 		patternsInSceneDict = new Dictionary<int, List<PatternControll>>();
 
@@ -222,6 +225,15 @@ public class PatternManager : MonoBehaviour {
 	#region pattern functions
 
 	void PreparePatternsForBar(int targetBar){
+
+		GameObject objectAtBar = environmentManager.GetEnvironmentTileGameObjectAtBar(targetBar - 8);
+		if (objectAtBar != null){
+			if (objectAtBar.CompareTag("EntranceExit")){
+				Debug.Log(objectAtBar.tag);
+				return;
+			}
+		}
+
 		// prepare new patterns
 		if (!patternsInSceneDict.ContainsKey(targetBar)){
 			int count = 0;

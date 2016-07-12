@@ -7,6 +7,7 @@ TagManager:
   - AudioManager
   - Pickup
   - Pattern
+  - EntranceExit
   layers:
   - Default
   - TransparentFX

@@ -232,4 +232,8 @@ public class EnvironmentManager : MonoBehaviour {
 
 	#endregion
 
+	public GameObject GetEnvironmentTileGameObjectAtBar(int bar){
+		return (environmentTileObjectsInScene.ContainsKey(bar)) ? environmentTileObjectsInScene[bar] : null;
+	}
+
 }

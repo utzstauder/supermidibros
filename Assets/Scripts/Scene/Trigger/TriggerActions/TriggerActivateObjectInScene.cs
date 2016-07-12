@@ -25,10 +25,10 @@ public class TriggerActivateObjectInScene : TriggerTarget {
 				return;
 			}
 		}
-		Debug.Log(targetObject.name);
+		//Debug.Log(targetObject.name);
 
 		targetObject.SetActive(setActive);
-		Debug.Log(setActive);
+		//Debug.Log(setActive);
 
 	}
 
