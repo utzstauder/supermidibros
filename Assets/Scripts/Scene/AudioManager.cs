@@ -810,10 +810,6 @@ public class AudioManager : MonoBehaviour {
 
 	#region soundset functions
 
-	public int GetMutedVariation(int category, int instrument){
-		return 0;
-	}
-
 	public bool CanStack(int category, int instrument){
 		return activeSoundSet.m_audioCategories[category].m_audioChannelGroups[instrument].m_stack;
 	}

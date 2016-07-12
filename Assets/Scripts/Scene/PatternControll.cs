@@ -9,7 +9,7 @@ public class PatternControll : Trigger {
 	public PatternData patternData;
 	public PatternChildControll childrenPrefab;
 	public Material lineMaterial;
-	public float lineWidth = 0.2f;
+	public float lineWidth = 0.35f;
 
 	private bool isPrepared = false;
 
@@ -111,12 +111,14 @@ public class PatternControll : Trigger {
 		lineRenderer.SetWidth(lineWidth, lineWidth);
 		lineRenderer.SetVertexCount(pattern.size);
 		lineRenderer.SetPositions(GetPositionsOfChildren());
+		Color lineRendererColor = patternData.categoryColors[pattern.audioCategory];
+		lineRendererColor.a = 0.5f;
 		if (Application.isPlaying){
 			lineRenderer.material = lineMaterial;
-			lineRenderer.material.color = patternData.categoryColors[pattern.audioCategory];
+			lineRenderer.material.color = lineRendererColor;
 		} else {
 			lineRenderer.sharedMaterial = lineMaterial;
-			lineRenderer.sharedMaterial.color = patternData.categoryColors[pattern.audioCategory];
+			lineRenderer.sharedMaterial.color = lineRendererColor;
 		}
 	}
 
@@ -139,10 +141,10 @@ public class PatternControll : Trigger {
 		DisableRendererOfChildren(hitPositions);
 
 		if (hits == pattern.size){
-			EmitParticles(Color.green);
+			EmitParticlesSuccess();
 			OnSuccess();
 		} else if(hits > 0){
-			EmitParticles(Color.red, hitPositions);
+			EmitParticlesFailure(hitPositions);
 			OnFailure();
 		}
 			
@@ -180,6 +182,16 @@ public class PatternControll : Trigger {
 
 	#region child functions
 
+	private void EmitParticlesSuccess(){
+		SetParticlesMaterialInChildren(true);
+		EmitParticles(Color.green);
+	}
+
+	private void EmitParticlesFailure(bool[] hitPositions){
+		SetParticlesMaterialInChildren(false);
+		EmitParticles(Color.red, hitPositions);
+	}
+
 	private void EmitParticles(Color color){
 		for (int i = 0; i < children.Length; i++){
 			children[i].EmitParticles(color);
@@ -191,6 +203,18 @@ public class PatternControll : Trigger {
 			if (emit[i]){
 				children[i].EmitParticles(color);
 			}
+		}
+	}
+
+	private void SetParticlesMaterialInChildren(bool success){
+		for (int i = 0; i < children.Length; i++){
+			children[i].SetParticlesMaterial(success);
+		}
+	}
+
+	private void SetGravityScaleInChildren(float value){
+		for (int i = 0; i < children.Length; i++){
+			children[i].SetParticleGravityScale(value);
 		}
 	}
 

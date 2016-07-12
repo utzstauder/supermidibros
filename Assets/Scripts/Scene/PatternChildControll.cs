@@ -7,12 +7,16 @@ public class PatternChildControll : MonoBehaviour {
 	public GameObject[] audioCategoryObjects = new GameObject[Constants.AUDIO_CATEGORIES];
 	private Renderer[] rendererInChildren;
 	private ParticleSystem particleSystem;
+	private ParticleSystemRenderer particleRenderer;
+	public Material particlesMaterialSuccess;
+	public Material particlesMaterialFailure;
 
 	public int particlesToEmit = 100;
 
 	void Awake(){
 		rendererInChildren = GetComponentsInChildren<Renderer>();
 		particleSystem = GetComponentInChildren<ParticleSystem>();
+		particleRenderer = GetComponentInChildren<ParticleSystemRenderer>();
 	}
 
 	public void SetLocalPositionInGrid(int horizontal, int vertical){
@@ -42,6 +46,14 @@ public class PatternChildControll : MonoBehaviour {
 	public void EmitParticles(Color color){
 		particleSystem.startColor = color;
 		EmitParticles();
+	}
+
+	public void SetParticlesMaterial(bool success){
+		particleRenderer.material = (success) ? particlesMaterialSuccess : particlesMaterialFailure;
+	}
+
+	public void SetParticleGravityScale(float value){
+		particleSystem.gravityModifier = value;
 	}
 
 	public void SetRendererActive(bool active){
