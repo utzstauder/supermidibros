@@ -9,7 +9,7 @@ public class OnRhythmPeriodicAffectorAudioChannel : OnRhythmPeriodicAffector {
 
 	[Range(0, 2)]
 	public int category = 0;
-	[Range(0, 3)]
+	[Range(-1, 3)]
 	public int instrument = 0;
 	[Range(-1, 3)]
 	public int variation = 0;

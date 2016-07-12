@@ -15,9 +15,9 @@ MonoBehaviour:
   harmonyPrefab: {fileID: 0}
   melodyPrefab: {fileID: 0}
   categoryColors:
-  - {r: 0, g: 0, b: 0, a: 0}
-  - {r: 1, g: 0.93103456, b: 0, a: 0}
-  - {r: 1, g: 1, b: 1, a: 0}
+  - {r: 0.18166092, g: 0.331464, b: 0.88235295, a: 1}
+  - {r: 1, g: 0.93103456, b: 0, a: 1}
+  - {r: 0.6838235, g: 0.030168673, b: 0.5846482, a: 1}
   instrumentColors:
   - {r: 0, g: 0, b: 0, a: 0}
   - {r: 0, g: 0, b: 0, a: 0}
