@@ -61,6 +61,10 @@ public class PlayerGroup : MonoBehaviour {
 			alignmentAffectors[i].playerId = _playerId;
 		}
 
+		if (_playerId >= (Constants.NUMBER_OF_PLAYERS / 2)){
+			_playerCharacter.GetComponent<RotateOnRhythmPeriodic>().m_rotation *= -1;
+		}
+
 		return _player;
 	}
 

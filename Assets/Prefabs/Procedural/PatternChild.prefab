@@ -317,7 +317,7 @@ MonoBehaviour:
     type: 2}
   particlesMaterialFailure: {fileID: 2100000, guid: bc65c98b0012d429a8d1160ac97d74c1,
     type: 2}
-  particlesToEmit: 50
+  particlesToEmit: 30
 --- !u!114 &11472610
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -407,7 +407,7 @@ ParticleSystem:
     serializedVersion: 2
     enabled: 1
     startLifetime:
-      scalar: 1.4
+      scalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -432,7 +432,7 @@ ParticleSystem:
         m_RotationOrder: 0
       minMaxState: 3
     startSpeed:
-      scalar: 7
+      scalar: 8
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -448,7 +448,7 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 0.5714286
+          value: 0.5
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -551,7 +551,7 @@ ParticleSystem:
         rgba: 3271557119
       minMaxState: 0
     startSize:
-      scalar: 1.5
+      scalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -567,7 +567,7 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 0.33333334
+          value: 0.5
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -743,11 +743,11 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
-    cnt0: 50
+    cnt0: 30
     cnt1: 30
     cnt2: 30
     cnt3: 30
-    cntmax0: 100
+    cntmax0: 30
     cntmax1: 30
     cntmax2: 30
     cntmax3: 30

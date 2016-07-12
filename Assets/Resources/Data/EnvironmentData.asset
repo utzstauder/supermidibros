@@ -86,7 +86,7 @@ MonoBehaviour:
     length: 1
   - name: 18_SpeakerRow
     prefab: {fileID: 119316, guid: 4048d36e10c49f34da7f22ad434cc131, type: 2}
-    connectsTo: 180000001300000014000000
+    connectsTo: 18000000130000001400000011000000
     length: 1
   - name: 19_TowerD
     prefab: {fileID: 198764, guid: 55f2a9721d6a39f478accd3426ba9ba0, type: 2}
@@ -102,7 +102,7 @@ MonoBehaviour:
     length: 1
   - name: 22_Spiral
     prefab: {fileID: 173524, guid: 263758c6f84cd9140986d5e7d31bed1f, type: 2}
-    connectsTo: 160000001600000017000000
+    connectsTo: 1600000017000000
     length: 1
   - name: 23_SpiralEnd
     prefab: {fileID: 121370, guid: 0767597290aacfb4b991374d0628e278, type: 2}

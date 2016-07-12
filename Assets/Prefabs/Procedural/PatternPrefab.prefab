@@ -79,6 +79,8 @@ MonoBehaviour:
   patternData: {fileID: 11400000, guid: e9b131632227542989631fcec738032c, type: 2}
   childrenPrefab: {fileID: 11467456, guid: 3b9c53a290da44175bfd2493f0dad6f7, type: 2}
   lineMaterial: {fileID: 2100000, guid: 13e1a442ea5674a4a910f741b8898dc9, type: 2}
+  particleColorSuccess: {r: 0, g: 1, b: 0, a: 1}
+  particleColorFailure: {r: 1, g: 0, b: 0, a: 1}
   lineWidth: 0.2
   pattern:
     coords: 0000000000000000000000000000000000000000000000000000000000000000
