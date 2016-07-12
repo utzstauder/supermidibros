@@ -1,0 +1,122 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c716eca65d2f4271ad9c2db5bb83f8c, type: 3}
+  m_Name: EnvironmentData
+  m_EditorClassIdentifier: 
+  environmentTiles:
+  - name: 0_Flat
+    prefab: {fileID: 119120, guid: 56cd25887876a3b4dac17f23588c5d73, type: 2}
+    connectsTo: 000000000300000008000000
+    length: 1
+  - name: 1_flatBridge
+    prefab: {fileID: 141674, guid: 5063a6a303a2b4b40bd43b83dfbe57e7, type: 2}
+    connectsTo: 0100000002000000
+    length: 1
+  - name: 2_flatBridgeToFlat
+    prefab: {fileID: 155430, guid: 4f16488df0ccd1142b21ed55047ee4de, type: 2}
+    connectsTo: 00000000
+    length: 1
+  - name: 3_flatToFlatBridge
+    prefab: {fileID: 155430, guid: 179dbb292dfbe474499767120799d723, type: 2}
+    connectsTo: 01000000
+    length: 1
+  - name: 4_lowStraight
+    prefab: {fileID: 144888, guid: 5dc11e73d5d0b064a885bfb96cd3aee1, type: 2}
+    connectsTo: 040000000a0000000c000000
+    length: 2
+  - name: 5_highStraight
+    prefab: {fileID: 183328, guid: dc1e2fed31e1d9e42be1343b3495a4be, type: 2}
+    connectsTo: 050000000600000006000000
+    length: 14
+  - name: 6_highToLowA
+    prefab: {fileID: 194496, guid: 82ff5a60940acab4e88955af00045f6e, type: 2}
+    connectsTo: 07000000
+    length: 1
+  - name: 7_highToLowB
+    prefab: {fileID: 100956, guid: f1091ebf24d45fe4bac7ecc7e5a3ef9c, type: 2}
+    connectsTo: 04000000
+    length: 1
+  - name: 8_flatToLowA
+    prefab: {fileID: 194350, guid: 85bbd6508669b2a4293cd4422d791fbd, type: 2}
+    connectsTo: 09000000
+    length: 1
+  - name: 9_flatToLowB
+    prefab: {fileID: 181876, guid: e92379e306597904e9d03e84b90b7311, type: 2}
+    connectsTo: 04000000
+    length: 1
+  - name: 10_lowToFlatA
+    prefab: {fileID: 181876, guid: 32325a2acb2f1f645802f05c5cf56c15, type: 2}
+    connectsTo: 0b000000
+    length: 1
+  - name: 11_lowToFlatB
+    prefab: {fileID: 194350, guid: 9fed2d6df5ea55d489729fde3559df0f, type: 2}
+    connectsTo: 00000000
+    length: 1
+  - name: 12_lowToHighA
+    prefab: {fileID: 100956, guid: e88eb62a8e19fde449911850707184f1, type: 2}
+    connectsTo: 0d000000
+    length: 1
+  - name: 13_lowToHighB
+    prefab: {fileID: 194496, guid: d7fdf490c9498474fb4fd8c23e9315c1, type: 2}
+    connectsTo: 050000000e000000
+    length: 1
+  - name: 14_TunnelEntrance
+    prefab: {fileID: 194140, guid: 9bbe806a4f189ce4ea867ecb8e2fa008, type: 2}
+    connectsTo: 10000000
+    length: 1
+  - name: 15_TunnelStraight
+    prefab: {fileID: 109580, guid: cf852b75729382041b2961be5a478001, type: 2}
+    connectsTo: 10000000
+    length: 1
+  - name: 16_TunnelStraightToTunnel
+    prefab: {fileID: 137384, guid: cb23baf447c1a43e882f8558112ddf6f, type: 2}
+    connectsTo: 11000000120000001300000014000000
+    length: 1
+  - name: 17_Mesh
+    prefab: {fileID: 172002, guid: f5dd5cf59ead6934bbf21e401d97c884, type: 2}
+    connectsTo: 11000000120000001300000014000000
+    length: 1
+  - name: 18_SpeakerRow
+    prefab: {fileID: 119316, guid: 4048d36e10c49f34da7f22ad434cc131, type: 2}
+    connectsTo: 180000001300000014000000
+    length: 1
+  - name: 19_TowerD
+    prefab: {fileID: 198764, guid: 55f2a9721d6a39f478accd3426ba9ba0, type: 2}
+    connectsTo: 1500000015000000110000001200000014000000
+    length: 1
+  - name: 20_SpiralEntrance
+    prefab: {fileID: 174902, guid: a019da7584c222848b33ed888b6c58d4, type: 2}
+    connectsTo: 16000000
+    length: 1
+  - name: 21_TowerDS
+    prefab: {fileID: 105058, guid: af7eab48719483e44b77ba5e5148cf3e, type: 2}
+    connectsTo: 150000001500000011000000120000001400000018000000
+    length: 1
+  - name: 22_Spiral
+    prefab: {fileID: 173524, guid: 263758c6f84cd9140986d5e7d31bed1f, type: 2}
+    connectsTo: 160000001600000017000000
+    length: 1
+  - name: 23_SpiralEnd
+    prefab: {fileID: 121370, guid: 0767597290aacfb4b991374d0628e278, type: 2}
+    connectsTo: 1800000011000000120000001300000014000000
+    length: 1
+  - name: 24_TunnelToTunnelStraightExit
+    prefab: {fileID: 137384, guid: 6653cbcf325410e46a68bf02927cde49, type: 2}
+    connectsTo: 1a000000
+    length: 1
+  - name: 25_TunnelStraighExit
+    prefab: {fileID: 109580, guid: cf852b75729382041b2961be5a478001, type: 2}
+    connectsTo: 1a000000
+    length: 1
+  - name: 26_TunnelExit
+    prefab: {fileID: 194140, guid: 0e0481e83adcd4d639aa9c4e970e6ea7, type: 2}
+    connectsTo: 0500000006000000
+    length: 1

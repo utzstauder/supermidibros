@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class EnvironmentManager : MonoBehaviour {
 
 	public EnvironmentSet environmentSet;
+	public int startAtIndex = 0;
 	public bool randomVariations = false;
 
 	private Dictionary<EnvironmentSet.EnvironmentTile, List<GameObject>> pooledEnvironmentTiles;
@@ -82,7 +83,7 @@ public class EnvironmentManager : MonoBehaviour {
 		for(int i = 0; i < environmentSet.environmentTiles.Length; i++){
 			Transform variationsParent = environmentSet.environmentTiles[i].prefab.transform.FindChild("Variations");
 			if (variationsParent == null){
-				Debug.Log(environmentSet.environmentTiles[i].name + ": no Variations transform found");
+				//Debug.Log(environmentSet.environmentTiles[i].name + ": no Variations transform found");
 				continue;
 			}
 			variationsLengthDict.Add(environmentSet.environmentTiles[i], variationsParent.childCount);
@@ -150,7 +151,8 @@ public class EnvironmentManager : MonoBehaviour {
 			int index = environmentTilesInScene[bar - barsPerTile].GetNextTileRandom();
 			nextTile = environmentSet.environmentTiles[index];
 		} else {
-			nextTile = environmentSet.environmentTiles[0];
+			Mathf.Clamp(startAtIndex, 0, environmentSet.environmentTiles.Length - 1);
+			nextTile = environmentSet.environmentTiles[startAtIndex];
 		}
 
 		GameObject tileObject = GetTileFromList(nextTile);

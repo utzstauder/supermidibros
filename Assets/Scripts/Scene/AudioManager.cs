@@ -336,6 +336,10 @@ public class AudioManager : MonoBehaviour {
 	}
 
 	public void NextSoundSet(bool keepPlaying = false){
+		if (soundSets.Length < 2){
+			return;
+		}
+
 		int currentIndex = -1;
 		for (int i = 0; i < soundSets.Length; i++){
 			if (soundSets[i] == activeSoundSet){
