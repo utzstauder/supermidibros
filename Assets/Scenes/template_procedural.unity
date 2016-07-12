@@ -1278,11 +1278,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11478768, guid: c6e162e511dc34d3cb4e2f71a1c60b2a, type: 2}
       propertyPath: randomVariations
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11478768, guid: c6e162e511dc34d3cb4e2f71a1c60b2a, type: 2}
       propertyPath: startAtIndex
-      value: 14
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c6e162e511dc34d3cb4e2f71a1c60b2a, type: 2}

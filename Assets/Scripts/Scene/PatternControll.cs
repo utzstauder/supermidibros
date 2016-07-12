@@ -9,6 +9,9 @@ public class PatternControll : Trigger {
 	public PatternData patternData;
 	public PatternChildControll childrenPrefab;
 	public Material lineMaterial;
+	public Color particleColorSuccess = Color.green;
+	public Color particleColorFailure = Color.red;
+
 	public float lineWidth = 0.35f;
 
 	private bool isPrepared = false;
@@ -184,12 +187,12 @@ public class PatternControll : Trigger {
 
 	private void EmitParticlesSuccess(){
 		SetParticlesMaterialInChildren(true);
-		EmitParticles(Color.green);
+		EmitParticles(particleColorSuccess);
 	}
 
 	private void EmitParticlesFailure(bool[] hitPositions){
 		SetParticlesMaterialInChildren(false);
-		EmitParticles(Color.red, hitPositions);
+		EmitParticles(particleColorFailure, hitPositions);
 	}
 
 	private void EmitParticles(Color color){
