@@ -33,6 +33,7 @@ public class EnvironmentManager : MonoBehaviour {
 		} else {
 			audioManager.OnBar += OnBar;
 			audioManager.OnBeat += OnBeat;
+			audioManager.OnSubBeat += OnSubBeat;
 			audioManager.OnStop += OnStop;
 			audioManager.OnReset += OnReset;
 		}
@@ -118,17 +119,24 @@ public class EnvironmentManager : MonoBehaviour {
 	#region spawn functions
 
 	void OnBar(int bar){
-		DeleteTileAtBar(bar);
+		
 	}
 
 	void OnBeat(int beat){
+		DeleteTileAtBar(audioManager.GetCurrentBar());
+	}
+
+	void OnSubBeat(int subbeat){
 		SpawnTileAtBar(audioManager.GetCurrentBar());
 	}
 
 	void SpawnTileAtBar(int bar){
 		if ((bar - 1) % barsPerTile == 0){
 			EnableEnvironmentTileInScene(bar + (spawnTilesInAdvance * barsPerTile));
-			PrepareEnvironmentTileAtBar(bar + ((spawnTilesInAdvance - 1) * barsPerTile) + barsPerTile);
+
+			if (!environmentTileObjectsInScene.ContainsKey(bar + ((spawnTilesInAdvance - 1) * barsPerTile) + barsPerTile)){
+				PrepareEnvironmentTileAtBar(bar + ((spawnTilesInAdvance - 1) * barsPerTile) + barsPerTile);
+			}
 		}
 	}
 
