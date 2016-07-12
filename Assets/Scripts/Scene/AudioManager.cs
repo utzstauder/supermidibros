@@ -777,6 +777,17 @@ public class AudioManager : MonoBehaviour {
 //			return !m_audioSourcesInChildren[category, instrument, variation].mute;
 //		}
 
+		if (instrument < 0){
+			for (int i = 0; i < Constants.INSTRUMENT_GROUPS; i++){
+				for (int v = 0; v < Constants.VARIATIONS; v++){
+					if (audioSourceDict[activeSoundSet][category, i, v].mute == false){
+						return true;
+					}
+				}
+			}
+			return false;
+		}
+
 		if (variation < 0){
 			for (int v = 0; v < Constants.VARIATIONS; v++){
 				if (audioSourceDict[activeSoundSet][category, instrument, v].mute == false){

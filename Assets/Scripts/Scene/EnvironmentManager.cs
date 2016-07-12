@@ -132,9 +132,9 @@ public class EnvironmentManager : MonoBehaviour {
 	}
 
 	void DeleteTileAtBar(int bar){
-		if (environmentTileObjectsInScene.ContainsKey(bar - barsPerTile)){
-			environmentTileObjectsInScene[bar - barsPerTile].SetActive(false);
-			environmentTileObjectsInScene.Remove(bar - barsPerTile);
+		if (environmentTileObjectsInScene.ContainsKey(bar - (barsPerTile * 2))){
+			environmentTileObjectsInScene[bar - (barsPerTile * 2)].SetActive(false);
+			environmentTileObjectsInScene.Remove(bar - (barsPerTile * 2));
 		}
 	}
 

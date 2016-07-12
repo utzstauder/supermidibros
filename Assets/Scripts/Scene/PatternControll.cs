@@ -246,7 +246,7 @@ public class PatternControll : Trigger {
 			OnRhythmPeriodicAffectorAudioChannel affector = children[i].gameObject.GetComponentInChildren<OnRhythmPeriodicAffectorAudioChannel>();
 
 			affector.category = category;
-			affector.instrument = instrument;
+			affector.instrument = -1;
 			affector.variation = -1;
 		}
 	}
