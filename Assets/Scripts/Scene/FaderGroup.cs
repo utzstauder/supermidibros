@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 [ExecuteInEditMode]
 public class FaderGroup : MonoBehaviour {
@@ -35,6 +36,7 @@ public class FaderGroup : MonoBehaviour {
 	private AudioManager m_audioManager;
 	private bool m_inEditMode = true;
 
+	private Dictionary<int, List<Trigger>> triggerReactivationDict;
 
 	void Awake () {
 		if (Application.isPlaying){
@@ -57,11 +59,13 @@ public class FaderGroup : MonoBehaviour {
 		if (m_audioManager == null){
 			Debug.LogError("No AudioManager found in scene!");
 		} else {
-			m_audioManager.OnSubBeat += CheckForCollision;
+			m_audioManager.OnSubBeat += OnSubBeat;
 		}
 
 		m_gridAsWorldCoords = SnapToGrid.GridAsWorldCoords();
 		m_faderPositionsOnGrid = GetFaderPositionsOnGrid();
+
+		triggerReactivationDict = new Dictionary<int, List<Trigger>>();
 
 	}
 
@@ -138,9 +142,37 @@ public class FaderGroup : MonoBehaviour {
 			if(trigger = m_collider[c].GetComponent<TriggerSingle>()){
 				trigger.OnCollision(0);
 				trigger.gameObject.SetActive(false);
+				AddTriggerToReactivationDict(trigger);
 			}
 		}
 
+	}
+
+	void OnSubBeat(int subBeat){
+		CheckForCollision(subBeat);
+		ReactivateTriggersInDict(m_audioManager.GetCurrentBar() - 2);
+	}
+
+	void AddTriggerToReactivationDict(Trigger trigger){
+		int bar = m_audioManager.GetCurrentBar();
+
+		if (triggerReactivationDict.ContainsKey(bar)){
+			triggerReactivationDict[bar].Add(trigger);
+		} else {
+			List<Trigger> triggerList = new List<Trigger>();
+			triggerList.Add(trigger);
+			triggerReactivationDict.Add(bar, triggerList);
+		}
+	}
+
+	void ReactivateTriggersInDict(int bar){
+		if (triggerReactivationDict.ContainsKey(bar)){
+			for (int i = 0; i < triggerReactivationDict[bar].Count; i++){
+				triggerReactivationDict[bar][i].gameObject.SetActive(true);
+			}
+			triggerReactivationDict[bar].Clear();
+			triggerReactivationDict.Remove(bar);
+		}
 	}
 
 	/**

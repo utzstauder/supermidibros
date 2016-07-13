@@ -34,8 +34,8 @@ MonoBehaviour:
     length: 2
   - name: 5_highStraight
     prefab: {fileID: 183328, guid: dc1e2fed31e1d9e42be1343b3495a4be, type: 2}
-    connectsTo: 050000000600000006000000
-    length: 14
+    connectsTo: 05000000060000000e000000
+    length: 1
   - name: 6_highToLowA
     prefab: {fileID: 194496, guid: 82ff5a60940acab4e88955af00045f6e, type: 2}
     connectsTo: 07000000
@@ -82,7 +82,7 @@ MonoBehaviour:
     length: 1
   - name: 17_Mesh
     prefab: {fileID: 172002, guid: f5dd5cf59ead6934bbf21e401d97c884, type: 2}
-    connectsTo: 11000000120000001300000014000000
+    connectsTo: 1100000012000000130000001400000018000000
     length: 1
   - name: 18_SpeakerRow
     prefab: {fileID: 119316, guid: 4048d36e10c49f34da7f22ad434cc131, type: 2}
@@ -94,7 +94,7 @@ MonoBehaviour:
     length: 1
   - name: 20_SpiralEntrance
     prefab: {fileID: 174902, guid: a019da7584c222848b33ed888b6c58d4, type: 2}
-    connectsTo: 16000000
+    connectsTo: 1600000017000000
     length: 1
   - name: 21_TowerDS
     prefab: {fileID: 105058, guid: af7eab48719483e44b77ba5e5148cf3e, type: 2}

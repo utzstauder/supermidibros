@@ -229,7 +229,7 @@ public class PatternManager : MonoBehaviour {
 		GameObject objectAtBar = environmentManager.GetEnvironmentTileGameObjectAtBar(targetBar - 8);
 		if (objectAtBar != null){
 			if (objectAtBar.CompareTag("EntranceExit")){
-				Debug.Log(objectAtBar.tag);
+				//Debug.Log(objectAtBar.tag);
 				return;
 			}
 		}
