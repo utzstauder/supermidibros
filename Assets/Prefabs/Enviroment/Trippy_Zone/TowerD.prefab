@@ -6923,9 +6923,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lerpSpeed: 10
-  category: 2
-  instrument: 0
-  variation: 0
+  category: 1
+  instrument: -1
+  variation: -1
 --- !u!114 &11407066
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6968,9 +6968,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lerpSpeed: 10
-  category: 2
-  instrument: 0
-  variation: 0
+  category: 1
+  instrument: -1
+  variation: -1
 --- !u!114 &11415412
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7013,9 +7013,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lerpSpeed: 10
-  category: 2
-  instrument: 0
-  variation: 0
+  category: 1
+  instrument: -1
+  variation: -1
 --- !u!114 &11416606
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7058,9 +7058,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lerpSpeed: 10
-  category: 2
-  instrument: 0
-  variation: 0
+  category: 1
+  instrument: -1
+  variation: -1
 --- !u!114 &11421228
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7073,9 +7073,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lerpSpeed: 10
-  category: 2
-  instrument: 0
-  variation: 0
+  category: 1
+  instrument: -1
+  variation: -1
 --- !u!114 &11421696
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7148,9 +7148,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lerpSpeed: 10
-  category: 2
-  instrument: 0
-  variation: 0
+  category: 1
+  instrument: -1
+  variation: -1
 --- !u!114 &11426886
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7314,8 +7314,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lerpSpeed: 10
   category: 2
-  instrument: 0
-  variation: 0
+  instrument: -1
+  variation: -1
 --- !u!114 &11434362
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7358,9 +7358,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lerpSpeed: 10
-  category: 2
-  instrument: 0
-  variation: 0
+  category: 1
+  instrument: -1
+  variation: -1
 --- !u!114 &11449096
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7404,8 +7404,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lerpSpeed: 10
   category: 2
-  instrument: 0
-  variation: 0
+  instrument: -1
+  variation: -1
 --- !u!114 &11451920
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7419,8 +7419,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lerpSpeed: 10
   category: 2
-  instrument: 0
-  variation: 0
+  instrument: -1
+  variation: -1
 --- !u!114 &11452484
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7433,9 +7433,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lerpSpeed: 10
-  category: 2
-  instrument: 0
-  variation: 0
+  category: 1
+  instrument: -1
+  variation: -1
 --- !u!114 &11453228
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7478,9 +7478,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lerpSpeed: 10
-  category: 2
-  instrument: 0
-  variation: 0
+  category: 1
+  instrument: -1
+  variation: -1
 --- !u!114 &11456144
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7493,9 +7493,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lerpSpeed: 10
-  category: 2
-  instrument: 0
-  variation: 0
+  category: 1
+  instrument: -1
+  variation: -1
 --- !u!114 &11459172
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7539,8 +7539,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lerpSpeed: 10
   category: 2
-  instrument: 0
-  variation: 0
+  instrument: -1
+  variation: -1
 --- !u!114 &11462086
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7613,9 +7613,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lerpSpeed: 10
-  category: 2
-  instrument: 0
-  variation: 0
+  category: 1
+  instrument: -1
+  variation: -1
 --- !u!114 &11471012
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7658,9 +7658,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lerpSpeed: 10
-  category: 2
-  instrument: 0
-  variation: 0
+  category: 1
+  instrument: -1
+  variation: -1
 --- !u!114 &11472914
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7674,8 +7674,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lerpSpeed: 10
   category: 2
-  instrument: 0
-  variation: 0
+  instrument: -1
+  variation: -1
 --- !u!114 &11473412
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7689,8 +7689,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lerpSpeed: 10
   category: 2
-  instrument: 0
-  variation: 0
+  instrument: -1
+  variation: -1
 --- !u!114 &11473748
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7794,8 +7794,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lerpSpeed: 10
   category: 2
-  instrument: 0
-  variation: 0
+  instrument: -1
+  variation: -1
 --- !u!114 &11484886
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7808,9 +7808,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lerpSpeed: 10
-  category: 2
-  instrument: 0
-  variation: 0
+  category: 1
+  instrument: -1
+  variation: -1
 --- !u!114 &11490014
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7845,9 +7845,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lerpSpeed: 10
-  category: 2
-  instrument: 0
-  variation: 0
+  category: 1
+  instrument: -1
+  variation: -1
 --- !u!114 &11492458
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7860,9 +7860,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lerpSpeed: 10
-  category: 2
-  instrument: 0
-  variation: 0
+  category: 1
+  instrument: -1
+  variation: -1
 --- !u!114 &11493034
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7935,9 +7935,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lerpSpeed: 10
-  category: 2
-  instrument: 0
-  variation: 0
+  category: 1
+  instrument: -1
+  variation: -1
 --- !u!114 &11499788
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7951,8 +7951,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lerpSpeed: 10
   category: 2
-  instrument: 0
-  variation: 0
+  instrument: -1
+  variation: -1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

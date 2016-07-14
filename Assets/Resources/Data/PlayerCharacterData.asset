@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1401d46af966d4228be0a51a9ebc6f2e, type: 3}
+  m_Name: PlayerCharacterData
+  m_EditorClassIdentifier: 
+  playerCharacters:
+  - name: Paperplane
+    prefab: {fileID: 145342, guid: 59521243add3a4c4fa2448a14ae77069, type: 2}
+    minScoreToUnlock: 0
+  - name: PapairPlane
+    prefab: {fileID: 145342, guid: 9c51d21d75bb841738a1c37c4109ee8c, type: 2}
+    minScoreToUnlock: 10

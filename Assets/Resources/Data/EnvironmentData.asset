@@ -66,7 +66,7 @@ MonoBehaviour:
     length: 1
   - name: 13_lowToHighB
     prefab: {fileID: 194496, guid: d7fdf490c9498474fb4fd8c23e9315c1, type: 2}
-    connectsTo: 050000000e000000
+    connectsTo: 05000000
     length: 1
   - name: 14_TunnelEntrance
     prefab: {fileID: 194140, guid: 9bbe806a4f189ce4ea867ecb8e2fa008, type: 2}
@@ -90,7 +90,7 @@ MonoBehaviour:
     length: 1
   - name: 19_TowerD
     prefab: {fileID: 198764, guid: 55f2a9721d6a39f478accd3426ba9ba0, type: 2}
-    connectsTo: 1500000015000000110000001200000014000000
+    connectsTo: 150000001500000011000000120000001400000018000000
     length: 1
   - name: 20_SpiralEntrance
     prefab: {fileID: 174902, guid: a019da7584c222848b33ed888b6c58d4, type: 2}

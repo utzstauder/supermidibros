@@ -9,7 +9,9 @@ public class PlayerGroup : MonoBehaviour {
 	public Vector3 m_lookAtOffset = Vector3.zero;
 
 	public GameObject	m_playerPrefab;
-	public GameObject[] m_playerCharacterPrefabs;
+//	public GameObject[] m_playerCharacterPrefabs;
+	public int startIndex = 0;
+	public PlayerCharacterData playerCharacterData;
 
 	private Vector3 m_targetPosition;
 	private FaderGroup m_faderGroup;
@@ -24,6 +26,8 @@ public class PlayerGroup : MonoBehaviour {
 				Destroy(this);
 			}
 		}
+
+		startIndex = Mathf.Clamp(startIndex, 0, playerCharacterData.playerCharacters.Length - 1);
 
 		m_playerGroup = new GameObject[Constants.NUMBER_OF_PLAYERS];
 		for (int i = 0; i < m_playerGroup.Length; i++){
@@ -52,17 +56,36 @@ public class PlayerGroup : MonoBehaviour {
 		_player.name = "Player_" + _playerId;
 		_player.transform.parent = this.transform;
 
-		GameObject _playerCharacter = Instantiate(m_playerCharacterPrefabs[_playerId], Vector3.zero, Quaternion.identity) as GameObject;
-		_playerCharacter.transform.parent = _player.transform;
-		_playerCharacter.transform.localPosition = Vector3.zero;
+//		GameObject _playerCharacter = Instantiate(m_playerCharacterPrefabs[_playerId], Vector3.zero, Quaternion.identity) as GameObject;
+//		_playerCharacter.transform.parent = _player.transform;
+//		_playerCharacter.transform.localPosition = Vector3.zero;
+//
+//		OnRhythmPeriodicAffectorAlignment[] alignmentAffectors = _playerCharacter.GetComponentsInChildren<OnRhythmPeriodicAffectorAlignment>();
+//		for (int i = 0; i < alignmentAffectors.Length; i++){
+//			alignmentAffectors[i].playerId = _playerId;
+//		}
+//
+//		if (_playerId >= (Constants.NUMBER_OF_PLAYERS / 2)){
+//			_playerCharacter.GetComponent<RotateOnRhythmPeriodic>().m_rotation *= -1;
+//		}
 
-		OnRhythmPeriodicAffectorAlignment[] alignmentAffectors = _playerCharacter.GetComponentsInChildren<OnRhythmPeriodicAffectorAlignment>();
-		for (int i = 0; i < alignmentAffectors.Length; i++){
-			alignmentAffectors[i].playerId = _playerId;
-		}
+		for (int c = 0; c < playerCharacterData.playerCharacters.Length; c++){
+			GameObject _playerCharacter = Instantiate(playerCharacterData.playerCharacters[c].prefab, Vector3.zero, Quaternion.identity) as GameObject;
+			_playerCharacter.transform.parent = _player.transform;
+			_playerCharacter.transform.localPosition = Vector3.zero;
 
-		if (_playerId >= (Constants.NUMBER_OF_PLAYERS / 2)){
-			_playerCharacter.GetComponent<RotateOnRhythmPeriodic>().m_rotation *= -1;
+			OnRhythmPeriodicAffectorAlignment[] alignmentAffectors = _playerCharacter.GetComponentsInChildren<OnRhythmPeriodicAffectorAlignment>();
+			for (int i = 0; i < alignmentAffectors.Length; i++){
+				alignmentAffectors[i].playerId = _playerId;
+			}
+
+			if (_playerId >= (Constants.NUMBER_OF_PLAYERS / 2)){
+				_playerCharacter.GetComponent<RotateOnRhythmPeriodic>().m_rotation *= -1;
+			}
+
+			if (c != startIndex){
+				_playerCharacter.gameObject.SetActive(false);
+			}
 		}
 
 		return _player;
