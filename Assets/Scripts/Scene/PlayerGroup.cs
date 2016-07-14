@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerGroup : MonoBehaviour {
 
@@ -17,8 +18,12 @@ public class PlayerGroup : MonoBehaviour {
 	private FaderGroup m_faderGroup;
 	private GameObject[] m_playerGroup;
 
+	private Dictionary<int, List<Renderer>> playerRendererDict;
+	private int[] currentPlayerCharacterIndices = new int[Constants.NUMBER_OF_PLAYERS];
 
 	void Awake () {
+		playerRendererDict = new Dictionary<int, List<Renderer>>();
+
 		if (!m_faderGroup){
 			m_faderGroup = GameObject.Find("FaderGroup").GetComponent<FaderGroup>();
 			if (!m_faderGroup){
@@ -31,9 +36,18 @@ public class PlayerGroup : MonoBehaviour {
 
 		m_playerGroup = new GameObject[Constants.NUMBER_OF_PLAYERS];
 		for (int i = 0; i < m_playerGroup.Length; i++){
+			playerRendererDict.Add(i, new List<Renderer>());
 			m_playerGroup[i] = InstantiatePlayer(i);
 		}
 
+	}
+
+	void OnEnable(){
+		MIDIInputManager.OnKnobInput += UpdateColorsOfPlayers;
+	}
+
+	void OnDisable(){
+		MIDIInputManager.OnKnobInput -= UpdateColorsOfPlayers;
 	}
 
 	void Start(){
@@ -47,9 +61,31 @@ public class PlayerGroup : MonoBehaviour {
 		if (m_lookAtOffset.magnitude > 0){
 			UpdateLookAtOfAllPlayers();
 		}
+
+		for (int i = 0; i < Constants.NUMBER_OF_PLAYERS; i++){
+			if (MIDIInputManager.instance.GetPlayerButtonDown(i)){
+				CycleChildObjects(i);
+			}
+		}
 	}
 
 	#region private functions
+
+	void CycleChildObjects(int playerId){
+		int nextIndex = (currentPlayerCharacterIndices[playerId] + 1) % playerCharacterData.playerCharacters.Length;
+
+		ActivateChildObject(playerId, nextIndex);
+	}
+
+	void ActivateChildObject(int playerId, int index){
+		int childCount = m_playerGroup[playerId].transform.childCount;
+
+		for (int i = 0; i < childCount; i++){
+			m_playerGroup[playerId].transform.GetChild(i).gameObject.SetActive(i == index);
+		}
+
+		currentPlayerCharacterIndices[playerId] = index;
+	}
 
 	GameObject InstantiatePlayer(int _playerId){
 		GameObject _player = Instantiate(m_playerPrefab, m_faderGroup.GetLocalPositionOfFader(_playerId), Quaternion.identity) as GameObject;
@@ -83,9 +119,14 @@ public class PlayerGroup : MonoBehaviour {
 				_playerCharacter.GetComponent<RotateOnRhythmPeriodic>().m_rotation *= -1;
 			}
 
-			if (c != startIndex){
-				_playerCharacter.gameObject.SetActive(false);
+			Renderer[] renderer = _playerCharacter.GetComponentsInChildren<Renderer>();
+
+			for (int r = 0; r < renderer.Length; r++){
+				playerRendererDict[_playerId].Add(renderer[r]);
 			}
+				
+			_playerCharacter.gameObject.SetActive(c == startIndex);
+			currentPlayerCharacterIndices[_playerId] = startIndex;
 		}
 
 		return _player;
@@ -100,6 +141,15 @@ public class PlayerGroup : MonoBehaviour {
 	void UpdateLookAtOfAllPlayers(){
 		for (int i = 0; i < m_playerGroup.Length; i++){
 			UpdateLookAtOfPlayer(i);
+		}
+	}
+
+	void UpdateColorsOfPlayers(float[] inputValues){
+		for (int i = 0; i < m_playerGroup.Length; i++){
+			for (int r = 0; r < playerRendererDict[i].Count; r++){
+				playerRendererDict[i][r].material.color = playerCharacterData.playerColorGradient.Evaluate(inputValues[i]);
+			}
+
 		}
 	}
 

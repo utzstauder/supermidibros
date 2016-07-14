@@ -4,6 +4,8 @@ using System.Collections;
 [CreateAssetMenu(menuName = "Super MIDI Bros./PlayerCharacterData", fileName = "PlayerCharacterData")]
 public class PlayerCharacterData : ScriptableObject {
 
+	public Gradient playerColorGradient;
+
 	public PlayerCharacter[] playerCharacters;
 
 

@@ -11,10 +11,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1401d46af966d4228be0a51a9ebc6f2e, type: 3}
   m_Name: PlayerCharacterData
   m_EditorClassIdentifier: 
+  playerColorGradient:
+    key0:
+      serializedVersion: 2
+      rgba: 4292018324
+    key1:
+      serializedVersion: 2
+      rgba: 4286709835
+    key2:
+      serializedVersion: 2
+      rgba: 16711680
+    key3:
+      serializedVersion: 2
+      rgba: 65280
+    key4:
+      serializedVersion: 2
+      rgba: 65535
+    key5:
+      serializedVersion: 2
+      rgba: 32767
+    key6:
+      serializedVersion: 2
+      rgba: 255
+    key7:
+      serializedVersion: 2
+      rgba: 255
+    ctime0: 0
+    ctime1: 10944
+    ctime2: 21823
+    ctime3: 32768
+    ctime4: 43646
+    ctime5: 54548
+    ctime6: 65535
+    ctime7: 65535
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_NumColorKeys: 7
+    m_NumAlphaKeys: 2
   playerCharacters:
   - name: Paperplane
     prefab: {fileID: 145342, guid: 59521243add3a4c4fa2448a14ae77069, type: 2}
     minScoreToUnlock: 0
   - name: PapairPlane
     prefab: {fileID: 145342, guid: 9c51d21d75bb841738a1c37c4109ee8c, type: 2}
+    minScoreToUnlock: 10
+  - name: LMaDPlane
+    prefab: {fileID: 145342, guid: ddce291711a504c9f895a1afe98370ff, type: 2}
     minScoreToUnlock: 10
