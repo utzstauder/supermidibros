@@ -1144,7 +1144,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11493844, guid: 0b4ab94d14abf48208701fe74c72c14b, type: 2}
       propertyPath: allZeroes
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b4ab94d14abf48208701fe74c72c14b, type: 2}
@@ -1285,6 +1285,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 11478768, guid: c6e162e511dc34d3cb4e2f71a1c60b2a, type: 2}
+      propertyPath: startAtIndex
+      value: 14
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c6e162e511dc34d3cb4e2f71a1c60b2a, type: 2}
   m_IsPrefabParent: 0
@@ -1378,7 +1382,7 @@ Prefab:
     - target: {fileID: 11447318, guid: 84b373dc5010b422bb8b45fba57f323d, type: 2}
       propertyPath: soundSets.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: ee2901aa01cae4ddeb2847ba9f0dc35a,
+      objectReference: {fileID: 11400000, guid: 4bd72260276374b069f62846007fd879,
         type: 2}
     - target: {fileID: 11447318, guid: 84b373dc5010b422bb8b45fba57f323d, type: 2}
       propertyPath: soundSets.Array.data[0]
