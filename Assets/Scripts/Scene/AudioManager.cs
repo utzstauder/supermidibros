@@ -676,6 +676,9 @@ public class AudioManager : MonoBehaviour {
 			}
 
 		}
+
+		// sync
+		SyncToAudioSource();
 	}
 		
 	int[] GetIndicesOfMutedVarations(bool muted, int category, int instrument){
