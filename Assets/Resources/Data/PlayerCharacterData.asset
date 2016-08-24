@@ -14,7 +14,7 @@ MonoBehaviour:
   playerColorGradient:
     key0:
       serializedVersion: 2
-      rgba: 4278190080
+      rgba: 4294967295
     key1:
       serializedVersion: 2
       rgba: 4294901760
@@ -35,15 +35,15 @@ MonoBehaviour:
       rgba: 255
     key7:
       serializedVersion: 2
-      rgba: 16777215
-    ctime0: 0
+      rgba: 0
+    ctime0: 3084
     ctime1: 11565
     ctime2: 21395
     ctime3: 31033
     ctime4: 39321
     ctime5: 47995
-    ctime6: 57632
-    ctime7: 63608
+    ctime6: 56476
+    ctime7: 63800
     atime0: 0
     atime1: 65535
     atime2: 0
