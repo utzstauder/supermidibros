@@ -24,10 +24,15 @@ public class MIDIInputManager : MonoBehaviour {
 	private bool m_forwardButtonDown	= false;
 
 	private float[] m_faderPosition		= new float[Constants.NUMBER_OF_PLAYERS];	// internal position of the faders
+	private float[] m_faderPositionPrev	= new float[Constants.NUMBER_OF_PLAYERS];
 	private float[] m_faderPositionMidi	= new float[Constants.NUMBER_OF_PLAYERS];	// current position of the midi hardware faders
 	private float[] m_knobPositionMidi	= new float[Constants.NUMBER_OF_PLAYERS];
 	private float[] m_knobPositionMidiPrev	= new float[Constants.NUMBER_OF_PLAYERS];
 	private bool sendUpdateEvent = false;
+
+	private float idleTimer = 0.0f;
+	[SerializeField]
+	private float timeUntilIdle = 10.0f;
 
 	public delegate void MidiInputEvent(float[] values);
 	public static event MidiInputEvent OnKnobInput;
@@ -72,6 +77,9 @@ public class MIDIInputManager : MonoBehaviour {
 		} else if (Input.GetKeyDown(KeyCode.Alpha8)){
 			controlScheme = Enums.ControlScheme.MidiController;
 		}
+
+		idleTimer += Time.deltaTime;
+		Debug.Log(idleTimer);
 	}
 
 	void Start(){
@@ -124,19 +132,16 @@ public class MIDIInputManager : MonoBehaviour {
 				break;
 
 			case Enums.ControlScheme.Keyboard:
-				if (i < 4){
-					if (Input.GetButtonDown("Up " + i)){
-						m_faderPosition[i] += 1f/(Constants.VERTICAL_POSITIONS-1);
-					} else if (Input.GetButtonDown("Down " + i)){
-						m_faderPosition[i] -= 1f/(Constants.VERTICAL_POSITIONS-1);
-					}
-				} else {
-					if (Input.GetButtonDown("Up " + (m_faderPosition.Length - 1 - i))){
-						m_faderPosition[i] += 1f/(Constants.VERTICAL_POSITIONS-1);
-					} else if (Input.GetButtonDown("Down " + (m_faderPosition.Length - 1 - i))){
-						m_faderPosition[i] -= 1f/(Constants.VERTICAL_POSITIONS-1);
-					}
+				if (Input.GetButtonDown("Up " + i)){
+					m_faderPosition[i] += 1f/(Constants.VERTICAL_POSITIONS-1);
+				} else if (Input.GetButtonDown("Down " + i)){
+					m_faderPosition[i] -= 1f/(Constants.VERTICAL_POSITIONS-1);
 				}
+
+				if (Input.GetButtonDown("ResetPositions")){
+					m_faderPosition[i] = .5f;
+				}
+
 				m_faderPosition[i] = Mathf.Clamp01(m_faderPosition[i]);
 				break;
 
@@ -179,6 +184,12 @@ public class MIDIInputManager : MonoBehaviour {
 				sendUpdateEvent = true;
 			}
 			m_knobPositionMidiPrev[i] = m_knobPositionMidi[i];
+
+			if (m_faderPosition[i] != m_faderPositionPrev[i]){
+				idleTimer = 0;
+			}
+			m_faderPositionPrev[i] = m_faderPosition[i];
+
 		}
 
 		if (sendUpdateEvent){
@@ -292,6 +303,10 @@ public class MIDIInputManager : MonoBehaviour {
 
 	public bool IsCalibrating(){
 		return m_isCalibrating;
+	}
+
+	public bool IsIdle(){
+		return (idleTimer > timeUntilIdle);
 	}
 
 	#endregion

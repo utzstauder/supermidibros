@@ -20,6 +20,14 @@ public class GameManager : MonoBehaviour {
 	private int score		= 0;
 	private int highscore	= 0;
 
+	[Header("IdleScreen")]
+	public Image idleScreenImage;
+	public float fadeInTime		= .3f;
+	public float fadeOutTime	= .6f;
+	public float screenOnStartupTime = 3.0f;
+	private bool checkForIdle = false;
+	private bool isFading = false;
+
 	void Awake(){
 		if (!instance){
 			instance = this;
@@ -37,6 +45,8 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		UpdateTextUI();
+		ShowIdleScreen();
+		Invoke("HideIdleScreen", screenOnStartupTime);
 	}
 
 	// look up new references
@@ -47,13 +57,13 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.Space) || MIDIInputManager.instance.GetPlayButtonDown()){
-			if (!m_audioManager.IsPlaying()){
-				m_audioManager.Play();
-			} else {
-				m_audioManager.Pause();
-			}
-		} 
+//		if (Input.GetKeyDown(KeyCode.Space) || MIDIInputManager.instance.GetPlayButtonDown()){
+//			if (!m_audioManager.IsPlaying()){
+//				m_audioManager.Play();
+//			} else {
+//				m_audioManager.Pause();
+//			}
+//		} 
 		if (m_debug){
 			if(Input.GetKeyDown(KeyCode.Backspace) || MIDIInputManager.instance.GetStopButtonDown()){
 				m_audioManager.Stop();
@@ -76,6 +86,14 @@ public class GameManager : MonoBehaviour {
 
 		if (Input.GetKeyDown(KeyCode.N)){
 			m_audioManager.QueueNextSoundSet();
+		}
+
+		if (checkForIdle){
+			if (MIDIInputManager.instance.IsIdle()){
+				ShowIdleScreen();
+			} else {
+				HideIdleScreen();
+			}
 		}
 	}
 
@@ -142,6 +160,49 @@ public class GameManager : MonoBehaviour {
 	}
 
 	#endregion
+
+
+	#region idle screen
+
+	void ShowIdleScreen(){
+		if (idleScreenImage.color.a < 1.0f){
+			Debug.Log("Show Idle Screen");
+			StartCoroutine(FadeImageCoroutine(idleScreenImage, fadeInTime, 1.0f));
+		}
+	}
+
+	void HideIdleScreen(){
+		if (idleScreenImage.color.a > 0){
+			Debug.Log("Hide Idle Screen");
+			StartCoroutine(FadeImageCoroutine(idleScreenImage, fadeOutTime, 0));
+		}
+
+		checkForIdle = true;
+	}
+
+	private IEnumerator FadeImageCoroutine(Image image, float fadeTime, float toOpacity){
+		while (isFading){
+			yield return null;
+		}
+
+		isFading = true;
+
+		Color fromColor = image.color;
+		Color toColor = fromColor;
+		toColor.a = toOpacity;
+
+		for (float t = 0; t < fadeTime; t += Time.deltaTime){
+			image.color = Color.Lerp(fromColor, toColor, t/fadeTime);
+			yield return null;
+		}
+
+		image.color = toColor;
+
+		isFading = false;
+	}
+
+	#endregion
+
 
 	void UpdateTextUI(){
 		if (scoreText != null){
