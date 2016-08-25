@@ -23,7 +23,9 @@ public class GameManager : MonoBehaviour {
 	[Header("IdleScreen")]
 	public Image idleScreenImage;
 	public float fadeInTime		= .3f;
+	private Color fadeInColor	= Color.white;
 	public float fadeOutTime	= .6f;
+	private Color fadeOutColor	= new Color (1.0f, 1.0f, 1.0f, 0);
 	public float screenOnStartupTime = 3.0f;
 	private bool checkForIdle = false;
 	private bool isFading = false;
@@ -45,8 +47,7 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		UpdateTextUI();
-		ShowIdleScreen();
-		Invoke("HideIdleScreen", screenOnStartupTime);
+		Invoke("ToggelCheckForIdle", screenOnStartupTime);
 	}
 
 	// look up new references
@@ -90,9 +91,9 @@ public class GameManager : MonoBehaviour {
 
 		if (checkForIdle){
 			if (MIDIInputManager.instance.IsIdle()){
-				ShowIdleScreen();
+				idleScreenImage.color = Color.Lerp(idleScreenImage.color, fadeInColor, Time.deltaTime / fadeInTime);
 			} else {
-				HideIdleScreen();
+				idleScreenImage.color = Color.Lerp(idleScreenImage.color, fadeOutColor, Time.deltaTime / fadeOutTime);
 			}
 		}
 	}
@@ -164,41 +165,8 @@ public class GameManager : MonoBehaviour {
 
 	#region idle screen
 
-	void ShowIdleScreen(){
-		if (idleScreenImage.color.a < 1.0f){
-			Debug.Log("Show Idle Screen");
-			StartCoroutine(FadeImageCoroutine(idleScreenImage, fadeInTime, 1.0f));
-		}
-	}
-
-	void HideIdleScreen(){
-		if (idleScreenImage.color.a > 0){
-			Debug.Log("Hide Idle Screen");
-			StartCoroutine(FadeImageCoroutine(idleScreenImage, fadeOutTime, 0));
-		}
-
+	void ToggelCheckForIdle(){
 		checkForIdle = true;
-	}
-
-	private IEnumerator FadeImageCoroutine(Image image, float fadeTime, float toOpacity){
-		while (isFading){
-			yield return null;
-		}
-
-		isFading = true;
-
-		Color fromColor = image.color;
-		Color toColor = fromColor;
-		toColor.a = toOpacity;
-
-		for (float t = 0; t < fadeTime; t += Time.deltaTime){
-			image.color = Color.Lerp(fromColor, toColor, t/fadeTime);
-			yield return null;
-		}
-
-		image.color = toColor;
-
-		isFading = false;
 	}
 
 	#endregion
