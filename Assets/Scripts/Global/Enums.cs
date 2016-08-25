@@ -9,6 +9,16 @@ public static class Enums {
 	/**
 	 * 
 	 */
+	public enum ControlScheme{
+		MidiController,
+		Keyboard,
+		TwoControllers,
+		FourControllers,
+	}
+
+	/**
+	 * 
+	 */
 	public enum SyncType {Bar, Beat, SubBeat};
 
 	/**

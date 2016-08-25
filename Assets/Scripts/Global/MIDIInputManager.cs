@@ -7,6 +7,8 @@ public class MIDIInputManager : MonoBehaviour {
 
 	public static MIDIInputManager instance;
 
+	private Enums.ControlScheme controlScheme = Enums.ControlScheme.MidiController;
+
 	private int[] m_playerFaderNumbers 	= {0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07};
 	private int[] m_playerKnobNumbers 	= {0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F};
 	private int[] m_playerButtonNumbers	= {0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17};
@@ -45,12 +47,31 @@ public class MIDIInputManager : MonoBehaviour {
 				Destroy(this);
 			}
 		}
+
+		int numberOfJoysticks = Input.GetJoystickNames().Length;
+		Debug.Log(Input.GetJoystickNames().Length + " joystick(s) connected");
+		for (int i = 0; i < numberOfJoysticks; i++){
+			Debug.Log("Joystick 1: " + Input.GetJoystickNames()[i]);
+		}
+
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		ResetButtonDownStatus();
 		UpdatePlayerInput();
+		//Debug.Log(Input.GetAxis("Fader " + 0));
+
+		if (Input.GetKeyDown(KeyCode.Alpha1)){
+			controlScheme = Enums.ControlScheme.Keyboard;
+		} else if (Input.GetKeyDown(KeyCode.Alpha2)){
+			controlScheme = Enums.ControlScheme.TwoControllers;
+		} else if (Input.GetKeyDown(KeyCode.Alpha4)){
+			controlScheme = Enums.ControlScheme.FourControllers;
+		} else if (Input.GetKeyDown(KeyCode.Alpha8)){
+			controlScheme = Enums.ControlScheme.MidiController;
+		}
 	}
 
 	void Start(){
@@ -96,14 +117,61 @@ public class MIDIInputManager : MonoBehaviour {
 		sendUpdateEvent = false;
 
 		for (int i = 0; i < m_faderPosition.Length; i++){
-			if (m_faderPositionMidi[i] == MidiMaster.GetKnob(m_playerFaderNumbers[i])){
-				// fader didn't move, use debug input
-				m_faderPosition[i] = Mathf.Clamp(m_faderPosition[i] + (Input.GetAxis("Fader " + i) / 2), 0.0f, 1.0f);
-			} else {
-				// midi fader movement overrides current position
+			switch(controlScheme){
+			case Enums.ControlScheme.MidiController:
 				m_faderPosition[i]		= MidiMaster.GetKnob(m_playerFaderNumbers[i]);
 				m_faderPositionMidi[i]	= MidiMaster.GetKnob(m_playerFaderNumbers[i]); 
+				break;
+
+			case Enums.ControlScheme.Keyboard:
+				if (i < 4){
+					if (Input.GetButtonDown("Up " + i)){
+						m_faderPosition[i] += 1f/(Constants.VERTICAL_POSITIONS-1);
+					} else if (Input.GetButtonDown("Down " + i)){
+						m_faderPosition[i] -= 1f/(Constants.VERTICAL_POSITIONS-1);
+					}
+				} else {
+					if (Input.GetButtonDown("Up " + (m_faderPosition.Length - 1 - i))){
+						m_faderPosition[i] += 1f/(Constants.VERTICAL_POSITIONS-1);
+					} else if (Input.GetButtonDown("Down " + (m_faderPosition.Length - 1 - i))){
+						m_faderPosition[i] -= 1f/(Constants.VERTICAL_POSITIONS-1);
+					}
+				}
+				m_faderPosition[i] = Mathf.Clamp01(m_faderPosition[i]);
+				break;
+
+			case Enums.ControlScheme.TwoControllers:
+				if (i < 4){
+					m_faderPosition[i] = ((Input.GetAxis("Controller " + i/2 + " " + i%2) * -1) + 1) / 2;
+				} else {
+					m_faderPosition[i] = ((Input.GetAxis("Controller " + (m_faderPosition.Length - 1 - i)/2 + " " + (i+1)%2) * -1) + 1) / 2;
+				}
+				break;
+
+			case Enums.ControlScheme.FourControllers:
+				m_faderPosition[i] = ((Input.GetAxis("Controller " + i/2 + " " + i%2) * -1) + 1) / 2;
+				break;
+
+			default:
+				break;
 			}
+
+//			if (m_faderPositionMidi[i] == MidiMaster.GetKnob(m_playerFaderNumbers[i])){
+//				// fader didn't move, use debug input
+//				if (numberOfJoysticks >= 2){
+//					// 2 (or more) controllers
+//					m_faderPosition[i] = ((Input.GetAxis("Fader " + i) * -1) + 1) / 2;
+//				} else if (numberOfJoysticks == 1){
+//					// 1 controller
+//					m_faderPosition[i] = ((Input.GetAxis("Fader " + i) * -1) + 1) / 2;
+//				} else {
+//					m_faderPosition[i] = Mathf.Clamp(m_faderPosition[i] + (Input.GetAxis("Fader " + i) / 2), 0.0f, 1.0f);
+//				}
+//			} else {
+//				// midi fader movement overrides current position
+//				m_faderPosition[i]		= MidiMaster.GetKnob(m_playerFaderNumbers[i]);
+//				m_faderPositionMidi[i]	= MidiMaster.GetKnob(m_playerFaderNumbers[i]); 
+//			}
 
 			m_knobPositionMidi[i] = MidiMaster.GetKnob(m_playerKnobNumbers[i]);
 			if (m_knobPositionMidi[i] < m_knobPositionMidiPrev[i] ||
