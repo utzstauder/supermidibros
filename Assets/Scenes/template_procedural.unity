@@ -722,6 +722,10 @@ Prefab:
       propertyPath: fadeInTime
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11421752, guid: f45f411a1e03745bb893d547c7c1db33, type: 2}
+      propertyPath: timeUntilIdle
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f45f411a1e03745bb893d547c7c1db33, type: 2}
   m_IsPrefabParent: 0
