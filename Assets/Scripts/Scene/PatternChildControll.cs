@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 [ExecuteInEditMode]
@@ -6,7 +6,7 @@ public class PatternChildControll : MonoBehaviour {
 
 	public GameObject[] audioCategoryObjects = new GameObject[Constants.AUDIO_CATEGORIES];
 	private Renderer[] rendererInChildren;
-	private ParticleSystem particleSystem;
+	private new ParticleSystem particleSystem;
 	private ParticleSystemRenderer particleRenderer;
 	public Material particlesMaterialSuccess;
 	public Material particlesMaterialFailure;
@@ -21,6 +21,11 @@ public class PatternChildControll : MonoBehaviour {
 
 	public void SetLocalPositionInGrid(int horizontal, int vertical){
 		transform.localPosition = SnapToGrid.GridToWorldCoord(0, vertical, horizontal);
+	}
+
+	/// <summary>Variable lane count: use for patterns with 2-7 lanes so Z is centered.</summary>
+	public void SetLocalPositionInGrid(int horizontal, int vertical, int laneCount){
+		transform.localPosition = SnapToGrid.GridToWorldCoord(0, vertical, horizontal, laneCount);
 	}
 
 	public void SetActiveMeshObject(int index){
@@ -44,7 +49,8 @@ public class PatternChildControll : MonoBehaviour {
 	}
 
 	public void EmitParticles(Color color){
-		particleSystem.startColor = color;
+		var main = particleSystem.main;
+		main.startColor = color;
 		EmitParticles();
 	}
 
@@ -53,7 +59,8 @@ public class PatternChildControll : MonoBehaviour {
 	}
 
 	public void SetParticleGravityScale(float value){
-		particleSystem.gravityModifier = value;
+		var main = particleSystem.main;
+		main.gravityModifier = value;
 	}
 
 	public void SetRendererActive(bool active){

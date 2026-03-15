@@ -213,42 +213,47 @@ public class MIDIInputManager : MonoBehaviour {
 	}
 
 	public bool GetPlayerButtonDown(int _playerId){
-		if (MidiMaster.GetKnob(m_playerButtonNumbers[_playerId]) >= 1.0f && !m_playerButtonDown[_playerId]){
-			m_playerButtonDown[_playerId] = true;
-			return true;
-		}
+		// Temporarily disabled MidiJack functionality for Unity 6 compatibility
+		// if (MidiMaster.GetKnob(m_playerButtonNumbers[_playerId]) >= 1.0f && !m_playerButtonDown[_playerId]){
+		// 	m_playerButtonDown[_playerId] = true;
+		// 	return true;
+		// }
 		return false;
 	}
 
 	public bool GetPlayButtonDown(){
-		if (MidiMaster.GetKnob(GetPlayButtonKnobNumber()) >= 1.0f && !m_playButtonDown){
-			m_playButtonDown = true;
-			return true;
-		}
+		// Temporarily disabled MidiJack functionality for Unity 6 compatibility
+		// if (MidiMaster.GetKnob(GetPlayButtonKnobNumber()) >= 1.0f && !m_playButtonDown){
+		// 	m_playButtonDown = true;
+		// 	return true;
+		// }
 		return false;
 	}
 
 	public bool GetStopButtonDown(){
-		if (MidiMaster.GetKnob(GetStopButtonKnobNumber()) >= 1.0f && !m_stopButtonDown){
-			m_stopButtonDown = true;
-			return true;
-		}
+		// Temporarily disabled MidiJack functionality for Unity 6 compatibility
+		// if (MidiMaster.GetKnob(GetStopButtonKnobNumber()) >= 1.0f && !m_stopButtonDown){
+		// 	m_stopButtonDown = true;
+		// 	return true;
+		// }
 		return false;
 	}
 
 	public bool GetRewindButtonDown(){
-		if (MidiMaster.GetKnob(GetRewindButtonKnobNumber()) >= 1.0f && !m_rewindButtonDown){
-			m_rewindButtonDown = true;
-			return true;
-		}
+		// Temporarily disabled MidiJack functionality for Unity 6 compatibility
+		// if (MidiMaster.GetKnob(GetRewindButtonKnobNumber()) >= 1.0f && !m_rewindButtonDown){
+		// 	m_rewindButtonDown = true;
+		// 	return true;
+		// }
 		return false;
 	}
 
 	public bool GetForwardButtonDown(){
-		if (MidiMaster.GetKnob(GetForwardButtonKnobNumber()) >= 1.0f && !m_forwardButtonDown){
-			m_forwardButtonDown = true;
-			return true;
-		}
+		// Temporarily disabled MidiJack functionality for Unity 6 compatibility
+		// if (MidiMaster.GetKnob(GetForwardButtonKnobNumber()) >= 1.0f && !m_forwardButtonDown){
+		// 	m_forwardButtonDown = true;
+		// 	return true;
+		// }
 		return false;
 	}
 

@@ -46,7 +46,7 @@ public class TriggerAudioMixerGroup : TriggerTarget {
 		//gameObject.SetActive(false);
 	}
 
-	void OnDrawGizmos(){
+	protected override void OnDrawGizmos(){
 		#if UNITY_EDITOR
 		Handles.Label(transform.position - Vector3.one, m_audioMixerGroup.ToString());
 		#endif

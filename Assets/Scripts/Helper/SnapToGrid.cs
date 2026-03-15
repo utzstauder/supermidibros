@@ -1,4 +1,4 @@
-﻿#if UNITY_EDITOR
+#if UNITY_EDITOR
 using UnityEditor;
 #endif
 
@@ -220,11 +220,31 @@ public class SnapToGrid : MonoBehaviour {
 		float newZ = ((Constants.NUMBER_OF_PLAYERS/2) - z) * Constants.FADER_PADDING - (float)Constants.FADER_PADDING/2.0f;
 		return new Vector3(xWorld, newY, newZ);
 	}
+
+	/// <summary>Overload for variable player count: laneCount is the number of lanes (2-8).</summary>
+	public static Vector3 GridToWorldCoord(float xWorld, int y, int z, int laneCount){
+		float newY = (float)Constants.FADER_HEIGHT / (float)(Constants.VERTICAL_POSITIONS - 1) * (float)y + Constants.FADER_OFFSET;
+		float newZ = ((laneCount / 2) - z) * Constants.FADER_PADDING - (float)Constants.FADER_PADDING / 2.0f;
+		return new Vector3(xWorld, newY, newZ);
+	}
+
 	public static Vector3[,] GridAsWorldCoords(){
 		Vector3[,] grid = new Vector3[Constants.NUMBER_OF_PLAYERS, Constants.VERTICAL_POSITIONS];
 		for (int x = 0; x < grid.GetLength(0); x++){
 			for (int y = 0; y < grid.GetLength(1); y++){
 				grid[x,y] = GridToWorldCoord(0, y, x);
+			}
+		}
+		return grid;
+	}
+
+	/// <summary>Variable player count: grid with laneCount lanes (2-8).</summary>
+	public static Vector3[,] GridAsWorldCoords(int laneCount){
+		int lanes = Mathf.Clamp(laneCount, 2, Constants.NUMBER_OF_PLAYERS);
+		Vector3[,] grid = new Vector3[lanes, Constants.VERTICAL_POSITIONS];
+		for (int x = 0; x < grid.GetLength(0); x++){
+			for (int y = 0; y < grid.GetLength(1); y++){
+				grid[x, y] = GridToWorldCoord(0, y, x, lanes);
 			}
 		}
 		return grid;

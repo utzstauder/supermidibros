@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using CustomDataTypes;
@@ -64,10 +64,20 @@ public class PatternManager : MonoBehaviour {
 			audioManager.OnReset += OnReset;
 		}
 
-		dynamicObjects = GameObject.Find("DynamicObjects/Patterns").transform;
+		// Ensure hierarchy: DynamicObjects/Patterns
+		dynamicObjects = GameObject.Find("DynamicObjects/Patterns")?.transform;
 		if (dynamicObjects == null){
-			dynamicObjects = Instantiate(new GameObject(), Vector3.zero, Quaternion.identity) as Transform;
-			dynamicObjects.gameObject.name = "DynamicObjects";
+			// Ensure root exists
+			var root = GameObject.Find("DynamicObjects")?.transform;
+			if (root == null){
+				root = new GameObject("DynamicObjects").transform;
+				root.position = Vector3.zero;
+				root.rotation = Quaternion.identity;
+			}
+			// Create Patterns child under root
+			var patternsGO = new GameObject("Patterns");
+			patternsGO.transform.SetParent(root, false);
+			dynamicObjects = patternsGO.transform;
 		}
 
 		environmentManager = GameObject.Find("EnvironmentManager").GetComponent<EnvironmentManager>();
@@ -287,7 +297,7 @@ public class PatternManager : MonoBehaviour {
 	}
 
 	Pattern GetRandomPatternWithAudio(int targetBar){
-		Pattern pattern = GetRandomPattern(symmetricalOnly, GetPatternSize());
+		Pattern pattern = GetRandomPattern(symmetricalOnly, GetPatternSize(), GetActiveLaneCount());
 		if (allZeroes){
 			pattern = Pattern.bottom;
 		}
@@ -308,7 +318,7 @@ public class PatternManager : MonoBehaviour {
 
 		for (int i = 0; i < count; i++){
 			// prepare new pattern
-			Pattern pattern = GetRandomPattern(symmetricalOnly, GetPatternSize());
+			Pattern pattern = GetRandomPattern(symmetricalOnly, GetPatternSize(), GetActiveLaneCount());
 
 			listOfPatterns.Add(pattern);
 
@@ -369,13 +379,22 @@ public class PatternManager : MonoBehaviour {
 
 
 	int GetPatternSize(){
-		int size = 8;
+		int maxPlayers = Constants.NUMBER_OF_PLAYERS;
+		if (GameManager.instance != null && GameManager.instance.UseVariablePlayerCount && ActivePlayerDetector.instance != null)
+			maxPlayers = ActivePlayerDetector.instance.GetActivePlayerCount();
+		int size = maxPlayers;
 		if (symmetricalOnly){
-			size = Random.Range(1, Constants.NUMBER_OF_PLAYERS/2 + 1) * 2;
+			size = Random.Range(1, maxPlayers / 2 + 1) * 2;
 		} else {
-			size = Random.Range(2, Constants.NUMBER_OF_PLAYERS + 1);
+			size = Random.Range(2, maxPlayers + 1);
 		}
 		return size;
+	}
+
+	int GetActiveLaneCount(){
+		if (GameManager.instance != null && GameManager.instance.UseVariablePlayerCount && ActivePlayerDetector.instance != null)
+			return ActivePlayerDetector.instance.GetActivePlayerCount();
+		return Constants.NUMBER_OF_PLAYERS;
 	}
 
 	void DeleteAtBar(int bar){
@@ -399,41 +418,34 @@ public class PatternManager : MonoBehaviour {
 
 	// TODO: while loop might not be the right solution
 	public static Pattern GetRandomPattern(bool symmetrical = false, int size = 8){
-		int[] coords = new int[Constants.NUMBER_OF_PLAYERS];
+		return GetRandomPattern(symmetrical, size, Constants.NUMBER_OF_PLAYERS);
+	}
+
+	/// <summary>Variable player count: laneCount is number of lanes (2-8).</summary>
+	public static Pattern GetRandomPattern(bool symmetrical, int size, int laneCount){
+		int lanes = Mathf.Clamp(laneCount, 2, Constants.NUMBER_OF_PLAYERS);
+		int[] coords = new int[lanes];
 		int currentSize;
 
-		if (size < 2){
-			size = 2;
-		}
+		if (size < 2) size = 2;
+		if (size > lanes) size = lanes;
+		if (size % 2 != 0) symmetrical = false;
 
-		if (size % 2 != 0){
-			symmetrical = false;
-		}
-			
 		do{
 			currentSize = 0;
-
-			for (int i = 0; i < Constants.NUMBER_OF_PLAYERS; i++){
-			
+			for (int i = 0; i < lanes; i++){
 				int value = (currentSize < size) ? Random.Range(-Constants.VERTICAL_POSITIONS, Constants.VERTICAL_POSITIONS) : -1;
 				value = Mathf.Clamp(value, -1, Constants.VERTICAL_POSITIONS - 1);
-
 				coords[i] = value;
-
-				if (coords[i] > -1){
-					currentSize += (symmetrical) ? 2 : 1;
-				}
-
+				if (coords[i] > -1) currentSize += (symmetrical) ? 2 : 1;
 				if (symmetrical){
-					coords[Constants.NUMBER_OF_PLAYERS - 1 - i] = value;
-					if (i >= (Constants.NUMBER_OF_PLAYERS / 2) - 1){
-						break;
-					}
+					coords[lanes - 1 - i] = value;
+					if (i >= (lanes / 2) - 1) break;
 				}
 			}
 		} while (currentSize < size);
 
-		return new Pattern(coords);;
+		return new Pattern(coords);
 	}
 
 	#endregion

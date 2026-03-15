@@ -1,0 +1,1845 @@
+Unity Editor version:    6000.3.11f1 (3000ef702840)
+Branch:                  6000.3/staging
+Build type:              Release
+Batch mode:              YES
+macOS version:           Version 15.6 (Build 24G84)
+Darwin version:          24.6.0
+Architecture:            arm64
+Running under Rosetta:   NO
+Available memory:        24576 MB
+Date:                    2026-03-15T17:00:44Z
+[Licensing::Module] Trying to connect to existing licensing client channel...
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-juanorjuela" at "2026-03-15T17:00:44.236774Z"
+
+COMMAND LINE ARGUMENTS:
+/Applications/Unity/Hub/Editor/6000.3.11f1/Unity.app/Contents/MacOS/Unity
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+/Users/juanorjuela/Documents/_Ringlete Interactivo/UNITY/ProyectMMM_FEP26
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+52651
+-licensingIpc
+LicenseClient-juanorjuela
+-job-worker-count
+5
+-background-job-worker-count
+8
+-gc-helper-count
+1
+-name AssetImport
+Successfully changed project path to: /Users/juanorjuela/Documents/_Ringlete Interactivo/UNITY/ProyectMMM_FEP26
+/Users/juanorjuela/Documents/_Ringlete Interactivo/UNITY/ProyectMMM_FEP26
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [8718115008]  Target information:
+
+Player connection [8718115008]  * "[IP] 192.168.0.14 [Port] 0 [Flags] 2 [Guid] 3804999730 [EditorId] 3804999730 [Version] 1048832 [Id] OSXEditor(0,192.168.0.14) [Debug] 1 [PackageName] OSXEditor [ProjectName] Editor" 
+
+Player connection [8718115008] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [8718115008] Host joined alternative multi-casting on [225.0.0.222:34997]...
+JobSystem: Creating JobQueue using job-worker-count value 5
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+Library Redirect Path: Library/
+[Physics::Module] Selected backend.
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+Refreshing native plugins compatible for Editor in 0.80 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 6000.3.11f1 (3000ef702840)
+[Subsystems] Discovering subsystems at path /Applications/Unity/Hub/Editor/6000.3.11f1/Unity.app/Contents/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path /Users/juanorjuela/Documents/_Ringlete Interactivo/UNITY/ProyectMMM_FEP26/Assets
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+ preferred device: Apple M4 Pro (high power)
+Metal devices available: 1
+0: Apple M4 Pro (high power)
+Using device Apple M4 Pro (high power)
+Initializing Metal device caps: Apple M4 Pro
+Mac GPU Family: 2
+Apple GPU Family: 9
+MSL Version: 3.0
+Has Float MSAA: 1
+Has Float Filtering: 1
+ReadWrite Texture Tier: 2
+Initialize mono
+Mono path[0] = '/Applications/Unity/Hub/Editor/6000.3.11f1/Unity.app/Contents/Resources/Scripting/Managed'
+Mono path[1] = '/Applications/Unity/Hub/Editor/6000.3.11f1/Unity.app/Contents/Resources/Scripting/MonoBleedingEdge/lib/mono/unityjit-macos'
+Mono config path = '/Applications/Unity/Hub/Editor/6000.3.11f1/Unity.app/Contents/Resources/Scripting/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56330
+Begin MonoManager ReloadAssembly
+[Licensing::Client] Error: HandshakeResponse reported an error:
+	ResponseCode: 505
+	ResponseStatus: Unsupported protocol version '1.18.0'.
+[Licensing::Module] Error: Failed to handshake to channel: "LicenseClient-juanorjuela"
+[Licensing::IpcConnector] LicenseClient-juanorjuela channel disconnected successfully.
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-juanorjuela-6000.3.11" at "2026-03-15T17:00:44.784413Z"
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.18.0+23225a6
+  Session Id:              0ae1c8badc2c47dca3f4d791a1f4c7c3
+  Correlation Id:          aa1a764243aed463360fa6ddd841cb12
+  External correlation Id: 967085715396748621
+  Machine Id:              bX22l8AhXmoYGKmzg9YveeiTezg=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-juanorjuela-6000.3.11" (connect: 0.00s, validation: 0.00s, handshake: 0.02s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-juanorjuela-6000.3.11-notifications" at "2026-03-15T17:00:44.809431Z"
+[Licensing::Module] Licensing Background thread has ended after 0.57s
+Registering precompiled unity dll's ...
+Register platform support module: /Applications/Unity/Hub/Editor/6000.3.11f1/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: /Applications/Unity/Hub/Editor/6000.3.11f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
+Register platform support module: /Applications/Unity/Hub/Editor/6000.3.11f1/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.000574 seconds.
+- Loaded All Assemblies, in  0.281 seconds
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Package Manager log level set to [2]
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.228 seconds
+Domain Reload Profiling: 509ms
+	BeginReloadAssembly (108ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (0ms)
+	RebuildCommonClasses (23ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (25ms)
+	LoadAllAssembliesAndSetupDomain (117ms)
+		LoadAssemblies (109ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (114ms)
+			TypeCache.Refresh (113ms)
+				TypeCache.ScanAssembly (103ms)
+			BuildScriptInfoCaches (0ms)
+			ResolveRequiredComponents (0ms)
+	FinalizeReload (228ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (201ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (29ms)
+			SetLoadedEditorAssemblies (3ms)
+			BeforeProcessingInitializeOnLoad (48ms)
+			ProcessInitializeOnLoadAttributes (68ms)
+			ProcessInitializeOnLoadMethodAttributes (52ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+[CoreBusinessMetrics] Unexpected thread when updating session info.
+========================================================================
+Worker process is ready to serve import requests
+Import Worker Mode flag is 0x00
+Begin MonoManager ReloadAssembly
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-BQ82-4FQF-6GV9-AGQF-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 4674114231336-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+- Loaded All Assemblies, in  0.324 seconds
+Script 'Grid' has the same name as built-in Unity component.
+AddComponent and GetComponent will not work with this script.
+Refreshing native plugins compatible for Editor in 0.10 ms, found 1 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.292 seconds
+Domain Reload Profiling: 616ms
+	BeginReloadAssembly (77ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (3ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (20ms)
+	RebuildCommonClasses (22ms)
+	RebuildNativeTypeToScriptingClass (7ms)
+	initialDomainReloadingComplete (19ms)
+	LoadAllAssembliesAndSetupDomain (198ms)
+		LoadAssemblies (159ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (70ms)
+			TypeCache.Refresh (50ms)
+				TypeCache.ScanAssembly (43ms)
+			BuildScriptInfoCaches (14ms)
+			ResolveRequiredComponents (5ms)
+	FinalizeReload (292ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (221ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (1ms)
+			SetLoadedEditorAssemblies (2ms)
+			BeforeProcessingInitializeOnLoad (62ms)
+			ProcessInitializeOnLoadAttributes (83ms)
+			ProcessInitializeOnLoadMethodAttributes (71ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (2ms)
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Launching external process: /Applications/Unity/Hub/Editor/6000.3.11f1/Unity.app/Contents/Helpers/UnityShaderCompiler
+Launched and connected shader compiler UnityShaderCompiler after 0.03 seconds
+Refreshing native plugins compatible for Editor in 0.17 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 18 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 3271 unused Assets / (2.4 MB). Loaded Objects now: 4085.
+Memory consumption went from 120.8 MB to 118.4 MB.
+Total: 4.823458 ms (FindLiveObjects: 0.175250 ms CreateObjectMapping: 0.056791 ms MarkObjects: 3.431667 ms  DeleteObjects: 1.159250 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 19610.836356 seconds.
+  path: Assets/Meshes/Models/TreeRing_01.fbx
+  artifactKey: Guid(290bfc0cceea04fbc99cb8605cc97945) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Meshes/Models/TreeRing_01.fbx using Guid(290bfc0cceea04fbc99cb8605cc97945) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'f07787db45f4da04fab0fffef0c721b0') in 0.092316875 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Scripts/Helper/PrefabGroup.cs
+  artifactKey: Guid(0a5f2222b3d4c4a8db5ab69d7ca4fe6a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scripts/Helper/PrefabGroup.cs using Guid(0a5f2222b3d4c4a8db5ab69d7ca4fe6a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '5a01fae15b0e59d2281a0eeb48f2b378') in 0.001670625 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/_Recovery/0.unity
+  artifactKey: Guid(0afafd6248b364adca6dc4c8d2a2fd31) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/_Recovery/0.unity using Guid(0afafd6248b364adca6dc4c8d2a2fd31) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '0371ab0635e5a09c2239313f3d313981') in 0.002974875 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Scripts/Editor/RepairEnvironmentMeshes.cs
+  artifactKey: Guid(ee2e9bc46101f473ba322dd605dc6580) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scripts/Editor/RepairEnvironmentMeshes.cs using Guid(ee2e9bc46101f473ba322dd605dc6580) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '0e1e026dcce855285ca4b8e6cf4ac5ae') in 0.001436458 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Resources/GUI/FEP_cielo.mat
+  artifactKey: Guid(551f92c440f124e1bb81248dce92ec35) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/GUI/FEP_cielo.mat using Guid(551f92c440f124e1bb81248dce92ec35) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '60a6a4ed5c05ba3cf65d51b52dfda791') in 0.003432166 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Scenes/Levels/party_test.unity
+  artifactKey: Guid(1a769eedc24724c41a5c1b39cea46307) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scenes/Levels/party_test.unity using Guid(1a769eedc24724c41a5c1b39cea46307) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '5d232a8b2d770b7fd9b991156a9fe1df') in 0.00662275 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Scripts/Helper/Grid.cs
+  artifactKey: Guid(cdbe903619976417b903ea3a4347e995) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scripts/Helper/Grid.cs using Guid(cdbe903619976417b903ea3a4347e995) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '1f2b1cb3309a3ce7697492e888dd1739') in 0.001111708 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000053 seconds.
+  path: Assets/Scripts/Scene/LevelManager.cs
+  artifactKey: Guid(86e1e4164d6e34c1d92a2dd38c14676b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scripts/Scene/LevelManager.cs using Guid(86e1e4164d6e34c1d92a2dd38c14676b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '755d40ce21724125b8be354b537ebc2e') in 0.004991917 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Resources/Data/_BACKUP_HillZoneEnvironment.asset
+  artifactKey: Guid(df2c16216a5334bec9270b47b5d2db2b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Data/_BACKUP_HillZoneEnvironment.asset using Guid(df2c16216a5334bec9270b47b5d2db2b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '9ce0f537c8034471fa3502b6014cac87') in 0.290442916 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 66713
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000048 seconds.
+  path: Assets/Prefabs/Enviroment/Test/TestHill.prefab
+  artifactKey: Guid(a2f64f393417e41fa86aab6bd27625c8) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Prefabs/Enviroment/Test/TestHill.prefab using Guid(a2f64f393417e41fa86aab6bd27625c8) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'f4c837a25c80f018d6217138e75285af') in 0.005416791 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Prefabs/Enviroment/Hill_Zone/FlatBridge.prefab
+  artifactKey: Guid(5063a6a303a2b4b40bd43b83dfbe57e7) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Prefabs/Enviroment/Hill_Zone/FlatBridge.prefab using Guid(5063a6a303a2b4b40bd43b83dfbe57e7) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '26a1528c1ad08a5d3b45023f058d4be4') in 0.0247205 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2092
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Meshes/Enviroment/Hill_Zone/low_straight.FBX
+  artifactKey: Guid(d48bab978ceb46842a76791a8673a59a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Meshes/Enviroment/Hill_Zone/low_straight.FBX using Guid(d48bab978ceb46842a76791a8673a59a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '5e6ddb208ceaf594494928e333d4cee2') in 0.006780417 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 26
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000043 seconds.
+  path: Assets/Meshes/Enviroment/Hill_Zone/tree_line_flat.FBX
+  artifactKey: Guid(49254f0583c0b36479de3ee0878d7696) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Meshes/Enviroment/Hill_Zone/tree_line_flat.FBX using Guid(49254f0583c0b36479de3ee0878d7696) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'df2126c538ead53213887ab7c8147cc0') in 0.009642 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 15
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Meshes/Enviroment/Hill_Zone/flat_to_flat_bridge.FBX
+  artifactKey: Guid(f4be55b1a5b1a8740ba8aeb06eeb3ce3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Meshes/Enviroment/Hill_Zone/flat_to_flat_bridge.FBX using Guid(f4be55b1a5b1a8740ba8aeb06eeb3ce3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '24e9340db8d9a4debd4630b1f460e139') in 0.004708458 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 26
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Scripts/ScriptableObject/SoundSet.cs
+  artifactKey: Guid(da86896963196479e85326b2fc70af49) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scripts/ScriptableObject/SoundSet.cs using Guid(da86896963196479e85326b2fc70af49) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'bcb6b2c64a1d9d273b764a1df2f0dc7d') in 0.001010125 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000058 seconds.
+  path: Assets/Meshes/Enviroment/Trippy_Zone/spiral_entrance.FBX
+  artifactKey: Guid(70b5f76779d69d9409f5c4e906ad7a4d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Meshes/Enviroment/Trippy_Zone/spiral_entrance.FBX using Guid(70b5f76779d69d9409f5c4e906ad7a4d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '9d8e29936296e0bd505256575f43e1be') in 0.008237041 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000042 seconds.
+  path: Assets/Meshes/Misc/Palm Tree/palmtree_twofaces.fbx
+  artifactKey: Guid(ffcad1ff50b014de588b83de8b58e24b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Meshes/Misc/Palm Tree/palmtree_twofaces.fbx using Guid(ffcad1ff50b014de588b83de8b58e24b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '62c708531ce6e16100550480f6d9b79d') in 0.006857458 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 87
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Prefabs/Enviroment/Trippy_Zone/TunnelStraight.prefab
+  artifactKey: Guid(cf852b75729382041b2961be5a478001) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Prefabs/Enviroment/Trippy_Zone/TunnelStraight.prefab using Guid(cf852b75729382041b2961be5a478001) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'cbf50518c2364488f2d485744e7e3591') in 0.003577125 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 20
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/Meshes/Misc/Materials/No Name.mat
+  artifactKey: Guid(51141e51313505e40ad3ed11d76bb44d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Meshes/Misc/Materials/No Name.mat using Guid(51141e51313505e40ad3ed11d76bb44d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'dba17c91eaea3b3ad46d69413411013e') in 0.001650708 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/Prefabs/Enviroment/Trippy_Zone/TowerD.prefab
+  artifactKey: Guid(55f2a9721d6a39f478accd3426ba9ba0) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Prefabs/Enviroment/Trippy_Zone/TowerD.prefab using Guid(55f2a9721d6a39f478accd3426ba9ba0) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '91204dbbce00cb1f931da029ff39c20e') in 0.005367417 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 474
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Meshes/Enviroment/Trippy_Zone/tower_a.FBX
+  artifactKey: Guid(1b8b291ca2dace84b883cd0595c87a4c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Meshes/Enviroment/Trippy_Zone/tower_a.FBX using Guid(1b8b291ca2dace84b883cd0595c87a4c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '6b7d3966e958d73891c9db658e702d8a') in 0.004642709 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/Prefabs/Enviroment/Trippy_Zone/TunnelStraightToTunnel.prefab
+  artifactKey: Guid(cb23baf447c1a43e882f8558112ddf6f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Prefabs/Enviroment/Trippy_Zone/TunnelStraightToTunnel.prefab using Guid(cb23baf447c1a43e882f8558112ddf6f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '111f3d9614a4fd49af867106d6d4b1f3') in 0.002412541 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 16
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Prefabs/Enviroment/Hill_Zone/FlatBridgeToFlat.prefab
+  artifactKey: Guid(4f16488df0ccd1142b21ed55047ee4de) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Prefabs/Enviroment/Hill_Zone/FlatBridgeToFlat.prefab using Guid(4f16488df0ccd1142b21ed55047ee4de) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '5766d3349b0fe7846bdfd142679ea2b4') in 0.014284958 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2393
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Meshes/Enviroment/Trippy_Zone/tower_c.FBX
+  artifactKey: Guid(fd507e6071fe3b04f8d726f19e9ae6a2) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Meshes/Enviroment/Trippy_Zone/tower_c.FBX using Guid(fd507e6071fe3b04f8d726f19e9ae6a2) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'e1daa4e688dfacff3dc8445ac2e1404b') in 0.005781833 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Meshes/Enviroment/Hill_Zone/low_to_flat.FBX
+  artifactKey: Guid(7cd31edcd299dff478ffba56c91806cf) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Meshes/Enviroment/Hill_Zone/low_to_flat.FBX using Guid(7cd31edcd299dff478ffba56c91806cf) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'e85dd69c7599b1e3673aeee6f5c0936b') in 0.0046455 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 26
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/Prefabs/Enviroment/Test/TestEnvironmentSet_Juan.asset
+  artifactKey: Guid(ff5efc3d28d7740cc90765097ffbb76d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Prefabs/Enviroment/Test/TestEnvironmentSet_Juan.asset using Guid(ff5efc3d28d7740cc90765097ffbb76d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '72971f1a5fc7ff3ad6324cecfd890812') in 0.002042166 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 19
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Prefabs/Enviroment/Trippy_Zone/SpeakerRow.prefab
+  artifactKey: Guid(4048d36e10c49f34da7f22ad434cc131) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Prefabs/Enviroment/Trippy_Zone/SpeakerRow.prefab using Guid(4048d36e10c49f34da7f22ad434cc131) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '06a251811808cf02baf7df92df5f2189') in 0.0072255 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 469
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000052 seconds.
+  path: Assets/Prefabs/Enviroment/Trippy_Zone/Mesh.prefab
+  artifactKey: Guid(f5dd5cf59ead6934bbf21e401d97c884) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Prefabs/Enviroment/Trippy_Zone/Mesh.prefab using Guid(f5dd5cf59ead6934bbf21e401d97c884) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '5bf473c2a9a54d3b7a37441b3bf57433') in 0.003198209 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 15
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Meshes/Misc/tmp/wall_01.FBX
+  artifactKey: Guid(bc935b433d8f8420a9165af132888030) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Meshes/Misc/tmp/wall_01.FBX using Guid(bc935b433d8f8420a9165af132888030) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '6a7a3f656b26aeb8aee13c89e5d0f0a0') in 0.004646167 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 10
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Meshes/Enviroment/Hill_Zone/flat.FBX
+  artifactKey: Guid(4aa59ddc5f62c1041a5f267a4d054e71) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Meshes/Enviroment/Hill_Zone/flat.FBX using Guid(4aa59ddc5f62c1041a5f267a4d054e71) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '950fb9b74f20423a2bebe9297e827dc4') in 0.00469125 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 26
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Meshes/Enviroment/Trippy_Zone/tower_d.FBX
+  artifactKey: Guid(dc173fd473176af45b60bf8ff3a5d52c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Meshes/Enviroment/Trippy_Zone/tower_d.FBX using Guid(dc173fd473176af45b60bf8ff3a5d52c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '725592957e61615a1f21853c730f268d') in 0.005173792 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000046 seconds.
+  path: Assets/Meshes/Models/Mushroom_Large_03 (1).fbx
+  artifactKey: Guid(3d058d4b251c645579e66134a0225a7d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Meshes/Models/Mushroom_Large_03 (1).fbx using Guid(3d058d4b251c645579e66134a0225a7d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '82f0cc84de6e6a01d753e5a8d217cbaa') in 0.004432208 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/Scripts/Helper/SnapToGrid.cs
+  artifactKey: Guid(4652f0fd7e18346d99aa5adbd9bda366) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scripts/Helper/SnapToGrid.cs using Guid(4652f0fd7e18346d99aa5adbd9bda366) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'cdc6bd60d4b390507f99f69c16b9050f') in 0.001121875 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Prefabs/Enviroment/Hill_Zone/Flat.prefab
+  artifactKey: Guid(56cd25887876a3b4dac17f23588c5d73) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Prefabs/Enviroment/Hill_Zone/Flat.prefab using Guid(56cd25887876a3b4dac17f23588c5d73) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '7315af978c691208a0b54ba3dc5f0679') in 0.028229792 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 5722
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/Scripts/ScriptableObject/EnvironmentSet.cs
+  artifactKey: Guid(6c716eca65d2f4271ad9c2db5bb83f8c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scripts/ScriptableObject/EnvironmentSet.cs using Guid(6c716eca65d2f4271ad9c2db5bb83f8c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '7eac94e8e2cb256dfa3862dd4e4ff79d') in 0.001022708 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Meshes/Misc/tmp/tower_01.FBX
+  artifactKey: Guid(443cbb8df74d94de3b2b6d252e424505) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Meshes/Misc/tmp/tower_01.FBX using Guid(443cbb8df74d94de3b2b6d252e424505) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '93fe89f8d54854942b24218636523e08') in 0.00518275 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 10
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.048768 seconds.
+  path: Assets/Prefabs/Triggers/Old/_BACKUP_TriggerSingle.prefab
+  artifactKey: Guid(995897ad3a4c145eea5d22da973b3e7c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Prefabs/Triggers/Old/_BACKUP_TriggerSingle.prefab using Guid(995897ad3a4c145eea5d22da973b3e7c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '73443d67d48307af73af9621c333022a') in 0.005255667 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 24
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Resources/Audio/Mixer/Master.mixer
+  artifactKey: Guid(890bfb1daf73b481d94a953d42a59112) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Mixer/Master.mixer using Guid(890bfb1daf73b481d94a953d42a59112) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter)Refreshing native plugins compatible for Editor in 0.12 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+ -> (artifact id: 'd73a138299aaf25087aaaddec4208ab7') in 0.016729125 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 139
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Meshes/Enviroment/Hill_Zone/Materials/building.mat
+  artifactKey: Guid(513ef26dc343d2c4195444b8004417bb) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Meshes/Enviroment/Hill_Zone/Materials/building.mat using Guid(513ef26dc343d2c4195444b8004417bb) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '7921bcbc51b5e5161620b6a4a1e0076c') in 0.002029958 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/Scenes/Gyuri_Levels/Gyuri_02/LightingData.asset
+  artifactKey: Guid(aca700a761bee4a688672f6ec1a2916c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scenes/Gyuri_Levels/Gyuri_02/LightingData.asset using Guid(aca700a761bee4a688672f6ec1a2916c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '987a11e13175113e04acb48010986e0e') in 0.001660791 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000051 seconds.
+  path: Assets/Resources/Textures/Particles/music_notation_particles_on.png
+  artifactKey: Guid(d3df89b634ecf43948cae1880450a4d0) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Textures/Particles/music_notation_particles_on.png using Guid(d3df89b634ecf43948cae1880450a4d0) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '5071fad560593bf94fb327a29c51fe0e') in 0.017729875 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Scripts/Scene/Trigger/TriggerSingle.cs
+  artifactKey: Guid(88125bde2a3254f67a5f865ef4cd7874) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scripts/Scene/Trigger/TriggerSingle.cs using Guid(88125bde2a3254f67a5f865ef4cd7874) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '322dca8893ae345c8ea6a6fd7ad8da22') in 0.001054292 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Meshes/Enviroment/Hill_Zone/Materials/building 1.mat
+  artifactKey: Guid(a502dd3a2023e424881c9662c9c606b4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Meshes/Enviroment/Hill_Zone/Materials/building 1.mat using Guid(a502dd3a2023e424881c9662c9c606b4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '389b0ea2a6d2d55ddf63ac28608b72a1') in 0.002005791 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Resources/Materials/tunnel_textures/tunnel_03.mat
+  artifactKey: Guid(e56af317abd9e4375adc2a7838cf3f44) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Materials/tunnel_textures/tunnel_03.mat using Guid(e56af317abd9e4375adc2a7838cf3f44) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '21f318e29f8d3096c18cf7b64a2ccf51') in 0.002712416 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000043 seconds.
+  path: Assets/Scripts/Scene/OnRhythm/ScaleOnRhythmPeriodic.cs
+  artifactKey: Guid(3d09915e552374a09ac511edfc46fd16) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scripts/Scene/OnRhythm/ScaleOnRhythmPeriodic.cs using Guid(3d09915e552374a09ac511edfc46fd16) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'aa67254d1db65ded7bd5fa438ff565ce') in 0.000978417 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Meshes/Enviroment/Hill_Zone/Horizon/sun.FBX
+  artifactKey: Guid(63341812e6823cf4cb3978bf40d5f6b0) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Meshes/Enviroment/Hill_Zone/Horizon/sun.FBX using Guid(63341812e6823cf4cb3978bf40d5f6b0) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '43cb95589d99c8f78d4a21fde84f2c2b') in 0.003694291 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 7
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Resources/Materials/Patterns/TriggerSingle_default.mat
+  artifactKey: Guid(e309712423b094cc0897b21e79bcd06e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Materials/Patterns/TriggerSingle_default.mat using Guid(e309712423b094cc0897b21e79bcd06e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '7b346f2545a13db3ba5f50461643d9e0') in 0.001821333 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000043 seconds.
+  path: Assets/Resources/Materials/Basic/line_transparant.mat
+  artifactKey: Guid(8d8c1de4d8310794d87d399842fbbbe4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Materials/Basic/line_transparant.mat using Guid(8d8c1de4d8310794d87d399842fbbbe4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '1ffe82c7669bcf1edaa8a7599c67aa75') in 0.002351 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Resources/Materials/Patterns/PatternChildMeshTransparent.mat
+  artifactKey: Guid(2e6f41c4e4d8c458a99cc919afbda12a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Materials/Patterns/PatternChildMeshTransparent.mat using Guid(2e6f41c4e4d8c458a99cc919afbda12a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '4782d55b876ba7e6bc7abd648b55aa40') in 0.001776917 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000040 seconds.
+  path: Assets/Scenes/Levels/IntermediatePresentation/queen_1.unity
+  artifactKey: Guid(35efba4710dd0442a8a5d3abe9a6b4f5) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scenes/Levels/IntermediatePresentation/queen_1.unity using Guid(35efba4710dd0442a8a5d3abe9a6b4f5) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '848ec93d389297a0e537fe3fb6a0a289') in 0.001884833 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/Resources/Audio/Data/SoundSet_B_clean.asset
+  artifactKey: Guid(7398e6fd68a61446fb506b7fac245bfc) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Data/SoundSet_B_clean.asset using Guid(7398e6fd68a61446fb506b7fac245bfc) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'ca67f862f38511b4ca844c93a621828c') in 0.026962167 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 50
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Meshes/Enviroment/Hill_Zone/Materials/Bridge_Pillars.mat
+  artifactKey: Guid(c454b28fa9e69384ca963cd5a2559d98) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Meshes/Enviroment/Hill_Zone/Materials/Bridge_Pillars.mat using Guid(c454b28fa9e69384ca963cd5a2559d98) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '39e7bc3b028b0ca49e1e93e765ae7a69') in 0.001676 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000047 seconds.
+  path: Assets/Resources/Materials/Patterns/LineRenderer_default.mat
+  artifactKey: Guid(13e1a442ea5674a4a910f741b8898dc9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Materials/Patterns/LineRenderer_default.mat using Guid(13e1a442ea5674a4a910f741b8898dc9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'd68538db93c877413ca28299e5c93a3b') in 0.001408625 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Resources/Materials/Patterns/PatternParticlesFailure.mat
+  artifactKey: Guid(bc65c98b0012d429a8d1160ac97d74c1) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Materials/Patterns/PatternParticlesFailure.mat using Guid(bc65c98b0012d429a8d1160ac97d74c1) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'ea0aba1f8acd9b95ab313ae3b1a64ca4') in 0.002841167 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000042 seconds.
+  path: Assets/Meshes/Enviroment/Trippy_Zone/Materials/Material #24.mat
+  artifactKey: Guid(82d529cedb3a84b4d9d00c398fabd48b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Meshes/Enviroment/Trippy_Zone/Materials/Material #24.mat using Guid(82d529cedb3a84b4d9d00c398fabd48b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'ff777ff48573463d8da8933b301cfcad') in 0.001869125 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Resources/Materials/Basic/Blue.mat
+  artifactKey: Guid(51a52c1c2d3d8471b97824f26fa26e3d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Materials/Basic/Blue.mat using Guid(51a52c1c2d3d8471b97824f26fa26e3d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '987c3ff833af08817cc8980ddd72eb45') in 0.001933791 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000042 seconds.
+  path: Assets/Meshes/Enviroment/Hill_Zone/Materials/No Name.mat
+  artifactKey: Guid(6fee813375d4a6c4c9469c936c1ff564) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Meshes/Enviroment/Hill_Zone/Materials/No Name.mat using Guid(6fee813375d4a6c4c9469c936c1ff564) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'd25f402b8921286187dd5bb7755ad361') in 0.001854083 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Resources/Materials/Patterns/PatternParticlesSuccess.mat
+  artifactKey: Guid(b6e9353aaccc847278064ab55f1a4d6a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Materials/Patterns/PatternParticlesSuccess.mat using Guid(b6e9353aaccc847278064ab55f1a4d6a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '47ea4ed6d13f70e5a84165467088ac18') in 0.002269042 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/Scripts/Scene/OnRhythm/RotateOnRhythmPeriodic.cs
+  artifactKey: Guid(79003cbe3a1a7475681caf77058886fd) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scripts/Scene/OnRhythm/RotateOnRhythmPeriodic.cs using Guid(79003cbe3a1a7475681caf77058886fd) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'f21f6cfe50ff4f6b06b3191c7501f3dd') in 0.001089083 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Meshes/Enviroment/Hill_Zone/misc/windturbine_juan.fbx
+  artifactKey: Guid(5df52b30c7137435bab99ad877655957) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Meshes/Enviroment/Hill_Zone/misc/windturbine_juan.fbx using Guid(5df52b30c7137435bab99ad877655957) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'eea058fc3ec116e830cc318738c7f0f7') in 0.004211417 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 34
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/Scripts/Scene/OnRhythm/TileTextureOnRhythmPeriodic.cs
+  artifactKey: Guid(308042efd65cb40448e0363237e9d3ae) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scripts/Scene/OnRhythm/TileTextureOnRhythmPeriodic.cs using Guid(308042efd65cb40448e0363237e9d3ae) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '805b1847f712d6ee771c2cb238bcec34') in 0.000910792 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000042 seconds.
+  path: Assets/Scripts/Scene/OnRhythm/ChangeMaterialOnRhythm.cs
+  artifactKey: Guid(3c43d67403d6c489c99d060b9c8ebfab) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scripts/Scene/OnRhythm/ChangeMaterialOnRhythm.cs using Guid(3c43d67403d6c489c99d060b9c8ebfab) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'f249726b828f2fb0fd28a523d95a2bea') in 0.001165084 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000040 seconds.
+  path: Assets/Scenes/Levels/IntermediatePresentation/queen_2_juan.unity
+  artifactKey: Guid(015245ff2e1344a66816f4643bb067d7) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scenes/Levels/IntermediatePresentation/queen_2_juan.unity using Guid(015245ff2e1344a66816f4643bb067d7) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '00e26a40b0b2f4d680e58c708fd9c327') in 0.018840833 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/Resources/Materials/Patterns/TriggerSingle_success.mat
+  artifactKey: Guid(bbac37a4cf2d9445c9610355766d440c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Materials/Patterns/TriggerSingle_success.mat using Guid(bbac37a4cf2d9445c9610355766d440c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'a07568f5ed7804c254e6d440c3758812') in 0.001689541 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/Resources/Materials/Sky Boxs/hills_side.png
+  artifactKey: Guid(64258be4296c9f448a0bbeb26f407162) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Materials/Sky Boxs/hills_side.png using Guid(64258be4296c9f448a0bbeb26f407162) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '29a9b0d9946ca51da470a02857f4f58a') in 0.002654417 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Meshes/Enviroment/Hill_Zone/Horizon/horizon.FBX
+  artifactKey: Guid(6e905aa2b6229e7458b40fb84431276c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Meshes/Enviroment/Hill_Zone/Horizon/horizon.FBX using Guid(6e905aa2b6229e7458b40fb84431276c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '0dddd4fedc7e782f0e392e12993f7771') in 0.004572125 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 7
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Resources/Audio/Data/SoundSet_C_trippy.asset
+  artifactKey: Guid(4bd72260276374b069f62846007fd879) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Data/SoundSet_C_trippy.asset using Guid(4bd72260276374b069f62846007fd879) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'd2ace774f184389507805dd8c5b39290') in 1.913030375 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 50
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/Resources/Audio/Music/Loops/A/A19_Harmony_Keys_Layered_2_4bars_130bpm_stack.wav
+  artifactKey: Guid(8656af4486dc94680b4f7ad460518a9d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/A/A19_Harmony_Keys_Layered_2_4bars_130bpm_stack.wav using Guid(8656af4486dc94680b4f7ad460518a9d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '386e15f3997641d23b2f8c49044ab253') in 0.011661 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Resources/Audio/Music/Loops/A/A20_Harmony_Synth_Layered_1_4bars_130bpm_stack.wav
+  artifactKey: Guid(faa9599af7c2948b781a5d32876bbcf2) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/A/A20_Harmony_Synth_Layered_1_4bars_130bpm_stack.wav using Guid(faa9599af7c2948b781a5d32876bbcf2) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '592dca05d9811dd92413ce7af4c2f1b9') in 0.010363667 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000043 seconds.
+  path: Assets/Resources/Audio/Music/Loops/B/B25_Harmony_Bass_Chopped_4_8bars_128bpm_stack.wav.asd
+  artifactKey: Guid(2bad5b9d68fe14025b87d9c7f4200000) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/B/B25_Harmony_Bass_Chopped_4_8bars_128bpm_stack.wav.asd using Guid(2bad5b9d68fe14025b87d9c7f4200000) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'ca07079fb5c42cac5e0d92f1479f525f') in 0.001177208 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Resources/Audio/Music/Loops/B/B15_Rhythm_Clap_Minimal_2_1bars_128bpm_switch.wav
+  artifactKey: Guid(277c29fb87175417192464d969d2e674) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/B/B15_Rhythm_Clap_Minimal_2_1bars_128bpm_switch.wav using Guid(277c29fb87175417192464d969d2e674) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '851cadb87d88ca1c5e0f64ca3c6d5da9') in 0.009776833 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000043 seconds.
+  path: Assets/Resources/Audio/Music/Loops/B/B12_Rhythm_Percussion_Minimal_3_1bars_128bpm_switch.wav.asd
+  artifactKey: Guid(ac8095182403644788a8f22545613192) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/B/B12_Rhythm_Percussion_Minimal_3_1bars_128bpm_switch.wav.asd using Guid(ac8095182403644788a8f22545613192) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'e686b936f379f009206f7caee7bbf30a') in 0.001096791 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Resources/Audio/Music/Loops/B/B14_Rhythm_Clap_Minimal_1_1bars_128bpm_switch.wav.asd
+  artifactKey: Guid(7a35318512fba4bf787c0f5b2a5e2b95) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/B/B14_Rhythm_Clap_Minimal_1_1bars_128bpm_switch.wav.asd using Guid(7a35318512fba4bf787c0f5b2a5e2b95) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '18a414baaed3c4906cfda66aaf41c120') in 0.00104325 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/Resources/Audio/Music/Loops/B/B1_Main_Reverse Cymbal_Basic_none_16bars_128bpm_none.wav.asd
+  artifactKey: Guid(9a5928667c55f478fa31463cd5a9ab50) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/B/B1_Main_Reverse Cymbal_Basic_none_16bars_128bpm_none.wav.asd using Guid(9a5928667c55f478fa31463cd5a9ab50) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '5874179ec68e5947d67b8393f0db9998') in 0.001054708 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Resources/Audio/Music/Loops/B/B13_Rhythm_Percussion_Double_4_1bars_128bpm_switch.wav.asd
+  artifactKey: Guid(7b5e7d3bdaa8e4099a69338aff5155ea) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/B/B13_Rhythm_Percussion_Double_4_1bars_128bpm_switch.wav.asd using Guid(7b5e7d3bdaa8e4099a69338aff5155ea) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '5e210f7f272e436cb6171dc12e95a7ce') in 0.000952333 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Scripts/Scene/Trigger/TriggerActions/TriggerChangeMaterial.cs
+  artifactKey: Guid(c01bf99f495e84a778273a4dabe6816a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scripts/Scene/Trigger/TriggerActions/TriggerChangeMaterial.cs using Guid(c01bf99f495e84a778273a4dabe6816a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'de1e63faf3ab9831e1bd8ff20d26f83e') in 0.001058292 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/Meshes/Enviroment/Hill_Zone/Materials/Textures/Texture Atlas.jpg
+  artifactKey: Guid(d9d492e4224a5d7468a809007db0e109) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Meshes/Enviroment/Hill_Zone/Materials/Textures/Texture Atlas.jpg using Guid(d9d492e4224a5d7468a809007db0e109) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '5344ef361a81f9e965ad84bbfbfd2772') in 0.003438542 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Resources/Audio/Music/Loops/B/B16_Rhythm_Clap_Minimal_3_1bars_128bpm_switch.wav.asd
+  artifactKey: Guid(fc53c2ff9f3f34ae08ac6fb187b37f5a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/B/B16_Rhythm_Clap_Minimal_3_1bars_128bpm_switch.wav.asd using Guid(fc53c2ff9f3f34ae08ac6fb187b37f5a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '25eb666e5e207a7396f8a72af6b55a59') in 0.001003542 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Meshes/Enviroment/Hill_Zone/Materials/Trees/tree_line.mat
+  artifactKey: Guid(31e87cc382bda1d4aa0607a5c44ab959) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Meshes/Enviroment/Hill_Zone/Materials/Trees/tree_line.mat using Guid(31e87cc382bda1d4aa0607a5c44ab959) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'bfaa4d240a0073379740cc2119d0bb60') in 0.002317542 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Meshes/Enviroment/Hill_Zone/Materials/Textures/upper_frame_texture-05.png
+  artifactKey: Guid(3871b8bd27fba4ceeaa70ff0767f697e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Meshes/Enviroment/Hill_Zone/Materials/Textures/upper_frame_texture-05.png using Guid(3871b8bd27fba4ceeaa70ff0767f697e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '3987e3d18352e9225c7a39c8ee283639') in 0.0030185 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/Meshes/Enviroment/Hill_Zone/misc/Materials/Material.001.mat
+  artifactKey: Guid(d39968fb57bd5a04ea9f1d2690124a5a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Meshes/Enviroment/Hill_Zone/misc/Materials/Material.001.mat using Guid(d39968fb57bd5a04ea9f1d2690124a5a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '9e4053c960e4da2479a9984992f05410') in 0.001961625 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Resources/Audio/Music/Loops/B/B16_Rhythm_Clap_Minimal_3_1bars_128bpm_switch.wav
+  artifactKey: Guid(80b2db99af81e43578295c28241d847d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/B/B16_Rhythm_Clap_Minimal_3_1bars_128bpm_switch.wav using Guid(80b2db99af81e43578295c28241d847d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '37d19260876cec412d60ac34ae553337') in 0.009728834 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Meshes/Enviroment/Hill_Zone/Materials/Sunflower/sunflowe_middle.mat
+  artifactKey: Guid(6bcaf0f844aad473688a90e6a2c2f988) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Meshes/Enviroment/Hill_Zone/Materials/Sunflower/sunflowe_middle.mat using Guid(6bcaf0f844aad473688a90e6a2c2f988) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '7bdf0568db7052c84d9e8f0ae77412bc') in 0.003204667 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000043 seconds.
+  path: Assets/Resources/Audio/Music/Loops/B/B31_Harmony_Piano_Octave Up_2_8bars_128bpm_switch.wav
+  artifactKey: Guid(c60d88bf2d78b4d4b8a3c20605d16b30) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/B/B31_Harmony_Piano_Octave Up_2_8bars_128bpm_switch.wav using Guid(c60d88bf2d78b4d4b8a3c20605d16b30) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '8ff05ce4be13f33c24ac5e62f81db48a') in 0.010740333 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/Resources/Audio/Music/Loops/B/B47_Melody_Arpeggiator_Octave Up_2_8bars_128bpm_switch.wav
+  artifactKey: Guid(7d76921dfac424a5ca8d1952c97bdf6c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/B/B47_Melody_Arpeggiator_Octave Up_2_8bars_128bpm_switch.wav using Guid(7d76921dfac424a5ca8d1952c97bdf6c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '41c6c35010d67821212117cb351a4acf') in 0.01006175 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000055 seconds.
+  path: Assets/Resources/Audio/Music/Loops/B/B28_Harmony_Bass 2_Chopped_3_8bars_128bpm_switch.wav
+  artifactKey: Guid(4138942d1acb84afba9d50a8f57c4539) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/B/B28_Harmony_Bass 2_Chopped_3_8bars_128bpm_switch.wav using Guid(4138942d1acb84afba9d50a8f57c4539) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '3dd0593a8239df22dee7ddec3fb0fa13') in 0.01069675 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Resources/Audio/Music/Loops/B/B7_Rhythm_Hi Hat_Minimal_2_1bars_128bpm_switch.wav.asd
+  artifactKey: Guid(7471a2939935641589c96db61b78d514) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/B/B7_Rhythm_Hi Hat_Minimal_2_1bars_128bpm_switch.wav.asd using Guid(7471a2939935641589c96db61b78d514) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '03cb32296d8d0aafb442ad8614f4d0a4') in 0.001088125 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000057 seconds.
+  path: Assets/Resources/Audio/Music/Loops/B/B46_Melody_Arpeggiator_Octave Down_1_8bars_128bpm_switch.wav
+  artifactKey: Guid(81b45770c80b040e193bed4eb6df4e08) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/B/B46_Melody_Arpeggiator_Octave Down_1_8bars_128bpm_switch.wav using Guid(81b45770c80b040e193bed4eb6df4e08) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'a43ecbb7650f7f62458713f1a68a11a8') in 0.01057875 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/Resources/Audio/Music/Loops/B/B2_Rhythm_Kick_Snare_Basic_1_1bars_128bpm_switch.wav.asd
+  artifactKey: Guid(f919da699036b42d0a1d0f78c173d37a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/B/B2_Rhythm_Kick_Snare_Basic_1_1bars_128bpm_switch.wav.asd using Guid(f919da699036b42d0a1d0f78c173d37a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '98d89ccdc08f741a7bbe78e316aa3fa0') in 0.000995708 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/Resources/Audio/Music/Loops/B/B29_Harmony_Bass 2_Octave Up_4_8bars_128bpm_switch.wav.asd
+  artifactKey: Guid(237d0fd975db34b7eaa4bb00ddaa0f4c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/B/B29_Harmony_Bass 2_Octave Up_4_8bars_128bpm_switch.wav.asd using Guid(237d0fd975db34b7eaa4bb00ddaa0f4c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'f6af738cc66bdb7bc502ae436cf56ea6') in 0.001005083 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000040 seconds.
+  path: Assets/Resources/Audio/Music/Loops/B/B7_Rhythm_Hi Hat_Minimal_2_1bars_128bpm_switch.wav
+  artifactKey: Guid(4eaf54b7b5e5a465c84111efdc20e679) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/B/B7_Rhythm_Hi Hat_Minimal_2_1bars_128bpm_switch.wav using Guid(4eaf54b7b5e5a465c84111efdc20e679) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'a9086bb1f6318d22fb4da5754affaf58') in 0.009759792 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000055 seconds.
+  path: Assets/Resources/Audio/Music/Loops/B/B8_Rhythm_Hi Hat_Layered_3_1bars_128bpm_switch.wav
+  artifactKey: Guid(606dd5a391f7448d3b7fbf45252ecc86) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/B/B8_Rhythm_Hi Hat_Layered_3_1bars_128bpm_switch.wav using Guid(606dd5a391f7448d3b7fbf45252ecc86) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '0ed48f9971eb7a80916d135ca7834db5') in 0.011244458 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Resources/Audio/Music/Loops/B/B41_Melody_Synth 2_Half Tempo_4_8bars_128bpm_switch.wav.asd
+  artifactKey: Guid(6e7c6c80b4e374f9d85db2b02cab5538) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/B/B41_Melody_Synth 2_Half Tempo_4_8bars_128bpm_switch.wav.asd using Guid(6e7c6c80b4e374f9d85db2b02cab5538) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'b58c05aef52ac3026d65fa6385dc8f68') in 0.001001541 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Resources/Audio/Music/Loops/B/B35_Melody_Synth_Half Tempo_2_8bars_128bpm_switch.wav
+  artifactKey: Guid(c66319d11c8344a5a966d48172a8b188) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/B/B35_Melody_Synth_Half Tempo_2_8bars_128bpm_switch.wav using Guid(c66319d11c8344a5a966d48172a8b188) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '6151302b24bdd4b8d326f5a789e7b4e4') in 0.009546666 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/Resources/Audio/Music/Loops/B/B44_Melody_Bells_Arpeggio_3_8bars_128bpm_switch.wav.asd
+  artifactKey: Guid(87ce911f8a92f4881b86ce3e4c30dd3c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/B/B44_Melody_Bells_Arpeggio_3_8bars_128bpm_switch.wav.asd using Guid(87ce911f8a92f4881b86ce3e4c30dd3c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '2f2d95ef5cd1fcacf8b2eac1b2c87d2a') in 0.001057667 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/Resources/Audio/Music/Loops/B/B33_Harmony_Piano_Chopped_4_8bars_128bpm_switch.wav
+  artifactKey: Guid(d9b3ea54c0ee141b099437cdf687ee18) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/B/B33_Harmony_Piano_Chopped_4_8bars_128bpm_switch.wav using Guid(d9b3ea54c0ee141b099437cdf687ee18) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '036aba1cd6088588bc04d6b95308802f') in 0.010195458 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000051 seconds.
+  path: Assets/Resources/Audio/Music/Loops/B/B48_Melody_Arpeggiator_Arpeggio_3_8bars_128bpm_switch.wav
+  artifactKey: Guid(561198058db5540eb956e0c413dca08d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/B/B48_Melody_Arpeggiator_Arpeggio_3_8bars_128bpm_switch.wav using Guid(561198058db5540eb956e0c413dca08d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'eceb70eeeb75929eb1dff9f4bef2bee8') in 0.010227167 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Resources/Audio/Music/Loops/B/B6_Rhythm_Hi Hat_Basic_1_1bars_128bpm_switch.wav
+  artifactKey: Guid(f78b95ce34ce14da0af557b1863c8236) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/B/B6_Rhythm_Hi Hat_Basic_1_1bars_128bpm_switch.wav using Guid(f78b95ce34ce14da0af557b1863c8236) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'd69f299e0383f1c430816ac08fd63824') in 0.010193792 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Resources/Audio/Music/Loops/B/B47_Melody_Arpeggiator_Octave Up_2_8bars_128bpm_switch.wav.asd
+  artifactKey: Guid(037934db7839540f6a5c841cfa1412ec) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/B/B47_Melody_Arpeggiator_Octave Up_2_8bars_128bpm_switch.wav.asd using Guid(037934db7839540f6a5c841cfa1412ec) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '64bcfe6a21cee6f8b73cad875de62159') in 0.000945667 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000043 seconds.
+  path: Assets/Resources/Audio/Music/Loops/B/B43_Melody_Bells_Octave Up_2_8bars_128bpm_switch.wav
+  artifactKey: Guid(ba78ac1b483f1440a94e00370f646618) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/B/B43_Melody_Bells_Octave Up_2_8bars_128bpm_switch.wav using Guid(ba78ac1b483f1440a94e00370f646618) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '26c724003425413c587bfe1b0eded8ee') in 0.010137542 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Prefabs/Actors/Player/PlayerCharacters/Paperplane.prefab
+  artifactKey: Guid(59521243add3a4c4fa2448a14ae77069) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Prefabs/Actors/Player/PlayerCharacters/Paperplane.prefab using Guid(59521243add3a4c4fa2448a14ae77069) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'bb9532199a9f17dbdca83704175a7272') in 0.004592041 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 23
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/Meshes/Enviroment/Hill_Zone/Materials/Road Sign/Sign Pole.mat
+  artifactKey: Guid(2644967bfd23745cfa7d06fc62fc5744) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Meshes/Enviroment/Hill_Zone/Materials/Road Sign/Sign Pole.mat using Guid(2644967bfd23745cfa7d06fc62fc5744) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'b13d0edcd67a0b9ebb9582611758d182') in 0.002456375 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Resources/Audio/Music/Loops/B/B3_Rhythm_Kick_Snare_Basic_2_1bars_128bpm_switch.wav
+  artifactKey: Guid(d376c02c7bcff4abfa0a262b2346ce27) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/B/B3_Rhythm_Kick_Snare_Basic_2_1bars_128bpm_switch.wav using Guid(d376c02c7bcff4abfa0a262b2346ce27) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '139412d6414b4a22e4116181a1bf57f5') in 0.009829834 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/Meshes/Misc/Mic/Materials/blue chrome.mat
+  artifactKey: Guid(2873a8414ae11428dad1e9ac57156de1) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Meshes/Misc/Mic/Materials/blue chrome.mat using Guid(2873a8414ae11428dad1e9ac57156de1) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'ea76eaf912b85b6cda8d16ed3790ed3e') in 0.001903542 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Meshes/Enviroment/Trippy_Zone/Materials/Spiral.mat
+  artifactKey: Guid(8e43ca26d971a9b40bde8e5a388dc9d2) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Meshes/Enviroment/Trippy_Zone/Materials/Spiral.mat using Guid(8e43ca26d971a9b40bde8e5a388dc9d2) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '7b0e9d6d433b1a1ab92de3dfc48c0045') in 0.002468791 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/Meshes/Enviroment/Hill_Zone/Materials/Tunnel/black.mat
+  artifactKey: Guid(fbf1794065eaf42c590ba697a120fc47) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Meshes/Enviroment/Hill_Zone/Materials/Tunnel/black.mat using Guid(fbf1794065eaf42c590ba697a120fc47) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'b3e8175701d1e3f66d2b862ca4a5d3a2') in 0.001926042 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/Resources/Audio/Music/Loops/B/B19_Harmony_Pad_Sidechain_2_8bars_128bpm_switch.wav.asd
+  artifactKey: Guid(18f7ff4f90b694a5fa571fed6b0c5640) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/B/B19_Harmony_Pad_Sidechain_2_8bars_128bpm_switch.wav.asd using Guid(18f7ff4f90b694a5fa571fed6b0c5640) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '6655a26c700ecb93b08f55db7669a9e3') in 0.000965334 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/Meshes/Enviroment/Hill_Zone/Materials/Sun/New Material.mat
+  artifactKey: Guid(f128c35b42a364055a3d341115d85215) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Meshes/Enviroment/Hill_Zone/Materials/Sun/New Material.mat using Guid(f128c35b42a364055a3d341115d85215) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'abba38f2423aa2700ba37ca977003c99') in 0.00238075 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Resources/Audio/Music/Loops/B/B6_Rhythm_Hi Hat_Basic_1_1bars_128bpm_switch.wav.asd
+  artifactKey: Guid(eacb7384c87bb40ea9172268aa4dd19d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/B/B6_Rhythm_Hi Hat_Basic_1_1bars_128bpm_switch.wav.asd using Guid(eacb7384c87bb40ea9172268aa4dd19d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '3939d92a915350a7db72e051830f59fe') in 0.000954333 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Resources/Audio/Music/Loops/B/B9_Rhythm_Hi Hat_Double_4_1bars_128bpm_switch.wav.asd.wav.asd
+  artifactKey: Guid(b03a7ec131af24573ac72b5a696f99f1) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/B/B9_Rhythm_Hi Hat_Double_4_1bars_128bpm_switch.wav.asd.wav.asd using Guid(b03a7ec131af24573ac72b5a696f99f1) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'f22d38bf26a6cdd980adbdc9bf0fb1f2') in 0.001114291 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/Resources/Audio/Music/Loops/C/soundset_C_pixel_rhythm 15_128bpm.wav
+  artifactKey: Guid(b6252d6a405e94987986a3e4758ebc14) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/C/soundset_C_pixel_rhythm 15_128bpm.wav using Guid(b6252d6a405e94987986a3e4758ebc14) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '00e4563c18b44dd09f097f87d8c1f0f8') in 0.015522 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Resources/Audio/Music/Loops/C/soundset_C_trippy_melody 6_128bpm.wav
+  artifactKey: Guid(55e289551c5e54b79aa916d7e9607517) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/C/soundset_C_trippy_melody 6_128bpm.wav using Guid(55e289551c5e54b79aa916d7e9607517) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'cbafdd2c89226635975913a97b88cf91') in 0.073281875 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Resources/Audio/Music/Loops/Copia de B/B12_Rhythm_Percussion_Minimal_3_1bars_128bpm_switch.wav.asd
+  artifactKey: Guid(b2324e1829ab149ff8e724063796c00d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/Copia de B/B12_Rhythm_Percussion_Minimal_3_1bars_128bpm_switch.wav.asd using Guid(b2324e1829ab149ff8e724063796c00d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '696d61c511e1d42a36352ca25a243f7f') in 0.001305917 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Resources/Audio/Music/Loops/C/soundset_C_pixel_rhythm 6_128bpm.wav
+  artifactKey: Guid(9de08ffc96813493bb2d2a691f6384ba) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/C/soundset_C_pixel_rhythm 6_128bpm.wav using Guid(9de08ffc96813493bb2d2a691f6384ba) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'eabc3b3f546e35e2fc68516b8a0fb919') in 0.014691208 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000040 seconds.
+  path: Assets/Resources/Audio/Music/Loops/Copia de B/B16_Rhythm_Clap_Minimal_3_1bars_128bpm_switch.wav
+  artifactKey: Guid(72205084999964a88b2dbc320c9ba663) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/Copia de B/B16_Rhythm_Clap_Minimal_3_1bars_128bpm_switch.wav using Guid(72205084999964a88b2dbc320c9ba663) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '021650be4ddcf8ec4904b4606cc05fe3') in 0.01096 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000040 seconds.
+  path: Assets/Resources/Audio/Music/Loops/C/soundset_C_trippy_melody 7_128bpm.wav
+  artifactKey: Guid(c4368504a3d11487590c507d1bd59bdc) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/C/soundset_C_trippy_melody 7_128bpm.wav using Guid(c4368504a3d11487590c507d1bd59bdc) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'e2c922cdd98e31b38f0bab087ce55bce') in 0.082679291 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/Resources/Audio/Music/Loops/C/soundset_C_trippy_melody 9_128bpm.wav
+  artifactKey: Guid(ca97b41f2c5b04bd280ccfae92f9a91d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/C/soundset_C_trippy_melody 9_128bpm.wav using Guid(ca97b41f2c5b04bd280ccfae92f9a91d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '64ab93f8d19141a50e727b513ab09899') in 0.074641959 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000042 seconds.
+  path: Assets/Resources/Audio/Music/Loops/Copia de B/B11_Rhythm_Percussion_Double_2_1bars_128bpm_switch.wav
+  artifactKey: Guid(e43ba220ba51f4cd18db557f05f40706) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/Copia de B/B11_Rhythm_Percussion_Double_2_1bars_128bpm_switch.wav using Guid(e43ba220ba51f4cd18db557f05f40706) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'edf3922f182ff8ce58edc70b54c8d9b5') in 0.012081917 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Resources/Audio/Music/Loops/C/soundset_C_trippy_harmony 16_128bpm.wav
+  artifactKey: Guid(2e8d671ca18a34861ae2cd74bb268c6a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/C/soundset_C_trippy_harmony 16_128bpm.wav using Guid(2e8d671ca18a34861ae2cd74bb268c6a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '1564f91168d7bffa5f22c0c6658d978a') in 0.069536583 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Resources/Audio/Music/Loops/C/soundset_C_trippy_harmony 6_128bpm.wav
+  artifactKey: Guid(b227f613d1dc44ab092205260632009b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/C/soundset_C_trippy_harmony 6_128bpm.wav using Guid(b227f613d1dc44ab092205260632009b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '54b80da226d13002e36b2e8ae3d18cb2') in 0.062259792 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/Resources/Audio/Music/Loops/Copia de B/B33_Harmony_Piano_Chopped_4_8bars_128bpm_switch.wav.asd
+  artifactKey: Guid(d369aa9a4817f43c694876250fddd2d9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/Copia de B/B33_Harmony_Piano_Chopped_4_8bars_128bpm_switch.wav.asd using Guid(d369aa9a4817f43c694876250fddd2d9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '0fc8f371b73fd5533c386831acdcd0fc') in 0.001119292 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Resources/Audio/Music/Loops/Copia de B/B28_Harmony_Bass 2_Chopped_3_8bars_128bpm_switch.wav.asd
+  artifactKey: Guid(433abcd2c76fc4b428297484087be8cc) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/Copia de B/B28_Harmony_Bass 2_Chopped_3_8bars_128bpm_switch.wav.asd using Guid(433abcd2c76fc4b428297484087be8cc) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '365f0dd4f0d205cbd69013d9de3cebee') in 0.001097375 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Resources/Audio/Music/Loops/Copia de B/B34_Melody_Synth_Still_1_8bars_128bpm_switch.wav.asd
+  artifactKey: Guid(451fd9c5b9b77477aa87883270d7fa0b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/Copia de B/B34_Melody_Synth_Still_1_8bars_128bpm_switch.wav.asd using Guid(451fd9c5b9b77477aa87883270d7fa0b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '4d2dd054ae7f6141bb4e97a1e2ab1e93') in 0.000994125 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/Resources/Audio/Music/Loops/Copia de B/B12_Rhythm_Percussion_Minimal_3_1bars_128bpm_switch.wav
+  artifactKey: Guid(fbf3b1016d3d2408faa069e44cc37638) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/Copia de B/B12_Rhythm_Percussion_Minimal_3_1bars_128bpm_switch.wav using Guid(fbf3b1016d3d2408faa069e44cc37638) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '207b844ace23d253041bb840a03c80ca') in 0.01126325 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Resources/Audio/Music/Loops/C/soundset_C_pixel_rhythm 7_128bpm.wav
+  artifactKey: Guid(71c2241d7d40f4c23a4f9a36b97e831c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/C/soundset_C_pixel_rhythm 7_128bpm.wav using Guid(71c2241d7d40f4c23a4f9a36b97e831c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'f90a6f34aad9ac9a73131a9161e25548') in 0.014676625 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Resources/Audio/Music/Loops/Copia de B/B26_Harmony_Bass 2_Basic_1_8bars_128bpm_switch.wav.asd
+  artifactKey: Guid(207319823449d44b08ac7886bba0b54c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/Copia de B/B26_Harmony_Bass 2_Basic_1_8bars_128bpm_switch.wav.asd using Guid(207319823449d44b08ac7886bba0b54c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'ec398e470d552fac557034203e089755') in 0.000997708 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Resources/Audio/Music/Loops/Copia de B/B35_Melody_Synth_Half Tempo_2_8bars_128bpm_switch.wav
+  artifactKey: Guid(9473fa155aaae4873aab63c289a82a9d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/Copia de B/B35_Melody_Synth_Half Tempo_2_8bars_128bpm_switch.wav using Guid(9473fa155aaae4873aab63c289a82a9d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'd8fb56bb1f1225fc01c6d5a87f4ade73') in 0.013464 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/Resources/Audio/Music/Loops/Copia de B/B30_Harmony_Piano_Octave Down_1_8bars_128bpm_switch.wav.asd
+  artifactKey: Guid(c9a2f733d542247d3930e5b49e5a1a9c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/Copia de B/B30_Harmony_Piano_Octave Down_1_8bars_128bpm_switch.wav.asd using Guid(c9a2f733d542247d3930e5b49e5a1a9c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '82c46af4377589e718cfe4da4c792b63') in 0.000895084 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Resources/Audio/Music/Loops/C/soundset_C_trippy_harmony 7_128bpm.wav
+  artifactKey: Guid(21a1b3f640d62487fa4450e4628a504d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/C/soundset_C_trippy_harmony 7_128bpm.wav using Guid(21a1b3f640d62487fa4450e4628a504d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '787b82977a1e5a18166e891fb6afa99d') in 0.061399666 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/Resources/Audio/Music/Loops/C/soundset_C_trippy_harmony 14_128bpm.wav
+  artifactKey: Guid(38cc1dbf8e63c4829a4e849467ed17d8) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/C/soundset_C_trippy_harmony 14_128bpm.wav using Guid(38cc1dbf8e63c4829a4e849467ed17d8) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '23df346a9e557cbafbeed3f562166575') in 0.068622125 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Resources/Audio/Music/Loops/C/soundset_C_trippy_melody 5_128bpm.wav
+  artifactKey: Guid(9cf21c2fb288a465e9235f220a4db945) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/C/soundset_C_trippy_melody 5_128bpm.wav using Guid(9cf21c2fb288a465e9235f220a4db945) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'e75227121deeb77fb86a7519ad6a01e7') in 0.073336417 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Resources/Audio/Music/Loops/Copia de B/B37_Melody_Synth_Glitch_4_8bars_128bpm_switch.wav
+  artifactKey: Guid(13e4bdc9cb603402e8d9879d18a94ff7) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/Copia de B/B37_Melody_Synth_Glitch_4_8bars_128bpm_switch.wav using Guid(13e4bdc9cb603402e8d9879d18a94ff7) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'e96f6e5cbb5614cc8bf75caa9335e4e4') in 0.01181125 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Resources/Audio/Music/Loops/Copia de B/B30_Harmony_Piano_Octave Down_1_8bars_128bpm_switch.wav
+  artifactKey: Guid(153d66f2194db47918de3ffee6355d3c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/Copia de B/B30_Harmony_Piano_Octave Down_1_8bars_128bpm_switch.wav using Guid(153d66f2194db47918de3ffee6355d3c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '494db778bd6fb95224ff3ce6da45b649') in 0.012782292 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/Resources/Audio/Music/Loops/D/bass_3.wav
+  artifactKey: Guid(652ec0ae77f1c4bd78f1c0eb73687486) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/D/bass_3.wav using Guid(652ec0ae77f1c4bd78f1c0eb73687486) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '0cdb443b6161ad8d52e5ba0a117b1eb0') in 0.040467583 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Resources/Audio/Music/Loops/Copia de B/B49_Melody_Arpeggiator_Layered_4_8bars_128bpm_switch.wav
+  artifactKey: Guid(ca74702d613094acdb5e36af6a00d354) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/Copia de B/B49_Melody_Arpeggiator_Layered_4_8bars_128bpm_switch.wav using Guid(ca74702d613094acdb5e36af6a00d354) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '9cce65b120a4afe7df23448fbc5deca0') in 0.012013583 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000044 seconds.
+  path: Assets/Resources/Audio/Music/Loops/Copia de B/B6_Rhythm_Hi Hat_Basic_1_1bars_128bpm_switch.wav.asd
+  artifactKey: Guid(7ab06dda7a5d04941b76b67a50f9cfbe) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/Copia de B/B6_Rhythm_Hi Hat_Basic_1_1bars_128bpm_switch.wav.asd using Guid(7ab06dda7a5d04941b76b67a50f9cfbe) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '9ee62d87a5e8a08c51a68b644f80eb42') in 0.001094583 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Resources/Audio/Music/Loops/Copia de B/B46_Melody_Arpeggiator_Octave Down_1_8bars_128bpm_switch.wav.asd
+  artifactKey: Guid(5790c3295ee6b4c09894273cbe1a65a8) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/Copia de B/B46_Melody_Arpeggiator_Octave Down_1_8bars_128bpm_switch.wav.asd using Guid(5790c3295ee6b4c09894273cbe1a65a8) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '81612b39cf54455912ef67cc1134d067') in 0.000997 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000043 seconds.
+  path: Assets/Resources/Audio/Music/Loops/Copia de B/B45_Melody_Bells_Layered_4_8bars_128bpm_switch.wav.asd
+  artifactKey: Guid(754d030b8d9ce48eda90297e0ae642be) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/Copia de B/B45_Melody_Bells_Layered_4_8bars_128bpm_switch.wav.asd using Guid(754d030b8d9ce48eda90297e0ae642be) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'aa303d919f91421ac1082295081c51c7') in 0.0010465 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Resources/Audio/Music/Loops/Copia de B/B9_Rhythm_Hi Hat_Double_4_1bars_128bpm_switch.wav
+  artifactKey: Guid(276fce6f6efb14de2a77733289e86644) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/Copia de B/B9_Rhythm_Hi Hat_Double_4_1bars_128bpm_switch.wav using Guid(276fce6f6efb14de2a77733289e86644) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '4ba6a36a9e07965a9b7052fb66c94df3') in 0.011146584 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/Resources/Audio/Music/Loops/Copia de B/B41_Melody_Synth 2_Half Tempo_4_8bars_128bpm_switch.wav
+  artifactKey: Guid(86d08c6a706b349a288924744368649c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/Copia de B/B41_Melody_Synth 2_Half Tempo_4_8bars_128bpm_switch.wav using Guid(86d08c6a706b349a288924744368649c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '555afaa1fdf9bfac067f6360b852f0dc') in 0.013012084 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/Resources/Audio/Music/Loops/Copia de B/B4_Rhythm_Kick_Snare_Basic_3_1bars_128bpm_switch.wav.asd
+  artifactKey: Guid(cd975d24604c94ad8ae74ad7aa0edfe6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/Copia de B/B4_Rhythm_Kick_Snare_Basic_3_1bars_128bpm_switch.wav.asd using Guid(cd975d24604c94ad8ae74ad7aa0edfe6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '3b8c6c49f3426eaca637f1f9aac16bc5') in 0.000979042 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Resources/Audio/Music/Loops/Copia de B/B7_Rhythm_Hi Hat_Minimal_2_1bars_128bpm_switch.wav
+  artifactKey: Guid(43b0bbff350204cf28a90ae4ef491c3c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/Copia de B/B7_Rhythm_Hi Hat_Minimal_2_1bars_128bpm_switch.wav using Guid(43b0bbff350204cf28a90ae4ef491c3c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'a2f3cebeeb6b4e2b79c0891027a88f49') in 0.01119775 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/Resources/Audio/Music/Loops/Copia de B/B47_Melody_Arpeggiator_Octave Up_2_8bars_128bpm_switch.wav.asd
+  artifactKey: Guid(6ee08b6861f2b45a1837f218e61eac6a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/Copia de B/B47_Melody_Arpeggiator_Octave Up_2_8bars_128bpm_switch.wav.asd using Guid(6ee08b6861f2b45a1837f218e61eac6a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'df1766f2501e7de34a5873b1533f417e') in 0.001074458 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Resources/Audio/Music/Loops/Copia de B/B48_Melody_Arpeggiator_Arpeggio_3_8bars_128bpm_switch.wav
+  artifactKey: Guid(876c2d19949804bc6af59d02e4770756) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/Copia de B/B48_Melody_Arpeggiator_Arpeggio_3_8bars_128bpm_switch.wav using Guid(876c2d19949804bc6af59d02e4770756) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '6132263453f04efaf9e2197ccb8e8753') in 0.011867708 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Resources/Audio/Music/Loops/D/bass_2.wav
+  artifactKey: Guid(70720ed8bf50940b398f5707f5dec430) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/D/bass_2.wav using Guid(70720ed8bf50940b398f5707f5dec430) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '598c988f19402e0a45d27a8f1e1ba5a9') in 0.039706958 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000042 seconds.
+  path: Assets/Resources/Audio/Music/Loops/Copia de B/B43_Melody_Bells_Octave Up_2_8bars_128bpm_switch.wav
+  artifactKey: Guid(e81e9b897591646ccaf7e10fa9a8b8d3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/Copia de B/B43_Melody_Bells_Octave Up_2_8bars_128bpm_switch.wav using Guid(e81e9b897591646ccaf7e10fa9a8b8d3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '1b3bc93cc1928ca5118ac0e8909c2bbc') in 0.012234083 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Resources/Audio/Music/Loops/Copia de B/B19_Harmony_Pad_Sidechain_2_8bars_128bpm_switch.wav
+  artifactKey: Guid(77b7401b3e23d48a7992d61ca38c9bf0) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/Copia de B/B19_Harmony_Pad_Sidechain_2_8bars_128bpm_switch.wav using Guid(77b7401b3e23d48a7992d61ca38c9bf0) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '764be3fc1073694a513c1aa6f750f0e0') in 0.012331792 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/Resources/Audio/Music/Loops/Copia de B/B44_Melody_Bells_Arpeggio_3_8bars_128bpm_switch.wav
+  artifactKey: Guid(f2735323c129b43cb909008a9ee40f42) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/Copia de B/B44_Melody_Bells_Arpeggio_3_8bars_128bpm_switch.wav using Guid(f2735323c129b43cb909008a9ee40f42) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '754bb38e9c058b854c5963a712f125dd') in 0.012284792 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Resources/Audio/Music/Loops/D/arp_2.wav
+  artifactKey: Guid(0ea005af209434a25920d72b73accb58) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/D/arp_2.wav using Guid(0ea005af209434a25920d72b73accb58) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'c61f78ca98ad69856012ee92a3148412') in 0.040164666 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000058 seconds.
+  path: Assets/Resources/Audio/Music/Loops/Copia de B/B17_Rhythm_Clap_Double_4_1bars_128bpm_switch.wav.asd
+  artifactKey: Guid(da706e1711f624b6398b1222d5343d50) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/Copia de B/B17_Rhythm_Clap_Double_4_1bars_128bpm_switch.wav.asd using Guid(da706e1711f624b6398b1222d5343d50) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'c70013fd351dcd872f0ff8040b5358ef') in 0.001021208 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Resources/Audio/Music/Loops/Copia de B/B45_Melody_Bells_Layered_4_8bars_128bpm_switch.wav
+  artifactKey: Guid(b95ded770149d49648b411837b9f7954) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/Copia de B/B45_Melody_Bells_Layered_4_8bars_128bpm_switch.wav using Guid(b95ded770149d49648b411837b9f7954) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '0eb73ebf0aa1543e52e11b71d387f85b') in 0.012316292 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/Resources/Audio/Music/Loops/Copia de B/B27_Harmony_Bass 2_Octave Up_2_8bars_128bpm_switch.wav.asd
+  artifactKey: Guid(f6769cee493a5495b9be5d1d581d6d34) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/Copia de B/B27_Harmony_Bass 2_Octave Up_2_8bars_128bpm_switch.wav.asd using Guid(f6769cee493a5495b9be5d1d581d6d34) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'e850d29af69d1c00cde62c970c5e44b0') in 0.001042 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Resources/Audio/Music/Loops/Copia de B/B27_Harmony_Bass 2_Octave Up_2_8bars_128bpm_switch.wav
+  artifactKey: Guid(d3f34486938b54bc985c1ce85298c736) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/Copia de B/B27_Harmony_Bass 2_Octave Up_2_8bars_128bpm_switch.wav using Guid(d3f34486938b54bc985c1ce85298c736) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '1d4d0f4df31ec5001b2bf7b9f746ac72') in 0.012070333 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Resources/Audio/Music/Loops/D/synth_1.wav
+  artifactKey: Guid(264705e33a6d64299b50d62b368f9f31) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/D/synth_1.wav using Guid(264705e33a6d64299b50d62b368f9f31) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'fe1a930b5ce226784bee90bffe409632') in 0.043288916 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Resources/Audio/Music/Tracks/AnotherOneBitesTheDust/ABTD_Queen_Multi Guitar.ogg
+  artifactKey: Guid(1c741a60b6d2a49d4a497bccb222449a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Tracks/AnotherOneBitesTheDust/ABTD_Queen_Multi Guitar.ogg using Guid(1c741a60b6d2a49d4a497bccb222449a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '2c1d685cd27f3d2d5a327bf29d7ad730') in 0.024253167 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/Resources/Audio/Music/Tracks/Test/test1_layer5_synth1.mp3
+  artifactKey: Guid(a1a98c25004674acc82f0ca9de183b37) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Tracks/Test/test1_layer5_synth1.mp3 using Guid(a1a98c25004674acc82f0ca9de183b37) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '9effd871a4962ed3dcfc7a9285608e9e') in 0.020751459 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Resources/Audio/Music/Tracks/AnotherOneBitesTheDust/ABTD_Queen_Multi Kick.ogg
+  artifactKey: Guid(d9fa4caf132b342bab1a4f893479e843) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Tracks/AnotherOneBitesTheDust/ABTD_Queen_Multi Kick.ogg using Guid(d9fa4caf132b342bab1a4f893479e843) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'a9fbc646b51b4c27455ccd46f163f18f') in 0.028176208 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Resources/Audio/Music/Tracks/AnotherOneBitesTheDust/ABTD_Queen_Multi Fx.ogg
+  artifactKey: Guid(cf5a859af52a644948fcb78a411b3383) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Tracks/AnotherOneBitesTheDust/ABTD_Queen_Multi Fx.ogg using Guid(cf5a859af52a644948fcb78a411b3383) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '672a23538930bdbab9e1e5a36e9e6c7c') in 0.040097334 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000042 seconds.
+  path: Assets/Resources/Audio/Music/Loops/D/synth_5.wav
+  artifactKey: Guid(9a52d30c439b343b2bc1d30cd64ffbb4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/D/synth_5.wav using Guid(9a52d30c439b343b2bc1d30cd64ffbb4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'ea052f9c04e6e77cb67926eb771e9fbb') in 0.04212175 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000042 seconds.
+  path: Assets/Resources/Audio/Music/Tracks/AnotherOneBitesTheDust/ABTD_Queen_Multi Vox.ogg
+  artifactKey: Guid(f9b2221b0156a411bba26418d63674f9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Tracks/AnotherOneBitesTheDust/ABTD_Queen_Multi Vox.ogg using Guid(f9b2221b0156a411bba26418d63674f9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'f6cbc032cb9e57073213a021aa9c925b') in 0.032828458 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000040 seconds.
+  path: Assets/Resources/Audio/Music/Loops/Copia de B/B17_Rhythm_Clap_Double_4_1bars_128bpm_switch.wav
+  artifactKey: Guid(c05f8b993a6094c04839a6d145a562d9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/Copia de B/B17_Rhythm_Clap_Double_4_1bars_128bpm_switch.wav using Guid(c05f8b993a6094c04839a6d145a562d9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'd6fb84f5a01f504b31e6e663bacdf602') in 0.011504 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Resources/Audio/Music/Loops/Copia de B/B9_Rhythm_Hi Hat_Double_4_1bars_128bpm_switch.wav.asd
+  artifactKey: Guid(4ddf1538a0d5c481aa35a9af4ec518a8) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/Copia de B/B9_Rhythm_Hi Hat_Double_4_1bars_128bpm_switch.wav.asd using Guid(4ddf1538a0d5c481aa35a9af4ec518a8) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'd7a606648bea1419a1104c20d42a210a') in 0.001178542 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Resources/Audio/Music/Loops/D/keys_2.wav
+  artifactKey: Guid(96e45b2cf5e22448cbdca9d3e511dc77) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/D/keys_2.wav using Guid(96e45b2cf5e22448cbdca9d3e511dc77) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '664f47b1f14b9ea65c86fff65dace13d') in 0.035823375 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000042 seconds.
+  path: Assets/Resources/Audio/Music/Tracks/Test/test1_layer4_harmony.mp3
+  artifactKey: Guid(a972384fd0c2d42288306d14ede7fdc1) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Tracks/Test/test1_layer4_harmony.mp3 using Guid(a972384fd0c2d42288306d14ede7fdc1) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'f77b4d3f9f393e4006c9ec99b78d640f') in 0.021766666 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000062 seconds.
+  path: Assets/Resources/Audio/Music/Loops/C/soundset_C_pixel_rhythm 9_128bpm.wav
+  artifactKey: Guid(f4a289eed6e184a7ca058b2395a17058) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/C/soundset_C_pixel_rhythm 9_128bpm.wav using Guid(f4a289eed6e184a7ca058b2395a17058) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'c71f20b18e967527f67b5bf451d8bfe5') in 0.018172125 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Resources/Audio/Music/Loops/Copia de B/B29_Harmony_Bass 2_Octave Up_4_8bars_128bpm_switch.wav
+  artifactKey: Guid(04a6ae0676c764adaab4c7777fd14080) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/Copia de B/B29_Harmony_Bass 2_Octave Up_4_8bars_128bpm_switch.wav using Guid(04a6ae0676c764adaab4c7777fd14080) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'd69bc8879a7ec69767f091847d1dd141') in 0.012020125 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Resources/Audio/Music/Loops/Copia de B/B20_Harmony_Pad_Filtered_3_8bars_128bpm_switch.wav.asd
+  artifactKey: Guid(611adb8043c454ee686f2e7e3f778f62) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/Copia de B/B20_Harmony_Pad_Filtered_3_8bars_128bpm_switch.wav.asd using Guid(611adb8043c454ee686f2e7e3f778f62) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'd99a273777b8bf5bbeb5589221372551') in 0.001023917 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000057 seconds.
+  path: Assets/Resources/Audio/Music/Loops/D/synth_2.wav
+  artifactKey: Guid(2bab98b4ec4e2402b8318a68d7501a3e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/D/synth_2.wav using Guid(2bab98b4ec4e2402b8318a68d7501a3e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'b0a886af17bb4109fa5c1482954d493f') in 0.044402292 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Resources/Audio/Music/Loops/B/B9_Rhythm_Hi Hat_Double_4_1bars_128bpm_switch.wav.asd.wav
+  artifactKey: Guid(2b8d1bb84b5c7438696dabde63e1071d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/B/B9_Rhythm_Hi Hat_Double_4_1bars_128bpm_switch.wav.asd.wav using Guid(2b8d1bb84b5c7438696dabde63e1071d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '31aff27e23e409045b40117c04f56a4b') in 0.010659417 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Resources/Audio/Music/Loops/C/soundset_C_trippy_melody 16_128bpm.wav
+  artifactKey: Guid(69850dc8e2d62467bbe28f59016a133a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/C/soundset_C_trippy_melody 16_128bpm.wav using Guid(69850dc8e2d62467bbe28f59016a133a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'f951ba8c6df23409b2d545fe7beee4f9') in 0.06841475 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/Meshes/Models/Reworked/Characters/male_02.fbx
+  artifactKey: Guid(724098173f4bd9845b331ef54d131002) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Meshes/Models/Reworked/Characters/male_02.fbx using Guid(724098173f4bd9845b331ef54d131002) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '5f9a512117429e15e75771d38b5ee814') in 0.005575959 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 92
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Meshes/Enviroment/Hill_Zone/Materials/Sky Box/bottom.png
+  artifactKey: Guid(e9090d6784f931a4f81ce2c8b422f780) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Meshes/Enviroment/Hill_Zone/Materials/Sky Box/bottom.png using Guid(e9090d6784f931a4f81ce2c8b422f780) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'a9d506a76bef7b8987985df04f47ef4d') in 0.002715416 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/Meshes/Enviroment/Hill_Zone/Materials/Textures/watertank2_texture-02.png
+  artifactKey: Guid(e043cba61010f4b20af7eb77e2becf04) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Meshes/Enviroment/Hill_Zone/Materials/Textures/watertank2_texture-02.png using Guid(e043cba61010f4b20af7eb77e2becf04) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '47a48015f55ee088fd4dfcba8fe2d069') in 0.002587875 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/Meshes/Models/Reworked/Characters/female_02.fbx
+  artifactKey: Guid(6987cc84d3d68ca439e8e5f37ff027dc) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Meshes/Models/Reworked/Characters/female_02.fbx using Guid(6987cc84d3d68ca439e8e5f37ff027dc) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '95e6ceaf6cf5ece7f14c5f0e73f9934e') in 0.005322166 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 92
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/Meshes/Actors/Player/Papair/Materials/PapairPlaneMaterial.mat
+  artifactKey: Guid(d9103ca1a571944a090a3d0f34dbd9f5) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Meshes/Actors/Player/Papair/Materials/PapairPlaneMaterial.mat using Guid(d9103ca1a571944a090a3d0f34dbd9f5) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '870d4a7ee40f300ec9f8a8185c21dc84') in 0.004981583 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Meshes/Enviroment/Trippy_Zone/Materials/mesh_01.png
+  artifactKey: Guid(7c6cb5bfb619566429c74eca53667ff4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Meshes/Enviroment/Trippy_Zone/Materials/mesh_01.png using Guid(7c6cb5bfb619566429c74eca53667ff4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '5023dcb47bea5ddd585104958ff0453d') in 0.002994708 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/Resources/Audio/Music/Loops/B/B37_Melody_Synth_Glitch_4_8bars_128bpm_switch.wav.asd
+  artifactKey: Guid(3a1c5252414b54a47a7a168a742bb06d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/B/B37_Melody_Synth_Glitch_4_8bars_128bpm_switch.wav.asd using Guid(3a1c5252414b54a47a7a168a742bb06d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'c1dc258f2c701eaea7faea81f65eed50') in 0.000996375 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Resources/Audio/Music/Loops/A/A5_Rhythm_Snare_Glitch_2_2bars_130bpm_switch.wav
+  artifactKey: Guid(f003beb4f2ce24c3ab8b96dbca8598da) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/A/A5_Rhythm_Snare_Glitch_2_2bars_130bpm_switch.wav using Guid(f003beb4f2ce24c3ab8b96dbca8598da) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'b539ad2ca6b0240c593d6e9f2148d70a') in 0.012027709 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/Scenes/TestScenes/template_scene/LightingData.asset
+  artifactKey: Guid(23ae122826f6b4d9ea8dbf048789a3f2) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scenes/TestScenes/template_scene/LightingData.asset using Guid(23ae122826f6b4d9ea8dbf048789a3f2) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '7b248bade0a22a0ef7c49fbc24a744c5') in 0.001529333 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Meshes/Enviroment/Hill_Zone/Materials/Sky Box/top.png
+  artifactKey: Guid(4edebc16bb1d89246a5fbde04d219bd0) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Meshes/Enviroment/Hill_Zone/Materials/Sky Box/top.png using Guid(4edebc16bb1d89246a5fbde04d219bd0) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '83fd88a99a33a4cf94b45796cb6a595c') in 0.003416583 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Resources/Materials/Patterns/TriggerSingle_failure.mat
+  artifactKey: Guid(ea13121e4d6604c45aebc3953b07169a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Materials/Patterns/TriggerSingle_failure.mat using Guid(ea13121e4d6604c45aebc3953b07169a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'e7cee466912dfede420be3fb26893f91') in 0.001519167 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000045 seconds.
+  path: Assets/Meshes/Models/Reworked/Props/Shrooms_04.fbx
+  artifactKey: Guid(ded5e1be968a8324991be95a16ec9130) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Meshes/Models/Reworked/Props/Shrooms_04.fbx using Guid(ded5e1be968a8324991be95a16ec9130) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '736af848d81d028d54678cbdb523e562') in 0.00363075 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000043 seconds.
+  path: Assets/Meshes/Actors/Player/LMaD/Planes/Materials/Textures For Plane.mat
+  artifactKey: Guid(8fbaa8d371a6c416a98bb992d15e1b43) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Meshes/Actors/Player/LMaD/Planes/Materials/Textures For Plane.mat using Guid(8fbaa8d371a6c416a98bb992d15e1b43) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'e39f57b18b61749f28a3459a4357fbd8') in 0.003271291 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/Scripts/Scene/Trigger/BaseClasses/Trigger.cs
+  artifactKey: Guid(2fe491c4aaa904d2b9179b8647d1ab6c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scripts/Scene/Trigger/BaseClasses/Trigger.cs using Guid(2fe491c4aaa904d2b9179b8647d1ab6c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '5b9348ecb4652a9d418bf563cca8a370') in 0.001055834 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Resources/Audio/Music/Loops/C/soundset_C_pixel_rhythm 16_128bpm.wav
+  artifactKey: Guid(c6eadb1c46598428fa10ca911e2a2f55) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/C/soundset_C_pixel_rhythm 16_128bpm.wav using Guid(c6eadb1c46598428fa10ca911e2a2f55) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '1a1a0383aec31e4cb9c6e45eb557db56') in 0.014881708 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Resources/Materials/Basic/line_transparant red.mat
+  artifactKey: Guid(58c070bc6717f9944b5ce25fe45334b0) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Materials/Basic/line_transparant red.mat using Guid(58c070bc6717f9944b5ce25fe45334b0) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '34bbceb3284654c50557bb5d8fcf1a87') in 0.003862875 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/Resources/Audio/Music/Loops/Copia de B/B11_Rhythm_Percussion_Double_2_1bars_128bpm_switch.wav.asd
+  artifactKey: Guid(84a313a52104f4b49bff176b188b307c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/Copia de B/B11_Rhythm_Percussion_Double_2_1bars_128bpm_switch.wav.asd using Guid(84a313a52104f4b49bff176b188b307c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '529b3cf52c33bdd809ed4a39c07b3779') in 0.0010875 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000045 seconds.
+  path: Assets/Resources/Audio/Music/Loops/Copia de B/B14_Rhythm_Clap_Minimal_1_1bars_128bpm_switch.wav.asd
+  artifactKey: Guid(164635775041340c6842da9aaca5c03d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/Copia de B/B14_Rhythm_Clap_Minimal_1_1bars_128bpm_switch.wav.asd using Guid(164635775041340c6842da9aaca5c03d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '673d145aaabcc994c96b680123753e6c') in 0.001059292 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Meshes/Enviroment/Hill_Zone/Fix/mid_fix.FBX
+  artifactKey: Guid(a6a3a736ff6c79d4194dec02b7aa6491) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Meshes/Enviroment/Hill_Zone/Fix/mid_fix.FBX using Guid(a6a3a736ff6c79d4194dec02b7aa6491) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '94527d3c76c72afb8ddb2eb5743bd0b8') in 0.003575583 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 7
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/Resources/Audio/Music/Loops/Copia de B/B42_Melody_Bells_Octave Down_1_8bars_128bpm_switch.wav
+  artifactKey: Guid(2963531f67096484d915b679a8e06521) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/Copia de B/B42_Melody_Bells_Octave Down_1_8bars_128bpm_switch.wav using Guid(2963531f67096484d915b679a8e06521) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '1e60f4825ea6bb8b2d4b06862ae17695') in 0.012666375 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000080 seconds.
+  path: Assets/Scenes/Gyuri_Levels/Gyuri_Template/LightingData.asset
+  artifactKey: Guid(0fc589086b0bd5b4cad91e00f76dbc7f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scenes/Gyuri_Levels/Gyuri_Template/LightingData.asset using Guid(0fc589086b0bd5b4cad91e00f76dbc7f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '7235d25d0915041a3f82e47ff5a4c41f') in 0.001926791 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Meshes/Misc/Piano/Materials/piano_keys_black.mat
+  artifactKey: Guid(0bbcff2435ff14cc3a8c82d00561d4dd) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Meshes/Misc/Piano/Materials/piano_keys_black.mat using Guid(0bbcff2435ff14cc3a8c82d00561d4dd) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '8ce3eeaf5fa631b20327fa48e4457693') in 0.002015417 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/Meshes/Misc/Piano/Materials/piano_keys_white.mat
+  artifactKey: Guid(71c6a6a1ba6594cdfa9c2f13d95d1710) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Meshes/Misc/Piano/Materials/piano_keys_white.mat using Guid(71c6a6a1ba6594cdfa9c2f13d95d1710) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '1cc19db329167ce407e44c1e5b76957d') in 0.002547583 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Resources/Audio/Music/Loops/B/B20_Harmony_Pad_Filtered_3_8bars_128bpm_switch.wav
+  artifactKey: Guid(a19cb30ad35054462aad73f8bd872259) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/B/B20_Harmony_Pad_Filtered_3_8bars_128bpm_switch.wav using Guid(a19cb30ad35054462aad73f8bd872259) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '0e0ce7012668a48198ae971bb2058d30') in 0.010075916 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/Meshes/Enviroment/Hill_Zone/buildings/Materials/tank01-Material.001.mat
+  artifactKey: Guid(6bbb3f82174180c4aa6da76fadc99834) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Meshes/Enviroment/Hill_Zone/buildings/Materials/tank01-Material.001.mat using Guid(6bbb3f82174180c4aa6da76fadc99834) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '150be8c036487b43507f4f582fb25186') in 0.002328459 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/Resources/Audio/Music/Loops/C/soundset_C_trippy_melody 11_128bpm.wav
+  artifactKey: Guid(c5069698755d74428ae139a1e8f3b17a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/C/soundset_C_trippy_melody 11_128bpm.wav using Guid(c5069698755d74428ae139a1e8f3b17a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'bcaf25c04e3a0967311d46acd03c8af0') in 0.073313916 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Scripts/Scene/OnRhythm/TranslateOnRhythmPeriodic.cs
+  artifactKey: Guid(c0743f56dd903493987703798a8397b3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scripts/Scene/OnRhythm/TranslateOnRhythmPeriodic.cs using Guid(c0743f56dd903493987703798a8397b3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '0283f3bf9cf5dd6581c82c27dc3d92ae') in 0.001002166 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Resources/Audio/Music/Loops/A/A2_Rhythm_Kick_Basic_1_1bars_130bpm_switch.wav
+  artifactKey: Guid(0e0b88bdf79d249c5b3ea69be124de08) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/Audio/Music/Loops/A/A2_Rhythm_Kick_Basic_1_1bars_130bpm_switch.wav using Guid(0e0b88bdf79d249c5b3ea69be124de08) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'e51966d4483c1f93669d6b16d4eeddad') in 0.01093025 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 133.532041 seconds.
+  path: Assets/Prefabs/Triggers/Old/TriggerSingle.prefab
+  artifactKey: Guid(01d59dd42a88a47c68ee0a7d09de5bb0) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Prefabs/Triggers/Old/TriggerSingle.prefab using Guid(01d59dd42a88a47c68ee0a7d09de5bb0) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'a408be4209241edd8b4aeb860968f9ba') in 0.029138375 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 22
+

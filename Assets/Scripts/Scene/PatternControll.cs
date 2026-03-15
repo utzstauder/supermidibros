@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using CustomDataTypes;
 
@@ -18,7 +18,7 @@ public class PatternControll : Trigger {
 
 	private PatternChildControll[] children = new PatternChildControll[Constants.NUMBER_OF_PLAYERS];
 
-	private BoxCollider collider;
+	private new BoxCollider collider;
 	private SnapToGrid snapToGrid;
 	private LineRenderer lineRenderer;
 
@@ -109,8 +109,9 @@ public class PatternControll : Trigger {
 	}
 
 	void UpdateLineRenderer(){
-		lineRenderer.SetWidth(lineWidth, lineWidth);
-		lineRenderer.SetVertexCount(pattern.size);
+		lineRenderer.startWidth = lineWidth;
+		lineRenderer.endWidth = lineWidth;
+		lineRenderer.positionCount = pattern.size;
 		lineRenderer.SetPositions(GetPositionsOfChildren());
 		Color lineRendererColor = patternData.categoryColors[pattern.audioCategory];
 		lineRendererColor.a = 0.5f;
@@ -220,59 +221,71 @@ public class PatternControll : Trigger {
 	}
 
 	private void SetActiveStateOfChildren(){
+		int coordLen = pattern.coords != null ? pattern.coords.Length : 0;
 		for (int i = 0; i < children.Length; i++){
-			children[i].gameObject.SetActive(pattern.coords[i] >= 0);
+			if (i < coordLen)
+				children[i].gameObject.SetActive(pattern.coords[i] >= 0);
+			else
+				children[i].gameObject.SetActive(false);
 		}
 	}
 
 	private void DisableRendererOfChildren(bool[] active){
-		for (int i = 0; i < children.Length; i++){
-			if (active[i])
-			{
-				children[i].SetRendererActive(false);
-			}
+		int len = Mathf.Min(active.Length, children.Length);
+		for (int i = 0; i < len; i++){
+			if (active[i]) children[i].SetRendererActive(false);
 		}
 	}
 
 	private void SetPositionOfChildren(){
+		int coordLen = pattern.coords != null ? pattern.coords.Length : 0;
 		for (int i = 0; i < children.Length; i++){
-			children[i].SetLocalPositionInGrid(i, pattern.coords[i]);
+			if (i < coordLen){
+				if (coordLen != Constants.NUMBER_OF_PLAYERS)
+					children[i].SetLocalPositionInGrid(i, pattern.coords[i], coordLen);
+				else
+					children[i].SetLocalPositionInGrid(i, pattern.coords[i]);
+			} else
+				children[i].gameObject.SetActive(false);
 		}
 	}
 
 	private Vector3[] GetPositionsOfChildren(){
+		int coordLen = pattern.coords != null ? pattern.coords.Length : 0;
 		Vector3[] positions = new Vector3[pattern.size];
 		int index = 0;
-
-		for (int i = 0; i < children.Length; i++){
+		for (int i = 0; i < coordLen && i < children.Length; i++){
 			if (pattern.coords[i] >= 0){
 				positions[index] = transform.position + children[i].transform.localPosition;
 				index++;
 			}
 		}
-	
 		return positions;
 	}
 
 	private void SetMeshOfChildren(){
-		for (int i = 0; i < children.Length; i++){
+		int coordLen = pattern.coords != null ? pattern.coords.Length : children.Length;
+		for (int i = 0; i < children.Length && i < coordLen; i++){
 			children[i].SetActiveMeshObject(pattern.audioCategory);
 		}
 	}
 
 	private void SetColorOfChildren(){
-		for (int i = 0; i < children.Length; i++){
+		int coordLen = pattern.coords != null ? pattern.coords.Length : children.Length;
+		for (int i = 0; i < children.Length && i < coordLen; i++){
 			children[i].SetMeshColor(patternData.categoryColors[pattern.audioCategory]);
 		}
 	}
 
 	private void SetAffectorsOfChildren(int category, int instrument, int variation){
-		for (int i = 0; i < children.Length; i++){
+		int coordLen = pattern.coords != null ? pattern.coords.Length : children.Length;
+		for (int i = 0; i < children.Length && i < coordLen; i++){
 			OnRhythmPeriodicAffectorAudioChannel affector = children[i].gameObject.GetComponentInChildren<OnRhythmPeriodicAffectorAudioChannel>();
-
-			affector.category = category;
-			affector.instrument = -1;
-			affector.variation = -1;
+			if (affector != null){
+				affector.category = category;
+				affector.instrument = -1;
+				affector.variation = -1;
+			}
 		}
 	}
 
