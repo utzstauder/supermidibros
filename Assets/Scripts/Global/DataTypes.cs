@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -77,10 +77,10 @@ namespace CustomDataTypes {
 		}
 
 		public static bool Overlap(Pattern a, Pattern b){
-			if (a.coords == null || b.coords == null) return false;
-			int len = Mathf.Min(a.coords.Length, b.coords.Length);
-			for (int i = 0; i < len; i++){
-				if (a.coords[i] == b.coords[i]) return true;
+			for (int i = 0; i < Constants.NUMBER_OF_PLAYERS; i++){
+				if (a.coords[i] == b.coords[i]){
+					return true;
+				}
 			}
 			return false;
 		}

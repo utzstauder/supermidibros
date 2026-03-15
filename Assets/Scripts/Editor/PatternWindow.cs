@@ -237,8 +237,7 @@ public class PatternWindow : EditorWindow {
 		LineRenderer lineRenderer;
 		if (lineRenderer = gameObject.GetComponent<LineRenderer>()){
 			lineRenderer.material = (Material)AssetDatabase.LoadAssetAtPath(lineRendererDefaultMaterial, typeof(Material));
-			lineRenderer.startWidth = 0.2f;
-			lineRenderer.endWidth = 0.2f;
+			lineRenderer.SetWidth(0.2f, 0.2f);
 		}
 
 		TriggerChangeMaterial changeMaterialScript = gameObject.AddComponent<TriggerChangeMaterial>();

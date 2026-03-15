@@ -213,47 +213,42 @@ public class MIDIInputManager : MonoBehaviour {
 	}
 
 	public bool GetPlayerButtonDown(int _playerId){
-		// Temporarily disabled MidiJack functionality for Unity 6 compatibility
-		// if (MidiMaster.GetKnob(m_playerButtonNumbers[_playerId]) >= 1.0f && !m_playerButtonDown[_playerId]){
-		// 	m_playerButtonDown[_playerId] = true;
-		// 	return true;
-		// }
+		if (MidiMaster.GetKnob(m_playerButtonNumbers[_playerId]) >= 1.0f && !m_playerButtonDown[_playerId]){
+			m_playerButtonDown[_playerId] = true;
+			return true;
+		}
 		return false;
 	}
 
 	public bool GetPlayButtonDown(){
-		// Temporarily disabled MidiJack functionality for Unity 6 compatibility
-		// if (MidiMaster.GetKnob(GetPlayButtonKnobNumber()) >= 1.0f && !m_playButtonDown){
-		// 	m_playButtonDown = true;
-		// 	return true;
-		// }
+		if (MidiMaster.GetKnob(GetPlayButtonKnobNumber()) >= 1.0f && !m_playButtonDown){
+			m_playButtonDown = true;
+			return true;
+		}
 		return false;
 	}
 
 	public bool GetStopButtonDown(){
-		// Temporarily disabled MidiJack functionality for Unity 6 compatibility
-		// if (MidiMaster.GetKnob(GetStopButtonKnobNumber()) >= 1.0f && !m_stopButtonDown){
-		// 	m_stopButtonDown = true;
-		// 	return true;
-		// }
+		if (MidiMaster.GetKnob(GetStopButtonKnobNumber()) >= 1.0f && !m_stopButtonDown){
+			m_stopButtonDown = true;
+			return true;
+		}
 		return false;
 	}
 
 	public bool GetRewindButtonDown(){
-		// Temporarily disabled MidiJack functionality for Unity 6 compatibility
-		// if (MidiMaster.GetKnob(GetRewindButtonKnobNumber()) >= 1.0f && !m_rewindButtonDown){
-		// 	m_rewindButtonDown = true;
-		// 	return true;
-		// }
+		if (MidiMaster.GetKnob(GetRewindButtonKnobNumber()) >= 1.0f && !m_rewindButtonDown){
+			m_rewindButtonDown = true;
+			return true;
+		}
 		return false;
 	}
 
 	public bool GetForwardButtonDown(){
-		// Temporarily disabled MidiJack functionality for Unity 6 compatibility
-		// if (MidiMaster.GetKnob(GetForwardButtonKnobNumber()) >= 1.0f && !m_forwardButtonDown){
-		// 	m_forwardButtonDown = true;
-		// 	return true;
-		// }
+		if (MidiMaster.GetKnob(GetForwardButtonKnobNumber()) >= 1.0f && !m_forwardButtonDown){
+			m_forwardButtonDown = true;
+			return true;
+		}
 		return false;
 	}
 

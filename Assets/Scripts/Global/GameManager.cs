@@ -1,6 +1,5 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class GameManager : MonoBehaviour {
@@ -8,11 +7,6 @@ public class GameManager : MonoBehaviour {
 	public static GameManager instance;
 
 	public bool m_debug = false;
-
-	[Header("Variable player count")]
-	[Tooltip("When enabled, number of planes (2-8) follows which input channels have moved recently. When disabled, always 8 players as before.")]
-	[SerializeField] private bool m_useVariablePlayerCount = false;
-	public bool UseVariablePlayerCount { get { return m_useVariablePlayerCount; } }
 
 	private AudioManager m_audioManager;
 	private float m_horizontalSliderValue = 0.0f;
@@ -56,17 +50,9 @@ public class GameManager : MonoBehaviour {
 		Invoke("ToggelCheckForIdle", screenOnStartupTime);
 	}
 
-	void OnEnable(){
-		SceneManager.sceneLoaded += OnSceneLoaded;
-	}
-
-	void OnDisable(){
-		SceneManager.sceneLoaded -= OnSceneLoaded;
-	}
-
-	// look up new references - updated for Unity 6
-	void OnSceneLoaded(Scene scene, LoadSceneMode mode){
-		Debug.Log("Scene " + scene.name + " was loaded");
+	// look up new references
+	void OnLevelWasLoaded(int sceneId){
+		Debug.Log("Scene " + sceneId + " was loaded");
 		m_audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
 	}
 	

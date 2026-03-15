@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -57,30 +57,16 @@ public class PlayerGroup : MonoBehaviour {
 	}
 
 	void Update(){
-		if (UseVariablePlayerMode() && ActivePlayerDetector.instance != null){
-			int[] activeSlots = ActivePlayerDetector.instance.GetActiveSlotIndices();
-			for (int i = 0; i < m_playerGroup.Length; i++) m_playerGroup[i].SetActive(false);
-			for (int d = 0; d < activeSlots.Length; d++){
-				int slotIndex = activeSlots[d];
-				m_playerGroup[slotIndex].SetActive(true);
-				UpdateTargetPositionOfPlayer(slotIndex);
-			}
-			if (m_lookAtOffset.magnitude > 0){
-				for (int d = 0; d < activeSlots.Length; d++)
-					UpdateLookAtOfPlayer(activeSlots[d]);
-			}
-		} else {
-			UpdateTargetPositionOfAllPlayers();
-			if (m_lookAtOffset.magnitude > 0) UpdateLookAtOfAllPlayers();
+		UpdateTargetPositionOfAllPlayers();
+		if (m_lookAtOffset.magnitude > 0){
+			UpdateLookAtOfAllPlayers();
 		}
-		for (int i = 0; i < Constants.NUMBER_OF_PLAYERS; i++){
-			if (MIDIInputManager.instance.GetPlayerButtonDown(i))
-				CycleChildObjects(i);
-		}
-	}
 
-	bool UseVariablePlayerMode(){
-		return GameManager.instance != null && GameManager.instance.UseVariablePlayerCount;
+		for (int i = 0; i < Constants.NUMBER_OF_PLAYERS; i++){
+			if (MIDIInputManager.instance.GetPlayerButtonDown(i)){
+				CycleChildObjects(i);
+			}
+		}
 	}
 
 	#region private functions

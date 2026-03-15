@@ -3,15 +3,14 @@
 --- !u!1 &104090
 GameObject:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
   m_Component:
-  - component: {fileID: 482706}
-  - component: {fileID: 11488012}
-  - component: {fileID: 11462316}
-  - component: {fileID: 6527866}
+  - 4: {fileID: 482706}
+  - 114: {fileID: 11488012}
+  - 114: {fileID: 11462316}
+  - 65: {fileID: 6527866}
   m_Layer: 10
   m_Name: _BACKUP_PatternPrefab
   m_TagString: Pattern
@@ -21,48 +20,34 @@ GameObject:
   m_IsActive: 1
 --- !u!4 &482706
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 104090}
-  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &11488012
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
+  m_RootOrder: 0
+--- !u!65 &6527866
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 104090}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f3b64c686ef945db91b74d0cddc391d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  patternData: {fileID: 11400000, guid: e9b131632227542989631fcec738032c, type: 2}
-  childrenPrefab: {fileID: 11467456, guid: 3b9c53a290da44175bfd2493f0dad6f7, type: 3}
-  lineMaterial: {fileID: 0}
-  lineWidth: 0.2
-  pattern:
-    coords: 0000000000000000000000000000000000000000000000000000000000000000
-    size: 8
-    complexity: 0
-    audioCategory: 0
-    instrumentGroup: 0
-    variation: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 14, z: 24}
+  m_Center: {x: 0, y: 6, z: 0}
 --- !u!114 &11462316
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 104090}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -80,24 +65,36 @@ MonoBehaviour:
   m_snapZ: 0
   m_lockZ: 0
   m_playerLane: 0
---- !u!65 &6527866
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
+--- !u!114 &11488012
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 104090}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 14, z: 24}
-  m_Center: {x: 0, y: 6, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f3b64c686ef945db91b74d0cddc391d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patternData: {fileID: 11400000, guid: e9b131632227542989631fcec738032c, type: 2}
+  childrenPrefab: {fileID: 11467456, guid: 3b9c53a290da44175bfd2493f0dad6f7, type: 2}
+  lineMaterial: {fileID: 0}
+  lineWidth: 0.2
+  pattern:
+    coords: 0000000000000000000000000000000000000000000000000000000000000000
+    size: 8
+    complexity: 0
+    audioCategory: 0
+    instrumentGroup: 0
+    variation: 0
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 104090}
+  m_IsPrefabParent: 1

@@ -61,11 +61,11 @@ public class ScreenCapture : MonoBehaviour {
 	}
 
 	void TakeScreenshot(){
-		UnityEngine.ScreenCapture.CaptureScreenshot(m_screenshotsSubfolder + "/" + m_screenShotPrefix + "_" + System.DateTime.Now.ToString("yyyyMMdd-hhmmss") + ".png");
+		Application.CaptureScreenshot(m_screenshotsSubfolder + "/" + m_screenShotPrefix + "_" + System.DateTime.Now.ToString("yyyyMMdd-hhmmss") + ".png");
 	}
 
 	void CaptureFrame(){
-		UnityEngine.ScreenCapture.CaptureScreenshot(m_videoframeSubfolder + "/" + (m_frameCount++) + ".png"); 
+		Application.CaptureScreenshot(m_videoframeSubfolder + "/" + (m_frameCount++) + ".png"); 
 	}
 
 	#endregion

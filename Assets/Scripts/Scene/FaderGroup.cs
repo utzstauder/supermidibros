@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -72,29 +72,16 @@ public class FaderGroup : MonoBehaviour {
 
 	void Update () {
 		if (!m_inEditMode){
-			bool variableMode = UseVariablePlayerMode();
-			if (variableMode && ActivePlayerDetector.instance != null){
-				int activeCount = ActivePlayerDetector.instance.GetActivePlayerCount();
-				int[] activeSlots = ActivePlayerDetector.instance.GetActiveSlotIndices();
-				for (int i = 0; i < m_faderGroup.Length; i++) m_faderGroup[i].gameObject.SetActive(false);
-				for (int d = 0; d < activeCount; d++){
-					int slotIndex = activeSlots[d];
-					Transform t = m_faderGroup[slotIndex];
-					t.gameObject.SetActive(true);
-					float inputY = MIDIInputManager.instance.GetInputOfPlayer(slotIndex);
-					t.localPosition = Vector3.up * m_faderHeight * inputY
-						+ Vector3.up * m_faderOffset
-						+ Vector3.back * ((d - activeCount / 2) * m_faderPadding + (float)m_faderPadding / 2);
-				}
-			} else {
-				for (int i = 0; i < m_faderGroup.Length; i++){
-					m_faderGroup[i].gameObject.SetActive(true);
-					m_faderGroup[i].localPosition = Vector3.up * m_faderHeight * MIDIInputManager.instance.GetInputOfPlayer(i)
-						+ Vector3.up * m_faderOffset
-						+ Vector3.back * ((i - Constants.NUMBER_OF_PLAYERS/2) * m_faderPadding + (float)m_faderPadding/2);
-				}
+			// TODO: this can be optimized, listen for *changes* in player input
+			// input
+			for (int i = 0; i < m_faderGroup.Length; i++){
+				m_faderGroup[i].localPosition = Vector3.up * m_faderHeight * MIDIInputManager.instance.GetInputOfPlayer(i)
+					+ Vector3.up * m_faderOffset
+					+ Vector3.back * ((i - Constants.NUMBER_OF_PLAYERS/2) * m_faderPadding + (float)m_faderPadding/2);
 			}
+
 			UpdateAlignmentInfo();
+
 		} else {
 			for (int i = 0; i < m_faderGroup.Length; i++){
 				m_faderGroup[i].localPosition = Vector3.zero
@@ -104,50 +91,61 @@ public class FaderGroup : MonoBehaviour {
 		}
 	}
 
-	bool UseVariablePlayerMode(){
-		return GameManager.instance != null && GameManager.instance.UseVariablePlayerCount;
-	}
-
 
 	#region private functions
 
 	void UpdateAlignmentInfo(){
+		
+		// cast ray
 		if (Physics.Raycast(transform.position, Vector3.right, out hitInfo, lookAheadDistance, alignmentLayerMask)){
+//			Debug.Log("Hit at " + hitInfo.point);
 			collidersAhead = Physics.OverlapSphere(hitInfo.point, m_detectionRange);
+
+			// update positions
 			m_faderPositionsOnGrid = GetFaderPositionsOnGrid();
-			int len = m_faderPositionsOnGrid.Length;
-			for (int i = 0; i < Constants.NUMBER_OF_PLAYERS; i++) isAllignedWithPattern[i] = false;
+
+			for (int i = 0; i < Constants.NUMBER_OF_PLAYERS; i++){
+				isAllignedWithPattern[i] = false;
+			}
+
 			for (int c = 0; c < collidersAhead.Length; c++){
 				PatternControll patternControll;
-				if (patternControll = collidersAhead[c].GetComponent<PatternControll>()){
-					int patternLen = patternControll.pattern.coords != null ? patternControll.pattern.coords.Length : 0;
-					if (patternLen != len) continue;
-					for (int i = 0; i < len; i++){
-						if (patternControll.pattern.coords[i] == m_faderPositionsOnGrid[i])
+				if(patternControll = collidersAhead[c].GetComponent<PatternControll>()){
+					for (int i = 0; i < Constants.NUMBER_OF_PLAYERS; i++){
+						if (patternControll.pattern.coords[i] == m_faderPositionsOnGrid[i]){
 							isAllignedWithPattern[i] = true;
+						}
 					}
 				}
 			}
+
+
 		}
 	}
 
+	/**
+	 * This function will check for collision and is called on every subbeat
+	 */
 	void CheckForCollision(int subBeat){
+
+		// update positions
 		m_faderPositionsOnGrid = GetFaderPositionsOnGrid();
+
 		m_collider = Physics.OverlapSphere(transform.position, m_detectionRange);
 		for (int c = 0; c < m_collider.Length; c++){
 			PatternControll patternControll;
-			if (patternControll = m_collider[c].GetComponent<PatternControll>()){
-				int patternLen = patternControll.pattern.coords != null ? patternControll.pattern.coords.Length : 0;
-				if (patternLen == m_faderPositionsOnGrid.Length)
-					patternControll.CollisionCheck(m_faderPositionsOnGrid);
+			if(patternControll = m_collider[c].GetComponent<PatternControll>()){
+				patternControll.CollisionCheck(m_faderPositionsOnGrid);
 			}
+
 			TriggerSingle trigger;
-			if (trigger = m_collider[c].GetComponent<TriggerSingle>()){
+			if(trigger = m_collider[c].GetComponent<TriggerSingle>()){
 				trigger.OnCollision(0);
 				trigger.gameObject.SetActive(false);
 				AddTriggerToReactivationDict(trigger);
 			}
 		}
+
 	}
 
 	void OnSubBeat(int subBeat){
@@ -194,17 +192,11 @@ public class FaderGroup : MonoBehaviour {
 	}
 
 	int[] GetFaderPositionsOnGrid(){
-		if (UseVariablePlayerMode() && ActivePlayerDetector.instance != null){
-			int activeCount = ActivePlayerDetector.instance.GetActivePlayerCount();
-			int[] activeSlots = ActivePlayerDetector.instance.GetActiveSlotIndices();
-			int[] result = new int[activeCount];
-			for (int d = 0; d < activeCount; d++)
-				result[d] = GetClosestVerticalPosition(activeSlots[d]);
-			return result;
-		}
 		int[] positions = new int[Constants.NUMBER_OF_PLAYERS];
-		for (int i = 0; i < positions.Length; i++)
+		for (int i = 0; i < positions.Length; i++){
 			positions[i] = GetClosestVerticalPosition(i);
+		}
+
 		return positions;
 	}
 

@@ -9,7 +9,7 @@ public class TriggerSingle : Trigger {
 	}
 	
 	// Update is called once per frame
-	protected override void Update () {
+	void Update () {
 	
 	}
 }

@@ -54,23 +54,39 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream:Assets/Prefabs/Triggers/TriggerSingle.prefab
+--- !u!1 &187632
+=======
 --- !u!1 &189630
+>>>>>>> Stashed changes:Assets/Prefabs/Items/TriggerSingle.prefab
 GameObject:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
+<<<<<<< Updated upstream:Assets/Prefabs/Triggers/TriggerSingle.prefab
+  - 4: {fileID: 456808}
+  - 33: {fileID: 3376202}
+  - 23: {fileID: 2333106}
+  - 95: {fileID: 9531898}
+  m_Layer: 0
+  m_Name: ring
+=======
   - 4: {fileID: 411704}
   - 33: {fileID: 3309822}
   - 23: {fileID: 2362588}
   m_Layer: 0
   m_Name: pickup
+>>>>>>> Stashed changes:Assets/Prefabs/Items/TriggerSingle.prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+>>>>>>> Stashed changes
 --- !u!4 &404978
 Transform:
   m_ObjectHideFlags: 1
@@ -104,7 +120,15 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 119790}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< Updated upstream
   m_LocalPosition: {x: -10.634908, y: 1, z: 10.5}
+=======
+<<<<<<< Updated upstream:Assets/Prefabs/Triggers/TriggerSingle.prefab
+  m_LocalPosition: {x: 120.89209, y: 1, z: 10.5}
+=======
+  m_LocalPosition: {x: 0, y: 6.142857, z: -4.5}
+>>>>>>> Stashed changes:Assets/Prefabs/Items/TriggerSingle.prefab
+>>>>>>> Stashed changes
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -274,9 +298,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c01bf99f495e84a778273a4dabe6816a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream:Assets/Prefabs/Triggers/TriggerSingle.prefab
   m_triggers: []
-  m_renderer: {fileID: 2362588}
+<<<<<<< Updated upstream
+  lookForTriggersOnParent: 1
+  m_renderer: {fileID: 2357322}
+  m_targetMaterialSuccess: {fileID: 2100000, guid: c0806ead5bd0148d1a3f733d996079d4,
+    type: 2}
+  m_targetMaterialFailure: {fileID: 2100000, guid: bd70c25d821194207a9e9861d77c8933,
+    type: 2}
+=======
+  m_renderer: {fileID: 2333106}
   m_targetMaterial: {fileID: 2100000, guid: c0806ead5bd0148d1a3f733d996079d4, type: 2}
+=======
+  m_triggers:
+  - {fileID: 0}
+  m_renderer: {fileID: 2362588}
+  m_targetMaterial: {fileID: 2100000, guid: 4fc89343ca40c4eaf8d57a5927dacc96, type: 2}
+>>>>>>> Stashed changes:Assets/Prefabs/Items/TriggerSingle.prefab
+>>>>>>> Stashed changes
 --- !u!114 &11474060
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -318,6 +358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4652f0fd7e18346d99aa5adbd9bda366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream:Assets/Prefabs/Triggers/TriggerSingle.prefab
   m_snapX: 0
   m_lockX: 0
   m_bar: 1
@@ -329,6 +370,13 @@ MonoBehaviour:
   m_snapZ: 1
   m_lockZ: 0
   m_playerLane: 0
+=======
+  m_bar: 10
+  m_beat: 1
+  m_subBeat: 4
+  m_verticalPosition: 3
+  m_playerLane: 5
+>>>>>>> Stashed changes:Assets/Prefabs/Items/TriggerSingle.prefab
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
